@@ -1,7 +1,6 @@
 /* * */
 
 import { availableFormats } from '@/i18n/config';
-import { ColorSchemeScript } from '@mantine/core';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -39,9 +38,6 @@ export default async function RootLayout({ children }) {
 
 	return (
 		<html className={inter.variable} lang={locale}>
-			<head>
-				<ColorSchemeScript />
-			</head>
 			<body>
 				<NextIntlClientProvider
 					formats={availableFormats}
