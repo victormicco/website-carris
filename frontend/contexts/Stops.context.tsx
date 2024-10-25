@@ -112,7 +112,7 @@ export function transformStopDataIntoGeoJsonFeature(stopData: Stop): GeoJSON.Fea
 			id: stopData.id,
 			lat: stopData.lat,
 			lon: stopData.lon,
-			name: stopData.name,
+			name: stopData.stop_name,
 		},
 		type: 'Feature',
 	};

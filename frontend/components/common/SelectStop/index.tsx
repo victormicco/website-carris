@@ -61,8 +61,8 @@ export function SelectStop({ data = [], label, nothingFound, onSelectStopId, pla
 	const { search } = useMemo(() => createDocCollection(data.map(d => ({ boost: false, ...d })), {
 		id: 2,
 		locality: 1,
-		name: 1,
 		short_name: 1,
+		stop_name: 1,
 		tts_name: 0.9,
 	}), [data]);
 

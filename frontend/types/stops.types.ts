@@ -12,7 +12,6 @@ export interface Stop {
 	lon: number
 	municipality_id: string
 	municipality_name: string
-	name: string
 	operational_status: OperationalStatus
 	parish_id: null
 	parish_name: null
@@ -21,6 +20,7 @@ export interface Stop {
 	region_name: string
 	routes: string[]
 	short_name: string
+	stop_name: string
 	tts_name: string
 	wheelchair_boarding: string
 };

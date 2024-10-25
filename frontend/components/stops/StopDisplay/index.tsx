@@ -23,7 +23,7 @@ export function StopDisplay({ size = 'md', stop, width = 200 }: Props) {
 	return stop
 		? (
 			<div className={`${styles.container} ${styles[size]}`}>
-				<StopDisplayName stopName={stop.name} />
+				<StopDisplayName stopName={stop.stop_name} />
 				<StopDisplayLocation locality={stop?.locality} municipalityName={stop?.municipality_name} />
 			</div>
 		)

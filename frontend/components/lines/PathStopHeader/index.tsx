@@ -44,9 +44,11 @@ export default function SingleStop({ isFirstStop, isLastStop, isSelected, stopDa
 	//
 	// D. Render components
 
+	console.log('========> stopData', stopData);
+
 	return (
 		<div className={`${styles.container} ${isFirstStop && styles.isFirstStop} ${isLastStop && styles.isLastStop} ${isSelected && styles.isSelected}`}>
-			<p className={styles.stopName}>{stopData.name}</p>
+			<p className={styles.stopName}>{stopData.stop_name}</p>
 			<div className={styles.subHeaderWrapper}>
 				<p className={styles.stopLocation}>{stopLocation}</p>
 				<p className={`${styles.stopId} ${stopIdClipboard.copied && styles.isCopied}`} onClick={handleClickStopId}>

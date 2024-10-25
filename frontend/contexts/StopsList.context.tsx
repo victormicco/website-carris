@@ -120,8 +120,8 @@ export const StopsListContextProvider = ({ children }) => {
 			const searchHook = createDocCollection(boostedData, {
 				id: 5,
 				locality: 2,
-				name: 4,
 				short_name: 3,
+				stop_name: 4,
 			});
 			filterResult = searchHook.search(filterBySearchState);
 		}

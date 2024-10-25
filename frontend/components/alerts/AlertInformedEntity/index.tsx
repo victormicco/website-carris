@@ -51,7 +51,7 @@ export default function Component({ lineId, stopId }: Props) {
 
 	if (stopId && stopData) {
 		return (
-			<p>{stopData.name}</p>
+			<p>{stopData.stop_name}</p>
 		);
 	}
 
