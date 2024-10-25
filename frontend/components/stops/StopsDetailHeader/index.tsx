@@ -67,7 +67,7 @@ export function StopsDetailHeader() {
 
 				<div className={styles.headingWrapper}>
 					<div className={styles.nameWrapper}>
-						<StopDisplayName size="lg" stopName={stopsDetailContext.data.stop.name} />
+						<StopDisplayName size="lg" stopName={stopsDetailContext.data.stop.stop_name} />
 						<StopDisplayTts stopId={stopsDetailContext.data.stop.id} />
 						<FavoriteToggle color="var(--color-brand)" isActive={stopsDetailContext.flags.is_favorite} onToggle={handleToggleFavorite} />
 					</div>
