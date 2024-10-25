@@ -6,7 +6,9 @@ import { LinesListContextProvider } from '@/contexts/LinesList.context';
 
 /* * */
 
-export default function Page({ params: { line_id } }) {
+export default async function Page({ params }) {
+	const { line_id } = await params;
+
 	return (
 		<LinesListContextProvider>
 			<LinesDetailContextProvider lineId={line_id}>
