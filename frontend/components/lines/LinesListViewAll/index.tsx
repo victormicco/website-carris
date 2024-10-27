@@ -6,14 +6,7 @@ import { Surface } from '@/components/layout/Surface';
 import LineDisplay from '@/components/lines/LineDisplay';
 import { useLinesListContext } from '@/contexts/LinesList.context';
 import { RoutesSchedule } from '@/utils/routes';
-// import { AutoSizer, CellMeasurer, CellMeasurerCache, List, WindowScroller } from 'react-virtualized';
-
-/* * */
-
-// const rowMeasurementsCache = new CellMeasurerCache({
-// 	defaultHeight: 70,
-// 	fixedWidth: true,
-// });
+import { ViewportList } from 'react-viewport-list';
 
 /* * */
 
@@ -23,58 +16,24 @@ export function LinesListViewAll() {
 	//
 	// A. Setup variables
 
-	const linesContext = useLinesListContext();
+	const linesListContext = useLinesListContext();
 
 	//
-	// B. Handle actions
+	// B. Render components
 
-	// function handleResize() {
-	// 	rowMeasurementsCache.clearAll();
-	// }
-
-	//
-	// C. Render components
-
-	return null;
-
-	// return (
-	// 	<Surface forceOverflow>
-	// 		<Section>
-	// 			<AutoSizer disableHeight={true} onResize={handleResize}>
-	// 				{({ width }) => (
-	// 					<WindowScroller>
-	// 						{({ height, isScrolling, registerChild, scrollTop }) => (
-	// 							<div ref={registerChild as (element: Element | null) => void /* It works, but the types don't match up */}>
-	// 								<List
-	// 									deferredMeasurementCache={rowMeasurementsCache}
-	// 									height={height}
-	// 									isScrolling={isScrolling}
-	// 									rowCount={linesContext.data.filtered.length}
-	// 									rowHeight={rowMeasurementsCache.rowHeight}
-	// 									scrollTop={scrollTop}
-	// 									width={width}
-	// 									rowRenderer={({ index, key, parent, style }) => {
-	// 										const lineData = linesContext.data.filtered[index];
-	// 										return lineData && (
-	// 											<CellMeasurer key={key} cache={rowMeasurementsCache} index={index} parent={parent}>
-	// 												{({ registerChild }) => (
-	// 													<RegularListItem key={lineData.id} href={`${RoutesSchedule.LINES.route}/${lineData.id}`} refFn={(element: Element | null) => registerChild && registerChild(element || undefined)} style={style}>
-	// 														<LineDisplay line={lineData} />
-	// 													</RegularListItem>
-	// 												)}
-	// 											</CellMeasurer>
-	// 										);
-	// 									}}
-	// 									autoHeight
-	// 								/>
-	// 							</div>
-	// 						)}
-	// 					</WindowScroller>
-	// 				)}
-	// 			</AutoSizer>
-	// 		</Section>
-	// 	</Surface>
-	// );
+	return (
+		<Surface forceOverflow>
+			<Section>
+				<ViewportList itemMargin={0} items={linesListContext.data.filtered}>
+					{item => (
+						<RegularListItem key={item.id} href={`${RoutesSchedule.LINES.route}/${item.id}`}>
+							<LineDisplay line={item} />
+						</RegularListItem>
+					)}
+				</ViewportList>
+			</Section>
+		</Surface>
+	);
 
 	//
 }

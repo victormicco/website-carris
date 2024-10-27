@@ -12,7 +12,7 @@ import toast from '@/utils/toast';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import Avatar, { genConfig } from 'react-nice-avatar';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import Loading from './loading';
 import styles from './styles.module.css';
@@ -80,7 +80,7 @@ export default function Component() {
 	};
 
 	const generateAvatar = () => {
-		const avatar = uuid();
+		const avatar = uuidv4();
 		setAvatarConfig(() => genConfig(avatar));
 		setProfile(prevProfile => ({ ...prevProfile, avatar }));
 	};

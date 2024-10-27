@@ -2,12 +2,11 @@
 
 /* * */
 
+import pjson from '@/package.json';
 import { getCurrentBrowserFingerPrint } from '@rajesh896/broprint.js';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { UAParser } from 'ua-parser-js';
-
-import pjson from '../package.json';
 
 /* * */
 
@@ -23,14 +22,16 @@ const LOCAL_STORAGE_KEYS = {
 
 interface AnalyticsContextState {
 	actions: {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		capture: (key: any, properties?: Record<any, any>) => Promise<void>
+		capture: (key: string, properties?: Record<string, number | string>) => Promise<void>
 		disable: () => void
 		enable: () => void
 		reset: () => void
 	}
-	flags: {
+	data: {
 		is_enabled: 'no' | 'yes' | null
+	}
+	flags: {
+		is_enabled: boolean
 		should_ask: boolean
 	}
 }
@@ -55,8 +56,10 @@ export const AnalyticsContextProvider = ({ children }) => {
 	//
 	// A. Setup variables
 
-	const [flagIsEnabledState, setFlagIsEnabledState] = useState<AnalyticsContextState['flags']['is_enabled']>(null);
-	const [flagShouldAskState, setFlagShouldAskState] = useState<boolean>(false);
+	const [dataIsEnabledState, setDataIsEnabledState] = useState<AnalyticsContextState['data']['is_enabled']>(null);
+
+	const [flagIsEnabledState, setFlagIsEnabledState] = useState<AnalyticsContextState['flags']['is_enabled']>(false);
+	const [flagShouldAskState, setFlagShouldAskState] = useState<AnalyticsContextState['flags']['should_ask']>(false);
 
 	//
 	// B. Fetch data
@@ -68,7 +71,6 @@ export const AnalyticsContextProvider = ({ children }) => {
 		const decisionDateLocal = localStorage.getItem(LOCAL_STORAGE_KEYS.decision_date);
 		// Check if the stored value is known
 		if (isEnabledLocal !== 'yes' && isEnabledLocal !== 'no' && isEnabledLocal !== null) {
-			console.log('here1');
 			reset();
 			return;
 		}
@@ -80,40 +82,49 @@ export const AnalyticsContextProvider = ({ children }) => {
 		};
 		// Check if stored decision date has not expired
 		const daysSinceLastDecision = DateTime.now().diff(decisionDateData, 'days');
-		const yesDecisionIsExpired = flagIsEnabledState === 'yes' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_YES;
-		const noDecisionIsExpired = flagIsEnabledState === 'no' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_NO;
+		const yesDecisionIsExpired = dataIsEnabledState === 'yes' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_YES;
+		const noDecisionIsExpired = dataIsEnabledState === 'no' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_NO;
 		if (yesDecisionIsExpired || noDecisionIsExpired) {
 			reset();
 			return;
 		}
 		// Set local state
-		setFlagIsEnabledState(isEnabledLocal);
+		setDataIsEnabledState(isEnabledLocal);
 		setFlagShouldAskState(false);
 	});
 
 	//
 	// C. Handle actions
 
+	useEffect(() => {
+		if (dataIsEnabledState === 'yes') {
+			setFlagIsEnabledState(true);
+		}
+		else {
+			setFlagIsEnabledState(false);
+		}
+	}, [dataIsEnabledState]);
+
 	const enable = () => {
 		// Set local state and save decision to local storage
-		setFlagIsEnabledState('yes');
+		setDataIsEnabledState('yes');
 		localStorage.setItem(LOCAL_STORAGE_KEYS.is_enabled, 'yes');
 		localStorage.setItem(LOCAL_STORAGE_KEYS.decision_date, DateTime.now().toFormat('yyyyMMdd'));
 	};
 
 	const disable = () => {
 		// Set local state and save decision to local storage
-		setFlagIsEnabledState('no');
+		setDataIsEnabledState('no');
 		localStorage.setItem(LOCAL_STORAGE_KEYS.is_enabled, 'no');
 		localStorage.setItem(LOCAL_STORAGE_KEYS.decision_date, DateTime.now().toFormat('yyyyMMdd'));
 	};
 
 	const reset = () => {
 		// Set local state and save decision to local storage
-		setFlagIsEnabledState(null);
-		setFlagShouldAskState(true);
+		setDataIsEnabledState(null);
 		localStorage.removeItem(LOCAL_STORAGE_KEYS.is_enabled);
 		localStorage.removeItem(LOCAL_STORAGE_KEYS.decision_date);
+		setFlagShouldAskState(true);
 	};
 
 	const capture = async (key, properties = {}) => {
@@ -121,7 +132,7 @@ export const AnalyticsContextProvider = ({ children }) => {
 			return;
 			// Only capture anonymous analytics if user has allowed it
 			// eslint-disable-next-line no-unreachable
-			if (!flagIsEnabledState) return;
+			if (!dataIsEnabledState) return;
 			// Parse user-agent string
 			const parsedUserAgent = window.navigator.userAgent ? new UAParser(window.navigator.userAgent).getResult() : null;
 			// Fetch all the other properties
@@ -177,6 +188,9 @@ export const AnalyticsContextProvider = ({ children }) => {
 			disable,
 			enable,
 			reset,
+		},
+		data: {
+			is_enabled: dataIsEnabledState,
 		},
 		flags: {
 			is_enabled: flagIsEnabledState,

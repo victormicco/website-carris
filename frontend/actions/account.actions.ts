@@ -1,10 +1,10 @@
+'use server';
+
 /**
  * We can query the acount API directly from the server without having to
  * go through the Next API. This makes it more convenient and safer because
  * we don't expose any of the arguments to the client.
 */
-
-'use server';
 
 import { ServerActionResult } from '@/types/actions.types';
 import { Profile } from '@/types/profile.type';
