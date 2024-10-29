@@ -35,8 +35,8 @@ yarn-error.log*
 .vercel
 
 # Tmp directory
-*/tmp
-*/package-lock.json
+tmp
+package-lock.json
 nginx/uptime.conf
 
 #
