@@ -8,7 +8,7 @@ import { Surface } from '@/components/layout/Surface';
 import MetricsCardByLine from '@/components/metrics/MetricsCardByLine';
 import MetricsCardToday from '@/components/metrics/MetricsCardToday';
 import MetricsCardYearToDate from '@/components/metrics/MetricsCardYearToDate';
-import { FormatSwitch } from '@/components/responsive/FormatSwitch';
+import { BreakpointSwitch } from '@/components/responsive/BreakpointSwitch';
 import { Link } from '@/i18n/routing';
 import { Routes } from '@/utils/routes';
 import { useTranslations } from 'next-intl';
@@ -17,7 +17,7 @@ import styles from './styles.module.css';
 
 /* * */
 
-export default function Component() {
+export function MetricsSection() {
 	//
 
 	//
@@ -32,7 +32,7 @@ export default function Component() {
 		<Surface variant="standout">
 			<Section heading={t('heading')} withPadding>
 				<Grid columns="a" withGap>
-					<FormatSwitch
+					<BreakpointSwitch
 						desktop={(
 							<Grid columns="ab" withGap>
 								<MetricsCardToday className={styles.today} />

@@ -18,7 +18,7 @@ const AUTOPLAY_DELAY = 10000; // 10 seconds
 
 /* * */
 
-export default function Component() {
+export function MainCarousel() {
 	//
 
 	//

@@ -3,7 +3,7 @@
 /* * */
 
 // import { GeneralStatus } from '@/components/header/GeneralStatus';
-import Logo from '@/components/header/Logo';
+import { Logo } from '@/components/header/Logo';
 import HeaderNavigationDrawer from '@/components/header/NavigationDrawer';
 import HeaderNavigationMain from '@/components/header/NavigationMain';
 import { useStickyObserver } from '@/hooks/useStickyObserver';

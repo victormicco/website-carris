@@ -9,26 +9,25 @@ import styles from './styles.module.css';
 
 /* * */
 
-interface FeaturedSectionCardProps {
+interface Props {
 	coverImageSrc: string
 	href: string
+	target?: string
 	title: string
 }
 
 /* * */
 
-export default function Component({ coverImageSrc, href, title }: FeaturedSectionCardProps) {
+export default function Component({ coverImageSrc, href, target = '_blank', title }: Props) {
 	//
 
 	//
 	// C. Render Components
 
 	return (
-		<Section>
-			<Link href={href}>
-				<Image alt={title} className={styles.coverImage} fallbackSrc={ImagesCommon.PLACEHOLDER} src={coverImageSrc} />
-			</Link>
-		</Section>
+		<Link href={href} target={target}>
+			<Image alt={title} className={styles.coverImage} fallbackSrc={ImagesCommon.PLACEHOLDER} src={coverImageSrc} />
+		</Link>
 	);
 
 	//

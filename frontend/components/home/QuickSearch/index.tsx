@@ -1,12 +1,12 @@
 /* * */
 
-import QuickSearchFavoritesBar from '@/components/home/QuickSearchFavoritesBar';
-import QuickSearchWidget from '@/components/home/QuickSearchWidget';
+import { QuickSearchFavoritesBar } from '@/components/home/QuickSearchFavoritesBar';
+import { QuickSearchWidget } from '@/components/home/QuickSearchWidget';
 import { Surface } from '@/components/layout/Surface';
 
 /* * */
 
-export default function Component() {
+export function QuickSearch() {
 	return (
 		<Surface variant="brand">
 			<QuickSearchFavoritesBar />

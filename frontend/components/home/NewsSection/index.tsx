@@ -13,7 +13,7 @@ import useSWR from 'swr';
 
 /* * */
 
-export default function Component() {
+export function NewsSection() {
 	//
 
 	//

@@ -209,28 +209,44 @@
 
 /* * */
 
+theme-light {
+	display: contents;
+}
+
 @media (prefers-color-scheme: dark) {
 	theme-light {
 		display: none;
-  }
+	}
+}
+
+theme-dark {
+	display: contents;
 }
 
 @media (prefers-color-scheme: light) {
 	theme-dark {
 		display: none;
-  }
+	}
 }
 
 /* * */
 
+breakpoint-desktop {
+	display: contents;
+}
+
 @media only screen and (width <= 900px) {
-	format-desktop {
+	breakpoint-desktop {
 		display: none;
 	}
 }
 
+breakpoint-mobile {
+	display: contents;
+}
+
 @media only screen and (width >= 901px) {
-	format-mobile {
+	breakpoint-mobile {
 		display: none;
 	}
 }

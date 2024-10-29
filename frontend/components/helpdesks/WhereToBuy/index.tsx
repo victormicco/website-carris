@@ -3,7 +3,7 @@
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { ThemeLight, ThemeSwitch } from '@/components/responsive/ThemeSwitch';
+import { ThemeSwitch } from '@/components/responsive/ThemeSwitch';
 import { Image } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 

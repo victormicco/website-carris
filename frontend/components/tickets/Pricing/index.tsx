@@ -1,9 +1,16 @@
+'use client';
+
 /* * */
 
 import { Surface } from '@/components/layout/Surface';
-import LineBadge from '@/components/lines/LineBadge';
+import Lottie from 'lottie-react';
 import { useTranslations } from 'next-intl';
 
+import interRegionalAnimation from './inter-regional.json';
+import longaAnimation from './longa.json';
+import marAnimation from './mar.json';
+import proximaAnimation from './proxima.json';
+import rapidaAnimation from './rapida.json';
 import styles from './styles.module.css';
 
 /* * */
@@ -25,7 +32,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<LineBadge color="var(--color-lines-proxima)" />
+						<Lottie animationData={proximaAnimation} style={{ maxWidth: 65 }} />
 						<h3 className={styles.title}>{t('proxima.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -44,7 +51,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<LineBadge color="var(--color-lines-longa)" />
+						<Lottie animationData={longaAnimation} style={{ maxWidth: 65 }} />
 						<h3 className={styles.title}>{t('longa.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -63,7 +70,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<LineBadge color="var(--color-lines-rapida)" />
+						<Lottie animationData={rapidaAnimation} style={{ maxWidth: 65 }} />
 						<h3 className={styles.title}>{t('rapida.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -82,7 +89,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<LineBadge color="var(--color-lines-inter-regional)" />
+						<Lottie animationData={interRegionalAnimation} style={{ maxWidth: 65 }} />
 						<h3 className={styles.title}>{t('inter-regional.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -107,7 +114,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<LineBadge color="var(--color-lines-mar)" />
+						<Lottie animationData={marAnimation} style={{ maxWidth: 65 }} />
 						<h3 className={styles.title}>{t('mar.title')}</h3>
 					</div>
 					<div className={styles.pricing}>

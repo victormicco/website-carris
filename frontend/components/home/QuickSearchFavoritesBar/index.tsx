@@ -22,7 +22,7 @@ const DISPLAY_LIMIT = 5;
 
 /* * */
 
-export default function Component() {
+export function QuickSearchFavoritesBar() {
 	//
 
 	//

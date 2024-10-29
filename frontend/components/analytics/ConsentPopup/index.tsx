@@ -2,7 +2,7 @@
 
 /* * */
 
-import Logo from '@/components/header/Logo';
+import { Logo } from '@/components/header/Logo';
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 // import { BrandsCmet } from '@/settings/assets.settings';
 import { Button, Modal } from '@mantine/core';
