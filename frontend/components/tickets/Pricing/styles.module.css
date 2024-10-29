@@ -27,6 +27,12 @@
 	width: 100%;
 }
 
+@media screen and (width <= 1000px) {
+	.info {
+		align-items: center;
+	}
+}
+
 .title {
 	font-size: 20px;
 	font-weight: var(--font-weight-bold);
