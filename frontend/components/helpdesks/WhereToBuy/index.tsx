@@ -1,10 +1,9 @@
 /* * */
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/common/Card';
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { ImagesCommon } from '@/settings/assets.settings';
+import { ThemeLight, ThemeSwitch } from '@/components/responsive/ThemeSwitch';
 import { Image } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
@@ -24,34 +23,55 @@ export function WhereToBuy() {
 	// B. Render components
 
 	return (
-		<Surface>
-			<Section heading={t('heading')} subheading={t('subheading')} withPadding>
-				<Grid columns="ab" withGap>
-					<Card>
-						<CardHeader>
-							<div className={styles.images}>
-								<Image alt="Navegante Ocasional" src={ImagesCommon.NAVEGANTE_OCCASIONAL} />
+		<>
+
+			<Surface variant="brand2">
+				<Section heading={t('heading')} subheading={t('subheading')} withPadding>
+					<Grid columns="ab" withGap>
+
+						<div className={styles.cardWrapper}>
+							<Image alt={t('stores.title')} className={styles.cardImage} src="/assets/helpdesks/stores.png" />
+							<div className={styles.cardContents}>
+								<p className={styles.cardTitle}>{t('stores.title')}</p>
+								<p className={styles.cardDescription}>{t('stores.description')}</p>
 							</div>
-						</CardHeader>
-						<CardContent>
-							<CardTitle>{t('ocasional_travel.title')}</CardTitle>
-							<CardDescription>{t('ocasional_travel.description')}</CardDescription>
-						</CardContent>
-					</Card>
-					<Card>
-						<CardHeader>
-							<div className={styles.images}>
-								<Image alt="Passe Navegante" src={ImagesCommon.NAVEGANTE_CARD} />
+						</div>
+
+						<div className={styles.cardWrapper}>
+							<Image alt={t('app.title')} className={styles.cardImage} src="/assets/helpdesks/app.png" />
+							<div className={styles.cardContents}>
+								<p className={styles.cardTitle}>{t('app.title')}</p>
+								<p className={styles.cardDescription}>{t('app.description')}</p>
 							</div>
-						</CardHeader>
-						<CardContent>
-							<CardTitle>{t('frequent_travel.title')}</CardTitle>
-							<CardDescription>{t('frequent_travel.description')}</CardDescription>
-						</CardContent>
-					</Card>
-				</Grid>
-			</Section>
-		</Surface>
+						</div>
+
+						<div className={styles.cardWrapper}>
+							<ThemeSwitch
+								dark={<Image alt={t('multibanco.title')} className={styles.cardImageAlt} src="/assets/helpdesks/multibanco-dark.png" />}
+								light={<Image alt={t('multibanco.title')} className={styles.cardImageAlt} src="/assets/helpdesks/multibanco-light.png" />}
+							/>
+							<div className={styles.cardContents}>
+								<p className={styles.cardTitle}>{t('multibanco.title')}</p>
+								<p className={styles.cardDescription}>{t('multibanco.description')}</p>
+							</div>
+						</div>
+
+						<div className={styles.cardWrapper}>
+							<ThemeSwitch
+								dark={<Image alt={t('payshop.title')} className={styles.cardImageAlt} src="/assets/helpdesks/payshop-dark.png" />}
+								light={<Image alt={t('payshop.title')} className={styles.cardImageAlt} src="/assets/helpdesks/payshop-light.png" />}
+							/>
+							<div className={styles.cardContents}>
+								<p className={styles.cardTitle}>{t('payshop.title')}</p>
+								<p className={styles.cardDescription}>{t('payshop.description')}</p>
+							</div>
+						</div>
+
+					</Grid>
+				</Section>
+			</Surface>
+
+		</>
 	);
 
 	//

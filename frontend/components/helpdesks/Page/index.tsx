@@ -1,7 +1,6 @@
 /* * */
 
-import { Service } from '@/components/helpdesks/Service';
-// import { ServicePoints } from '@/components/helpdesks/ServicePoints';
+import { Header } from '@/components/helpdesks/Header';
 import { WhereToBuy } from '@/components/helpdesks/WhereToBuy';
 
 /* * */
@@ -9,9 +8,8 @@ import { WhereToBuy } from '@/components/helpdesks/WhereToBuy';
 export default function Component() {
 	return (
 		<>
+			<Header />
 			<WhereToBuy />
-			<Service />
-			{/* <ServicePoints /> */}
 		</>
 	);
 }

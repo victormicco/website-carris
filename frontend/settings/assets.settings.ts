@@ -127,7 +127,7 @@ export const ImagesCommon = Object.freeze({
 	AREA4: '/images/common/area4.svg',
 	COINS: '/images/common/coins.svg',
 	NAVEGANTE_CARD: '/images/common/navegante-card.png',
-	NAVEGANTE_OCCASIONAL: '/images/common/navegante-occasional.png',
+	NAVEGANTE_OCASIONAL: '/images/common/navegante-occasional.png',
 	PLACEHOLDER: '/images/common/placeholder.png',
 });
 
