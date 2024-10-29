@@ -57,6 +57,12 @@
 	}
 }
 
+@media screen and (width <= 700px) {
+	.pricing {
+		flex-wrap: wrap;
+	}
+}
+
 .pricingItem {
     display: flex;
     flex-direction: column;

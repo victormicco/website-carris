@@ -1,6 +1,5 @@
 /* * */
 
-import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import LineBadge from '@/components/lines/LineBadge';
 import { useTranslations } from 'next-intl';
