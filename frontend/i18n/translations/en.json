@@ -1021,43 +1021,43 @@
 	"tickets": {
 		"Pricing": {
 			"inter-regional": {
-				"description": "Linhas dedicadas a bairros, zonas de pormenor. São linhas normalmente com percursos mais curtos, circulares e com mais paragens.",
+				"description": "As linhas inter-regionais servem destinos fora da área metropolitana de Lisboa.",
 				"title": "Inter-Regional Lines"
 			},
 			"longa": {
-				"description": "Linhas dedicadas a bairros, zonas de pormenor. São linhas normalmente com percursos mais curtos, circulares e com mais paragens.",
+				"description": "Linhas tipicamente intermunicipais, com percursos mais longos que servem corredores principais.",
 				"title": "Long Lines"
 			},
 			"mar": {
-				"description": "Linhas dedicadas a bairros, zonas de pormenor. São linhas normalmente com percursos mais curtos, circulares e com mais paragens.",
+				"description": "Linhas sazonais em que o destino é o mar, a praia e o sol.",
 				"title": "Sea Lines"
 			},
 			"proxima": {
-				"description": "Linhas dedicadas a bairros, zonas de pormenor. São linhas normalmente com percursos mais curtos, circulares e com mais paragens.",
+				"description": "As linhas próximas são dedicadas a zonas de pormenor. Têm normalmente percursos mais curtos, são circulares e têm mais paragens.",
 				"title": "Linhas Próximas"
 			},
 			"rapida": {
-				"description": "Linhas dedicadas a bairros, zonas de pormenor. São linhas normalmente com percursos mais curtos, circulares e com mais paragens.",
+				"description": "Linhas tipicamente expresso, que servem zonas principais com grande frequência.",
 				"title": "Fast lines"
 			},
 			"ticket_types": {
 				"onboard": "single ticket",
-				"onboard_start_by_29": "bilhete de bordo linhas começadas por 29**",
-				"onboard_start_by_49": "bilhete de bordo linhas começadas por 49**",
+				"onboard_start_by_29": "linhas começadas por 29**",
+				"onboard_start_by_49": "linhas começadas por 49**",
 				"prepaid": "Prepaid"
 			}
 		},
 		"TicketsHeader": {
 			"heading": "Occasional Tickets",
 			"onboard": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Buy inside the bus"
+				"description": "Pode viajar na CMetropolitana adquirindo um bilhete diretamente ao motorista. Por enquanto, é apenas aceite pagamento em numerário.",
+				"title": "Tarifa de Bordo"
 			},
 			"prepaid": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Buy before your trip"
+				"description": "Antes de viajar, pode adquirir um cartão navegante® pré-pago e carregar com saldo. Este saldo pode ser utilizado para viajar em qualquer linha da CMetropolitana e em qualquer operador de transportes da amL.",
+				"title": "Tarifa Pré-paga"
 			},
-			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®"
+			"subheading": "Descubra quanto custa viajar na CMetropolitana de vez em quando. Existem 5 categorias de tarifários, com tarifa de bordo ou pré-paga, associadas aos diferentes tipos de linhas."
 		}
 	},
 	"toast": {
