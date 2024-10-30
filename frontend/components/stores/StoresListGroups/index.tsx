@@ -6,7 +6,7 @@ import type { StoreGroupByMunicipality } from '@/types/stores.types';
 
 import GroupedListItem from '@/components/layout/GroupedListItem';
 import GroupedListSkeleton from '@/components/layout/GroupedListSkeleton';
-import StoresListEmpty from '@/components/stores/StoresListEmpty';
+import { StoresListEmpty } from '@/components/stores/StoresListEmpty';
 import StoresListGroupItem from '@/components/stores/StoresListGroupItem';
 import StoresListItemSkeleton from '@/components/stores/StoresListGroupItemSkeleton';
 import { useStoresListContext } from '@/contexts/StoresList.context';

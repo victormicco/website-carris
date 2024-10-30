@@ -4,7 +4,7 @@
 .contentWrapper {
 	display: grid;
 	grid-template:
-		"a b" minmax(300px, auto) / 1fr 1fr;
+		"a b" minmax(500px, auto) / 1fr 1fr;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 100%;
@@ -25,6 +25,7 @@
 .groupsWrapper {
 	grid-area: a;
 	overflow: hidden;
+	height: 100%;
 }
 
 
