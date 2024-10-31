@@ -2,7 +2,7 @@
 
 /* * */
 
-import { AlertActivePeriodEnd, AlertActivePeriodStart } from '@/components/alerts/AlertActivePeriod';
+import { AlertActivePeriodStart } from '@/components/alerts/AlertActivePeriod';
 import { AlertCauseIcon, AlertEffectIcon } from '@/components/alerts/AlertCauseEffectIcon';
 import AlertInformedEntity from '@/components/alerts/AlertInformedEntity';
 import { BackButton } from '@/components/common/BackButton';
@@ -53,7 +53,7 @@ export default function Component({ alertId }: Props) {
 						{simplifiedAlertData?.cause && <AlertCauseIcon cause={simplifiedAlertData.cause} withText />}
 						{simplifiedAlertData?.effect && <AlertEffectIcon effect={simplifiedAlertData.effect} withText />}
 						{simplifiedAlertData?.start_date && <AlertActivePeriodStart date={simplifiedAlertData.start_date} />}
-						{simplifiedAlertData?.end_date && <AlertActivePeriodEnd date={simplifiedAlertData.end_date} />}
+						{/* {simplifiedAlertData?.end_date && <AlertActivePeriodEnd date={simplifiedAlertData.end_date} />} */}
 					</div>
 				</Section>
 				{simplifiedAlertData?.informed_entity && (
