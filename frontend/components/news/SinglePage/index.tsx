@@ -2,6 +2,7 @@
 
 /* * */
 
+import { BackButton } from '@/components/common/BackButton';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import SinglePageContent from '@/components/news/SinglePageContent';
@@ -49,6 +50,11 @@ export default function Component({ newsId }) {
 
 	return (
 		<Surface>
+
+			<Section withBottomDivider withPadding>
+				<BackButton />
+			</Section>
+
 			<SinglePageHeader newsData={newsData} />
 			<Section withPadding>
 				<div className={styles.innerWrapper}>
