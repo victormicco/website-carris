@@ -148,7 +148,7 @@
 		},
 		"popover": {
 			"link": "Exploring Open Data",
-			"text": "Values of passengers transported updated every 60 minutes."
+			"text": "Passenger transport values updated every 60 minutes."
 		},
 		"today": {
 			"label": "passengers transported today",
@@ -168,13 +168,13 @@
 			"lines": "Lines",
 			"stops": "Stops"
 		},
-		"subtitle": "Find the planned and real-time schedules for the line you are looking for.",
+		"subtitle": "Find the planned and real-time schedules you are looking for.",
 		"title": "Quick Search"
 	},
 	"IconDisplay": {
 		"connections": {
 			"bike_parking": "Near Bike Parking",
-			"boat": "Connection to the Boat",
+			"boat": "Connection to the Ferry",
 			"bus": "Connection with other buses",
 			"car_parking": "Near Car Parking",
 			"light_rail": "Connection with the Light Rail",
@@ -182,25 +182,26 @@
 			"train": "Connection with the Train"
 		},
 		"facilities": {
-			"court": "Near a Court",
-			"fire_station": "Close to a Fire Station",
+			"court": "Near a Courthouse",
+			"fire_station": "Near the Fire Station",
 			"health_center": "Near a Health Center or Clinic",
 			"hospital": "Near a Hospital",
 			"park": "Near a Park",
 			"police_station": "Near a Police Station",
 			"school": "Near a School",
-			"university": "Close to a University"
+			"transit_office": "Near a navegante® store",
+			"university": "Near a University"
 		},
 		"operators": {
-			"atlantic_ferries": "Atlantic Ferries (boats from Troy)",
-			"ccfl": "Municipal rails",
+			"atlantic_ferries": "Atlantic Ferries (boats from Tróia)",
+			"ccfl": "Municipal Carris",
 			"cmet": "CMET",
 			"cp": "CP Comboios de Portugal",
 			"fertagus": "Fertagus (Bridge train)",
 			"metro": "Lisbon Metro",
 			"mobi_cascais": "MobiCascais",
-			"mts": "Southern Transport Metro",
-			"tcb": "Barreiro Public Transport",
+			"mts": "Transporte do Sul Metro",
+			"tcb": "Transportes Colectivos do Barreiro",
 			"ttsl": "Transtejo and Soflusa"
 		}
 	},
@@ -218,7 +219,7 @@
 	"SelectStop": {
 		"label": "Search stop by id, name, location...",
 		"nothing_found": "No Results Found",
-		"placeholder": "Search stop by id, name, location..."
+		"placeholder": "Search stop by name, number, location..."
 	},
 	"alerts": {
 		"AlertActivePeriod": {
@@ -244,13 +245,13 @@
 				"ACCESSIBILITY_ISSUE": "Impact on Accessibility",
 				"ADDITIONAL_SERVICE": "Service Increase",
 				"DETOUR": "Detour",
-				"MODIFIED_SERVICE": "Changing Schedules",
+				"MODIFIED_SERVICE": "Schedule Changes",
 				"NO_EFFECT": "Other",
-				"NO_SERVICE": "Service Canceled",
+				"NO_SERVICE": "Canceled Service",
 				"OTHER_EFFECT": "Other",
 				"REDUCED_SERVICE": "Reduced Service",
 				"SIGNIFICANT_DELAYS": "Significant Delays",
-				"STOP_MOVED": "Shifted Stop",
+				"STOP_MOVED": "Diversion Stop",
 				"UNKNOWN_EFFECT": "Other"
 			}
 		},
@@ -262,8 +263,8 @@
 			"default": {
 				"action_1": "Check Active Alerts Today",
 				"action_2": "Install the App",
-				"subtitle": "Install the Trilhos Metropolitan App and receive notifications about changes to the network.",
-				"title": "No alerts scheduled"
+				"subtitle": "Install the Carris Metropolitana App and receive notifications about changes to the network.",
+				"title": "No scheduled alerts"
 			}
 		},
 		"AlertsListGroup": {
@@ -286,18 +287,18 @@
 			},
 			"filters": {
 				"by_line": {
-					"label": "Filtrar por linha",
-					"placeholder": "Filtrar por linha"
+					"label": "Filter by line",
+					"placeholder": "Filter by line"
 				},
 				"by_stop": {
-					"label": "Filtrar por paragem",
-					"placeholder": "Filtrar por paragem"
+					"label": "Filter by stop",
+					"placeholder": "Filter by stop"
 				},
 				"text_search": "Search alert by title, description, location..."
 			},
 			"found_items_counter": "{count, plural, =0 {No alerts found.} one {Found # alert:} other {Found # alert:}}",
 			"heading": "Service Alerts",
-			"subheading": "Stay up to date with all changes on the network. Lorem ipsum dolor sit amet."
+			"subheading": "Stay up to date with all changes on the network. Stay informed about new lines, route changes, and schedule adjustments, as well as events that may affect your journey."
 		},
 		"SelectCause": {
 			"placeholder": "Filter by cause"
@@ -310,7 +311,7 @@
 		"ConsentPopup": {
 			"accept": "OK",
 			"privacy_policy": "Consult Cookies Policy",
-			"refuse": "No thanks",
+			"refuse": "No, thanks",
 			"text": "In order to improve the performance, content and security of this website, TML intends to use cookies or similar technologies.",
 			"title": "We respect your privacy"
 		}
@@ -330,13 +331,13 @@
 		},
 		"StartupMessage1": {
 			"actions": {
-				"close": "To close",
+				"close": "Close",
 				"update_android": "Update on Play Store",
 				"update_ios": "Update on the App Store"
 			},
 			"heading": "Update available",
-			"subheading": "There is a new, improved version of the CMetropolitano app.",
-			"text": "We recommend you to update soon for better user experience."
+			"subheading": "There is a newly improved version of the CMetropolitana app.",
+			"text": "We recommend that you update soon for a better user experience."
 		}
 	},
 	"app-navegante": {
@@ -353,6 +354,11 @@
 	"cards": {
 		"Discounts": {
 			"heading": "Discounts",
+			"pass_types": {
+				"family": "for family household",
+				"metropolitano": "Metropolitano",
+				"municipal": "Municipal"
+			},
 			"products": {
 				"combatente-minus-65": {
 					"description": "$30 discount for former combatants under 65. It is necessary to present a declaration. Find out more on the website navegante.pt",
@@ -411,44 +417,34 @@
 			},
 			"subheading": "Discover the discounts available for you."
 		},
-		"Modalities": {
-			"heading": "Modalidades",
-			"metropolitano": {
-				"description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, ut.",
-				"price": "€40/month",
-				"title": "Travel everywhere, without limits."
-			},
-			"municipal": {
-				"description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, ut.",
-				"price": "€30/month",
-				"title": "Travel within municipality."
-			},
-			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®"
-		},
 		"MunicipalDiscounts": {
-			"heading": "Municipal Discounts",
-			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®"
+			"heading": "Municipal Discounts"
 		},
 		"Pass": {
 			"heading": "Monthly Pass",
-			"navegante": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Do you have a personalized card already?"
+			"metropolitano": {
+				"description": "Valid on all types of transportation throughout all 18 municipalities of the Lisbon metropolitan area.",
+				"price": "40€/mês",
+				"title": "Metropolitan navegante®"
 			},
-			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®",
-			"wizard": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Find out the best option for you."
-			}
+			"municipal": {
+				"description": "Valid on all types of transportation throughout the geographical boundaries of one of the 18 municipalities of the Lisbon metropolitan area.",
+				"price": "30€/mês",
+				"title": "Municipal navegante®"
+			},
+			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®"
 		}
 	},
 	"common": {
+		"BackButton": {
+			"label": "Voltar"
+		},
 		"ExpandToggle": {
 			"is_hidden": {
-				"label": "Expandir Filtros"
+				"label": "Expand Filters"
 			},
 			"is_visible": {
-				"label": "Esconder Filtros"
+				"label": "Hide Filters"
 			}
 		},
 		"NextArrivals": {
@@ -469,12 +465,12 @@
 			"minutes": "Min."
 		},
 		"button": {
-			"add": "To add",
+			"add": "Add",
 			"cancel": "Cancel",
 			"confirm": "Confirm",
 			"delete": "Delete",
 			"edit": "Edit",
-			"generate": "To generate",
+			"generate": "Generate",
 			"remove": "Remove",
 			"save": "Save"
 		},
@@ -494,12 +490,12 @@
 			"short": {
 				"april": "Apr",
 				"august": "Aug",
-				"december": "Ten",
+				"december": "Dec",
 				"february": "Feb",
 				"january": "Jan",
 				"july": "Jul",
 				"june": "June",
-				"march": "Sea",
+				"march": "Mar",
 				"may": "May",
 				"november": "Nov",
 				"october": "Oct",
@@ -516,7 +512,7 @@
 				"saturday": "Sat",
 				"sunday": "Sun",
 				"thursday": "Thu",
-				"tuesday": "To have",
+				"tuesday": "Tue",
 				"wednesday": "Wed"
 			},
 			"sunday": "Sunday",
@@ -537,9 +533,9 @@
 			"heading": "Contacts",
 			"lost_found": "Lost and Found",
 			"operators": "Cmetropolitan Operators",
-			"operators_description": "In this line you can contact directly the companies responsible for operating Carris Metropolitana buses.",
+			"operators_description": "At this number, you can directly contact the companies responsible for operating Carris Metropolitana buses.",
 			"phone_line": "Information line",
-			"phone_line_description": "This line operates every day from 8:00 am to 8:00 pm and is where you can ask all your questions about the operation of Trilhos Metropolitana. Ask about lines, routes and timetables, fares, or make a complaint."
+			"phone_line_description": "This line operates every day from 8:00 am to 8:00 pm and is where you can ask all your questions about the operation of Carris Metropolitana. Ask about lines, routes and timetables, fares, or make a complaint."
 		}
 	},
 	"faq": {
@@ -589,44 +585,45 @@
 		}
 	},
 	"helpdesks": {
-		"Service": {
-			"app": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "navegante® app"
+		"Header": {
+			"frequent_travel": {
+				"description": "Para uma utilização recorrente, existe o navegante® personalizado, que permite o carregamento de um passe mensal, com tarifários pré-pagos e pós-pagos.",
+				"title": "Viagens Frequentes"
 			},
-			"heading": "Preferential service",
-			"multibanco": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "ATM™ Network"
-			},
-			"payshop": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Rede de Agentes payshop™"
-			},
-			"stores": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Espaço navegante®"
-			},
-			"subheading": "Find out how much it costs to travel occasionally on CMetropolitana. For more frequent use, we recommend subscribing to navegante®"
+			"ocasional_travel": {
+				"description": "Para utilizações pontuais, existe o cartão navegante® ocasional, que permite fazer carregamentos pré-pagos, por viagem ou por zapping.",
+				"title": "Viagens Ocasionais"
+			}
 		},
 		"ServicePoints": {
 			"heading": "Service Points",
 			"subheading": "Find out where you can purchase your navegante® pass."
 		},
 		"WhereToBuy": {
-			"frequent_travel": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Frequent trips"
+			"app": {
+				"description": "Pode carregar o seu cartão navegante® personalizado diretamente através do seu telemóvel. Saiba mais em navegante.pt",
+				"title": "App navegante®"
 			},
 			"heading": "Where to buy",
-			"ocasional_travel": {
-				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea natus itaque qui iure nam consequuntur minima, quibusdam saepe odio molestiae soluta aspernatur, corrupti labore fugiat? Numquam blanditiis accusantium quibusdam!",
-				"title": "Occasional trips"
+			"multibanco": {
+				"description": "Pode carregar o seu cartão navegante® personalizado em qualquer equipamento multibanco.",
+				"title": "Rede multibanco™"
+			},
+			"payshop": {
+				"description": "Pode carregar o seu cartão navegante® personalizado ou ocasional em qualquer parceiro Payshop.",
+				"title": "Rede de agentes PayShop™"
+			},
+			"stores": {
+				"description": "Com serviços de carregamento e emissão de passes mensais, compra de bilhetes ocasionais e prestação de informações sobre a rede e bilhética da Carris Metropolitana. Conheça os espaços aqui.",
+				"title": "Espaços navegante®"
 			},
 			"subheading": "Find out where you can purchase your navegante® pass."
 		}
 	},
 	"home": {
+		"AlertsSection": {
+			"section_heading": "Highlighted Alerts"
+		},
 		"MainCarouselCard": {
 			"learn_more": "Find out more"
 		},
@@ -650,11 +647,6 @@
 	"layout": {
 		"NoDataLabel": {
 			"default": "No data available"
-		},
-		"Section": {
-			"back": {
-				"label": "To go back"
-			}
 		}
 	},
 	"line": {
@@ -675,6 +667,9 @@
 		"LinesDetail": {
 			"heading": "Search Lines",
 			"toggle_favorite_error": "Error adding line to favorites. {error}"
+		},
+		"LinesDetailAlerts": {
+			"heading": "Active alerts for this line"
 		},
 		"LinesDetailMetrics": {
 			"demand": {
