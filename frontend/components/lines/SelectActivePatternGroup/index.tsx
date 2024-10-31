@@ -37,10 +37,10 @@ export default function Component() {
 	return (
 		<SelectPattern
 			leftSection={<IconArrowBarToRight size={20} />}
-			onChange={linesDetailContext.actions.setActivePatternGroup}
+			onChange={linesDetailContext.actions.setActivePattern}
 			patterns={validPatternGroupsSelectOptions}
 			placeholder={t('placeholder')}
-			value={linesDetailContext.data.active_pattern_group?.pattern_version_id || null}
+			value={linesDetailContext.data.active_pattern_group?.version_id || null}
 			clearable
 			searchable
 		/>

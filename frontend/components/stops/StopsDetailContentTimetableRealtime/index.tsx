@@ -1,7 +1,7 @@
 /* * */
 
 import NoDataLabel from '@/components/layout/NoDataLabel';
-import { StopsDetailContentTimetableRealtimeClockLine } from '@/components/stops/StopsDetailContentTimetableClock';
+import { StopsDetailContentTimetableClock } from '@/components/stops/StopsDetailContentTimetableClock';
 import { StopsDetailContentTimetableRow } from '@/components/stops/StopsDetailContentTimetableRow';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 import { useTranslations } from 'next-intl';
@@ -68,7 +68,7 @@ export function StopsDetailContentTimetableRealtime() {
 				</div>
 			))}
 
-			<StopsDetailContentTimetableRealtimeClockLine />
+			<StopsDetailContentTimetableClock />
 
 			{stopsDetailContext.data.timetable_realtime_future && stopsDetailContext.data.timetable_realtime_future.length > 0
 				? stopsDetailContext.data.timetable_realtime_future.map(tripData => (

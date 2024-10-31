@@ -13,7 +13,7 @@ export function StopsListViewSkeleton() {
 			<Section>
 				{[200, 120, 180, 200, 100, 120, 250, 120, 130, 220, 90].map((width, index) => (
 					<RegularListItem key={index} href="#">
-						<StopDisplay width={width} />
+						<StopDisplay skeletonWidth={width} />
 					</RegularListItem>
 				))}
 			</Section>

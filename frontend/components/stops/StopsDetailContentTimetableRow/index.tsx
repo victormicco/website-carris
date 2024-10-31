@@ -77,14 +77,14 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 			{isSelected && (
 				<div className={styles.details}>
 
-					{thisPattern.localities.length > 0 && (
+					{thisPattern.locality_ids.length > 0 && (
 						<div className={styles.localitiesListWrapper}>
 							<p className={styles.localitiesLabel}>{t('localities.label')}</p>
 							<p>
-								{thisPattern.localities.map((locality, index) => (
+								{thisPattern.locality_ids.map((localityId, index) => (
 									<span key={index}>
 										{index > 0 && <span className={styles.localitySeparator}> • </span>}
-										<span className={styles.localityName}>{locality}</span>
+										<span className={styles.localityName}>{localityId}</span>
 									</span>
 								))}
 							</p>

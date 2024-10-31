@@ -3,7 +3,7 @@
 /* * */
 
 import { useDebugContext } from '@/contexts/Debug.context';
-import { PatternGroup } from '@/types/lines.types';
+import { Pattern } from '@carrismetropolitana/api-types/network';
 import { ComboboxItemGroup, Flex, Group, Select, SelectProps, Text } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
@@ -12,7 +12,7 @@ import { useMemo } from 'react';
 
 export interface Props extends SelectProps {
 	date_filter?: string
-	patterns: PatternGroup[]
+	patterns: Pattern[]
 }
 
 /* * */
@@ -29,19 +29,19 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 	//
 	// B. Transform data
 
-	const validPatternGroupsSelectOptions = useMemo(() => {
+	const validPatternsSelectOptions = useMemo(() => {
 		if (!patterns) return [];
 
 		const data: ComboboxItemGroup[] = [];
 
 		// Filter patterns by date
 		patterns.map((patternGroupData) => {
-			const group = data.find(group => group.group === patternGroupData.route_long_name);
+			const group = data.find(group => group.group === patternGroupData.long_name);
 
 			const item = {
 				disabled: date_filter ? !patternGroupData.valid_on.includes(date_filter) : false,
 				label: patternGroupData.headsign,
-				value: patternGroupData.pattern_version_id,
+				value: patternGroupData.version_id,
 			};
 
 			if (group) {
@@ -49,7 +49,7 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 			}
 			else {
 				data.push({
-					group: patternGroupData.route_long_name,
+					group: patternGroupData.long_name,
 					items: [item],
 				});
 			}
@@ -62,7 +62,7 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 	// C. Render components
 
 	const renderSelectOption: SelectProps['renderOption'] = ({ option }) => {
-		const pattern = patterns.find(pattern => pattern.pattern_version_id === option.value);
+		const pattern = patterns.find(pattern => pattern.version_id === option.value);
 
 		if (!pattern) return null;
 		if (pattern.path.length === 0) return null;
@@ -74,14 +74,14 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 						<Text fw="bold">{pattern.headsign}</Text>
 						{debugContext.flags.is_debug_mode && <Text c="gray" size="xs">({pattern.id})</Text>}
 					</Flex>
-					<Text size="xs">{t('option_label', { locality: pattern.path[0].stop?.locality })}</Text>
+					<Text size="xs">{t('option_label', { locality: pattern.path[0].stop_id })}</Text>
 				</Flex>
 			</Group>
 		);
 	};
 
 	const renderSelectRoot = (props) => {
-		const pattern = patterns.find(pattern => pattern.pattern_version_id === value);
+		const pattern = patterns.find(pattern => pattern.version_id === value);
 
 		if (!pattern) {
 			return (
@@ -92,12 +92,12 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 		}
 
 		return (
-			<div {...props} key={pattern.pattern_version_id}>
+			<div {...props} key={pattern.version_id}>
 				<Flex align="center" gap={5}>
 					<Text fw="bold">{pattern.headsign}</Text>
 					{debugContext.flags.is_debug_mode && <Text c="gray" size="xs">{pattern.id}</Text>}
 				</Flex>
-				<Text size="xs">{pattern.route_long_name}</Text>
+				<Text size="xs">{pattern.long_name}</Text>
 			</div>
 		);
 	};
@@ -105,7 +105,7 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 	return (
 		<Select
 			allowDeselect={false}
-			data={validPatternGroupsSelectOptions}
+			data={validPatternsSelectOptions}
 			onChange={onChange}
 			renderOption={renderSelectOption}
 			renderRoot={renderSelectRoot || undefined}

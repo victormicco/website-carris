@@ -32,7 +32,7 @@ export function PathWaypointTimetable() {
 	const timetableData = useMemo(() => {
 		// Setup variables
 		const activePatternGroup = linesDetailContext.data.active_pattern_group;
-		const secondaryPatternGroups = linesDetailContext.data.valid_pattern_groups?.filter(patternGroup => patternGroup.pattern_version_id !== activePatternGroup?.pattern_version_id) || [];
+		const secondaryPatternGroups = linesDetailContext.data.valid_pattern_groups?.filter(patternGroup => patternGroup.version_id !== activePatternGroup?.version_id) || [];
 		const mentionedRoutes = linesDetailContext.data.all_routes;
 		const selectedStopId = linesDetailContext.data.active_stop?.stop.id;
 		const selectedStopSequence = linesDetailContext.data.active_stop?.sequence;

@@ -1,8 +1,7 @@
 /* * */
 
-import type { PatternGroup } from '@/types/lines.types';
 import type { Timetable } from '@/types/timetables.types';
-import type { Route } from '@carrismetropolitana/api-types/network';
+import type { Pattern, Route } from '@carrismetropolitana/api-types/network';
 
 /* * */
 
@@ -18,7 +17,7 @@ import type { Route } from '@carrismetropolitana/api-types/network';
  * @param operationalDay The day for which the timetable will be composed.
  * @returns The timetable for the given patterns and stop.
  */
-export default function createTimetable(primaryPatternGroup: PatternGroup, secondaryPatternGroups: PatternGroup[], mentionedRoutes: Route[], stopId: string, stopSequence: number, operationalDay: string): Timetable {
+export default function createTimetable(primaryPatternGroup: Pattern, secondaryPatternGroups: Pattern[], mentionedRoutes: Route[], stopId: string, stopSequence: number, operationalDay: string): Timetable {
 	//
 
 	// 1.
@@ -34,12 +33,12 @@ export default function createTimetable(primaryPatternGroup: PatternGroup, secon
 	// Extract the currently valid Pattern Group from the primary and secondary patterns.
 	// To check if a pattern is valid for the given date, we need to check if the date is included in the pattern's dates array.
 
-	const validSecondaryPatternGroups: PatternGroup[] = secondaryPatternGroups.flat().filter(patternGroup => patternGroup.valid_on.includes(operationalDay) && patternGroup.direction === primaryPatternGroup.direction);
+	const validSecondaryPatternGroups: Pattern[] = secondaryPatternGroups.flat().filter(patternGroup => patternGroup.valid_on.includes(operationalDay) && patternGroup.direction_id === primaryPatternGroup.direction_id);
 
 	// 3.
 	// Create the timetable for the primary pattern first
 
-	primaryPatternGroup.trip_groups.forEach((trip) => {
+	primaryPatternGroup.trips.forEach((trip) => {
 		// Check if the trip is valid for the given operational day
 		if (!trip.valid_on.includes(operationalDay)) return;
 		// Find the schedule for the given Stop ID and Stop Sequence
@@ -69,7 +68,7 @@ export default function createTimetable(primaryPatternGroup: PatternGroup, secon
 
 	validSecondaryPatternGroups.forEach((patternGroup) => {
 		// For each trip in the pattern group
-		patternGroup.trip_groups.forEach((trip) => {
+		patternGroup.trips.forEach((trip) => {
 			// Check if the trip is valid for the given operational day
 			if (!trip.valid_on.includes(operationalDay)) return;
 			// Find the schedule for the given Stop ID and Stop Sequence
@@ -96,7 +95,7 @@ export default function createTimetable(primaryPatternGroup: PatternGroup, secon
 						exception_id: String.fromCharCode(97 + timetableResult.exceptions.length), // 'a' is 97 in ASCII
 						pattern_headsign: patternGroup.headsign,
 						pattern_id: patternGroup.id,
-						pattern_version_id: patternGroup.pattern_version_id,
+						pattern_version_id: patternGroup.version_id,
 						route_long_name: mentionedRoute?.long_name ?? '-',
 						type: 'variant',
 					};

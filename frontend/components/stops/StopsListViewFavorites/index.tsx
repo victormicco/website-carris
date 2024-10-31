@@ -38,7 +38,7 @@ export function StopsListViewFavorites() {
 			<Section>
 				{stopsContext.data.favorites.map(stop => (
 					<RegularListItem key={stop.id} href={`${RoutesSchedule.STOPS.route}/${stop.id}`}>
-						<StopDisplay stop={stop} />
+						<StopDisplay stopData={stop} />
 					</RegularListItem>
 				))}
 			</Section>

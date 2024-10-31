@@ -3,9 +3,8 @@
 /* * */
 
 import type { SimplifiedAlert } from '@/types/alerts.types';
-import type { Pattern, PatternGroup } from '@/types/lines.types.js';
 import type { DemandMetrics } from '@/types/metrics.types';
-import type { Line, Route, Shape, Stop } from '@carrismetropolitana/api-types/network';
+import type { Line, Pattern, Route, Shape, Stop } from '@carrismetropolitana/api-types/network';
 
 import { useLinesContext } from '@/contexts/Lines.context';
 import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
@@ -23,27 +22,27 @@ import { useStopsContext } from './Stops.context';
 
 interface LinesDetailContextState {
 	actions: {
-		setActivePatternGroup: (patternGroupId: string) => void
+		setActivePattern: (patternGroupId: string) => void
 		setActiveStop: (sequence: number, stop: Stop) => void
 		setActiveStopByStopId: (sequence: number, stopId: string) => void
 		setDrawerOpen: (isOpen: boolean) => void
 	}
 	data: {
 		active_alerts: null | SimplifiedAlert[]
-		active_pattern_group: null | PatternGroup
+		active_pattern_group: null | Pattern
 		active_shape: null | Shape
 		active_stop: {
 			sequence: number
 			stop: Stop
 		} | null
-		all_patterns: null | Pattern[]
+		all_patterns: null | Pattern[][]
 		all_routes: Route[] | undefined
 		demand: DemandMetrics | null
 		drawer_open: boolean
 		line: Line | null
 		service: ServiceMetrics[] | undefined
 		timetable: string
-		valid_pattern_groups: null | PatternGroup[]
+		valid_pattern_groups: null | Pattern[]
 	}
 	filters: {
 		// active_pattern_version_id: null | string
@@ -83,12 +82,12 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	const operationalDayContext = useOperationalDayContext();
 
 	// const [dataRoutesState, setDataRoutesState] = useState<null | Route[]>(null);
-	const [dataAllPatternsState, setDataAllPatternsState] = useState<null | Pattern[]>(null);
-	const [dataValidPatternGroupsState, setDataValidPatternGroupsState] = useState<null | PatternGroup[]>(null);
+	const [dataAllPatternsState, setDataAllPatternsState] = useState<null | Pattern[][]>(null);
+	const [dataValidPatternsState, setDataValidPatternsState] = useState<null | Pattern[]>(null);
 	const [dataDemandForCurrentLineState, setDataDemandForCurrentLineState] = useState<DemandMetrics | null>(null);
 
 	const [dataActiveAlertsState, setDataActiveAlertsState] = useState<null | SimplifiedAlert[]>(null);
-	const [dataActivePatternGroupState, setDataActivePatternGroupState] = useState<null | PatternGroup>(null);
+	const [dataActivePatternState, setDataActivePatternState] = useState<null | Pattern>(null);
 	const [dataActiveShapeState, setDataActiveShapeState] = useState<null | Shape>(null);
 	const [dataServiceMetricsState, setDataServiceMetricsState] = useState<ServiceMetrics[]>();
 	const [dataActiveStopState, setDataActiveStopState] = useState<{ sequence: number, stop: Stop } | null>(null);
@@ -97,8 +96,8 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 
 	const [dataDrawerOpenState, setDataDrawerOpenState] = useState<boolean>(false);
 
-	const [filterActivePatternGroupIdState, setFilterActivePatternGroupIdState] = useQueryState('active_pattern_id');
-	// const [filterActivePatternGroupIdState, setFilterActivePatternGroupIdState] = useQueryState('active_pattern_version_id');
+	const [filterActivePatternIdState, setFilterActivePatternIdState] = useQueryState('active_pattern_id');
+	// const [filterActivePatternIdState, setFilterActivePatternIdState] = useQueryState('active_pattern_version_id');
 	const [filterActiveStopIdState, setFilterActiveStopIdState] = useQueryState('active_stop_id');
 
 	//
@@ -154,22 +153,22 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 
 	/**
 	 * TASK: Fetch shape data for the active trip.
-	 * WHEN: The `dataActivePatternGroupState` changes.
+	 * WHEN: The `dataActivePatternState` changes.
 	 */
 	useEffect(() => {
-		if (!dataActivePatternGroupState) return;
+		if (!dataActivePatternState) return;
 		(async () => {
 			try {
-				const shapeData = await fetch(`${Routes.API}/shapes/${dataActivePatternGroupState.shape_id}`).then((response) => {
-					if (!response.ok) console.log(`Failed to fetch shape data for shapeId: ${dataActivePatternGroupState.shape_id}`);
+				const shapeData = await fetch(`${Routes.API}/shapes/${dataActivePatternState.shape_id}`).then((response) => {
+					if (!response.ok) console.log(`Failed to fetch shape data for shapeId: ${dataActivePatternState.shape_id}`);
 					else return response.json();
 				});
 				if (shapeData) {
 					shapeData.geojson = {
 						...shapeData.geojson,
 						properties: {
-							color: dataActivePatternGroupState.color,
-							text_color: dataActivePatternGroupState.text_color,
+							color: dataActivePatternState.color,
+							text_color: dataActivePatternState.text_color,
 						},
 					};
 				}
@@ -179,7 +178,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 				console.error('Error fetching shape data:', error);
 			}
 		})();
-	}, [dataActivePatternGroupState]);
+	}, [dataActivePatternState]);
 
 	//
 	// C. Transform data
@@ -190,7 +189,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 
 	useEffect(() => {
 		if (!dataAllPatternsState || !operationalDayContext.data.selected_day) return;
-		const activePatternGroups: PatternGroup[] = [];
+		const activePatterns: Pattern[] = [];
 		for (const pattern of dataAllPatternsState) {
 			for (const patternGroup of pattern) {
 				const selected_date = operationalDayContext.data.selected_day;
@@ -204,14 +203,14 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 				}, '');
 
 				// If the closest date is valid, add the pattern group to the list
-				if (closest_date != '' && !activePatternGroups.find(activePatternGroup => activePatternGroup.id === patternGroup.id)) {
-					activePatternGroups.push(patternGroup);
+				if (closest_date != '' && !activePatterns.find(activePattern => activePattern.id === patternGroup.id)) {
+					activePatterns.push(patternGroup);
 				}
 			}
 		}
-		setDataValidPatternGroupsState(activePatternGroups);
-		if (!dataActivePatternGroupState) {
-			setDataActivePatternGroupState(activePatternGroups[0] || null);
+		setDataValidPatternsState(activePatterns);
+		if (!dataActivePatternState) {
+			setDataActivePatternState(activePatterns[0] || null);
 		}
 	}, [dataAllPatternsState, operationalDayContext.data.selected_day]);
 
@@ -239,15 +238,15 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	//
 	// D. Handle actions
 
-	const setActivePatternGroup = (patternGroupId: string) => {
-		for (const patternGroup of dataValidPatternGroupsState || []) {
-			if (patternGroup.pattern_version_id === patternGroupId) {
-				setDataActivePatternGroupState(patternGroup);
-				setFilterActivePatternGroupIdState(patternGroup.id);
+	const setActivePattern = (patternGroupId: string) => {
+		for (const patternGroup of dataValidPatternsState || []) {
+			if (patternGroup.version_id === patternGroupId) {
+				setDataActivePatternState(patternGroup);
+				setFilterActivePatternIdState(patternGroup.id);
 				return;
 			}
 		}
-		setDataActivePatternGroupState(null);
+		setDataActivePatternState(null);
 	};
 
 	const setActiveStop = (sequence: number, stop: Stop) => {
@@ -256,10 +255,10 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	};
 
 	const setActiveStopByStopId = (sequence: number, stopId: string) => {
-		const stop = dataActivePatternGroupState?.path.find(pathStop => pathStop.stop_id === stopId)?.stop;
-		if (!stop) return;
-		setDataActiveStopState({ sequence, stop });
-		setFilterActiveStopIdState(stop.id);
+		const stopData = stopsContext.actions.getStopById(stopId);
+		if (!stopData) return;
+		setDataActiveStopState({ sequence, stop: stopData });
+		setFilterActiveStopIdState(stopId);
 	};
 
 	const setDrawerOpen = (isOpen: boolean) => {
@@ -269,18 +268,18 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	//
 	// E. Handle Filters State
 	useEffect(() => {
-		if (filterActivePatternGroupIdState) {
-			for (const patternGroup of dataValidPatternGroupsState || []) {
-				if (patternGroup.id === filterActivePatternGroupIdState) {
-					setDataActivePatternGroupState(patternGroup);
+		if (filterActivePatternIdState) {
+			for (const patternGroup of dataValidPatternsState || []) {
+				if (patternGroup.id === filterActivePatternIdState) {
+					setDataActivePatternState(patternGroup);
 					return;
 				}
 			}
 		}
-	}, [dataValidPatternGroupsState]);
+	}, [dataValidPatternsState]);
 
 	useEffect(() => {
-		const sortedStops = dataActivePatternGroupState?.path.sort((a, b) => a.stop_sequence - b.stop_sequence);
+		const sortedStops = dataActivePatternState?.path.sort((a, b) => a.stop_sequence - b.stop_sequence);
 		if (!sortedStops) return;
 		const selectedStop = filterActiveStopIdState
 			? sortedStops.find(waypoint => waypoint.stop_id === filterActiveStopIdState) ?? sortedStops[0]
@@ -290,21 +289,21 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			if (!stopData) return;
 			setActiveStop(selectedStop.stop_sequence, stopData);
 		}
-	}, [dataActivePatternGroupState, dataValidPatternGroupsState]);
+	}, [dataActivePatternState, dataValidPatternsState]);
 
 	//
 	// F. Define context value
 
 	const contextValue: LinesDetailContextState = {
 		actions: {
-			setActivePatternGroup,
+			setActivePattern,
 			setActiveStop,
 			setActiveStopByStopId,
 			setDrawerOpen,
 		},
 		data: {
 			active_alerts: dataActiveAlertsState,
-			active_pattern_group: dataActivePatternGroupState,
+			active_pattern_group: dataActivePatternState,
 			active_shape: dataActiveShapeState,
 			active_stop: dataActiveStopState,
 			all_patterns: dataAllPatternsState,
@@ -314,10 +313,10 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			line: dataLineState || null,
 			service: dataServiceMetricsState,
 			timetable: '',
-			valid_pattern_groups: dataValidPatternGroupsState,
+			valid_pattern_groups: dataValidPatternsState,
 		},
 		filters: {
-			active_pattern_id: filterActivePatternGroupIdState,
+			active_pattern_id: filterActivePatternIdState,
 			active_stop_id: filterActiveStopIdState,
 		},
 		flags: {

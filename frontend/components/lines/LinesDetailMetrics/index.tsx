@@ -3,8 +3,8 @@
 /* * */
 
 import { Grid } from '@/components/layout/Grid';
-import LinesDetailMetricsDemand from '@/components/lines/LinesDetailMetricsDemand';
-import LinesDetailMetricsService from '@/components/lines/LinesDetailMetricsService';
+import { LinesDetailMetricsDemand } from '@/components/lines/LinesDetailMetricsDemand';
+import { LinesDetailMetricsService } from '@/components/lines/LinesDetailMetricsService';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 
 /* * */

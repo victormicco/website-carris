@@ -111,7 +111,7 @@ export function StopsDetailContentMap() {
 
 			<MapViewStylePath
 				presentBeforeId={MapViewStyleActiveStopsPrimaryLayerId}
-				shapesData={stopsDetailContext.data.active_shape?.geojson}
+				shapeData={stopsDetailContext.data.active_shape?.geojson}
 				stopsData={activePathStopsGeoJson}
 			/>
 

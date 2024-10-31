@@ -1,6 +1,6 @@
 /* * */
 
-import LinesDetail from '@/components/lines/LinesDetail';
+import { LinesDetail } from '@/components/lines/LinesDetail';
 import { LinesDetailContextProvider } from '@/contexts/LinesDetail.context';
 
 /* * */

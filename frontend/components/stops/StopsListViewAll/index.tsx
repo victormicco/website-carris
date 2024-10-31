@@ -27,7 +27,7 @@ export function StopsListViewAll() {
 				<ViewportList itemMargin={0} items={stopsListContext.data.filtered}>
 					{item => (
 						<RegularListItem key={item.id} href={`${RoutesSchedule.STOPS.route}/${item.id}`}>
-							<StopDisplay stop={item} />
+							<StopDisplay stopData={item} />
 						</RegularListItem>
 					)}
 				</ViewportList>

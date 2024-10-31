@@ -2,7 +2,7 @@
 
 /* * */
 
-import type { Stop } from '@/types/stops.types';
+import type { Stop } from '@carrismetropolitana/api-types/network';
 
 import { useProfileContext } from '@/contexts/Profile.context';
 import { createDocCollection } from '@/hooks/useOtherSearch';
@@ -119,9 +119,9 @@ export const ProfileListContextProvider = ({ children }) => {
 			const boostedData = filterResult.map(stop => ({ ...stop, boost: profileContext.data.profile?.favorite_stops?.includes(stop.id) ? true : false }));
 			const searchHook = createDocCollection(boostedData, {
 				id: 5,
-				locality: 2,
+				locality_id: 2,
+				long_name: 4,
 				short_name: 3,
-				stop_name: 4,
 			});
 			filterResult = searchHook.search(filterBySearchState);
 		}

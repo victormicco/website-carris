@@ -3,9 +3,8 @@
 /* * */
 
 import type { SimplifiedAlert } from '@/types/alerts.types';
-import type { Pattern, PatternGroup } from '@/types/lines.types';
 import type { Arrival } from '@/types/stops.types';
-import type { Line, Shape, Stop } from '@carrismetropolitana/api-types/network';
+import type { Line, Pattern, Shape, Stop } from '@carrismetropolitana/api-types/network';
 
 import { useAlertsContext } from '@/contexts/Alerts.context';
 import { useLinesContext } from '@/contexts/Lines.context';
@@ -27,19 +26,19 @@ interface StopsDetailContextState {
 	}
 	data: {
 		active_alerts: SimplifiedAlert[] | undefined
-		active_pattern_group: PatternGroup | undefined
+		active_pattern_group: Pattern | undefined
 		active_shape: Shape | undefined
 		active_stop_id: string
 		active_stop_sequence: number | undefined
 		active_trip_id: string | undefined
 		lines: Line[] | undefined
-		patterns: Pattern[] | undefined
+		patterns: Pattern[][] | undefined
 		stop: Stop | undefined
 		timetable_realtime: Arrival[] | undefined
 		timetable_realtime_future: Arrival[] | undefined
 		timetable_realtime_past: Arrival[] | undefined
 		timetable_schedule: Arrival[] | undefined
-		valid_pattern_groups: PatternGroup[] | undefined
+		valid_pattern_groups: Pattern[] | undefined
 	}
 	filters: {
 		none: string | undefined
@@ -81,8 +80,8 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 	const [dataActiveStopIdState, setDataActiveStopIdState] = useState<string>(stopId);
 
 	const [dataLinesState, setDataLinesState] = useState<Line[] | undefined>(undefined);
-	const [dataPatternsState, setDataPatternsState] = useState<Pattern[] | undefined>(undefined);
-	const [dataValidPatternGroupsState, setDataValidPatternGroupsState] = useState<PatternGroup[] | undefined>(undefined);
+	const [dataPatternsState, setDataPatternsState] = useState<Pattern[][] | undefined>(undefined);
+	const [dataValidPatternsState, setDataValidPatternsState] = useState<Pattern[] | undefined>(undefined);
 	const [dataShapeState, setDataShapeState] = useState<Shape | undefined>(undefined);
 
 	const [dataTimetableRealtimeState, setDataTimetableRealtimeState] = useState<Arrival[] | undefined>(undefined);
@@ -90,7 +89,7 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 	const [dataTimetableRealtimeFutureState, setDataTimetableRealtimeFutureState] = useState<Arrival[] | undefined>(undefined);
 	const [dataTimetableScheduleState, setDataTimetableScheduleState] = useState<Arrival[] | undefined>(undefined);
 
-	const [dataActivePatternGroupState, setDataActivePatternGroupState] = useState<PatternGroup | undefined>(undefined);
+	const [dataActivePatternState, setDataActivePatternState] = useState<Pattern | undefined>(undefined);
 	const [dataActiveAlertsState, setDataActiveAlertsState] = useState<SimplifiedAlert[] | undefined>(undefined);
 	const [dataActiveTripIdState, setDataActiveTripIdState] = useState<string | undefined>(undefined);
 	const [dataActiveStopSequenceState, setDataActiveStopSequenceState] = useState<number | undefined>(undefined);
@@ -181,22 +180,22 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 
 	/**
 	 * TASK: Fetch shape data for the active trip.
-	 * WHEN: The `dataActivePatternGroupState` changes.
+	 * WHEN: The `dataActivePatternState` changes.
 	 */
 	useEffect(() => {
-		if (!dataActivePatternGroupState) return;
+		if (!dataActivePatternState) return;
 		(async () => {
 			try {
-				const shapeData = await fetch(`${Routes.API}/shapes/${dataActivePatternGroupState.shape_id}`).then((response) => {
-					if (!response.ok) console.log(`Failed to fetch shape data for shapeId: ${dataActivePatternGroupState.shape_id}`);
+				const shapeData = await fetch(`${Routes.API}/shapes/${dataActivePatternState.shape_id}`).then((response) => {
+					if (!response.ok) console.log(`Failed to fetch shape data for shapeId: ${dataActivePatternState.shape_id}`);
 					else return response.json();
 				});
 				if (shapeData) {
 					shapeData.geojson = {
 						...shapeData.geojson,
 						properties: {
-							color: dataActivePatternGroupState.color,
-							text_color: dataActivePatternGroupState.text_color,
+							color: dataActivePatternState.color,
+							text_color: dataActivePatternState.text_color,
 						},
 					};
 				}
@@ -206,7 +205,7 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 				console.error('Error fetching shape data:', error);
 			}
 		})();
-	}, [dataActivePatternGroupState]);
+	}, [dataActivePatternState]);
 
 	//
 	// C. Transform data
@@ -241,12 +240,12 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 	 */
 	useEffect(() => {
 		// Return if no valid pattern groups or operational day is selected
-		if (!operationalDayContext.data.selected_day || !dataValidPatternGroupsState) return;
+		if (!operationalDayContext.data.selected_day || !dataValidPatternsState) return;
 
 		const validScheduledTrips: Arrival[] = [];
 
-		for (const patternGroup of dataValidPatternGroupsState || []) {
-			for (const trip of patternGroup.trip_groups) {
+		for (const patternGroup of dataValidPatternsState || []) {
+			for (const trip of patternGroup.trips) {
 				// Skip if trip is not valid for the selected operational day
 				if (!trip.valid_on.includes(operationalDayContext.data.selected_day)) continue;
 				// Find the schedule for the given Stop ID
@@ -282,22 +281,22 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 		}
 		validScheduledTrips.sort((a, b) => a.scheduled_arrival_unix - b.scheduled_arrival_unix);
 		setDataTimetableScheduleState(validScheduledTrips);
-	}, [operationalDayContext.data.selected_day, dataValidPatternGroupsState, dataActiveStopIdState]);
+	}, [operationalDayContext.data.selected_day, dataValidPatternsState, dataActiveStopIdState]);
 
 	/**
 	 * Fill state with valid pattern groups for the selected operational day.
 	 */
 	useEffect(() => {
 		if (!dataPatternsState || !operationalDayContext.data.selected_day) return;
-		const activePatternGroups: PatternGroup[] = [];
+		const activePatterns: Pattern[] = [];
 		for (const pattern of dataPatternsState) {
 			for (const patternGroup of pattern) {
 				if (patternGroup.valid_on.includes(operationalDayContext.data.selected_day)) {
-					activePatternGroups.push(patternGroup);
+					activePatterns.push(patternGroup);
 				}
 			}
 		}
-		setDataValidPatternGroupsState(activePatternGroups);
+		setDataValidPatternsState(activePatterns);
 	}, [dataPatternsState, operationalDayContext.data.selected_day]);
 
 	useEffect(() => {
@@ -323,16 +322,16 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 	};
 
 	const setActiveTripId = (tripId: string, stopSequence: number) => {
-		const activePatternGroup = dataValidPatternGroupsState?.find(patternGroup => patternGroup.trip_groups.find(trip => trip.trip_ids.includes(tripId)));
-		if (activePatternGroup) {
-			setDataActivePatternGroupState(activePatternGroup);
+		const activePattern = dataValidPatternsState?.find(patternGroup => patternGroup.trips.find(trip => trip.trip_ids.includes(tripId)));
+		if (activePattern) {
+			setDataActivePatternState(activePattern);
 		}
 		setDataActiveTripIdState(tripId);
 		setDataActiveStopSequenceState(stopSequence);
 	};
 
 	const resetActiveTripId = () => {
-		setDataActivePatternGroupState(undefined);
+		setDataActivePatternState(undefined);
 		setDataActiveTripIdState(undefined);
 		setDataShapeState(undefined);
 		setDataActiveStopSequenceState(undefined);
@@ -349,7 +348,7 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 		},
 		data: {
 			active_alerts: dataActiveAlertsState,
-			active_pattern_group: dataActivePatternGroupState,
+			active_pattern_group: dataActivePatternState,
 			active_shape: dataShapeState,
 			active_stop_id: dataActiveStopIdState,
 			active_stop_sequence: dataActiveStopSequenceState,
@@ -361,7 +360,7 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 			timetable_realtime_future: dataTimetableRealtimeFutureState,
 			timetable_realtime_past: dataTimetableRealtimePastState,
 			timetable_schedule: dataTimetableScheduleState,
-			valid_pattern_groups: dataValidPatternGroupsState,
+			valid_pattern_groups: dataValidPatternsState,
 		},
 		filters: {
 			none: undefined,

@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 
 /* * */
 
-export function StopsDetailContentTimetableRealtimeClockLine() {
+export function StopsDetailContentTimetableClock() {
 	//
 
 	//
