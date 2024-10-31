@@ -2,7 +2,7 @@
 
 /* * */
 
-import { getBaseGeoJsonFeatureCollection, getBaseGeoJsonFeatureLineString } from '@/utils/map.utils';
+import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { Layer, Source } from 'react-map-gl/maplibre';
 
 /* * */
@@ -20,14 +20,13 @@ interface Props {
 
 /* * */
 
-const baseGeoJsonFeatureLineString = getBaseGeoJsonFeatureLineString();
 const baseGeoJsonFeatureCollection = getBaseGeoJsonFeatureCollection();
 
-export function MapViewStylePath({ presentBeforeId, shapeData = baseGeoJsonFeatureLineString, stopsData = baseGeoJsonFeatureCollection }: Props) {
+export function MapViewStylePath({ presentBeforeId, shapeData, stopsData }: Props) {
 	return (
 		<>
 
-			<Source data={stopsData} generateId={true} id="default-source-path-stops" type="geojson">
+			<Source data={stopsData || baseGeoJsonFeatureCollection} generateId={true} id="default-source-path-stops" type="geojson">
 				<Layer
 					beforeId={presentBeforeId}
 					id="default-layer-path-stops"
@@ -58,9 +57,9 @@ export function MapViewStylePath({ presentBeforeId, shapeData = baseGeoJsonFeatu
 				/>
 			</Source>
 
-			<Source data={shapeData} generateId={true} id="default-source-path-shape" type="geojson">
+			<Source data={shapeData || baseGeoJsonFeatureCollection} generateId={true} id="default-source-path-shape" type="geojson">
 				<Layer
-					beforeId={stopsData ? 'default-layer-path-stops' : presentBeforeId}
+					beforeId="default-layer-path-stops"
 					id="default-layer-path-shape-direction"
 					source="default-source-path-shape"
 					type="symbol"

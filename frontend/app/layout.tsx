@@ -4,6 +4,7 @@ import { availableFormats } from '@/i18n/config';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 /* * */
 
@@ -19,7 +20,7 @@ const inter = Inter({
 export const metadata = {
 	description: 'Horários e Paragens',
 	metadataBase: process.env.VERCEL_URL ? new URL(`https://${process.env.VERCEL_URL}`) : new URL(`http://0.0.0.0:${process.env.PORT || 3000}`),
-	title: 'Carris Metropolitana',
+	title: 'CMET',
 };
 
 /* * */
@@ -44,7 +45,9 @@ export default async function RootLayout({ children }) {
 					locale={locale}
 					messages={messages}
 				>
-					{children}
+					<NuqsAdapter>
+						{children}
+					</NuqsAdapter>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -46,7 +46,7 @@
 		"uuid": "11.0.2"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20241030.1942.56",
+		"@carrismetropolitana/api-types": "20241030.2128.43",
 		"@carrismetropolitana/eslint": "20241024.1600.5",
 		"@types/jsonwebtoken": "9.0.7",
 		"@types/luxon": "3.4.2",
