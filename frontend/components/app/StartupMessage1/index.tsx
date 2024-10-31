@@ -2,19 +2,20 @@
 
 /* * */
 
+import startupWashingAnimation from '@/assets/animations/startup/washing.json';
 import AppButton from '@/components/common/AppButton';
 import { useEnvironmentContext } from '@/contexts/Environment.context';
 import { Link } from '@/i18n/routing';
 import { appAndroidStoreUrl, appIosStoreUrl } from '@/settings/urls.settings';
 import { Button } from '@mantine/core';
-import { IconArrowBigUpLinesFilled } from '@tabler/icons-react';
+import Lottie from 'lottie-react';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 
 /* * */
 
-export default function Component() {
+export function StartupMessages1() {
 	//
 
 	//
@@ -43,7 +44,7 @@ export default function Component() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.introWrapper}>
-				<IconArrowBigUpLinesFilled className={styles.icon} />
+				<Lottie animationData={startupWashingAnimation} />
 				<h1 className={styles.heading}>{t('heading')}</h1>
 				<h2 className={styles.subheading}>{t('subheading')}</h2>
 				<p className={styles.text}>{t('text')}</p>

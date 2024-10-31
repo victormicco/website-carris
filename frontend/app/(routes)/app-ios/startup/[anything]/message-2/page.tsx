@@ -4,6 +4,6 @@ import { StartupMessages1 } from '@/components/app/StartupMessage1';
 
 /* * */
 
-export default function Page() {
+export default async function Page() {
 	return <StartupMessages1 />;
 }
