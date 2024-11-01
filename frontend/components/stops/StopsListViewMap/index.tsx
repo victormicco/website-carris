@@ -40,7 +40,6 @@ export function StopsListViewMap() {
 	useEffect(() => {
 		if (!allStopsGeoJson || !stopsListMap) return;
 		const [minX, minY, maxX, maxY] = turf.bbox(allStopsGeoJson);
-		console.log([minX, minY, maxX, maxY]);
 		stopsListMap.fitBounds([maxX, maxY, minX, minY], { padding: 50 });
 	}, [allStopsGeoJson, stopsListMap]);
 

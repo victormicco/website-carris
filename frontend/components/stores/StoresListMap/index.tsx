@@ -54,14 +54,8 @@ export default function Component() {
 
 	useEffect(() => {
 		if (!allStoresFeatureCollection || !storesListMap || mapisLoaded) return;
-		const boundingBox = turf.bbox(allStoresFeatureCollection);
-		storesListMap.fitBounds(
-			[
-				[boundingBox[0], boundingBox[1]],
-				[boundingBox[2], boundingBox[3]],
-			],
-			{ padding: 50 },
-		);
+		const [minX, minY, maxX, maxY] = turf.bbox(allStoresFeatureCollection);
+		storesListMap.fitBounds([maxX, maxY, minX, minY], { padding: 50 });
 		setMapisLoaded(true);
 	}, [allStoresFeatureCollection, storesListMap, mapisLoaded]);
 
