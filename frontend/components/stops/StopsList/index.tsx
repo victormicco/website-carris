@@ -5,6 +5,7 @@
 import { StopsListToolbar } from '@/components/stops/StopsListToolbar';
 import { StopsListViewAll } from '@/components/stops/StopsListViewAll';
 import { StopsListViewFavorites } from '@/components/stops/StopsListViewFavorites';
+import { StopsListViewMap } from '@/components/stops/StopsListViewMap';
 import { StopsListViewSkeleton } from '@/components/stops/StopsListViewSkeleton';
 import { useStopsListContext } from '@/contexts/StopsList.context';
 
@@ -26,6 +27,7 @@ export function StopsList() {
 			<StopsListToolbar />
 			{stopsListContext.flags.is_loading && <StopsListViewSkeleton />}
 			{(!stopsListContext.flags.is_loading && stopsListContext.filters.by_current_view === 'all') && <StopsListViewAll />}
+			{(!stopsListContext.flags.is_loading && stopsListContext.filters.by_current_view === 'map') && <StopsListViewMap />}
 			{(!stopsListContext.flags.is_loading && stopsListContext.filters.by_current_view === 'favorites') && <StopsListViewFavorites />}
 		</>
 	);

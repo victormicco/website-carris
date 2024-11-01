@@ -6,9 +6,12 @@ import type { Stop } from '@carrismetropolitana/api-types/network';
 
 import { useProfileContext } from '@/contexts/Profile.context';
 import { createDocCollection } from '@/hooks/useOtherSearch';
+import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
+
+import { transformStopDataIntoGeoJsonFeature } from './Stops.context';
 
 /* * */
 
@@ -26,11 +29,11 @@ interface StopsListContextState {
 	data: {
 		favorites: Stop[]
 		filtered: Stop[]
-		raw: Stop[]
+		filtered_geojson_fc: GeoJSON.FeatureCollection
 	}
 	filters: {
 		by_attribute: null | string
-		by_current_view: 'all' | 'favorites'
+		by_current_view: 'all' | 'favorites' | 'map'
 		by_facility: null | string
 		by_municipality_or_locality: null | string
 		by_search: string
@@ -63,6 +66,7 @@ export const StopsListContextProvider = ({ children }) => {
 	const profileContext = useProfileContext();
 
 	const [dataFilteredState, setDataFilteredState] = useState<Stop[]>([]);
+	const [dataFilteredGeojsonFCState, setDataFilteredGeojsonFCState] = useState<GeoJSON.FeatureCollection>();
 	const [dataFavoritesState, setDataFavoritesState] = useState<Stop[]>([]);
 
 	const [filterByAttributeState, setFilterByAttributeState] = useState <StopsListContextState['filters']['by_attribute']>(null);
@@ -184,7 +188,7 @@ export const StopsListContextProvider = ({ children }) => {
 		data: {
 			favorites: dataFavoritesState,
 			filtered: dataFilteredState,
-			raw: allStopsData || [],
+			filtered_geojson_fc: dataFilteredGeojsonFCState || getBaseGeoJsonFeatureCollection(),
 		},
 		filters: {
 			by_attribute: filterByAttributeState,

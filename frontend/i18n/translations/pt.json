@@ -929,7 +929,8 @@
 			"filters": {
 				"by_current_view": {
 					"all": "Todas as Paragens",
-					"favorites": "Favoritas"
+					"favorites": "Favoritas",
+					"map": "Ver em Mapa"
 				},
 				"by_search": {
 					"placeholder": "Pesquisar por nome, localidade..."

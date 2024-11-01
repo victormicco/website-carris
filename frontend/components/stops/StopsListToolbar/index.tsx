@@ -26,6 +26,7 @@ export function StopsListToolbar() {
 
 	const currentViewOptions = [
 		{ label: t('filters.by_current_view.all'), value: 'all' },
+		{ label: t('filters.by_current_view.map'), value: 'map' },
 		{ label: t('filters.by_current_view.favorites'), value: 'favorites' },
 	];
 
@@ -43,7 +44,7 @@ export function StopsListToolbar() {
 		<Surface>
 			<Section heading={t('heading')} withGap withPadding>
 				<SegmentedControl data={currentViewOptions} onChange={stopsListContext.actions.updateFilterByCurrentView} value={stopsListContext.filters.by_current_view} w="100%" fullWidth />
-				{stopsListContext.filters.by_current_view === 'all' && (
+				{(stopsListContext.filters.by_current_view === 'all' || stopsListContext.filters.by_current_view === 'map') && (
 					<>
 						<TextInput leftSection={<IconArrowLoopRight size={20} />} onChange={handleTextInputChange} placeholder={t('filters.by_search.placeholder')} type="search" value={stopsListContext.filters.by_search} w="100%" />
 						<FoundItemsCounter text={t('found_items_counter.all', { count: stopsListContext.data.filtered.length })} />
