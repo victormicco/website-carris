@@ -927,7 +927,8 @@
 			"filters": {
 				"by_current_view": {
 					"all": "All Stops",
-					"favorites": "Favorites"
+					"favorites": "Favorites",
+					"map": "Ver em Mapa"
 				},
 				"by_search": {
 					"placeholder": "Search by name, location..."
