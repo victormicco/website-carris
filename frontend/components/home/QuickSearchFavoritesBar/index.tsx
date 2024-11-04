@@ -45,9 +45,9 @@ export function QuickSearchFavoritesBar() {
 
 	const favoriteLinesData: { data: Line, has_alert: boolean }[] = useMemo(() => {
 		// Return early if data is not available
-		if (!allLinesData || !profileContext.data.profile?.favorite_lines?.length) return [];
+		if (!allLinesData || !profileContext.data.favorite_lines?.length) return [];
 		// Filter all lines to only include favorited lines
-		const filteredFavoriteLines = allLinesData.filter((lineData: Line) => profileContext.data.profile?.favorite_lines?.includes(lineData.id));
+		const filteredFavoriteLines = allLinesData.filter((lineData: Line) => profileContext.data.favorite_lines?.includes(lineData.id));
 		const sortedFavoriteLines = filteredFavoriteLines.sort((a: Line, b: Line) => a.short_name.localeCompare(b.short_name));
 		// Extend array with check if any of these lines have active alerts
 		const extendedFavoriteLinesWithAlerts = sortedFavoriteLines.map((lineData: Line) => {
@@ -59,7 +59,7 @@ export function QuickSearchFavoritesBar() {
 		// Return extended array
 		return extendedFavoriteLinesWithAlerts;
 		//
-	}, [allLinesData, profileContext.data.profile?.favorite_lines]);
+	}, [allLinesData, profileContext.data.favorite_lines]);
 
 	//
 	// D. Handle actions

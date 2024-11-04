@@ -211,8 +211,8 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 	// C. Transform data
 
 	useEffect(() => {
-		setFlagIsFavoriteState(profileContext.data.profile?.favorite_stops?.includes(stopId) ? true : false);
-	}, [profileContext.data.profile?.favorite_stops, stopId]);
+		setFlagIsFavoriteState(profileContext.data.favorite_stops?.includes(stopId) ? true : false);
+	}, [profileContext.data.favorite_stops, stopId]);
 
 	/**
 	 * Prepare timetable realtime data for the selected stop.

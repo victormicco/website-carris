@@ -184,8 +184,8 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	// C. Transform data
 
 	useEffect(() => {
-		setFlagIsFavoriteState(profileContext.data.profile?.favorite_lines?.includes(lineId) ? true : false);
-	}, [profileContext.data.profile?.favorite_lines, lineId]);
+		setFlagIsFavoriteState(profileContext.data.favorite_lines?.includes(lineId) ? true : false);
+	}, [profileContext.data.favorite_lines, lineId]);
 
 	useEffect(() => {
 		if (!dataAllPatternsState || !operationalDayContext.data.selected_day) return;

@@ -1,7 +1,10 @@
 /* * */
 
 import Loader from '@/components/common/Loader';
-import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
+import { useProfileContext } from '@/contexts/Profile.context';
+import { Tooltip } from '@mantine/core';
+import { IconHeart, IconHeartFilled, IconHeartX } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 
@@ -20,12 +23,28 @@ export default function FavoriteToggle({ color, isActive, onToggle }: Props) {
 	//
 
 	//
-	// A. Render component
+	// A. Setup variables
 
-	if (isActive === null) {
+	const t = useTranslations('common.FavoriteToggle');
+	const profileContext = useProfileContext();
+
+	//
+	// B. Render components
+
+	if (profileContext.flags.is_loading) {
 		return (
 			<div className={styles.container}>
 				<Loader visible />
+			</div>
+		);
+	}
+
+	if (!profileContext.flags.is_enabled) {
+		return (
+			<div className={`${styles.container} ${styles.disabled}`}>
+				<Tooltip label={t('disabled')} withArrow>
+					<IconHeartX />
+				</Tooltip>
 			</div>
 		);
 	}
