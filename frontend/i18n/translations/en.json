@@ -963,7 +963,7 @@
 			}
 		},
 		"StoresListGroupItem": {
-			"address": "Household",
+			"address": "Address",
 			"get_directions": "Get Directions",
 			"schedules": {
 				"and": "and",
@@ -1010,50 +1010,50 @@
 				"time": "Waiting time"
 			},
 			"found_items_counter": "{count, plural, =0 {No stores found.} one {Found # store:} other {Found # stores:}}",
-			"heading": "Espaço navegante",
+			"heading": "Point of sales",
 			"subheading": "Available to all passengers, navante® Spaces are dedicated to providing information about the Carris Metropolitana network and ticketing, enabling queries to be clarified, the issuance of Navante® cards and membership to profiles and discounts. It is also possible to load titles at PayShop® service points within the navante® agent network."
 		}
 	},
 	"tickets": {
 		"Pricing": {
 			"inter-regional": {
-				"description": "As linhas inter-regionais servem destinos fora da área metropolitana de Lisboa.",
+				"description": "Inter-regional lines serve destinations outside the Lisbon metropolitan area.",
 				"title": "Inter-Regional Lines"
 			},
 			"longa": {
-				"description": "Linhas tipicamente intermunicipais, com percursos mais longos que servem corredores principais.",
+				"description": "Lines that are typically intermunicipal, with longer routes serving main corridors.",
 				"title": "Long Lines"
 			},
 			"mar": {
-				"description": "Linhas sazonais em que o destino é o mar, a praia e o sol.",
+				"description": "Seasonal lines with destinations for the sea, beach, and sun.",
 				"title": "Sea Lines"
 			},
 			"proxima": {
-				"description": "As linhas próximas são dedicadas a zonas de pormenor. Têm normalmente percursos mais curtos, são circulares e têm mais paragens.",
-				"title": "Linhas Próximas"
+				"description": "The nearby lines are dedicated to detailed areas. They typically have shorter routes, are circular, and have more stops.",
+				"title": "Nearby Lines"
 			},
 			"rapida": {
-				"description": "Linhas tipicamente expresso, que servem zonas principais com grande frequência.",
+				"description": "Typically express lines that serve main areas with high frequency.",
 				"title": "Fast lines"
 			},
 			"ticket_types": {
-				"onboard": "single ticket",
-				"onboard_start_by_29": "linhas começadas por 29**",
-				"onboard_start_by_49": "linhas começadas por 49**",
+				"onboard": "on-board ticket",
+				"onboard_start_by_29": "lines starting with 29**",
+				"onboard_start_by_49": "lines starting with 49**",
 				"prepaid": "Prepaid"
 			}
 		},
 		"TicketsHeader": {
 			"heading": "Occasional Tickets",
 			"onboard": {
-				"description": "Pode viajar na CMetropolitana adquirindo um bilhete diretamente ao motorista. Por enquanto, é apenas aceite pagamento em numerário.",
-				"title": "Tarifa de Bordo"
+				"description": "You can travel on CMetropolitana by purchasing a ticket directly from the driver. For now, only cash payment is accepted.",
+				"title": "On-board Fare"
 			},
 			"prepaid": {
-				"description": "Antes de viajar, pode adquirir um cartão navegante® pré-pago e carregar com saldo. Este saldo pode ser utilizado para viajar em qualquer linha da CMetropolitana e em qualquer operador de transportes da amL.",
-				"title": "Tarifa Pré-paga"
+				"description": "Before traveling, you can purchase a pre-paid navengante® card and load it with balance. This balance can be used to travel on any CMetropolitana line and on any amL transport operator.",
+				"title": "Pre-paid Fare"
 			},
-			"subheading": "Descubra quanto custa viajar na CMetropolitana de vez em quando. Existem 5 categorias de tarifários, com tarifa de bordo ou pré-paga, associadas aos diferentes tipos de linhas."
+			"subheading": "Discover how much it costs to travel on CMetropolitana from time to time. There are 5 fare categories, with on-board or pre-paid fares, associated with different types of routes."
 		}
 	},
 	"toast": {
