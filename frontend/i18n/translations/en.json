@@ -551,21 +551,6 @@
 			"subheading": "On this page, you will find answers to the most frequently asked questions about our service. If you need any further clarification, please feel free to contact us."
 		}
 	},
-	"favorites": {
-		"Page": {
-			"heading": "Favorites"
-		},
-		"PageToolbar": {
-			"by_current_view": {
-				"lines": "Lines",
-				"stops": "Stops"
-			},
-			"found_items_counter": {
-				"lines": "{count, plural, =0 {No lines found.} one {Found # line:} other {Found # lines:}}",
-				"stops": "{count, plural, =0 {No stops found.} one {Found # stops:} other {Found # stops:}}"
-			}
-		}
-	},
 	"footer": {
 		"DebugToggle": {
 			"disabled": "Turn on Debug",
@@ -813,6 +798,17 @@
 		}
 	},
 	"profile": {
+		"FavoritesListToolbar": {
+			"by_current_view": {
+				"lines": "Linhas",
+				"stops": "Paragens"
+			},
+			"found_items_counter": {
+				"lines": "{count, plural, =0 {Nenhuma linha encontrada.} one {Encontrada # linha:} other {Encontradas # linhas:}}",
+				"stops": "{count, plural, =0 {Nenhum paragem encontrado.} one {Encontrado # paragem:} other {Encontrados # paragens:}}"
+			},
+			"heading": "Favoritos"
+		},
 		"Page": {
 			"field": {
 				"default_first_name": "Octopus",
