@@ -447,6 +447,9 @@
 				"label": "Hide Filters"
 			}
 		},
+		"FavoriteToggle": {
+			"disabled": "É necessário permitir cookies para adicionar favoritos"
+		},
 		"NextArrivals": {
 			"arriving": "Coming up",
 			"hours": "h",
