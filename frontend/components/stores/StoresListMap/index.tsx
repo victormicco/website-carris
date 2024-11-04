@@ -8,7 +8,7 @@ import { MapView } from '@/components/map/MapView';
 import { useStoresListContext } from '@/contexts/StoresList.context';
 import * as turf from '@turf/turf';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Layer, Source, useMap } from 'react-map-gl/maplibre';
 
 /* * */
