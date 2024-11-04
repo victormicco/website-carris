@@ -2,6 +2,8 @@
 
 /* * */
 
+import { Section } from '@/components/layout/Section';
+import { Surface } from '@/components/layout/Surface';
 import { IconClockCog } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
@@ -21,11 +23,13 @@ export default function Component() {
 	// D. Render Components
 
 	return (
-		<div className={styles.container}>
-			<IconClockCog className={styles.icon} size={75} />
-			<h1 className={styles.title}>{t('title')}</h1>
-			<h2 className={styles.subtitle}>{t('subtitle')}</h2>
-		</div>
+		<Surface>
+			<div className={styles.container}>
+				<IconClockCog className={styles.icon} size={75} />
+				<h1 className={styles.title}>{t('title')}</h1>
+				<h2 className={styles.subtitle}>{t('subtitle')}</h2>
+			</div>
+		</Surface>
 	);
 
 	//
