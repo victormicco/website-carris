@@ -1,8 +1,5 @@
-'use client';
-
 /* * */
 
-import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { IconClockCog } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
