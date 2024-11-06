@@ -94,7 +94,6 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 		return (
 			<div {...props}>
 				<Flex align="center" gap={5}>
-					dfdiushisudfhisfhiu
 					<Text fw="bold">{pattern.headsign}</Text>
 					{debugContext.flags.is_debug_mode && <Text c="gray" size="xs">{pattern.id}</Text>}
 				</Flex>
