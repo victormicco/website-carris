@@ -52,8 +52,9 @@ export default function Component() {
 
 	useEffect(() => {
 		if (!allStoresFeatureCollection || !storesListMap) return;
-		const [minX, minY, maxX, maxY] = turf.bbox(allStoresFeatureCollection);
-		storesListMap.fitBounds([Number(minX), Number(minY), Number(maxX), Number(maxY)], { padding: 50 });
+		const envelope = turf.envelope(allStoresFeatureCollection);
+		if (!envelope || !envelope.bbox) return;
+		storesListMap.fitBounds([envelope.bbox[0], envelope.bbox[1], envelope.bbox[2], envelope.bbox[3]], { padding: 25 });
 	}, [allStoresFeatureCollection, storesListMap]);
 
 	//

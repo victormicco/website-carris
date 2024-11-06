@@ -41,6 +41,13 @@ export function StopsListViewMap() {
 		stopsListMap.fitBounds([Number(maxX), Number(maxY), Number(minX), Number(minY)], { padding: 50 });
 	}, [allStopsGeoJson, stopsListMap]);
 
+	useEffect(() => {
+		if (!allStopsGeoJson || !stopsListMap) return;
+		const envelope = turf.envelope(allStopsGeoJson);
+		if (!envelope || !envelope.bbox) return;
+		stopsListMap.fitBounds([envelope.bbox[0], envelope.bbox[1], envelope.bbox[2], envelope.bbox[3]], { padding: 25 });
+	}, [allStopsGeoJson, stopsListMap]);
+
 	function handleLayerClick(event) {
 		if (!stopsListMap) return;
 		const features = stopsListMap.queryRenderedFeatures(event.point);
