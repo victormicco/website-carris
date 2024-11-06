@@ -10,7 +10,7 @@ import { useMemo } from 'react';
 
 /* * */
 
-export default function Component() {
+export function SelectActivePatternGroup() {
 	//
 
 	//

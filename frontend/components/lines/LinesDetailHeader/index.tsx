@@ -8,7 +8,7 @@ import { SelectOperationalDay } from '@/components/common/SelectOperationalDay';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { LineBadge } from '@/components/lines/LineBadge';
-import SelectActivePatternGroup from '@/components/lines/SelectActivePatternGroup';
+import { SelectActivePatternGroup } from '@/components/lines/SelectActivePatternGroup';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import toast from '@/utils/toast';

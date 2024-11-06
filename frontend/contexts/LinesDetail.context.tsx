@@ -51,6 +51,7 @@ interface LinesDetailContextState {
 	}
 	flags: {
 		is_favorite: boolean
+		is_interactive_mode: boolean
 		is_loading: boolean
 	}
 }
@@ -93,6 +94,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	const [dataActiveStopState, setDataActiveStopState] = useState<{ sequence: number, stop: Stop } | null>(null);
 
 	const [flagIsFavoriteState, setFlagIsFavoriteState] = useState<boolean>(false);
+	const [flagIsInteractiveModeState, setFlagIsInteractiveModeState] = useState<boolean>(false);
 
 	const [dataDrawerOpenState, setDataDrawerOpenState] = useState<boolean>(false);
 
@@ -247,6 +249,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			}
 		}
 		setDataActivePatternState(null);
+		setFlagIsInteractiveModeState(false);
 	};
 
 	const setActiveStop = (sequence: number, stop: Stop) => {
@@ -259,6 +262,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		if (!stopData) return;
 		setDataActiveStopState({ sequence, stop: stopData });
 		setFilterActiveStopIdState(stopId);
+		setFlagIsInteractiveModeState(true);
 	};
 
 	const setDrawerOpen = (isOpen: boolean) => {
@@ -321,6 +325,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		},
 		flags: {
 			is_favorite: flagIsFavoriteState,
+			is_interactive_mode: flagIsInteractiveModeState,
 			is_loading: linesContext.flags.is_loading || stopsContext.flags.is_loading || dataRoutesState === null || dataAllPatternsState === null,
 		},
 	};

@@ -10,7 +10,7 @@ import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { transformStopDataIntoGeoJsonFeature, useStopsContext } from '@/contexts/Stops.context';
 import { useVehiclesContext } from '@/contexts/Vehicles.context';
 import { centerMap, getBaseGeoJsonFeatureCollection, moveMap } from '@/utils/map.utils';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useMap } from 'react-map-gl/maplibre';
 
 /* * */
@@ -27,17 +27,15 @@ export function LinesDetailPathMap() {
 
 	const { linesDetailMap } = useMap();
 
-	const [isInitialMapLoad, setIsInitialMapLoad] = useState(true);
-
 	//
 	// B. Transform Data
 
-	const activeVehiclesGeojson = useMemo(() => {
+	const activeVehiclesFeatureCollection = useMemo(() => {
 		if (!linesDetailContext.data.active_pattern_group?.id) return;
-		return vehiclesContext.actions.getVehiclesByPatternIdGeoJsonFC(linesDetailContext.data.active_pattern_group?.id);
+		return vehiclesContext.actions.getVehiclesByTripIdGeoJsonFC(linesDetailContext.data.active_pattern_group?.id);
 	}, [linesDetailContext.data.active_pattern_group, vehiclesContext.data.vehicles]);
 
-	const activePathStopsGeoJson = useMemo(() => {
+	const activePathFeatureCollection = useMemo(() => {
 		if (!linesDetailContext.data.active_pattern_group?.path) return;
 		const collection = getBaseGeoJsonFeatureCollection();
 		linesDetailContext.data.active_pattern_group.path.forEach((pathStop) => {
@@ -71,16 +69,16 @@ export function LinesDetailPathMap() {
 	// C. Handle Actions
 
 	useEffect(() => {
-		// On init, center the map on the full shape.
-		// On subsequent iterations, move map to the selected stop.
-		if (isInitialMapLoad) {
-			if (!linesDetailContext.data.active_shape?.geojson) return;
-			centerMap(linesDetailMap, [linesDetailContext.data.active_shape.geojson], { padding: 60 });
-			setIsInitialMapLoad(false);
-		}
-		else {
+		// If map is not yet in interactive mode, then that means the user has not yet selected a stop.
+		// Center the map on the full shape and path of the selected pattern.
+		// After the user selects a stop, move map to the selected stop.
+		if (linesDetailContext.flags.is_interactive_mode) {
 			if (!linesDetailContext.data.active_stop?.stop) return;
 			moveMap(linesDetailMap, [linesDetailContext.data.active_stop.stop.lon, linesDetailContext.data.active_stop?.stop.lat]);
+		}
+		else {
+			if (!linesDetailContext.data.active_shape?.geojson) return;
+			centerMap(linesDetailMap, [linesDetailContext.data.active_shape.geojson], { padding: 60 });
 		}
 	}, [linesDetailMap, linesDetailContext.data.active_stop, linesDetailContext.data.active_shape]);
 
@@ -111,7 +109,7 @@ export function LinesDetailPathMap() {
 
 			<MapViewStylePath
 				shapeData={linesDetailContext.data.active_shape?.geojson}
-				stopsData={activePathStopsGeoJson}
+				stopsData={activePathFeatureCollection}
 			/>
 
 			<MapViewStyleActiveStops
@@ -120,7 +118,7 @@ export function LinesDetailPathMap() {
 
 			<MapViewStyleVehicles
 				showCounter="always"
-				vehiclesData={activeVehiclesGeojson}
+				vehiclesData={activeVehiclesFeatureCollection}
 			/>
 
 		</MapView>
