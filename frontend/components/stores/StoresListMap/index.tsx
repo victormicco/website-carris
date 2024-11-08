@@ -115,6 +115,7 @@ export default function Component() {
 							'symbol-placement': 'point',
 							'text-anchor': 'bottom',
 							'text-field': ['get', 'text_value'],
+							'text-font': ['Open Sans Regular'],
 							'text-offset': [0.5, -2.8],
 							'text-size': 12,
 						}}

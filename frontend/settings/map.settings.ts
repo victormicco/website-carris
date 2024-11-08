@@ -26,6 +26,7 @@ export const mapDefaultValues = Object.freeze({
 export const mapDefaultStyles = Object.freeze({
 	map: 'https://maps.carrismetropolitana.pt/styles/default/style.json',
 	satellite: {
+		glyphs: '{fontstack}/{range}.pbf',
 		layers: [
 			{
 				id: 'simple-tiles',
