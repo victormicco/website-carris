@@ -405,19 +405,19 @@
 		}
 	},
 	"app": {
-		"DownloadBeta": {
+		"AppDownloadBeta": {
 			"android": "Android",
 			"heading": "Beta: App CMetropolitana",
 			"iphone": "Apple iPhone",
 			"subheading": "Faça o download da versão beta da app Carris Metropolitana para iOS ou Android, e contribua para o futuro desta aplicação."
 		},
-		"DownloadProduction": {
+		"AppDownloadProduction": {
 			"android": "Android",
 			"heading": "App CMetropolitana",
 			"iphone": "Apple iPhone",
 			"subheading": "Faça o download da app Carris Metropolitana para iOS ou Android."
 		},
-		"StartupMessage1": {
+		"AppStartupMessageDefault": {
 			"actions": {
 				"close": "Fechar",
 				"update_android": "Atualizar na Play Store",
@@ -429,7 +429,13 @@
 		}
 	},
 	"app-navegante": {
-		"StartupMessageDefault": {
+		"AppNaveganteDownloadProduction": {
+			"android": "Android",
+			"heading": "App navegante®",
+			"iphone": "Apple iPhone",
+			"subheading": "Faça o download da app navegante® para iOS ou Android."
+		},
+		"AppNaveganteStartupMessageDefault": {
 			"actions": {
 				"update_android": "Atualizar na Play Store",
 				"update_ios": "Atualizar na App Store"
