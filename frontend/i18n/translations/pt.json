@@ -887,6 +887,37 @@
 			"weekday": "Dias da Semana"
 		}
 	},
+	"open-data": {
+		"OpenDataPage": {
+			"repos": {
+				"api": {
+					"description": "Disponibilizamos informação sobre a rede, horários planeados, alertas de serviço, equipamentos da AML e mais através de um API REST de livre acesso. Visite o repositório onde poderá consultar a documentação sobre este serviço.",
+					"label": "API"
+				},
+				"datasets": {
+					"description": "Publicamos conjuntos de dados georeferenciados sobre vários equipamentos da área metropolitana de Lisboa, como instituições de ensino, hospitais, entre outros. Cada equipamento tem associado um conjunto de paragens da CMetropolitana. Estes dados são atualizados regularmente e podem ser consultados e utilizados livremente.",
+					"label": "Datasets"
+				},
+				"gtfs": {
+					"description": "O GTFS (General Transit Feed Specification) consiste num conjunto de arquivos de texto unidos numa pasta zip, que contêm dados relativos a todos os aspetos da operação, permitindo obter informações sobre paragens, percursos e horários.",
+					"label": "GTFS"
+				}
+			},
+			"sections": {
+				"intro": {
+					"heading": "Dados Abertos",
+					"subheading": "Alinhada com as diretivas europeias sobre dados abertos, a CMetropolitana disponibiliza publicamente informação relativa à sua operação. A publicação dos dados permite o desenvolvimento de ferramentas úteis e inovadoras por terceiros, permitindo existir apenas uma única versão da rede conhecida por todos, frequentemente atualizada para todos em simultâneo e com otimização de recursos."
+				},
+				"legal_framing": {
+					"heading": "Enquadramento Legal",
+					"text_1": "O GTFS dos Planos de Operação contém informações de interesse público, nomeadamente paragens, percursos e horários.",
+					"text_2": "A 26 de agosto de 2021, foi publicada no Diário da República a Lei n.º 68/2021 que aprova os princípios gerais em matéria de dados, transpondo a Diretiva (UE) 2019/1024 sobre dados abertos e a reutilização de informação do setor público. A referida lei constituiu um importante passo na difusão dos dados detidos e produzidos por entidades públicas em Portugal, alargando o acesso do cidadão a dados do setor público.",
+					"text_3": "O movimento dos dados abertos, que é parte integral das políticas dedicadas ao Governo Aberto (Open Government), combina os princípios da transparência, participação e colaboração, assim como o potencial de desenvolvimento económico que o digital trouxe, tornando as entidades mais eficientes e eficazes, fortalecendo o seu papel de serviço público.",
+					"text_4": "A interação com a comunidade de reutilizadores permitirá recolher sugestões e correções com impacto na operação, que se quer, de todos, impulsionando o seu envolvimento."
+				}
+			}
+		}
+	},
 	"planner": {
 		"Page": {
 			"Navegante": {

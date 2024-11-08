@@ -10,7 +10,7 @@ import pjson from 'package.json';
 
 export function VersionControl({ className }) {
 	return (
-		<Link className={className} href={`${URLS.socials.github}/website`} target="_blank">
+		<Link className={className} href={URLS.repos.website} target="_blank">
 			{pjson.version}
 		</Link>
 	);

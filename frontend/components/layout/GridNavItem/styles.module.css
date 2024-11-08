@@ -1,5 +1,4 @@
 /* * */
-
 /* CONTAINER */
 
 .container {
@@ -48,7 +47,6 @@
 }
 
 /* * */
-
 /* ICON WRAPPER */
 
 .iconWrapper {
@@ -65,7 +63,16 @@
 }
 
 /* * */
+/* CONTENT WRAPPER */
 
+.contentWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-spacing-5);
+	width: 100%;
+}
+
+/* * */
 /* LABEL */
 
 .label {
@@ -77,7 +84,16 @@
 }
 
 /* * */
+/* DESCRIPTION */
 
+.description {
+	width: 100%;
+	font-size: 16px;
+	font-weight: var(--font-weight-medium);
+	color: var(--color-system-text-200);
+}
+
+/* * */
 /* ARROW WRAPPER */
 
 .arrowWrapper {

@@ -1,6 +1,6 @@
 /* * */
 
-import GridNav from '@/components/layout/GridNav';
+import { GridNav } from '@/components/layout/GridNav';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { URLS } from '@/settings/urls.settings';

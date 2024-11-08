@@ -35,6 +35,17 @@ export const URLS = Object.freeze({
 	},
 
 	/**
+	 * URLs for CMET's Github Repos.
+	 */
+	repos: {
+		api: 'https://github.com/carrismetropolitana/api',
+		datasets: 'https://github.com/carrismetropolitana/datasets',
+		gtfs: 'https://github.com/carrismetropolitana/gtfs',
+		tts: 'https://github.com/carrismetropolitana/tts',
+		website: 'https://github.com/carrismetropolitana/website',
+	},
+
+	/**
 	 * URLs for CMET's social connections.
 	 */
 	socials: {
