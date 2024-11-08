@@ -20,7 +20,7 @@ export function LinesDetailMetrics() {
 	//
 	// B. Render components
 
-	if (!linesDetailContext.data.line || !linesDetailContext.data.demand) {
+	if (!linesDetailContext.data.line || !linesDetailContext.data.demand_metrics) {
 		return null;
 	}
 

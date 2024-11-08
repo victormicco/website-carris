@@ -26,25 +26,25 @@ export function LinesDetailMetricsDemand() {
 	// B. Transform data
 
 	const selectedDistribution = useMemo(() => {
-		if (!linesDetailContext.data.demand) return null;
-		return linesDetailContext.data.demand.by_day
+		if (!linesDetailContext.data.demand_metrics) return null;
+		return linesDetailContext.data.demand_metrics.by_day
 			.sort((a, b) => Number(a.day) - Number(b.day))
 			.map(item => ({
 				operationalDay: DateTime.fromFormat(item.day.toString(), 'yyyyMMdd').toFormat('dd/MM'),
 				qty: item.qty,
 			}));
-	}, [linesDetailContext.data.demand]);
+	}, [linesDetailContext.data.demand_metrics]);
 
 	const averageDemand = useMemo(() => {
-		if (!linesDetailContext.data.demand) return 0;
-		return linesDetailContext.data.demand.total_qty / linesDetailContext.data.demand.by_day.length;
-	}, [linesDetailContext.data.demand]);
+		if (!linesDetailContext.data.demand_metrics) return 0;
+		return linesDetailContext.data.demand_metrics.total_qty / linesDetailContext.data.demand_metrics.by_day.length;
+	}, [linesDetailContext.data.demand_metrics]);
 
 	//
 	// C. Render components
 
 	const renderDemandLineChart = () => {
-		if (!selectedDistribution || !linesDetailContext.data.line || !linesDetailContext.data.demand) return null;
+		if (!selectedDistribution || !linesDetailContext.data.line || !linesDetailContext.data.demand_metrics) return null;
 
 		return (
 			<LineChart
@@ -86,7 +86,7 @@ export function LinesDetailMetricsDemand() {
 				<div className={styles.metricWrapper}>
 					<div className={styles.bigNumberWrapper}>
 						<h1 className={styles.bigNumber} style={{ color: linesDetailContext.data.line?.color }}>
-							{t('demand.big_number', { value: linesDetailContext.data.demand?.total_qty })}
+							{t('demand.big_number', { value: linesDetailContext.data.demand_metrics?.total_qty })}
 						</h1>
 						<LiveIcon className={styles.liveIcon} color={linesDetailContext.data.line?.color} />
 					</div>

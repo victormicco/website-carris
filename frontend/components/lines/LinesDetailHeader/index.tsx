@@ -9,7 +9,7 @@ import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { LineBadge } from '@/components/lines/LineBadge';
 import { SelectActivePatternGroup } from '@/components/lines/SelectActivePatternGroup';
-import { SelectActivePatternGroupExplainer } from '@/components/lines/SelectActivePatternGroupExplainer';
+// import { SelectActivePatternGroupExplainer } from '@/components/lines/SelectActivePatternGroupExplainer';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import toast from '@/utils/toast';

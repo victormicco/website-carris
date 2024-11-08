@@ -72,7 +72,6 @@ export function MapView({
 	onMouseOver,
 	onMoveEnd,
 	onMoveStart,
-	primarySourceId,
 	scale = false,
 	scrollZoom = true,
 	toolbar = true,

@@ -14,8 +14,7 @@ import { useStopsContext } from '@/contexts/Stops.context';
 import { ServiceMetrics } from '@/types/metrics.types';
 import { Routes } from '@/utils/routes';
 import { useQueryState } from 'nuqs';
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import useSWR from 'swr';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 /* * */
 
@@ -25,16 +24,16 @@ interface LinesDetailContextState {
 		setActiveWaypoint: (stopId: string, stopSequence: number,) => void
 	}
 	data: {
-		active_alerts: null | SimplifiedAlert[]
+		active_alerts: SimplifiedAlert[] | undefined
 		active_pattern: null | Pattern
 		active_shape: null | Shape
 		active_waypoint: null | Waypoint
 		all_patterns: null | Pattern[][]
-		all_routes: Route[] | undefined
-		demand: DemandMetrics | null
-		line: Line | null
-		service: ServiceMetrics[] | undefined
-		valid_patterns: null | Pattern[]
+		demand_metrics: DemandMetrics | undefined
+		line: Line | undefined
+		routes: Route[]
+		service_metrics: ServiceMetrics[]
+		valid_patterns: Pattern[] | undefined
 	}
 	filters: {
 		active_pattern_id: null | string
@@ -74,44 +73,58 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	const profileContext = useProfileContext();
 	const operationalDayContext = useOperationalDayContext();
 
+	const [dataLineState, setDataLineState] = useState<LinesDetailContextState['data']['line']>();
+	const [dataDemandMetricsState, setDataDemandMetricsState] = useState<LinesDetailContextState['data']['demand_metrics']>();
+	const [dataServiceMetricsState, setDataServiceMetricsState] = useState<LinesDetailContextState['data']['service_metrics']>([]);
+	const [dataRoutesState, setDataRoutesState] = useState<LinesDetailContextState['data']['routes']>([]);
+
 	const [dataAllPatternsState, setDataAllPatternsState] = useState<LinesDetailContextState['data']['all_patterns']>(null);
-	const [dataValidPatternsState, setDataValidPatternsState] = useState<LinesDetailContextState['data']['valid_patterns']>(null);
-	const [dataDemandState, setDataDemandState] = useState<LinesDetailContextState['data']['demand']>(null);
-	const [dataActiveAlertsState, setDataActiveAlertsState] = useState<LinesDetailContextState['data']['active_alerts']>(null);
+	const [dataValidPatternsState, setDataValidPatternsState] = useState<LinesDetailContextState['data']['valid_patterns']>();
+	const [dataActiveAlertsState, setDataActiveAlertsState] = useState<LinesDetailContextState['data']['active_alerts']>();
 	const [dataActivePatternState, setDataActivePatternState] = useState<LinesDetailContextState['data']['active_pattern']>(null);
 	const [dataActiveShapeState, setDataActiveShapeState] = useState<LinesDetailContextState['data']['active_shape']>(null);
-	const [dataServiceMetricsState, setDataServiceMetricsState] = useState<LinesDetailContextState['data']['service']>();
 	const [dataActiveWaypointState, setDataActiveWaypointState] = useState<LinesDetailContextState['data']['active_waypoint']>(null);
-
-	const [flagIsFavoriteState, setFlagIsFavoriteState] = useState<LinesDetailContextState['flags']['is_favorite']>(false);
-	const [flagIsInteractiveModeState, setFlagIsInteractiveModeState] = useState<LinesDetailContextState['flags']['is_interactive_mode']>(false);
 
 	const [filterActivePatternIdState, setFilterActivePatternIdState] = useQueryState('active_pattern_id');
 	const [filterActiveWaypointStopIdState, setFilterActiveWaypointStopIdState] = useQueryState('active_waypoint_stop_id');
 	const [filterActiveWaypointStopSequenceState, setFilterActiveWaypointStopSequenceState] = useQueryState('active_waypoint_stop_sequence');
 
+	const [flagIsFavoriteState, setFlagIsFavoriteState] = useState<LinesDetailContextState['flags']['is_favorite']>(false);
+	const [flagIsInteractiveModeState, setFlagIsInteractiveModeState] = useState<LinesDetailContextState['flags']['is_interactive_mode']>(false);
+
 	//
 	// B. Fetch data
 
-	const { data: allDemandByLineData } = useSWR<DemandMetrics[], Error>(`${Routes.API}/metrics/demand/by_line`);
-
-	const dataLineState = useMemo<Line | undefined>(() => {
+	useEffect(() => {
 		const lineData = linesContext.actions.getLineDataById(lineId);
-		const serviceMetrics = linesContext.actions.getServiceMetricsByLineId(lineId);
-		setDataServiceMetricsState(serviceMetrics);
 		if (!lineData) return;
-		else return lineData;
-	}, [lineId, linesContext.data.lines, linesContext.data.service_metrics]);
+		setDataLineState(lineData);
+	}, [lineId, linesContext.data.lines]);
 
-	const dataRoutesState = useMemo<Route[] | undefined>(() => {
-		if (!dataLineState) return;
-		const lineRoutesData: Route[] = [];
+	useEffect(() => {
+		const isFavorite = profileContext.data.favorite_lines?.includes(lineId) ? true : false;
+		setFlagIsFavoriteState(isFavorite);
+	}, [profileContext.data.favorite_lines, lineId]);
+
+	useEffect(() => {
+		const serviceMetricsData = linesContext.actions.getServiceMetricsByLineId(lineId);
+		if (!serviceMetricsData) return;
+		setDataServiceMetricsState(serviceMetricsData);
+	}, [lineId]);
+
+	useEffect(() => {
+		const demandMetricsData = linesContext.actions.getDemandMetricsByLineId(lineId);
+		if (!demandMetricsData) return;
+		setDataDemandMetricsState(demandMetricsData);
+	}, [lineId]);
+
+	useEffect(() => {
+		if (!dataLineState || !dataLineState.route_ids) return;
 		dataLineState.route_ids.forEach((routeId) => {
 			const routeData = linesContext.actions.getRouteDataById(routeId);
 			if (!routeData) return;
-			lineRoutesData.push(routeData);
+			setDataRoutesState(prev => [...prev, routeData]);
 		});
-		return lineRoutesData;
 	}, [dataLineState, linesContext.data.routes]);
 
 	useEffect(() => {
@@ -142,7 +155,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	}, [dataLineState, stopsContext.data.stops]);
 
 	/**
-	 * TASK: Fetch shape data for the active trip.
+	 * TASK: Fetch shape data for the active pattern.
 	 * WHEN: The `dataActivePatternState` changes.
 	 */
 	useEffect(() => {
@@ -174,34 +187,25 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	// C. Transform data
 
 	useEffect(() => {
-		setFlagIsFavoriteState(profileContext.data.favorite_lines?.includes(lineId) ? true : false);
-	}, [profileContext.data.favorite_lines, lineId]);
-
-	useEffect(() => {
 		if (!dataAllPatternsState || !operationalDayContext.data.selected_day) return;
 		const activePatterns: Pattern[] = [];
 		for (const pattern of dataAllPatternsState) {
 			for (const patternGroup of pattern) {
 				const selected_date = operationalDayContext.data.selected_day;
 				if (!selected_date) return;
-
 				// Find the closest valid date
 				const closest_date = patternGroup.valid_on.reduce((acc, curr) => {
 					if (selected_date <= curr && (acc === '' || curr < acc)) return curr;
-
 					return acc;
 				}, '');
-
 				// If the closest date is valid, add the pattern group to the list
 				if (closest_date != '' && !activePatterns.find(activePattern => activePattern.id === patternGroup.id)) {
 					activePatterns.push(patternGroup);
 				}
 			}
 		}
-		setDataValidPatternsState(activePatterns);
-		if (!dataActivePatternState && activePatterns[0]) {
-			setDataActivePatternState(activePatterns[0]);
-		}
+		const sortedPatterns = activePatterns.sort((a, b) => a.id.localeCompare(b.id));
+		setDataValidPatternsState(sortedPatterns);
 	}, [dataAllPatternsState, operationalDayContext.data.selected_day]);
 
 	useEffect(() => {
@@ -219,72 +223,117 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		setDataActiveAlertsState(activeAlerts);
 	}, [alertsContext.data.simplified, lineId]);
 
-	useEffect(() => {
-		if (!allDemandByLineData) return;
-		const demandForCurrentLine = allDemandByLineData.find(demandByLineItem => demandByLineItem.item_id === dataLineState?.id);
-		setDataDemandState(demandForCurrentLine || null);
-	}, [allDemandByLineData, lineId]);
-
 	//
 	// D. Handle actions
 
-	const setActivePattern = (patternVersionId: string) => {
-		for (const patternGroup of dataValidPatternsState || []) {
-			if (patternGroup.version_id === patternVersionId) {
-				setDataActivePatternState(patternGroup);
-				setFilterActivePatternIdState(patternGroup.id);
-				setFlagIsInteractiveModeState(false);
+	/**
+	 * Preselect a Pattern if there is no filter value.
+	 * Return otherwise.
+	 */
+	useEffect(() => {
+		// Return early if no patterns are available
+		if (!dataValidPatternsState) return;
+		// Preselect the first pattern of the valid patterns if there is no filter value
+		if (!filterActivePatternIdState) {
+			setActivePattern(dataValidPatternsState[0].version_id);
+		}
+	}, [dataValidPatternsState, filterActivePatternIdState]);
+
+	/**
+	 * Activate a given Pattern based on the filter value for active_pattern_id.
+	 * This runs everytime the filter changes.
+	 */
+	useEffect(() => {
+		// Return early if no patterns are available or no filter value for active_pattern_id
+		if (!dataValidPatternsState || !filterActivePatternIdState) return;
+		// If there is a filter value for active pattern, set the pattern with that ID
+		const foundActivePatternData = dataValidPatternsState.find(activePattern => activePattern.id === filterActivePatternIdState);
+		if (!foundActivePatternData) return;
+		setDataActivePatternState(foundActivePatternData);
+		//
+	}, [dataValidPatternsState, filterActivePatternIdState]);
+
+	/**
+	 * Preselect a Waypoint if there is no filter value.
+	 * Return otherwise.
+	 */
+	useEffect(() => {
+		// Return early if there is no active pattern
+		if (!dataActivePatternState) return;
+		// Preselect the first waypoint of the active pattern if there is no filter value
+		if (!filterActiveWaypointStopIdState) {
+			const firstStopId = dataActivePatternState.path[0].stop_id;
+			const firstStopSequence = dataActivePatternState.path[0].stop_sequence;
+			setActiveWaypoint(firstStopId, firstStopSequence, false);
+		}
+	}, [dataActivePatternState, filterActiveWaypointStopIdState, filterActiveWaypointStopSequenceState]);
+
+	/**
+	 * Activate a given Waypoint based on the filter value for active_stop_id and active_stop_sequence.
+	 * This runs everytime the filter changes.
+	 */
+	useEffect(() => {
+		// Return early if no patterns are available or no filter value for active_stop_id and active_stop_sequence
+		if (!dataActivePatternState || !filterActiveWaypointStopIdState) return;
+		// If there is a filter value for active_stop_id AND active_stop_sequence, then set the waypoint with that id AND sequence
+		if (filterActiveWaypointStopIdState && filterActiveWaypointStopSequenceState) {
+			const foundWaypointData = dataActivePatternState.path.find(waypoint => waypoint.stop_id === filterActiveWaypointStopIdState && waypoint.stop_sequence === Number(filterActiveWaypointStopSequenceState));
+			if (foundWaypointData) {
+				setDataActiveWaypointState(foundWaypointData);
+				setFilterActiveWaypointStopIdState(foundWaypointData.stop_id);
+				setFilterActiveWaypointStopSequenceState(String(foundWaypointData.stop_sequence));
 				return;
 			}
 		}
-		setDataActivePatternState(null);
+		// We purposely do not try to match only by stop_id or stop_sequence since it probably will not make sense to the user.
+		// The first stop of the pattern _0 is completely different from the first stop of the pattern _1, but matches the stop_id.
+		// In this case, we should reset the filter values and the active waypoint.
+		setDataActiveWaypointState(null);
+		setFilterActiveWaypointStopIdState(null);
+		setFilterActiveWaypointStopSequenceState(null);
+		//
+	}, [dataActivePatternState, filterActiveWaypointStopIdState, filterActiveWaypointStopSequenceState]);
+
+	/**
+	 * Set the active pattern based on the pattern version id.
+	 * @param patternVersionId
+	 * @returns
+	 */
+	const setActivePattern = (patternVersionId: string) => {
+		// Return early if there are no valid patterns
+		if (!dataValidPatternsState) return;
+		// Find the pattern data that matches the pattern version id
+		const foundPatternData = dataValidPatternsState.find(validPattern => validPattern.version_id === patternVersionId);
+		// Update the state
+		if (foundPatternData) {
+			setFilterActivePatternIdState(foundPatternData.id);
+			setFlagIsInteractiveModeState(false);
+		}
 	};
 
-	const setActiveWaypoint = (stopId: string, stopSequence: number) => {
+	/**
+	 * Set the active waypoint based on the stop id and stop sequence.
+	 * Optionally reset the interactive mode.
+	 * @param stopId
+	 * @param stopSequence
+	 * @param isInteractive
+	 * @returns
+	 */
+	const setActiveWaypoint = (stopId: string, stopSequence: number, isInteractive = true) => {
 		// Return early if active waypoint is already selected
 		if (dataActiveWaypointState?.stop_id === stopId && dataActiveWaypointState?.stop_sequence === stopSequence) return;
 		// Find the waypoint in the active pattern that matches the stop id and stop sequence
 		const foundWaypoint = dataActivePatternState?.path.find(waypoint => waypoint.stop_id === stopId && waypoint.stop_sequence === stopSequence);
-		if (!foundWaypoint) return;
 		// Update the state
-		setDataActiveWaypointState(foundWaypoint);
-		setFilterActiveWaypointStopIdState(stopId);
-		setFilterActiveWaypointStopSequenceState(String(stopSequence));
-		setFlagIsInteractiveModeState(true);
+		if (foundWaypoint) {
+			setFilterActiveWaypointStopIdState(foundWaypoint.stop_id);
+			setFilterActiveWaypointStopSequenceState(String(foundWaypoint.stop_sequence));
+			setFlagIsInteractiveModeState(isInteractive);
+		}
 	};
 
 	//
-	// E. Handle Filters State
-
-	// REFACTOR HERE
-	// O programa deve conseguir identificar o pattern ativo a partir do ID do pattern ativo da query string.
-	// Provavelmente vai ser necessário combinar os dois useEffects abaixo num só.
-	// É necessário passar as entidades ativas (pattern, stop, sequence, etc.) para a query string;
-	// e, vice-versa, é necessário passar as entidades da query string para o estado.
-
-	useEffect(() => {
-		if (filterActivePatternIdState) {
-			for (const patternGroup of dataValidPatternsState || []) {
-				if (patternGroup.id === filterActivePatternIdState) {
-					setDataActivePatternState(patternGroup);
-					return;
-				}
-			}
-		}
-	}, [dataValidPatternsState]);
-
-	useEffect(() => {
-		// Pre-select the first stop if no stop is selected. Return otherwise.
-		if (!dataActivePatternState) return;
-		// Sort stops by sequence
-		const sortedStops = dataActivePatternState.path.sort((a, b) => a.stop_sequence - b.stop_sequence);
-		if (sortedStops[0]) {
-			setDataActiveWaypointState(sortedStops[0]);
-		}
-	}, [dataActivePatternState, dataValidPatternsState]);
-
-	//
-	// F. Define context value
+	// E. Define context value
 
 	const contextValue: LinesDetailContextState = {
 		actions: {
@@ -297,10 +346,10 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			active_shape: dataActiveShapeState,
 			active_waypoint: dataActiveWaypointState,
 			all_patterns: dataAllPatternsState,
-			all_routes: dataRoutesState,
-			demand: dataDemandState,
-			line: dataLineState || null,
-			service: dataServiceMetricsState,
+			demand_metrics: dataDemandMetricsState,
+			line: dataLineState,
+			routes: dataRoutesState,
+			service_metrics: dataServiceMetricsState,
 			valid_patterns: dataValidPatternsState,
 		},
 		filters: {

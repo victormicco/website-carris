@@ -33,7 +33,7 @@ export function PathWaypointTimetable() {
 		// Setup variables
 		const activePatternGroup = linesDetailContext.data.active_pattern;
 		const secondaryPatternGroups = linesDetailContext.data.valid_patterns?.filter(patternGroup => patternGroup.version_id !== activePatternGroup?.version_id) || [];
-		const mentionedRoutes = linesDetailContext.data.all_routes;
+		const mentionedRoutes = linesDetailContext.data.routes;
 		const selectedStopId = linesDetailContext.data.active_waypoint?.stop_id;
 		const selectedStopSequence = linesDetailContext.data.active_waypoint?.stop_sequence;
 		const selectedOperationalDay = operationalDayContext.data.selected_day;

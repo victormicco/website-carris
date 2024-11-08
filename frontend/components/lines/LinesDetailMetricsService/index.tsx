@@ -26,10 +26,10 @@ export function LinesDetailMetricsService() {
 	// B. Transform data
 
 	const last15DaysService = useMemo(() => {
-		if (!linesDetailContext.data.service) return [];
-		linesDetailContext.data.service.sort((a, b) => Number(b.operationalDay) - Number(a.operationalDay));
-		return linesDetailContext.data.service.slice(0, 15);
-	}, [linesDetailContext.data.service]);
+		if (!linesDetailContext.data.service_metrics) return [];
+		linesDetailContext.data.service_metrics.sort((a, b) => Number(b.operationalDay) - Number(a.operationalDay));
+		return linesDetailContext.data.service_metrics.slice(0, 15);
+	}, [linesDetailContext.data.service_metrics]);
 
 	const service15dayAverage = useMemo(() => {
 		if (!last15DaysService) return 0;

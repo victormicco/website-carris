@@ -4,7 +4,7 @@
 
 import type { Line, Route } from '@carrismetropolitana/api-types/network';
 
-import { ServiceMetrics } from '@/types/metrics.types';
+import { DemandMetrics, ServiceMetrics } from '@/types/metrics.types';
 import { Routes } from '@/utils/routes';
 import { createContext, useContext } from 'react';
 import useSWR from 'swr';
@@ -13,11 +13,13 @@ import useSWR from 'swr';
 
 interface LinesContextState {
 	actions: {
+		getDemandMetricsByLineId: (lineId: string) => DemandMetrics | undefined
 		getLineDataById: (lineId: string) => Line | undefined
 		getRouteDataById: (routeId: string) => Route | undefined
 		getServiceMetricsByLineId: (lineId: string) => ServiceMetrics[] | undefined
 	}
 	data: {
+		demand_metrics: DemandMetrics[]
 		lines: Line[]
 		routes: Route[]
 		service_metrics: ServiceMetrics[]
@@ -49,7 +51,8 @@ export const LinesContextProvider = ({ children }) => {
 
 	const { data: allLinesData, isLoading: allLinesLoading } = useSWR<Line[], Error>(`${Routes.API}/lines`);
 	const { data: allRoutesData, isLoading: allRoutesLoading } = useSWR<Route[], Error>(`${Routes.API}/routes`);
-	const { data: allServiceMetricsData } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
+	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetrics[], Error>(`${Routes.API}/metrics/demand/by_line`);
+	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
 
 	//
 	// B. Handle actions
@@ -62,8 +65,12 @@ export const LinesContextProvider = ({ children }) => {
 		return allRoutesData?.find(route => route.id === routeId);
 	};
 
+	const getDemandMetricsByLineId = (lineId: string) => {
+		return demandByLineData?.find(demandMetrics => demandMetrics.item_id === lineId);
+	};
+
 	const getServiceMetricsByLineId = (lineId: string) => {
-		return allServiceMetricsData?.filter(serviceMetrics => serviceMetrics.lineId === lineId);
+		return serviceMetricsData?.filter(serviceMetrics => serviceMetrics.lineId === lineId);
 	};
 
 	//
@@ -71,17 +78,19 @@ export const LinesContextProvider = ({ children }) => {
 
 	const contextValue: LinesContextState = {
 		actions: {
+			getDemandMetricsByLineId,
 			getLineDataById,
 			getRouteDataById,
 			getServiceMetricsByLineId,
 		},
 		data: {
+			demand_metrics: demandByLineData || [],
 			lines: allLinesData || [],
 			routes: allRoutesData || [],
-			service_metrics: allServiceMetricsData || [],
+			service_metrics: serviceMetricsData || [],
 		},
 		flags: {
-			is_loading: allLinesLoading || allRoutesLoading,
+			is_loading: allLinesLoading || allRoutesLoading || demandByLineDataLoading || serviceMetricsLoading,
 		},
 	};
 
