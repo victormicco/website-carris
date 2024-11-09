@@ -213,9 +213,6 @@
 		"nothing_found": "No Results Found",
 		"placeholder": "Search line by number, name, location..."
 	},
-	"SelectPattern": {
-		"option_label": "Start of route: {locality}"
-	},
 	"SelectStop": {
 		"label": "Search stop by id, name, location...",
 		"nothing_found": "No Results Found",
@@ -407,38 +404,44 @@
 		}
 	},
 	"app": {
-		"DownloadBeta": {
+		"AppDownloadBeta": {
 			"android": "Android",
-			"heading": "Beta: CMMetropolitano App",
+			"heading": "Beta: App CMetropolitana",
 			"iphone": "Apple iPhone",
-			"subheading": "Download the beta version of the Carris Metropolitana app for iOS or Android, and contribute to the future of this app."
+			"subheading": "Faça o download da versão beta da app Carris Metropolitana para iOS ou Android, e contribua para o futuro desta aplicação."
 		},
-		"DownloadProduction": {
+		"AppDownloadProduction": {
 			"android": "Android",
-			"heading": "CMMetropolitano app",
+			"heading": "App CMetropolitana",
 			"iphone": "Apple iPhone",
-			"subheading": "Download the Carris Metropolitana app for iOS or Android."
+			"subheading": "Faça o download da app Carris Metropolitana para iOS ou Android."
 		},
-		"StartupMessage1": {
+		"AppStartupMessageDefault": {
 			"actions": {
-				"close": "Close",
-				"update_android": "Update on Play Store",
-				"update_ios": "Update on the App Store"
+				"close": "Fechar",
+				"update_android": "Atualizar na Play Store",
+				"update_ios": "Atualizar na App Store"
 			},
-			"heading": "Update available",
-			"subheading": "There is a newly improved version of the CMetropolitana app.",
-			"text": "We recommend that you update soon for a better user experience."
+			"heading": "Atualização disponível",
+			"subheading": "Existe uma nova versão melhorada da app CMetropolitana.",
+			"text": "Recomendamos que atualize em breve para uma melhor experiência de utilização."
 		}
 	},
 	"app-navegante": {
-		"StartupMessageDefault": {
+		"AppNaveganteDownloadProduction": {
+			"android": "Android",
+			"heading": "App navegante®",
+			"iphone": "Apple iPhone",
+			"subheading": "Faça o download da app navegante® para iOS ou Android."
+		},
+		"AppNaveganteStartupMessageDefault": {
 			"actions": {
-				"update_android": "Update on Play Store",
-				"update_ios": "Update on App Store"
+				"update_android": "Atualizar na Play Store",
+				"update_ios": "Atualizar na App Store"
 			},
-			"heading": "New version available",
-			"subheading": "Please update the navegante® app to the latest version.",
-			"text": "The new version includes performance optimizations and bug fixes for a better user experience."
+			"heading": "Nova versão disponível",
+			"subheading": "Por favor atualize a app navegante® para a versão mais recente.",
+			"text": "A nova versão inclui otimizações de desempenho e correções de erros para uma melhor experiência de utilização."
 		}
 	},
 	"cards": {
@@ -548,6 +551,11 @@
 		"SelectOperationalDay": {
 			"today": "Today",
 			"tomorrow": "Tomorrow"
+		},
+		"SelectPattern": {
+			"label": "Percurso / Destino",
+			"option_label": "Início do percurso: {locality}",
+			"placeholder": "Selecionar Percurso / Destino..."
 		},
 		"TimetableExceptionsLink": {
 			"schedule": "Min.",
@@ -761,6 +769,9 @@
 				"subtitle": "feasibility of the service of all routes on this line in the last 15 days"
 			}
 		},
+		"LinesDetailPath": {
+			"no_data": "Selecione um Percurso / Destino"
+		},
 		"LinesListToolbar": {
 			"by_current_view": {
 				"all": "All Lines",
@@ -871,6 +882,37 @@
 			"time": "in the period",
 			"warning": "Attention\nPlease Test this feature before using with confidence. You may need to adjust times to ensure you arrive at the location.",
 			"weekday": "Days of the Week"
+		}
+	},
+	"open-data": {
+		"OpenDataPage": {
+			"repos": {
+				"api": {
+					"description": "Disponibilizamos informação sobre a rede, horários planeados, alertas de serviço, equipamentos da AML e mais através de um API REST de livre acesso. Visite o repositório onde poderá consultar a documentação sobre este serviço.",
+					"label": "API"
+				},
+				"datasets": {
+					"description": "Publicamos conjuntos de dados georeferenciados sobre vários equipamentos da área metropolitana de Lisboa, como instituições de ensino, hospitais, entre outros. Cada equipamento tem associado um conjunto de paragens da CMetropolitana. Estes dados são atualizados regularmente e podem ser consultados e utilizados livremente.",
+					"label": "Datasets"
+				},
+				"gtfs": {
+					"description": "O GTFS (General Transit Feed Specification) consiste num conjunto de arquivos de texto unidos numa pasta zip, que contêm dados relativos a todos os aspetos da operação, permitindo obter informações sobre paragens, percursos e horários.",
+					"label": "GTFS"
+				}
+			},
+			"sections": {
+				"intro": {
+					"heading": "Dados Abertos",
+					"subheading": "Alinhada com as diretivas europeias sobre dados abertos, a CMetropolitana disponibiliza publicamente informação relativa à sua operação. A publicação dos dados permite o desenvolvimento de ferramentas úteis e inovadoras por terceiros, permitindo existir apenas uma única versão da rede conhecida por todos, frequentemente atualizada para todos em simultâneo e com otimização de recursos."
+				},
+				"legal_framing": {
+					"heading": "Enquadramento Legal",
+					"text_1": "O GTFS dos Planos de Operação contém informações de interesse público, nomeadamente paragens, percursos e horários.",
+					"text_2": "A 26 de agosto de 2021, foi publicada no Diário da República a Lei n.º 68/2021 que aprova os princípios gerais em matéria de dados, transpondo a Diretiva (UE) 2019/1024 sobre dados abertos e a reutilização de informação do setor público. A referida lei constituiu um importante passo na difusão dos dados detidos e produzidos por entidades públicas em Portugal, alargando o acesso do cidadão a dados do setor público.",
+					"text_3": "O movimento dos dados abertos, que é parte integral das políticas dedicadas ao Governo Aberto (Open Government), combina os princípios da transparência, participação e colaboração, assim como o potencial de desenvolvimento económico que o digital trouxe, tornando as entidades mais eficientes e eficazes, fortalecendo o seu papel de serviço público.",
+					"text_4": "A interação com a comunidade de reutilizadores permitirá recolher sugestões e correções com impacto na operação, que se quer, de todos, impulsionando o seu envolvimento."
+				}
+			}
 		}
 	},
 	"planner": {
