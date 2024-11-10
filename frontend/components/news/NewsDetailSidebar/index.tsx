@@ -1,7 +1,8 @@
 'use client';
 
-import { NewsData } from '@/types/news.types';
 /* * */
+
+import type { NewsData } from '@/types/news.types';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -13,7 +14,10 @@ import styles from './styles.module.css';
 
 export function NewsDetailSidebar({ newsData }: { newsData: NewsData }) {
 	//
+
+	//
 	// A. Setup variables
+
 	const tableOfContents = useHook(newsData);
 	const [activeId, setActiveId] = useState<null | string>(null);
 

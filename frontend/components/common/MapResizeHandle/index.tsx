@@ -1,3 +1,5 @@
+'use client';
+
 /* * */
 
 import { useMapOptionsContext } from '@/contexts/MapOptions.context';
