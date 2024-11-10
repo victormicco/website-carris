@@ -35,6 +35,10 @@ export async function getUserLocale() {
 	const localeQueryValue = referer && new URL(referer).searchParams.get('locale');
 
 	const queryStringLocaleMatched = localeQueryValue && availableLocales.find(item => item.value === localeQueryValue || item.alias.includes(localeQueryValue));
+	console.log('headersList', headersList.entries());
+	console.log('referer', referer);
+	console.log('localeQueryValue', localeQueryValue);
+	console.log('queryStringLocaleMatched', queryStringLocaleMatched);
 	if (queryStringLocaleMatched) {
 		console.log(`(1) Locale set from Query String: ${queryStringLocaleMatched.value}`);
 		return queryStringLocaleMatched.value;
