@@ -43,17 +43,17 @@
 		"swr": "2.2.5",
 		"ua-parser-js": "1.0.39",
 		"ukkonen": "2.1.0",
-		"uuid": "11.0.2"
+		"uuid": "11.0.3"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20241107.121.18",
+		"@carrismetropolitana/api-types": "20241110.45.56",
 		"@carrismetropolitana/eslint": "20241024.1600.5",
 		"@types/jsonwebtoken": "9.0.7",
 		"@types/luxon": "3.4.2",
 		"@types/node": "22.9.0",
 		"@types/react": "18.3.12",
 		"@types/react-dom": "18.3.1",
-		"postcss": "8.4.47",
+		"postcss": "8.4.48",
 		"postcss-preset-mantine": "1.17.0",
 		"postcss-simple-vars": "7.0.1",
 		"typescript": "5.6.3",
