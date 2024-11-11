@@ -1052,6 +1052,7 @@
 			}
 		},
 		"StopsDetailContentTimetableSchedule": {
+			"end_of_day": "Fim do Dia",
 			"no_service": "No Service for the selected day"
 		},
 		"StopsListToolbar": {
