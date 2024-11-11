@@ -3,9 +3,9 @@
 /* * */
 
 import { MapView } from '@/components/map/MapView';
-import { MapViewStyleActiveStops } from '@/components/map/MapViewStyleActiveStops';
+import { MapViewStyleActiveStops, MapViewStyleActiveStopsPrimaryLayerId } from '@/components/map/MapViewStyleActiveStops';
 import { MapViewStylePath, MapViewStylePathInteractiveLayerId } from '@/components/map/MapViewStylePath';
-import { MapViewStyleVehicles } from '@/components/map/MapViewStyleVehicles';
+import { MapViewStyleVehicles, MapViewStyleVehiclesPrimaryLayerId } from '@/components/map/MapViewStyleVehicles';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { transformStopDataIntoGeoJsonFeature, useStopsContext } from '@/contexts/Stops.context';
 import { useVehiclesContext } from '@/contexts/Vehicles.context';
@@ -121,18 +121,20 @@ export function LinesDetailPathMap() {
 			onClick={handleLayerClick}
 		>
 
-			<MapViewStylePath
-				shapeData={linesDetailContext.data.active_shape?.geojson}
-				stopsData={activePathFeatureCollection}
-			/>
-
-			<MapViewStyleActiveStops
-				stopsData={activeStopFeatureCollection}
-			/>
-
 			<MapViewStyleVehicles
 				showCounter="always"
 				vehiclesData={activeVehiclesFeatureCollection}
+			/>
+
+			<MapViewStyleActiveStops
+				presentBeforeId={MapViewStyleVehiclesPrimaryLayerId}
+				stopsData={activeStopFeatureCollection}
+			/>
+
+			<MapViewStylePath
+				presentBeforeId={MapViewStyleActiveStopsPrimaryLayerId}
+				shapeData={linesDetailContext.data.active_shape?.geojson}
+				waypointsData={activePathFeatureCollection}
 			/>
 
 		</MapView>
