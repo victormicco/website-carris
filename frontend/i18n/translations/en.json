@@ -1058,9 +1058,9 @@
 		"StopsListToolbar": {
 			"filters": {
 				"by_current_view": {
-					"all": "All Stops",
 					"favorites": "Favorites",
-					"map": "Ver em Mapa"
+					"list": "Lista",
+					"map": "Mapa"
 				},
 				"by_search": {
 					"placeholder": "Search by name, location..."
