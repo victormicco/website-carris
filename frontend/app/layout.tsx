@@ -39,6 +39,9 @@ export default async function RootLayout({ children }) {
 
 	return (
 		<html className={inter.variable} lang={locale}>
+			<head>
+				<meta content="transparent" name="theme-color" />
+			</head>
 			<body>
 				<NextIntlClientProvider
 					formats={availableFormats}

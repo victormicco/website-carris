@@ -165,12 +165,11 @@
 		/* * */
 		/* COLOR / SYSTEM */
 
-		--hsl: hsl(232deg 8% 12%);
-		--color-system-background-100: hsl(from var(--hsl) h s calc(l * 18/13));
-		--color-system-background-200: hsl(from var(--hsl) h s calc(l * 15/13));
-		--color-system-background-300: var(--hsl);
-		--color-system-border-100: hsl(from var(--hsl) h s calc(l * 27/13));
-		--color-system-border-200: hsl(from var(--hsl) h s calc(l * 37/13));
+		--color-system-background-100: #3C3C46;
+		--color-system-background-200: #32323C;
+		--color-system-background-300: #282832;
+		--color-system-border-100: #50505A;
+		--color-system-border-200: #82828C;
 		--color-system-text-100: #fff;
 		--color-system-text-200: #c8c8d2;
 		--color-system-text-300: #8c8c96;
