@@ -10,6 +10,6 @@
 
 @media screen and (width < 650px){
 	.container{
-		gap: var(--size-spacing-15);
+		gap: var(--size-spacing-10);
 	}
 }
