@@ -49,10 +49,11 @@ export function SelectStop({ data = [], label, nothingFound, onSelectStopId, pla
 		const boostedData = data.map(item => ({ ...item, boost: profileContext.data.favorite_stops?.includes(item.id) ? true : false }));
 		return createDocCollection(boostedData, {
 			id: 2,
-			locality_id: 1,
+			// TODO: Add locality.name to the search
+			// locality_id: 1,
 			long_name: 1,
 			short_name: 1,
-			tts_name: 0.9,
+			tts_name: 1.5,
 		});
 	}, [data]);
 

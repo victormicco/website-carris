@@ -198,18 +198,25 @@ function searchDocuments<T extends SearchableDocument<T>>(
 			if (Array.isArray(documentValue)) {
 				const documentStrings = documentValue;
 				if (queryWords.length > 0) {
-				// Match each query word against a locality.
-				// We do not match against each word in the locality as this would be very slow. TODO improve
+					// Match each query word against a locality.
+					// We do not match against each word in the locality as this would be very slow. TODO improve
 					queryWords.forEach((queryWord: string) => {
-						totalScore += matchWord(documentStrings, queryWord) * multiplier;
+						// The length penalty is a factor that decreases the score
+						// of a word match based on the length of the query word.
+						// This is to prevent short words from being too heavily weighted.
+						// The penalty is a factor of the length of the query word divided by 3
+						// The penalty is then clamped between 0 and 1.
+						const lengthPenalty = Math.min(queryWord.length / 3, 1);
+						totalScore += matchWord(documentStrings, queryWord) * multiplier * lengthPenalty;
 					});
 				}
 			}
 			else if (typeof documentValue === 'string') {
 				const documentWords = documentValue.split(' ');
-
 				queryWords.forEach((queryWord: string) => {
-					totalScore += matchWord(documentWords, queryWord) * multiplier;
+					// See above
+					const lengthPenalty = Math.min(queryWord.length / 3, 1);
+					totalScore += matchWord(documentWords, queryWord) * multiplier * lengthPenalty;
 				});
 
 				if (queryWords.length > 1) {
