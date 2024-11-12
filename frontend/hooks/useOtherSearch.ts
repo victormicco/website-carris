@@ -204,9 +204,9 @@ function searchDocuments<T extends SearchableDocument<T>>(
 						// The length penalty is a factor that decreases the score
 						// of a word match based on the length of the query word.
 						// This is to prevent short words from being too heavily weighted.
-						// The penalty is a factor of the length of the query word divided by 3
+						// The penalty is a factor of the length of the query word divided by 4
 						// The penalty is then clamped between 0 and 1.
-						const lengthPenalty = Math.min(queryWord.length / 3, 1);
+						const lengthPenalty = Math.min(queryWord.length / 4, 1);
 						totalScore += matchWord(documentStrings, queryWord) * multiplier * lengthPenalty;
 					});
 				}
