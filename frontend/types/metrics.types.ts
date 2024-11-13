@@ -34,15 +34,6 @@ export interface OperatorMetrics {
 	value: number
 }
 
-export interface ServiceMetrics {
-	agencyId: string
-	lineId: string
-	operationalDay: string
-	passTripCount: number
-	passTripPercentage: number
-	totalTripCount: number
-}
-
 export interface DemandMetrics {
 	by_day: {
 		by_hour: {

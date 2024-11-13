@@ -4,6 +4,7 @@
 
 import type { SimplifiedAlert } from '@/types/alerts.types';
 import type { DemandMetrics } from '@/types/metrics.types';
+import type { ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import type { Line, Pattern, Route, Shape, Waypoint } from '@carrismetropolitana/api-types/network';
 
 import { useAlertsContext } from '@/contexts/Alerts.context';
@@ -11,7 +12,6 @@ import { useLinesContext } from '@/contexts/Lines.context';
 import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import { useStopsContext } from '@/contexts/Stops.context';
-import { ServiceMetrics } from '@/types/metrics.types';
 import { Routes } from '@/utils/routes';
 import { useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -110,13 +110,13 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		const serviceMetricsData = linesContext.actions.getServiceMetricsByLineId(lineId);
 		if (!serviceMetricsData) return;
 		setDataServiceMetricsState(serviceMetricsData);
-	}, [lineId]);
+	}, [lineId, linesContext.data.service_metrics]);
 
 	useEffect(() => {
 		const demandMetricsData = linesContext.actions.getDemandMetricsByLineId(lineId);
 		if (!demandMetricsData) return;
 		setDataDemandMetricsState(demandMetricsData);
-	}, [lineId]);
+	}, [lineId, linesContext.data.demand_metrics]);
 
 	useEffect(() => {
 		if (!dataLineState || !dataLineState.route_ids) return;

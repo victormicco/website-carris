@@ -2,9 +2,10 @@
 
 /* * */
 
+import type { ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import type { Line, Route } from '@carrismetropolitana/api-types/network';
 
-import { DemandMetrics, ServiceMetrics } from '@/types/metrics.types';
+import { DemandMetrics } from '@/types/metrics.types';
 import { Routes } from '@/utils/routes';
 import { createContext, useContext } from 'react';
 import useSWR from 'swr';
@@ -70,7 +71,7 @@ export const LinesContextProvider = ({ children }) => {
 	};
 
 	const getServiceMetricsByLineId = (lineId: string) => {
-		return serviceMetricsData?.filter(serviceMetrics => serviceMetrics.lineId === lineId);
+		return serviceMetricsData?.filter(serviceMetrics => serviceMetrics.line_id === lineId);
 	};
 
 	//

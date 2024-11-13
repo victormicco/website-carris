@@ -30,7 +30,7 @@ export function LinesDetailMetricsDemand() {
 		return linesDetailContext.data.demand_metrics.by_day
 			.sort((a, b) => Number(a.day) - Number(b.day))
 			.map(item => ({
-				operationalDay: DateTime.fromFormat(item.day.toString(), 'yyyyMMdd').toFormat('dd/MM'),
+				operationalDay: DateTime.fromFormat(item.day.toString(), 'yyyy-MM-dd').toFormat('dd LLL yyyy'),
 				qty: item.qty,
 			}));
 	}, [linesDetailContext.data.demand_metrics]);
