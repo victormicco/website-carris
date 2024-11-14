@@ -757,17 +757,42 @@
 		"LinesDetailAlerts": {
 			"heading": "Active alerts for this line"
 		},
-		"LinesDetailMetrics": {
-			"demand": {
-				"big_number": "{value, number}",
-				"label": "Passengers transported / day",
-				"subtitle": "passengers transported on this line in the last 15 days"
+		"LinesDetailMetricsDemand": {
+			"big_number": "{value, number}",
+			"chart": {
+				"series": {
+					"average": {
+						"label": "Média = {value, number}"
+					},
+					"qty": {
+						"label": "Passageiros transportados / dia"
+					}
+				}
 			},
-			"service": {
-				"big_number": "{value, number, percentage}",
-				"label": "Success rate",
-				"subtitle": "feasibility of the service of all routes on this line in the last 15 days"
-			}
+			"description": "Valor apurado com base no total de validações e vendas a bordo em todos as viagens desta linha no últimos 15 dias.",
+			"title": "passageiros transportados nesta linha nos últimos 15 dias."
+		},
+		"LinesDetailMetricsService": {
+			"big_number": "{value, number, percentage}",
+			"chart": {
+				"series": {
+					"fail_trip_count": {
+						"label": "Viagens não executadas"
+					},
+					"pass_trip_count": {
+						"label": "Viagens executadas"
+					},
+					"pass_trip_percentage": {
+						"label": "Taxa de execução"
+					},
+					"total_trip_count": {
+						"label": "Viagens planeadas"
+					}
+				}
+			},
+			"description": "Taxa de execução calculada com base no total de viagens corretamente executadas face ao total de viagens planeadas para os últimos 15 dias. Para esta análise são considerados dados de posição dos veículos em tempo real e dados das validações e vendas a bordo.",
+			"footnote": "A fórmula utilizada para calcular a taxa de execução aqui apresentada é menos exigente que o conjunto de indicadores definidos contratualmente para a avaliação do desempenho e qualidade do serviço prestado pelos Operadores.",
+			"title": "das {total_trip_count, number} viagens planeadas para os últimos 15 dias, {pass_trip_count, number} foram corretamente realizadas."
 		},
 		"LinesDetailPath": {
 			"no_data": "Selecione um Percurso / Destino"
