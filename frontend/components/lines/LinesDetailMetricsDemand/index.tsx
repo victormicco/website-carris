@@ -66,7 +66,7 @@ export function LinesDetailMetricsDemand() {
 					<LineChart
 						color={linesDetailContext.data.line?.color}
 						connectNulls={false}
-						curveType="natural"
+						curveType="monotone"
 						data={selectedDistribution}
 						dataKey="operationalDay"
 						gridAxis="none"

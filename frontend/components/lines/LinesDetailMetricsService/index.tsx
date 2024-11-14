@@ -88,7 +88,7 @@ export function LinesDetailMetricsService() {
 					<LineChart
 						color={linesDetailContext.data.line.color}
 						connectNulls={false}
-						curveType="natural"
+						curveType="monotone"
 						data={service15DayDistribution}
 						dataKey="operational_day"
 						gridAxis="none"
