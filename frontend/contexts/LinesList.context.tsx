@@ -114,7 +114,7 @@ export const LinesListContextProvider = ({ children }) => {
 			const boostedData = filterResult.map(line => ({ ...line, boost: profileContext.data.favorite_lines?.includes(line.id) ? true : false }));
 			const searchHook = createDocCollection(boostedData, {
 				id: 4,
-				locality_ids: 1,
+				// locality_ids: 1,
 				long_name: 2,
 				short_name: 4,
 				tts_name: 3,

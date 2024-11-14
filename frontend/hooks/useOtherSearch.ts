@@ -87,13 +87,13 @@ export function createDocCollection<T extends SearchableDocument<T>>(docs: T[], 
 }
 
 /**
-	   * Calculate the Levenshtein distance between two strings, using a cache to speed up the process.
-	   * @param a - The first string.
-	   * @param b - The second string.
-		 * @param maxDistance - The maximum distance allowed. Stops early which significantly speeds up the process.
-		 * @param levenshteinCache - The cache to store the results.
-	   * @returns - The Levenshtein distance.
-	   */
+ * Calculate the Levenshtein distance between two strings, using a cache to speed up the process.
+ * @param a - The first string.
+ * @param b - The second string.
+ * @param maxDistance - The maximum distance allowed. Stops early which significantly speeds up the process.
+ * @param levenshteinCache - The cache to store the results.
+ * @returns - The Levenshtein distance.
+ */
 const levenshteinDistance = (a: string, b: string, maxDistance: number, levenshteinCache: Map<string, number>): number => {
 	const cachekey = a + '\n' + b;
 	const cacheValue = levenshteinCache.get(cachekey);
