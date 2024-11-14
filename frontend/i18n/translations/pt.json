@@ -772,7 +772,7 @@
 					}
 				}
 			},
-			"description": "Valor apurado com base no total de validações e vendas a bordo em todos as viagens desta linha no últimos 15 dias.",
+			"description": "Valor apurado com base no total de validações e vendas a bordo em todas as viagens desta linha nos últimos 15 dias.",
 			"footnote": "A fórmula utilizada para calcular a taxa de execução aqui apresentada é menos exigente que o conjunto de indicadores definidos contratualmente para a avaliação do desempenho e qualidade do serviço prestado pelos Operadores.",
 			"title": "passageiros transportados nesta linha nos últimos 15 dias."
 		},
