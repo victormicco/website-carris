@@ -2,10 +2,9 @@
 
 /* * */
 
-import type { ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
+import type { DemandMetricsByLine, ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import type { Line, Route } from '@carrismetropolitana/api-types/network';
 
-import { DemandMetrics } from '@/types/metrics.types';
 import { Routes } from '@/utils/routes';
 import { createContext, useContext } from 'react';
 import useSWR from 'swr';
@@ -14,13 +13,13 @@ import useSWR from 'swr';
 
 interface LinesContextState {
 	actions: {
-		getDemandMetricsByLineId: (lineId: string) => DemandMetrics | undefined
+		getDemandMetricsByLineId: (lineId: string) => DemandMetricsByLine | undefined
 		getLineDataById: (lineId: string) => Line | undefined
 		getRouteDataById: (routeId: string) => Route | undefined
 		getServiceMetricsByLineId: (lineId: string) => ServiceMetrics[] | undefined
 	}
 	data: {
-		demand_metrics: DemandMetrics[]
+		demand_metrics: DemandMetricsByLine[]
 		lines: Line[]
 		routes: Route[]
 		service_metrics: ServiceMetrics[]
@@ -52,7 +51,7 @@ export const LinesContextProvider = ({ children }) => {
 
 	const { data: allLinesData, isLoading: allLinesLoading } = useSWR<Line[], Error>(`${Routes.API}/lines`);
 	const { data: allRoutesData, isLoading: allRoutesLoading } = useSWR<Route[], Error>(`${Routes.API}/routes`);
-	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetrics[], Error>(`${Routes.API}/metrics/demand/by_line`);
+	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetricsByLine[], Error>(`${Routes.API}/metrics/demand/by_line`);
 	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
 
 	//
@@ -67,7 +66,7 @@ export const LinesContextProvider = ({ children }) => {
 	};
 
 	const getDemandMetricsByLineId = (lineId: string) => {
-		return demandByLineData?.find(demandMetrics => demandMetrics.item_id === lineId);
+		return demandByLineData?.find(demandMetrics => demandMetrics.line_id === lineId);
 	};
 
 	const getServiceMetricsByLineId = (lineId: string) => {

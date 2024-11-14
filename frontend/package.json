@@ -33,7 +33,7 @@
 		"maplibre-gl": "4.7.1",
 		"next": "15.0.3",
 		"next-intl": "3.25.1",
-		"nuqs": "2.1.2",
+		"nuqs": "2.2.0",
 		"react-map-gl": "7.1.7",
 		"react-nice-avatar": "1.5.0",
 		"react-qr-code": "2.0.15",
@@ -46,7 +46,7 @@
 		"uuid": "11.0.3"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20241113.1446.20",
+		"@carrismetropolitana/api-types": "20241114.1758.56",
 		"@carrismetropolitana/eslint": "20241024.1600.5",
 		"@types/jsonwebtoken": "9.0.7",
 		"@types/luxon": "3.4.2",

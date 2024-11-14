@@ -7,17 +7,18 @@ import styles from './styles.module.css';
 interface Props {
 	children?: React.ReactNode
 	forceOverflow?: boolean
+	fullHeight?: boolean
 	variant?: 'alerts' | 'brand' | 'brand2' | 'debug' | 'default' | 'muted' | 'persistent' | 'standout' | 'success' | 'warning'
 }
 
 /* * */
 
-export function Surface({ children, forceOverflow, variant = 'default' }: Props) {
+export function Surface({ children, forceOverflow, fullHeight, variant = 'default' }: Props) {
 	//
 
 	if (variant === 'standout') {
 		return (
-			<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow}`}>
+			<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow} ${fullHeight && styles.fullHeight}`}>
 				<div className={styles.inner}>
 					{children}
 				</div>
@@ -27,14 +28,14 @@ export function Surface({ children, forceOverflow, variant = 'default' }: Props)
 
 	if (variant === 'alerts') {
 		return (
-			<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow}`}>
+			<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow} ${fullHeight && styles.fullHeight}`}>
 				{children}
 			</div>
 		);
 	}
 
 	return (
-		<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow}`}>
+		<div className={`${styles.container} ${styles[variant]} ${forceOverflow && styles.forceOverflow} ${fullHeight && styles.fullHeight}`}>
 			{children}
 		</div>
 	);

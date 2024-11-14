@@ -19,7 +19,7 @@ export function LinesDetailMetricsDemand() {
 	//
 	// A. Setup variables
 
-	const t = useTranslations('lines.LinesDetailMetrics');
+	const t = useTranslations('lines.LinesDetailMetricsDemand');
 	const linesDetailContext = useLinesDetailContext();
 
 	//
@@ -37,71 +37,71 @@ export function LinesDetailMetricsDemand() {
 
 	const averageDemand = useMemo(() => {
 		if (!linesDetailContext.data.demand_metrics) return 0;
-		return linesDetailContext.data.demand_metrics.total_qty / linesDetailContext.data.demand_metrics.by_day.length;
+		return (linesDetailContext.data.demand_metrics.total_qty / linesDetailContext.data.demand_metrics.by_day.length).toFixed(0);
 	}, [linesDetailContext.data.demand_metrics]);
 
 	//
 	// C. Render components
 
-	const renderDemandLineChart = () => {
-		if (!selectedDistribution || !linesDetailContext.data.line || !linesDetailContext.data.demand_metrics) return null;
-
-		return (
-			<LineChart
-				color={linesDetailContext.data.line?.color}
-				curveType="natural"
-				data={selectedDistribution}
-				dataKey="operationalDay"
-				gridAxis="none"
-				h={120}
-				strokeWidth={5}
-				styles={{ referenceLine: { strokeDasharray: '5 5' } }}
-				withDots={false}
-				withLegend={false}
-				withTooltip={true}
-				withXAxis={false}
-				withYAxis={false}
-				referenceLines={[
-					{
-						color: 'var(--color-system-text-300)',
-						label: t('demand.label'),
-						labelPosition: 'insideBottomRight',
-						y: averageDemand,
-					},
-				]}
-				series={[
-					{
-						color: linesDetailContext.data.line?.color,
-						label: t('demand.label'),
-						name: 'qty',
-					},
-				]}
-			/>
-		);
-	};
-
-	const renderDemandMetric = () => {
-		return (
-			<div className={styles.container}>
-				<div className={styles.metricWrapper}>
-					<div className={styles.bigNumberWrapper}>
-						<h1 className={styles.bigNumber} style={{ color: linesDetailContext.data.line?.color }}>
-							{t('demand.big_number', { value: linesDetailContext.data.demand_metrics?.total_qty })}
-						</h1>
-						<LiveIcon className={styles.liveIcon} color={linesDetailContext.data.line?.color} />
-					</div>
-					<h3 className={styles.subtitle}>{t('demand.subtitle')}</h3>
-				</div>
-				<div className={styles.metricWrapper} />
-			</div>
-		);
-	};
+	if (!linesDetailContext.data.line || !selectedDistribution) {
+		return null;
+	}
 
 	return (
 		<Surface>
 			<Section withGap withPadding>
-				{renderDemandMetric()}
-				{renderDemandLineChart()}
+
+				<div className={styles.infoWrapper}>
+					<div className={styles.bigNumberWrapper}>
+						<h1 className={styles.bigNumber} style={{ color: linesDetailContext.data.line?.color }}>
+							{t('big_number', { value: linesDetailContext.data.demand_metrics?.total_qty })}
+						</h1>
+						<LiveIcon className={styles.liveIcon} color={linesDetailContext.data.line?.color} />
+					</div>
+					<h3 className={styles.title}>{t('title')}</h3>
+					<p className={styles.description}>{t('description')}</p>
+				</div>
+
+				<div className={styles.chartWrapper}>
+					<LineChart
+						color={linesDetailContext.data.line?.color}
+						connectNulls={false}
+						curveType="natural"
+						data={selectedDistribution}
+						dataKey="operationalDay"
+						gridAxis="none"
+						h={120}
+						strokeWidth={5}
+						styles={{ referenceLine: { strokeDasharray: '5 5' } }}
+						withDots={false}
+						withLegend={false}
+						withTooltip={true}
+						withXAxis={false}
+						withYAxis={false}
+						referenceLines={[
+							{
+								color: 'var(--color-system-text-300)',
+								label: t('chart.series.average.label', { value: averageDemand }),
+								labelPosition: 'insideBottomRight',
+								y: averageDemand,
+							},
+							{
+								color: 'var(--color-system-text-300)',
+								label: '0',
+								labelPosition: 'insideBottomRight',
+								y: 0,
+							},
+						]}
+						series={[
+							{
+								color: linesDetailContext.data.line?.color,
+								label: t('chart.series.qty.label'),
+								name: 'qty',
+							},
+						]}
+					/>
+				</div>
+
 			</Section>
 		</Surface>
 	);
