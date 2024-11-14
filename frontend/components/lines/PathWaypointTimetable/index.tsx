@@ -37,7 +37,7 @@ export function PathWaypointTimetable() {
 		const selectedStopSequence = linesDetailContext.data.active_waypoint?.stop_sequence;
 		const selectedOperationalDay = operationalDayContext.data.selected_day;
 		// Check if all these variables are defined
-		if (!activePatternGroup || !secondaryPatternGroups.length || !mentionedRoutes || !selectedStopId || selectedStopSequence === undefined || !selectedOperationalDay) {
+		if (!activePatternGroup || !mentionedRoutes || !selectedStopId || selectedStopSequence === undefined || !selectedOperationalDay) {
 			return null;
 		}
 
@@ -46,7 +46,6 @@ export function PathWaypointTimetable() {
 			// Find the closest valid date
 			return activePatternGroup.valid_on.reduce((acc, curr) => {
 				if (selectedOperationalDay <= curr && (acc === '' || curr < acc)) return curr;
-
 				return acc;
 			}, '');
 		}
