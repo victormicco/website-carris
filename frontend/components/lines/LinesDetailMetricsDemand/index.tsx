@@ -48,7 +48,7 @@ export function LinesDetailMetricsDemand() {
 	}
 
 	return (
-		<Surface>
+		<Surface fullHeight>
 			<Section withGap withPadding>
 
 				<div className={styles.infoWrapper}>
