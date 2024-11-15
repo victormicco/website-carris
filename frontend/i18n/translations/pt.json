@@ -772,8 +772,9 @@
 					}
 				}
 			},
-			"description": "Valor apurado com base no total de validações e vendas a bordo em todos as viagens desta linha no últimos 15 dias.",
-			"title": "passageiros transportados nesta linha nos últimos 15 dias."
+			"description": "Valor apurado com base no total de validações e vendas a bordo em todas as viagens desta linha nos últimos 15 dias.",
+			"footnote": "O valor de passageiros transportados é atualizado de 5 em 5 minutos, sendo que pode demorar até 30 minutos para refletir a realidade.",
+			"title": "passageiros transportados nesta linha nos últimos 15 dias"
 		},
 		"LinesDetailMetricsService": {
 			"big_number": "{value, number, percentage}",
@@ -786,7 +787,7 @@
 						"label": "Viagens executadas"
 					},
 					"pass_trip_percentage": {
-						"label": "Taxa de execução"
+						"label": "Taxa de execução %"
 					},
 					"total_trip_count": {
 						"label": "Viagens planeadas"
@@ -795,7 +796,7 @@
 			},
 			"description": "Taxa de execução calculada com base no total de viagens corretamente executadas face ao total de viagens planeadas para os últimos 15 dias. Para esta análise são considerados dados de posição dos veículos em tempo real e dados das validações e vendas a bordo.",
 			"footnote": "A fórmula utilizada para calcular a taxa de execução aqui apresentada é menos exigente que o conjunto de indicadores definidos contratualmente para a avaliação do desempenho e qualidade do serviço prestado pelos Operadores.",
-			"title": "das {total_trip_count, number} viagens planeadas para os últimos 15 dias, {pass_trip_count, number} foram corretamente realizadas."
+			"title": "das {total_trip_count, number} viagens planeadas para os últimos 15 dias, {pass_trip_count, number} foram corretamente realizadas"
 		},
 		"LinesDetailPath": {
 			"no_data": "Selecione um Percurso / Destino"
