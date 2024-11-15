@@ -8,7 +8,7 @@ import { Surface } from '@/components/layout/Surface';
 
 export function QuickSearch() {
 	return (
-		<Surface variant="brand">
+		<Surface variant="brand" fullHeight>
 			<QuickSearchFavoritesBar />
 			<QuickSearchWidget />
 		</Surface>
