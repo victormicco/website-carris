@@ -815,6 +815,9 @@
 			},
 			"heading": "Pesquisar Linhas"
 		},
+		"LinesListViewAll": {
+			"no_data": "Nenhuma linha encontrada para esta pesquisa"
+		},
 		"LinesListViewFavorites": {
 			"no_favorites": "Ainda não tem linhas favoritas"
 		},
@@ -878,6 +881,30 @@
 				"map": "Mapa",
 				"satellite": "Satélite"
 			}
+		}
+	},
+	"metrics": {
+		"MetricsPageIntro": {
+			"heading": "A nossa operação ao vivo",
+			"text_1": "A Carris Metropolitana possui uma política de dados abertos, com o objetivo de promover a transparência e a proximidade com os seus passageiros, divulgando publicamente informação relativa à sua operação.",
+			"text_2": "Nesta página pode acompanhar, em tempo real, o número de passageiros transportados na rede da Carris Metropolitana. Estes dados, calculados com base no total de validações e vendas a bordo em todas as viagens, são fundamentais para uma otimização do serviço baseada nas suas nessidades."
+		},
+		"MetricsPageLines": {
+			"heading": "Linhas mais utilizadas",
+			"text_1": "Abaixo, pode explorar as linhas mais utilizadas e o número de passageiros transportados em cada uma delas, com base nas validações e vendas a bordo dos últimos 15 dias. Esta é uma visão detalhada por linha, que lhe permite conhecer melhor as dinâmicas dos passageiros desta rede de transportes. "
+		},
+		"MetricsPagePassengers": {
+			"heading": "Total de Passageiros",
+			"period_options": {
+				"day": "Dia",
+				"month": "Mês",
+				"year": "Ano"
+			},
+			"text_1": "Cada passageiro transportado corresponde a uma validação de um passe, bilhete pré-pago ou bilhete adquirido a bordo de um autocarro da Carris Metropolitana. Através da análise destas validações, a Carris Metropolitana obtém informação essencial sobre a utilização de cada linha. Estes dados ajudam a identificar a importância de cada rota, avaliar a necessidade de ajustes na frequência de horários e, redefinição de percursos para responder melhor às necessidades dos passageiros."
+		},
+		"MetricsPageRecords": {
+			"heading": "Recordes",
+			"text_1": "Aqui, poderá encontrar alguns dos recordes da Carris Metropolitana."
 		}
 	},
 	"news": {
@@ -1100,6 +1127,9 @@
 				"favorites": "{count, plural, =0 {Nenhuma paragem favorita encontrada.} one {Encontrada # paragem favorita:} other {Encontradas # paragens favoritas:}}"
 			},
 			"heading": "Pesquisar Paragens"
+		},
+		"StopsListViewAll": {
+			"no_data": "Nenhuma paragem encontrada para esta pesquisa"
 		},
 		"StopsListViewFavorites": {
 			"no_favorites": "Ainda não tem paragens favoritas"
