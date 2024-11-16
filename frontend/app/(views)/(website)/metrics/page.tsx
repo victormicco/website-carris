@@ -1,6 +1,6 @@
 /* * */
 
-import MetricsPage from '@/components/metrics/Page';
+import { MetricsPage } from '@/components/metrics/MetricsPage';
 
 /* * */
 

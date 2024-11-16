@@ -19,7 +19,7 @@ import styles from './styles.module.css';
 
 /* * */
 
-export default function Component({ className }: { className?: string }) {
+export function MetricsCardToday({ className }: { className?: string }) {
 	//
 
 	//
