@@ -2,16 +2,19 @@
 
 /* * */
 
-import interRegionalAnimation from '@/assets/animations/tickets/inter-regional.json';
-import longaAnimation from '@/assets/animations/tickets/longa.json';
-import marAnimation from '@/assets/animations/tickets/mar.json';
-import proximaAnimation from '@/assets/animations/tickets/proxima.json';
-import rapidaAnimation from '@/assets/animations/tickets/rapida.json';
 import { Surface } from '@/components/layout/Surface';
 import Lottie from 'lottie-react';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
+
+/* * */
+
+import interRegionalAnimation from '@/assets/animations/tickets/inter-regional.json';
+import longaAnimation from '@/assets/animations/tickets/longa.json';
+import marAnimation from '@/assets/animations/tickets/mar.json';
+import proximaAnimation from '@/assets/animations/tickets/proxima.json';
+import rapidaAnimation from '@/assets/animations/tickets/rapida.json';
 
 /* * */
 
