@@ -5,6 +5,7 @@
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
+import { Image } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -31,8 +32,8 @@ export function MetricsPageRecords() {
 
 			<Section withPadding>
 				<Grid columns="ab" withGap>
-					<p>record_1</p>
-					<p>record_2</p>
+					<Image src="/images/metrics/record-1.png" />
+					<Image src="/images/metrics/record-2.png" />
 				</Grid>
 			</Section>
 

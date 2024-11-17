@@ -897,14 +897,38 @@
 		}
 	},
 	"metrics": {
+		"MetricsCardByLine": {
+			"reference_value": "{value, number} /dia",
+			"summary_description": "passageiros transportados nesta linha nos últimos 15 dias",
+			"summary_value": "{value, number}"
+		},
 		"MetricsPageIntro": {
 			"heading": "A nossa operação ao vivo",
 			"text_1": "A Carris Metropolitana possui uma política de dados abertos, com o objetivo de promover a transparência e a proximidade com os seus passageiros, divulgando publicamente informação relativa à sua operação.",
 			"text_2": "Nesta página pode acompanhar, em tempo real, o número de passageiros transportados na rede da Carris Metropolitana. Estes dados, calculados com base no total de validações e vendas a bordo em todas as viagens, são fundamentais para uma otimização do serviço baseada nas suas nessidades."
 		},
 		"MetricsPageLines": {
+			"agencies": {
+				"41": {
+					"main_description": "(Amadora, Oeiras, Sintra, Cascais e Lisboa)",
+					"main_label": "Linhas com mais passageiros transportados na área 1"
+				},
+				"42": {
+					"main_description": "(Mafra, Vila Franca de Xira, Odivelas e Loures)",
+					"main_label": "Linhas com mais passageiros transportados na área 2"
+				},
+				"43": {
+					"main_description": "(Almada, Seixal e Sesimbra)",
+					"main_label": "Linhas com mais passageiros transportados na área 3"
+				},
+				"44": {
+					"main_description": "(Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)",
+					"main_label": "Linhas com mais passageiros transportados na área 4"
+				}
+			},
 			"heading": "Linhas mais utilizadas",
-			"text_1": "Abaixo, pode explorar as linhas mais utilizadas e o número de passageiros transportados em cada uma delas, com base nas validações e vendas a bordo dos últimos 15 dias. Esta é uma visão detalhada por linha, que lhe permite conhecer melhor as dinâmicas dos passageiros desta rede de transportes. "
+			"text_1": "Abaixo, pode explorar as linhas mais utilizadas e o número de passageiros transportados em cada uma delas, com base nas validações e vendas a bordo dos últimos 15 dias. Esta é uma visão detalhada por linha, que lhe permite conhecer melhor as dinâmicas dos passageiros desta rede de transportes."
+
 		},
 		"MetricsPagePassengers": {
 			"heading": "Total de Passageiros",
@@ -1013,7 +1037,7 @@
 		},
 		"MetricsPageRecords": {
 			"heading": "Recordes",
-			"text_1": "Aqui, poderá encontrar alguns dos recordes da Carris Metropolitana."
+			"text_1": "Estes são os recordes mais recentes da Carris Metropolitana."
 		}
 	},
 	"news": {
@@ -1361,5 +1385,8 @@
 		"update_profile_error": "Erro ao atualizar o perfil.",
 		"update_profile_pending": "A Atualizar o perfil...",
 		"update_profile_success": "Perfil atualizado com sucesso!"
+	},
+	"utils": {
+		"number": "{value, number}"
 	}
 }

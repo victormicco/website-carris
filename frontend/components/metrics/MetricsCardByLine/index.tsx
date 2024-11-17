@@ -2,185 +2,134 @@
 
 /* * */
 
+import type { DemandMetricsByLine } from '@carrismetropolitana/api-types/metrics';
+
 import MetricsSectionDemandSkeleton from '@/components/home/MetricsSectionDemandSkeleton';
 import { LineBadge } from '@/components/lines/LineBadge';
 import { useLinesContext } from '@/contexts/Lines.context';
-import { DemandMetrics } from '@/types/metrics.types';
-import { Routes } from '@/utils/routes';
 import { LineChart } from '@mantine/charts';
-import { ActionIcon, Popover, useComputedColorScheme } from '@mantine/core';
-import { IconInfoCircleFilled } from '@tabler/icons-react';
-import classNames from 'classnames';
-import { DateTime } from 'luxon';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useMemo, useState } from 'react';
-import useSWR from 'swr';
+import { useEffect, useMemo, useState } from 'react';
 
 import styles from './styles.module.css';
 
 /* * */
 
-export default function Component({
-	className,
-	showGraph = true,
-}: {
-	className?: string
-	showGraph?: boolean
-}) {
+interface Props {
+	data?: DemandMetricsByLine[]
+	main_description?: string
+	main_label?: string
+}
+
+/* * */
+
+export function MetricsCardByLine({ data, main_description, main_label }: Props) {
 	//
 
 	//
 	// A. Setup variables
 
-	const t = useTranslations('HomeMetricsSectionDemand');
+	const t = useTranslations('metrics.MetricsCardByLine');
 	const linesContext = useLinesContext();
 	const [selectedLineId, setSelectedLineId] = useState<string | undefined>();
-	const colorScheme = useComputedColorScheme();
-
-	//
-	// B. Fetch data
-
-	const { data: metricsData } = useSWR<DemandMetrics[]>(
-		`${Routes.API}/metrics/demand/by_line`,
-	);
 
 	//
 	// C. Transform data
 
-	const topThree = useMemo(() => {
-		if (!metricsData) return null;
-		const top = metricsData
-			.sort((a, b) => b.total_qty - a.total_qty)
-			.slice(0, 3);
-
-		setSelectedLineId(top[0]?.item_id || '');
-		return top;
-	}, [metricsData]);
-
-	const selectedDistribution = useMemo(() => {
-		if (!metricsData) return null;
-		const metrics = metricsData.find(
-			line => line.item_id === selectedLineId,
-		)?.by_day.find(day => day.day === DateTime.now().setZone('Europe/Lisbon').toFormat('yyyy-MM-dd'))?.by_hour;
-		if (!metrics) return null;
-		return metrics
-			.sort((a, b) => a.hour - b.hour)
-			.map(item => ({
-				hour:
-					(item.hour.toString().length === 1 ? '0' : '')
-					+ item.hour
-					+ ':00',
-				qty: item.qty,
+	const formattedData = useMemo(() => {
+		return data?.map((item) => {
+			const lineData = linesContext.actions.getLineDataById(item.line_id);
+			const chartData = item.by_day.map(dayGroup => ({
+				day_group: dayGroup.day,
+				qty: dayGroup.qty,
 			}));
-	}, [metricsData, selectedLineId]);
+			return {
+				...item,
+				chart_data: chartData,
+				line_data: lineData,
+			};
+		});
+	}, [data]);
+
+	const selectedData = useMemo(() => {
+		if (!formattedData) return;
+		return formattedData.find(item => item.line_id === selectedLineId);
+	}, [formattedData, selectedLineId]);
+
+	const maxValue = useMemo(() => {
+		if (!selectedData) return 0;
+		const foundMaxValue = selectedData.chart_data.reduce((acc, item) => Math.max(acc, item.qty), 0);
+		// Round the number to the nearest multiple of 500
+		return Math.ceil(foundMaxValue / 500) * 500;
+	}, [formattedData, selectedLineId]);
+
+	useEffect(() => {
+		if (!formattedData) return;
+		if (selectedLineId) return;
+		setSelectedLineId(formattedData[0].line_id);
+	}, [formattedData]);
 
 	//
 	// D. Render Components
 
-	if (!metricsData) {
+	if (!formattedData) {
 		return <MetricsSectionDemandSkeleton />;
 	}
 
 	return (
-		<div
-			className={classNames(
-				styles.container,
-				{ [styles.light]: colorScheme === 'light' },
-				className,
-			)}
-		>
-			<Popover
-				offset={0}
-				position="top-end"
-				shadow="md"
-				width={300}
-				withArrow
-			>
-				<Popover.Target>
-					<ActionIcon
-						className={styles.popoverAnchor}
-						size="xs"
-						variant="transparent"
-					>
-						<IconInfoCircleFilled />
-					</ActionIcon>
-				</Popover.Target>
-				<Popover.Dropdown>
-					<p className={styles.popoverText}>{t('popover.text')}</p>
-					<Link
-						className={styles.popoverLink}
-						href="/open-data"
-						target="_blank"
-					>
-						{t('popover.link')}
-					</Link>
-				</Popover.Dropdown>
-			</Popover>
+		<div className={styles.container}>
+
 			<div className={styles.metricsWrapper}>
 				<div className={`${styles.rowWrapper} ${styles.primary}`}>
 					<div className={styles.realtimeValueWrapper}>
-						{topThree?.map(line => (
+						{formattedData?.map(item => (
 							<div
-								key={line.item_id}
-								onClick={() => setSelectedLineId(line.item_id)}
-								className={classNames(
-									styles.realtimeValueWrapperItem,
-									{
-										[styles.selected]:
-											line.item_id === selectedLineId,
-									},
-								)}
+								key={item.line_id}
+								className={`${styles.realtimeValueWrapperItem} ${item.line_id === selectedLineId && styles.selected}`}
+								onClick={() => setSelectedLineId(item.line_id)}
 							>
-								<LineBadge
-									key={line.item_id}
-									lineData={linesContext.data.lines.find(
-										raw => raw.id === line.item_id,
-									)}
-								/>
+								<LineBadge key={item.line_id} lineData={item.line_data} size="lg" />
 							</div>
 						))}
-						{/* <LiveIcon color="var(--color-status-info-text)" /> */}
 					</div>
-					<p className={styles.label}>{t('by_line.top')}</p>
+					{main_label && <p className={styles.label}>{main_label}</p>}
+					{main_description && <p className={styles.description}>{main_description}</p>}
 				</div>
-				{/* <div className={`${styles.rowWrapper} ${styles.secondary}`}>
-					<p className={styles.value}>{selectedValue}</p>
-					<p className={styles.label}>{t('by_line.selected')}</p>
-				</div> */}
 			</div>
-			{showGraph && (
-				<div className={styles.graphWrapper}>
-					<LineChart
-						curveType="natural"
-						data={selectedDistribution || []}
-						dataKey="hour"
-						gridAxis="none"
-						h={80}
-						strokeWidth={5}
-						withDots={false}
-						withLegend={false}
-						withXAxis={false}
-						withYAxis={false}
-						color={
-							linesContext.data.lines.find(
-								line => line.id === selectedLineId,
-							)?.color || '#ff00ff'
-						}
-						series={[
-							{
-								color:
-									linesContext.data.lines.find(
-										line =>
-											line.id === selectedLineId,
-									)?.color || '#ff00ff',
-								label: 'Nº de passageniros transportados',
-								name: 'qty',
-							},
-						]}
-					/>
-				</div>
-			)}
+
+			<div className={styles.graphWrapper}>
+				<LineChart
+					color={selectedData?.line_data?.color || '#ff00ff'}
+					curveType="monotone"
+					data={selectedData?.chart_data || []}
+					dataKey="day_group"
+					gridAxis="none"
+					h={120}
+					strokeWidth={5}
+					withDots={false}
+					withLegend={false}
+					withXAxis={false}
+					withYAxis={false}
+					yAxisProps={{ domain: [0, maxValue] }}
+					referenceLines={[
+						{ color: 'var(--color-system-text-400)', label: t('reference_value', { value: maxValue }), labelPosition: 'insideBottomRight', strokeDasharray: '5 10', y: maxValue },
+						{ color: 'var(--color-system-text-400)', label: t('reference_value', { value: 0 }), labelPosition: 'insideBottomRight', strokeDasharray: '5 10', y: 0 },
+					]}
+					series={[
+						{
+							color: selectedData?.line_data?.color || '#ff00ff',
+							label: 'Nº de validações',
+							name: 'qty',
+						},
+					]}
+				/>
+			</div>
+
+			<div className={styles.summaryWrapper} style={{ backgroundColor: selectedData?.line_data?.color, color: selectedData?.line_data?.text_color }}>
+				<p className={styles.summaryValue}>{t('summary_value', { value: selectedData?.qty })}</p>
+				<p className={styles.summaryDescription}>{t('summary_description')}</p>
+			</div>
+
 		</div>
 	);
 

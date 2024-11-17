@@ -4,17 +4,11 @@
 .container {
 	overflow: hidden;
 	width: 100%;
-	border-radius: 18px;
-	border: 1px solid var(--color-system-border-100);
-	background-color: var(--color-system-background-100);
+	border-radius: var(--border-radius-lg);
+	background-color: var(--color-primary-black);
 	box-shadow: var(--box-shadow-lg);
 	position: relative;
 	color: var(--color-system-text-300);
-}
-
-.light {
-	background-color: var(--color-primary-black);
-	color: var(--color-primary-white);
 }
 
 /* * */
@@ -34,7 +28,7 @@
 .rowWrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 3px;
+	gap: var(--size-spacing-5);
 }
 
 /* * */
@@ -49,15 +43,15 @@
 
 /* * */
 /* REALTIME VALUE WRAPPER ITEM */
-.realtimeValueWrapperItem {
-	position: relative;
-	opacity: 0.5;
-	cursor: pointer;
-	transition: opacity 0.5;
 
-	&.selected {
-		opacity: 1;
-	}
+.realtimeValueWrapperItem {
+	opacity: 0.4;
+	cursor: pointer;
+	transition: opacity 300ms ease;
+}
+
+.realtimeValueWrapperItem.selected {
+	opacity: 1;
 }
 
 /* * */
@@ -80,49 +74,48 @@
 /* LABEL */
 
 .label {
+	margin-top: var(--size-spacing-10);
+	color: var(--color-primary-white);
+	opacity: 0.7;
+	font-size: 16px;
 	font-weight: var(--font-weight-bold);
 }
 
-.primary .label {
+.description {
+	color: var(--color-primary-white);
+	opacity: 0.7;
 	font-size: 16px;
+	font-weight: var(--font-weight-medium);
 }
 
-.secondary .label {
-	font-size: 14px;
-}
+
 
 /* * */
 /* GRAPH WRAPPER */
 
 .graphWrapper {
 	width: 100%;
-	padding-bottom: 20px;
 	z-index: 1;
-	margin: -5px; /* Fixed margins set by Recharts */
-	width: calc(100% + 10px); /* Fixed margins set by Recharts */
+	padding: var(--size-spacing-10) 0;
 }
 
 
 /* * */
-/* POPOVER */
+/* SUMMARY */
 
-.popoverAnchor {
+.summaryWrapper {
 	display: flex;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 18px;
-	height: 18px;
-	z-index: 3;
-	color: var(--color-system-text-300);
+	flex-direction: column;
+	padding: var(--size-spacing-15);
+	border-radius: var(--border-radius-lg);
 }
 
-.popoverText,
-.popoverLink {
-	font-size: var(--font-size-muted);
-	font-weight: var(--font-weight-muted);
+.summaryValue {
+	font-size: 20px;
+	font-weight: var(--font-weight-bold);
 }
 
-.popoverLink {
-	text-decoration: underline;
+.summaryDescription {
+	font-size: 16px;
+	font-weight: var(--font-weight-semibold);
 }

@@ -5,7 +5,6 @@
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import MetricsCardByLine from '@/components/metrics/MetricsCardByLine';
 import MetricsCardYearToDate from '@/components/metrics/MetricsCardYearToDate';
 import { BreakpointSwitch } from '@/components/responsive/BreakpointSwitch';
 import { Routes } from '@/utils/routes';
@@ -35,7 +34,6 @@ export function MetricsSection() {
 						desktop={(
 							<Grid columns="ab" withGap>
 								<MetricsCardYearToDate className={styles.ytd} />
-								<MetricsCardByLine className={styles.byLine} showGraph={false} />
 								<Link className={styles.goToMetrics} href={Routes.METRICS.route}>
 									Abrir métricas completas ›
 								</Link>
@@ -45,7 +43,6 @@ export function MetricsSection() {
 							<div className={styles.mobileContainer}>
 								<div className={styles.cardContainer}>
 									<MetricsCardYearToDate className={styles.ytd} />
-									<MetricsCardByLine className={styles.byLine} showGraph={false} />
 								</div>
 								<Link className={styles.goToMetrics} href={Routes.METRICS.route}>
 									Abrir métricas completas ›

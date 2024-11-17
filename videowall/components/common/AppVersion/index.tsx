@@ -8,7 +8,7 @@ import useSWR from 'swr';
 
 /* * */
 
-export default function AppVersion() {
+export function AppVersion() {
 	//
 
 	//

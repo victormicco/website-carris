@@ -4,7 +4,7 @@
 .container {
 	overflow: hidden;
 	width: 100%;
-	border-radius: 18px;
+	border-radius: var(--border-radius-lg);
 	border: 1px solid var(--color-system-border-100);
 	background-color: var(--color-system-background-200);
 	box-shadow: var(--box-shadow-lg);
@@ -90,6 +90,4 @@
 .graphWrapper {
 	width: 100%;
 	z-index: 1;
-	/* margin: -5px; Fixed margins set by Recharts */
-	/* width: calc(100% + 10px); Fixed margins set by Recharts */
 }
