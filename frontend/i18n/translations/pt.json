@@ -130,39 +130,6 @@
 		"favorites": "Favoritos",
 		"profile": "Perfil"
 	},
-	"HomeMetricsSection": {
-		"heading": "A nossa operação ao vivo"
-	},
-	"HomeMetricsSectionDemand": {
-		"area": {
-			"label": "Nº de validações na Área {area} hoje",
-			"value": "{value, number}"
-		},
-		"by_line": {
-			"selected": "passageiros transportados nesta linha",
-			"top": "linhas com mais passageiros transportados hoje"
-		},
-		"lastMonth": {
-			"label": "passageiros transportados em {month}",
-			"value": "{value, number}"
-		},
-		"popover": {
-			"link": "Explorar Dados Abertos",
-			"text": "Valores de passageiros transportados atualizados a cada 60 minutos."
-		},
-		"today": {
-			"label": "passageiros transportados hoje",
-			"value": "{value, number}"
-		},
-		"yearToDate": {
-			"label": "passageiros transportados este ano",
-			"value": "{value, number}"
-		},
-		"yesterday": {
-			"label": "passageiros transportados ontem",
-			"value": "{value, number}"
-		}
-	},
 	"HomeQuickSearchWidget": {
 		"options": {
 			"lines": "Linhas",
@@ -728,6 +695,18 @@
 		},
 		"MainCarouselCard": {
 			"learn_more": "Saber mais"
+		},
+		"MetricsSection": {
+			"demand": {
+				"label": "Total de passageiros transportados hoje",
+				"value": "{value, number}"
+			},
+			"heading": "A nossa operação ao vivo",
+			"link_label": "Explorar mais métricas em tempo real",
+			"service": {
+				"label": "Total de passageiros transportados hoje",
+				"value": "{value, number}"
+			}
 		},
 		"NewsSection": {
 			"section_heading": "Notícias"

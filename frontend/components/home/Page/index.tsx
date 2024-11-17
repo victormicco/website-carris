@@ -3,7 +3,7 @@
 import { AlertsSection } from '@/components/home/AlertsSection';
 import { FeaturedSection } from '@/components/home/FeaturedSection';
 import { MainCarousel } from '@/components/home/MainCarousel';
-// import { MetricsSection } from '@/components/home/MetricsSection';
+import { MetricsSection } from '@/components/home/MetricsSection';
 import { NewsSection } from '@/components/home/NewsSection';
 import { QuickSearch } from '@/components/home/QuickSearch';
 import { SchedulesSection } from '@/components/home/SchedulesSection';
@@ -32,7 +32,7 @@ export function HomePage() {
 			<NewsSection />
 			<TarifsSection />
 			<SupportSection />
-			{/* <MetricsSection /> */}
+			<MetricsSection />
 			<FeaturedSection />
 		</>
 	);

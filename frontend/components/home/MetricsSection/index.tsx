@@ -2,14 +2,18 @@
 
 /* * */
 
+import type { DemandMetricsByAgency, DemandMetricsByAgencyDay } from '@carrismetropolitana/api-types/metrics';
+
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import MetricsCardYearToDate from '@/components/metrics/MetricsCardYearToDate';
-import { BreakpointSwitch } from '@/components/responsive/BreakpointSwitch';
+import { MetricsDemandChart } from '@/components/metrics/MetricsDemandChart';
 import { Routes } from '@/utils/routes';
+import { DateTime } from 'luxon';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
+import useSWR from 'swr';
 
 import styles from './styles.module.css';
 
@@ -21,7 +25,40 @@ export function MetricsSection() {
 	//
 	// A. Setup variables
 
-	const t = useTranslations('HomeMetricsSection');
+	const t = useTranslations('home.MetricsSection');
+
+	//
+	// B. Fetch Data
+
+	const { data: metricsByAgencyDayData } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/day`, { refreshInterval: 300 });
+
+	//
+	// C. Transform data
+
+	const allAgenciesSum = useMemo(() => {
+		if (!metricsByAgencyDayData) return;
+		return metricsByAgencyDayData.reduce((acc, agencyBlock) => acc + agencyBlock.data.reduce((innerAcc, dateBlock) => innerAcc + dateBlock.qty, 0), 0);
+	}, [metricsByAgencyDayData]);
+
+	const allAgenciesChart = useMemo(() => {
+		if (!metricsByAgencyDayData) return;
+		// Reduce the data to a single array of objects with the structure { x: string, y: number }
+		const result = metricsByAgencyDayData.reduce((acc, agencyBlock) => {
+			agencyBlock.data.forEach((dateBlock) => {
+				const formattedDateBlock = DateTime.fromISO(dateBlock.hour_group).toFormat('yyyy-LL-dd HH:mm');
+				const existingData = acc.find(item => item.hour_group === formattedDateBlock);
+				if (existingData) {
+					existingData.qty += dateBlock.qty;
+				}
+				else {
+					acc.push({ hour_group: formattedDateBlock, qty: dateBlock.qty });
+				}
+			});
+			return acc;
+		}, [] as DemandMetricsByAgencyDay[]);
+		const sortedResult = result.sort((a, b) => a.hour_group.localeCompare(b.hour_group));
+		return sortedResult;
+	}, [metricsByAgencyDayData]);
 
 	//
 	// B. Render components
@@ -29,27 +66,21 @@ export function MetricsSection() {
 	return (
 		<Surface variant="standout">
 			<Section heading={t('heading')} withPadding>
-				<Grid columns="a" withGap>
-					<BreakpointSwitch
-						desktop={(
-							<Grid columns="ab" withGap>
-								<MetricsCardYearToDate className={styles.ytd} />
-								<Link className={styles.goToMetrics} href={Routes.METRICS.route}>
-									Abrir métricas completas ›
-								</Link>
-							</Grid>
-						)}
-						mobile={(
-							<div className={styles.mobileContainer}>
-								<div className={styles.cardContainer}>
-									<MetricsCardYearToDate className={styles.ytd} />
-								</div>
-								<Link className={styles.goToMetrics} href={Routes.METRICS.route}>
-									Abrir métricas completas ›
-								</Link>
-							</div>
-						)}
+				<Grid columns="ab" withGap>
+					<MetricsDemandChart
+						data={allAgenciesChart}
+						data_key="hour_group"
+						main_label={t('demand.label')}
+						main_value={t('demand.value', { value: allAgenciesSum })}
+						data_series={[
+							{
+								color: 'var(--color-brand)',
+								label: 'Nº de validações',
+								name: 'qty',
+							},
+						]}
 					/>
+					<Link className={styles.link} href="/metrics">{t('link_label')}</Link>
 				</Grid>
 			</Section>
 		</Surface>
