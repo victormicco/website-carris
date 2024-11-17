@@ -11,7 +11,7 @@ export const URLS = Object.freeze({
 		},
 		apple_app_store: {
 			beta: 'https://testflight.apple.com/join/KXz5ZVH8',
-			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
+			prod: 'https://apps.apple.com/pt/app/carris-metropolitana/id6553675889',
 		},
 		google_play_store: {
 			beta: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
@@ -27,7 +27,7 @@ export const URLS = Object.freeze({
 			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
 		},
 		apple_app_store: {
-			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
+			prod: 'https://apps.apple.com/pt/app/navegante/id6484591306',
 		},
 		google_play_store: {
 			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
