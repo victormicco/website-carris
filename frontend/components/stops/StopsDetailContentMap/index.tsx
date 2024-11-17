@@ -78,7 +78,7 @@ export function StopsDetailContentMap() {
 			// Create a feature collection with the vehicle and the stop
 			const vehicleFC = vehiclesContext.actions.getVehiclesByTripIdGeoJsonFC(stopsDetailContext.data.active_trip_id);
 			const stopFC = stopsContext.actions.getStopByIdGeoJsonFC(stopsDetailContext.data.active_stop_id);
-			if (!vehicleFC || !stopFC) return;
+			if (!vehicleFC?.features.length || !stopFC?.features.length) return;
 			centerMap(stopsMap, [vehicleFC.features[0], stopFC.features[0]], { padding: 70 });
 		}
 	}, [stopsDetailContext.data.stop, stopsDetailContext.data.active_trip_id, vehiclesContext.data.vehicles, stopsMap]);
