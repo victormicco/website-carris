@@ -52,7 +52,7 @@ export function LinesDetailPathList() {
 	// Scroll to selected stop on stop change
 	useEffect(() => {
 		if (!linesDetailContext.data.active_waypoint) return;
-		const selectedStop = document.getElementById(`stop-${linesDetailContext.data.active_waypoint.stop_sequence}`);
+		const selectedStop = document.getElementById(`waypoint-${linesDetailContext.data.active_waypoint.stop_id}-${linesDetailContext.data.active_waypoint.stop_sequence}`);
 		if (selectedStop) {
 			selectedStop.scrollIntoView({ behavior: 'smooth', block: 'center' });
 		}

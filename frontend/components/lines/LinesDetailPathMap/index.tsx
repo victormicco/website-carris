@@ -45,6 +45,7 @@ export function LinesDetailPathMap() {
 			result.properties = {
 				...result.properties,
 				color: linesDetailContext.data.active_pattern?.color,
+				sequence: pathStop.stop_sequence,
 				text_color: linesDetailContext.data.active_pattern?.text_color,
 			};
 			collection.features.push(result);
@@ -95,10 +96,7 @@ export function LinesDetailPathMap() {
 		const features = linesDetailMap.queryRenderedFeatures(event.point, { layers: [MapViewStylePathInteractiveLayerId] });
 		if (!features.length) return;
 		for (const feature of features) {
-			if (feature.properties.id === linesDetailContext.data.active_waypoint?.stop_id) {
-				continue;
-			}
-			else {
+			if (feature.properties.id !== linesDetailContext.data.active_waypoint?.stop_id) {
 				linesDetailContext.actions.setActiveWaypoint(feature.properties.id, feature.properties.sequence);
 				return;
 			}
