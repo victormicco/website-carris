@@ -52,7 +52,7 @@ export const URLS = Object.freeze({
 		facebook: 'https://www.facebook.com/carrismetropolitana',
 		github: 'https://www.github.com/carrismetropolitana',
 		instagram: 'https://www.instagram.com/carrismetropolitana',
-		twitter: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
+		twitter: 'https://twitter.com/cmetropolitana_',
 		whatsapp: 'https://whatsapp.com/channel/0029Va9z9d2JP2184daqbX0K',
 	},
 
