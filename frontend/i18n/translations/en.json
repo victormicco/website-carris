@@ -130,39 +130,6 @@
 		"favorites": "Favorites",
 		"profile": "Profile"
 	},
-	"HomeMetricsSection": {
-		"heading": "Our live operation"
-	},
-	"HomeMetricsSectionDemand": {
-		"area": {
-			"label": "Number of validations in the Area {area} today",
-			"value": "{value, number}"
-		},
-		"by_line": {
-			"selected": "passengers transported on this line",
-			"top": "lines with the most passengers transported today"
-		},
-		"lastMonth": {
-			"label": "passengers carried in {month}",
-			"value": "{value, number}"
-		},
-		"popover": {
-			"link": "Exploring Open Data",
-			"text": "Passenger transport values updated every 60 minutes."
-		},
-		"today": {
-			"label": "passengers transported today",
-			"value": "{value, number}"
-		},
-		"yearToDate": {
-			"label": "passengers transported this year",
-			"value": "{value, number}"
-		},
-		"yesterday": {
-			"label": "passengers transported yesterday",
-			"value": "{value, number}"
-		}
-	},
 	"HomeQuickSearchWidget": {
 		"options": {
 			"lines": "Lines",
@@ -452,57 +419,70 @@
 				"metropolitano": "Metropolitano",
 				"municipal": "Municipal"
 			},
+			"price_labels": {
+				"free": "GRÁTIS",
+				"none": "N/A",
+				"price": "{value} € / mês"
+			},
 			"products": {
 				"combatente-minus-65": {
-					"description": "$30 discount for former combatants under 65. It is necessary to present a declaration. Find out more on the website navegante.pt",
+					"description": "Desconto de 30€ para antigos combatentes com menos de 65 anos. É necessário apresentar declaração.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "€10/month",
 					"price_municipal": "FREE",
 					"title": "Former combatants <65"
 				},
 				"combatente-plus-65": {
-					"description": "100% discount for former combatants aged 65 or over. It is necessary to present a declaration. Find out more on the website navegante.pt",
+					"description": "Desconto de 100% para antigos combatentes com 65 ou mais anos. É necessário apresentar declaração.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "FREE",
 					"price_municipal": "N/A",
 					"title": "Former combatants >65"
 				},
 				"family": {
-					"description": "Discount valid for households with at least 3 individuals. It is necessary that all family members have the same tax residence, reside in one of the 18 municipalities of aml, and have a direct family relationship of ancestry or descendants with the holder. Find out more on the website navegante.pt",
-					"price_metropolitano": "€80/month",
-					"price_municipal": "€60/month",
+					"description": "Desconto válido para agregados familiares com pelo menos 3 indivíduos. É necessário que todos os elementos do agregado tenham o mesmo domicílio fiscal, residam num dos 18 municípios da aml, e que tenham relação familiar direta de ascendência ou descendência com o titular.",
+					"href_label": "Saiba mais no site navegante.pt",
+					"price_metropolitano": "{value} € / mês",
+					"price_municipal": "{value} € / mês",
 					"title": "Family"
 				},
 				"normal": {
 					"description": "The navegante® pass allows travel on all public transport operators, both within each municipality and throughout the Lisbon metropolitan area.",
-					"price_metropolitano": "€40/month",
-					"price_municipal": "€30/month",
+					"price_metropolitano": "{value} € / mês",
+					"price_municipal": "{value} € / mês",
 					"title": "Normal"
 				},
 				"plus-65": {
-					"description": "A 50% discount is available for users aged 65 and over. No declaration is required, but you may need to confirm your date of birth. Valid only for metropolitan services. For more information, visit the navegante.pt website",
+					"description": "Desconto de 50% para utilizadores com 65 ou mais anos. Não é necessário apresentar declaração mas pode ser necessário confirmar a sua data de nascimento. Válido apenas para a modalidade metropolitana.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "€20/month",
 					"price_municipal": "N/A",
 					"title": "+65"
 				},
 				"social-a": {
-					"description": "A 50% discount is available upon presentation of an income tax return. For more details, visit the navegante.pt website",
+					"description": "Desconto de 50% mediante apresentação de declaração de rendimentos.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "€20/month",
 					"price_municipal": "€15/month",
 					"title": "Social+ A"
 				},
 				"social-b": {
-					"description": "A 25% discount is available upon presentation of an income tax return. For more details, visit the navegante.pt website",
+					"description": "Desconto de 25% mediante apresentação de declaração de rendimentos.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "€30/month",
 					"price_municipal": "€22,5/month",
 					"title": "Social+ B"
 				},
 				"sub18": {
-					"description": "A 100% discount is available for all students under 18 years old. No declaration is required, but you may need to confirm your date of birth. For more information, visit navegante.pt website",
+					"description": "Desconto de 100% para todos os jovens estudantes menores de 18 anos. Não é necessário apresentar nenhuma declaração, mas pode ser preciso confirmar a data de nascimento.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "FREE",
 					"price_municipal": "N/A",
 					"title": "U-18"
 				},
 				"sub23": {
-					"description": "A 100% discount is available for all students between 19 and 23 years old. No declaration is required, but you may need to present a registration at an educational institution. For more information, visit navegante.pt website",
+					"description": "Desconto de 100% para todos os jovens estudantes entre os 19 e os 23 anos. Não é necessário apresentar declaração de inscrição em instituição de ensino.",
+					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "FREE",
 					"price_municipal": "N/A",
 					"title": "U-23"
@@ -687,7 +667,7 @@
 		},
 		"WhereToBuy": {
 			"app": {
-				"description": "You can load your personalized navegante® card directly through your mobile phone. Learn more at navegante.pt.",
+				"description": "Pode carregar o seu cartão navegante® personalizado diretamente através do seu telemóvel. Faça o download da app aqui.",
 				"title": "navegante® App"
 			},
 			"heading": "Where to buy",
@@ -712,6 +692,18 @@
 		},
 		"MainCarouselCard": {
 			"learn_more": "Find out more"
+		},
+		"MetricsSection": {
+			"demand": {
+				"label": "Total de passageiros transportados hoje",
+				"value": "{value, number}"
+			},
+			"heading": "A nossa operação ao vivo",
+			"link_label": "Explorar mais métricas em tempo real",
+			"service": {
+				"label": "Total de passageiros transportados hoje",
+				"value": "{value, number}"
+			}
 		},
 		"NewsSection": {
 			"section_heading": "News"
@@ -812,6 +804,9 @@
 			},
 			"heading": "Search Lines"
 		},
+		"LinesListViewAll": {
+			"no_data": "Nenhuma linha encontrada para esta pesquisa"
+		},
 		"LinesListViewFavorites": {
 			"no_favorites": "No favorite lines yet"
 		},
@@ -875,6 +870,149 @@
 				"map": "Map",
 				"satellite": "Satellite"
 			}
+		}
+	},
+	"metrics": {
+		"MetricsCardByLine": {
+			"reference_value": "{value, number} /dia",
+			"summary_description": "passageiros transportados nesta linha nos últimos 15 dias",
+			"summary_value": "{value, number}"
+		},
+		"MetricsPageIntro": {
+			"heading": "A nossa operação ao vivo",
+			"text_1": "A Carris Metropolitana possui uma política de dados abertos, com o objetivo de promover a transparência e a proximidade com os seus passageiros, divulgando publicamente informação relativa à sua operação.",
+			"text_2": "Nesta página pode acompanhar, em tempo real, o número de passageiros transportados na rede da Carris Metropolitana. Estes dados, calculados com base no total de validações e vendas a bordo em todas as viagens, são fundamentais para uma otimização do serviço baseada nas suas nessidades."
+		},
+		"MetricsPageLines": {
+			"agencies": {
+				"41": {
+					"main_description": "(Amadora, Oeiras, Sintra, Cascais e Lisboa)",
+					"main_label": "Linhas com mais passageiros transportados na área 1"
+				},
+				"42": {
+					"main_description": "(Mafra, Vila Franca de Xira, Odivelas e Loures)",
+					"main_label": "Linhas com mais passageiros transportados na área 2"
+				},
+				"43": {
+					"main_description": "(Almada, Seixal e Sesimbra)",
+					"main_label": "Linhas com mais passageiros transportados na área 3"
+				},
+				"44": {
+					"main_description": "(Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)",
+					"main_label": "Linhas com mais passageiros transportados na área 4"
+				}
+			},
+			"heading": "Linhas mais utilizadas",
+			"text_1": "Abaixo, pode explorar as linhas mais utilizadas e o número de passageiros transportados em cada uma delas, com base nas validações e vendas a bordo dos últimos 15 dias. Esta é uma visão detalhada por linha, que lhe permite conhecer melhor as dinâmicas dos passageiros desta rede de transportes."
+		},
+		"MetricsPagePassengers": {
+			"heading": "Total de Passageiros",
+			"period_options": {
+				"day": "Dia",
+				"month": "Mês",
+				"year": "Ano"
+			},
+			"text_1": "Cada passageiro transportado corresponde a uma validação de um passe, bilhete pré-pago ou bilhete adquirido a bordo de um autocarro da Carris Metropolitana. Através da análise destas validações, a Carris Metropolitana obtém informação essencial sobre a utilização de cada linha. Estes dados ajudam a identificar a importância de cada rota, avaliar a necessidade de ajustes na frequência de horários e, redefinição de percursos para responder melhor às necessidades dos passageiros."
+		},
+		"MetricsPagePassengersDay": {
+			"sections": {
+				"aml": {
+					"heading": "Na área metropolitana de Lisboa:",
+					"main_label": "passageiros transportados hoje",
+					"main_value": "{value, number}"
+				},
+				"by_agency": {
+					"41": {
+						"main_description": "(Amadora, Oeiras, Sintra, Cascais e Lisboa)",
+						"main_label": "passageiros transportados hoje na área 1",
+						"main_value": "{value, number}"
+					},
+					"42": {
+						"main_description": "(Mafra, Vila Franca de Xira, Odivelas e Loures)",
+						"main_label": "passageiros transportados hoje na área 2",
+						"main_value": "{value, number}"
+					},
+					"43": {
+						"main_description": "(Almada, Seixal e Sesimbra)",
+						"main_label": "passageiros transportados hoje na área 3",
+						"main_value": "{value, number}"
+					},
+					"44": {
+						"main_description": "(Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)",
+						"main_label": "passageiros transportados hoje na área 4",
+						"main_value": "{value, number}"
+					},
+					"heading": "Por área:"
+				}
+			}
+		},
+		"MetricsPagePassengersMonth": {
+			"sections": {
+				"aml": {
+					"heading": "Na área metropolitana de Lisboa:",
+					"main_label": "passageiros transportados este mês",
+					"main_value": "{value, number}"
+				},
+				"by_agency": {
+					"41": {
+						"main_description": "(Amadora, Oeiras, Sintra, Cascais e Lisboa)",
+						"main_label": "passageiros transportados este mês na área 1",
+						"main_value": "{value, number}"
+					},
+					"42": {
+						"main_description": "(Mafra, Vila Franca de Xira, Odivelas e Loures)",
+						"main_label": "passageiros transportados este mês na área 2",
+						"main_value": "{value, number}"
+					},
+					"43": {
+						"main_description": "(Almada, Seixal e Sesimbra)",
+						"main_label": "passageiros transportados este mês na área 3",
+						"main_value": "{value, number}"
+					},
+					"44": {
+						"main_description": "(Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)",
+						"main_label": "passageiros transportados este mês na área 4",
+						"main_value": "{value, number}"
+					},
+					"heading": "Por área:"
+				}
+			}
+		},
+		"MetricsPagePassengersYear": {
+			"sections": {
+				"aml": {
+					"heading": "Na área metropolitana de Lisboa:",
+					"main_label": "passageiros transportados este ano",
+					"main_value": "{value, number}"
+				},
+				"by_agency": {
+					"41": {
+						"main_description": "(Amadora, Oeiras, Sintra, Cascais e Lisboa)",
+						"main_label": "passageiros transportados este ano na área 1",
+						"main_value": "{value, number}"
+					},
+					"42": {
+						"main_description": "(Mafra, Vila Franca de Xira, Odivelas e Loures)",
+						"main_label": "passageiros transportados este ano na área 2",
+						"main_value": "{value, number}"
+					},
+					"43": {
+						"main_description": "(Almada, Seixal e Sesimbra)",
+						"main_label": "passageiros transportados este ano na área 3",
+						"main_value": "{value, number}"
+					},
+					"44": {
+						"main_description": "(Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)",
+						"main_label": "passageiros transportados este ano na área 4",
+						"main_value": "{value, number}"
+					},
+					"heading": "Por área:"
+				}
+			}
+		},
+		"MetricsPageRecords": {
+			"heading": "Recordes",
+			"text_1": "Estes são os recordes mais recentes da Carris Metropolitana."
 		}
 	},
 	"news": {
@@ -1098,6 +1236,9 @@
 			},
 			"heading": "Search Stops"
 		},
+		"StopsListViewAll": {
+			"no_data": "Nenhuma paragem encontrada para esta pesquisa"
+		},
 		"StopsListViewFavorites": {
 			"no_favorites": "No favorite stops yet"
 		},
@@ -1219,5 +1360,8 @@
 		"update_profile_error": "Error updating profile.",
 		"update_profile_pending": "Updating profile...",
 		"update_profile_success": "Profile updated successfully!"
+	},
+	"utils": {
+		"number": "{value, number}"
 	}
 }
