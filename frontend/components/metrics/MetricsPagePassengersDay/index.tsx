@@ -52,19 +52,19 @@ export function MetricsPagePassengersDay() {
 			return acc;
 		}, [] as DemandMetricsByAgencyDay[]);
 		const sortedResult = result.sort((a, b) => a.hour_group.localeCompare(b.hour_group));
-		// The original data only includes data from today at 4:00 until now. We need to add the hours until tomorrow at 4:00
-		// with null values
-		const todayAt4 = DateTime.fromObject({ hour: 4 });
-		const tomorrowAt4 = todayAt4.plus({ days: 1 });
-		const currentHour = DateTime.local();
-		const hoursToAdd = tomorrowAt4.diff(currentHour, 'hours').hours;
-		for (let i = 1; i < hoursToAdd; i++) {
-			const hour = todayAt4.plus({ hours: i });
-			const formattedHour = hour.toFormat('yyyy-LL-dd HH:mm');
-			if (!sortedResult.find(item => item.hour_group === formattedHour)) {
-				sortedResult.push({ hour_group: formattedHour, zero: 0 });
-			}
-		}
+		// // The original data only includes data from today at 4:00 until now. We need to add the hours until tomorrow at 4:00
+		// // with null values
+		// const todayAt4 = DateTime.fromObject({ hour: 4 });
+		// const tomorrowAt4 = todayAt4.plus({ days: 1 });
+		// const currentHour = DateTime.local();
+		// const hoursToAdd = tomorrowAt4.diff(currentHour, 'hours').hours;
+		// for (let i = 1; i < hoursToAdd; i++) {
+		// 	const hour = todayAt4.plus({ hours: i });
+		// 	const formattedHour = hour.toFormat('yyyy-LL-dd HH:mm');
+		// 	if (!sortedResult.find(item => item.hour_group === formattedHour)) {
+		// 		sortedResult.push({ hour_group: formattedHour, qty: 0 });
+		// 	}
+		// }
 		return sortedResult;
 	}, [metricsByAgencyDayData]);
 
