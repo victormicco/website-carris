@@ -25,7 +25,7 @@ export function MetricsPagePassengersDay() {
 	//
 	// B. Fetch Data
 
-	const { data: metricsByAgencyDayData, isLoading: metricsByAgencyDayLoading } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/day`, { refreshInterval: 300 });
+	const { data: metricsByAgencyDayData, isLoading: metricsByAgencyDayLoading } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/day`, { refreshInterval: 60000 });
 
 	//
 	// C. Transform data

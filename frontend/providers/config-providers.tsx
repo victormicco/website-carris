@@ -29,6 +29,8 @@ export function ConfigProviders({ children }) {
 			return res.json();
 		},
 		refreshInterval: 10000, // 10 seconds
+		revalidateOnFocus: true,
+		revalidateOnMount: true,
 	};
 
 	//

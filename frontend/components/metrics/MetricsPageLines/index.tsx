@@ -28,7 +28,7 @@ export function MetricsPageLines() {
 	//
 	// B. Fetch Data
 
-	const { data: metricsDemandByLineData } = useSWR<DemandMetricsByLine[]>(`${Routes.API}/metrics/demand/by_line`, { refreshInterval: 300 });
+	const { data: metricsDemandByLineData } = useSWR<DemandMetricsByLine[]>(`${Routes.API}/metrics/demand/by_line`, { refreshInterval: 60000 });
 
 	//
 	// C. Transform data

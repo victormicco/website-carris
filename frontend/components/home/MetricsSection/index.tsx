@@ -30,7 +30,7 @@ export function MetricsSection() {
 	//
 	// B. Fetch Data
 
-	const { data: metricsByAgencyDayData } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/day`, { refreshInterval: 300 });
+	const { data: metricsByAgencyDayData } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/day`, { refreshInterval: 60000 });
 
 	//
 	// C. Transform data
