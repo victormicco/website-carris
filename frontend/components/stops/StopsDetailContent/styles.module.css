@@ -39,10 +39,13 @@
 	grid-area: a;
 	height: 100%;
 	max-height: calc(100vh - var(--size-height-header));;
+	overflow: hidden;
+	border-bottom-left-radius: var(--border-radius-lg);
 }
 
 @media screen and (width < 1000px) {
 	.mapWrapper {
 		position: static;
+		border-radius: unset;
 	}
 }
