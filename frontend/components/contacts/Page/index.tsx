@@ -30,13 +30,12 @@ export default function Component() {
 	return (
 		<>
 			<Surface>
-				<Section heading={t('heading')} withPadding>
+				<Section heading={t('heading')} withGap withPadding>
 					<div className={styles.sectionHeader}>{t('phone_line')}</div>
 					<div className={styles.sectionContent}>{t('phone_line_description')}</div>
 					<Button href="tel:+351210418800" icon={<IconPhone size={18} />} label="210 418 800" />
-					<Button href={Routes.COMPLAINTS.route} icon={<IconMessage size={18} />} label={t('by_form')} />
 				</Section>
-				<Section withPadding>
+				<Section withGap withPadding>
 					<div className={styles.sectionHeader}>{t('operators')}</div>
 					<div className={styles.sectionContent}>{t('operators_description')}</div>
 					<Button href="tel:+351210410400" icon={<IconPhone size={18} />} label="210 410 400" />
