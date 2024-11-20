@@ -533,6 +533,7 @@
 			"tomorrow": "Tomorrow"
 		},
 		"SelectPattern": {
+			"invalid_option": "Percurso inválido: {pattern_id}",
 			"label": "Percurso / Destino",
 			"option_label": "Início do percurso: {locality}",
 			"placeholder": "Selecionar Percurso / Destino..."
