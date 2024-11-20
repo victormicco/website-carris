@@ -18,8 +18,8 @@
 .container.isLastStop.isSelected {
 	align-self: flex-start;
 	padding-bottom: 1px;
-	border-bottom-left-radius: 999px;
 	border-bottom-right-radius: 999px;
+	border-bottom-left-radius: 999px;
 }
 
 .container.isSelected {
@@ -64,4 +64,27 @@
 
 .isFirstStop .marker.favorite {
 	transform: none;
+}
+
+/* * */
+/* MARKERS / STOP SEQUENCE */
+
+.marker.stopSequence {
+	width: 100%;
+	aspect-ratio: 1;
+	margin: 0;
+	font-size: 12px;
+	font-weight: var(--font-weight-extrabold);
+	text-align: center;
+	border-radius: 999px;
+	transition: all 200ms ease;
+	transform: translate(0, 2px);
+}
+
+.isFirstStop .marker.stopSequence {
+	transform: translate(0, 6px);
+}
+
+.isLastStop .marker.stopSequence {
+	transform: translate(0, -6px);
 }

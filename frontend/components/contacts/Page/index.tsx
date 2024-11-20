@@ -8,7 +8,7 @@ import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { IconsCommon } from '@/settings/assets.settings';
 import { Routes } from '@/utils/routes';
-import { IconMessage, IconPhone, IconUmbrella } from '@tabler/icons-react';
+import { IconPhone, IconUmbrella } from '@tabler/icons-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 

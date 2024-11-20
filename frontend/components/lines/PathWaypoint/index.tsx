@@ -62,6 +62,7 @@ export function PathWaypoint({ arrivals, id, isFirstStop, isLastStop, isSelected
 				isLastStop={isLastStop}
 				isSelected={isSelected}
 				stopId={waypointData.stop_id}
+				stopSequence={waypointData.stop_sequence}
 			/>
 			<div className={styles.detailsWrapper}>
 				<PathWaypointHeader
