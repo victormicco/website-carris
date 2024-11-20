@@ -5,7 +5,6 @@
 import type { AlertCause, AlertEffect, SimplifiedAlert } from '@/types/alerts.types.js';
 
 import { DateTime } from 'luxon';
-import { useLocale } from 'next-intl';
 import { useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
@@ -66,8 +65,6 @@ export const AlertsListContextProvider = ({ children }) => {
 
 	//
 	// A. Setup variables
-
-	const currentLocale = useLocale();
 
 	const [dataFilteredState, setDataFilteredState] = useState<SimplifiedAlert[]>([]);
 

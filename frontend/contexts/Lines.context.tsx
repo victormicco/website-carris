@@ -51,7 +51,7 @@ export const LinesContextProvider = ({ children }) => {
 
 	const { data: allLinesData, isLoading: allLinesLoading } = useSWR<Line[], Error>(`${Routes.API}/lines`);
 	const { data: allRoutesData, isLoading: allRoutesLoading } = useSWR<Route[], Error>(`${Routes.API}/routes`);
-	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetricsByLine[], Error>(`${Routes.API}/metrics/demand/by_line`);
+	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetricsByLine[], Error>(`${Routes.API}/metrics/demand/by_line`, { refreshInterval: 300000 });
 	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
 
 	//
