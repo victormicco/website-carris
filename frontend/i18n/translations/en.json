@@ -310,8 +310,10 @@
 			}
 		},
 		"AlertsDetail": {
-			"more_info": "More information",
-			"open_full_image": "Open image in new window"
+			"more_info": "More information"
+		},
+		"AlertsDetailImageThumbnail": {
+			"open_full_image": "Abrir imagem numa nova janela"
 		},
 		"AlertsListEmpty": {
 			"default": {
