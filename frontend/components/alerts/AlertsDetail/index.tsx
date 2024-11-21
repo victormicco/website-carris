@@ -46,7 +46,7 @@ export default function Component({ alertId }: Props) {
 
 			<Surface>
 				<Section withBottomDivider withPadding>
-					<BackButton />
+					<BackButton href="/alerts" />
 				</Section>
 				<Section heading={simplifiedAlertData?.title} withBottomDivider withPadding>
 					<div className={styles.infoBar}>
