@@ -49,12 +49,12 @@ export function AppStartupMessageDefault() {
 				<p className={styles.text}>{t('text')}</p>
 			</div>
 			<div className={styles.actionsWrapper}>
-				{environmentContext === 'app-ios' && (
+				{environmentContext.data.value === 'app-ios' && (
 					<Button component={Link} href={URLS.app.apple_app_store.prod}>
 						{t('actions.update_ios')}
 					</Button>
 				)}
-				{environmentContext === 'app-android' && (
+				{environmentContext.data.value === 'app-android' && (
 					<Button component={Link} href={URLS.app.google_play_store.prod}>
 						{t('actions.update_android')}
 					</Button>

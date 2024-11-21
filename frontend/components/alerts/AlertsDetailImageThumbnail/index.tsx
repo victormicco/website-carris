@@ -32,11 +32,11 @@ export function AlertsDetailImageThumbnail({ imageUrl, title }: Props) {
 	// B. Handle actions
 
 	const handleOpenImage = () => {
-		if (environmentContext === 'app-ios') {
+		if (environmentContext.data.value === 'app-ios') {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(window as any).webkit.messageHandlers.onImageClick.postMessage(imageUrl);
 		}
-		if (environmentContext === 'app-android') {
+		if (environmentContext.data.value === 'app-android') {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(window as any).Android.onImageClick(imageUrl);
 		}

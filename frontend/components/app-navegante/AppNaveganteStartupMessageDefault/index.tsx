@@ -34,12 +34,12 @@ export function AppNaveganteStartupMessageDefault() {
 				<p className={styles.text}>{t('text')}</p>
 			</div>
 			<div className={styles.actionsWrapper}>
-				{environmentContext === 'app-navegante-android' && (
+				{environmentContext.data.value === 'app-navegante-android' && (
 					<Button component={Link} href={URLS.app_navegante.google_play_store.prod}>
 						{t('actions.update_android')}
 					</Button>
 				)}
-				{environmentContext === 'app-navegante-ios' && (
+				{environmentContext.data.value === 'app-navegante-ios' && (
 					<Button component={Link} href={URLS.app_navegante.apple_app_store.prod}>
 						{t('actions.update_ios')}
 					</Button>
