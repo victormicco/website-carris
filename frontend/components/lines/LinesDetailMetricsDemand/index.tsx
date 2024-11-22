@@ -1,6 +1,6 @@
 /* * */
 
-import LiveIcon from '@/components/common/LiveIcon';
+import { LiveIcon } from '@/components/common/LiveIcon';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';

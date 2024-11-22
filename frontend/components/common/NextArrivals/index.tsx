@@ -2,7 +2,7 @@
 
 import type { ArrivalStatus } from '@/types/stops.types';
 
-import LiveIcon from '@/components/common/LiveIcon';
+import { LiveIcon } from '@/components/common/LiveIcon';
 import { IconAlertCircleFilled, IconClockHour9 } from '@tabler/icons-react';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';

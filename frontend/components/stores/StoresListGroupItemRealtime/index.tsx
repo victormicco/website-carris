@@ -2,7 +2,7 @@
 
 import type { Store } from '@/types/stores.types';
 
-import LiveIcon from '@/components/common/LiveIcon';
+import { LiveIcon } from '@/components/common/LiveIcon';
 import { Skeleton } from '@mantine/core';
 import { IconClockHour3, IconUsers, IconUserStar } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';

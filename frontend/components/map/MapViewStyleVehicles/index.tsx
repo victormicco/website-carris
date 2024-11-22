@@ -2,7 +2,7 @@
 
 /* * */
 
-import LiveIcon from '@/components/common/LiveIcon';
+import { LiveIcon } from '@/components/common/LiveIcon';
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { useTranslations } from 'next-intl';
 import { Layer, Source } from 'react-map-gl/maplibre';
