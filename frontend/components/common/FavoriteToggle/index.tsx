@@ -42,7 +42,11 @@ export function FavoriteToggle({ color, isActive, onToggle }: Props) {
 	if (!profileContext.flags.is_enabled) {
 		return (
 			<div className={`${styles.container} ${styles.disabled}`}>
-				<Tooltip label={t('disabled')} withArrow>
+				<Tooltip
+					events={{ focus: true, hover: true, touch: true }}
+					label={t('disabled')}
+					withArrow
+				>
 					<IconHeartX />
 				</Tooltip>
 			</div>

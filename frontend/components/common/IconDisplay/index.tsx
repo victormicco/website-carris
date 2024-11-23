@@ -49,7 +49,11 @@ export function IconDisplay({ category, name }: Props) {
 
 	return (
 		<div className={styles.container}>
-			<Tooltip label={t(`${category}.${name}`)} withArrow>
+			<Tooltip
+				events={{ focus: true, hover: true, touch: true }}
+				label={t(`${category}.${name}`)}
+				withArrow
+			>
 				<Image alt={t(`${category}.${name}`)} src={iconSrc} />
 			</Tooltip>
 		</div>
