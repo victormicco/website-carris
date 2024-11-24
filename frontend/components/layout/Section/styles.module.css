@@ -41,6 +41,22 @@
 	color: var(--color-system-text-100);
 }
 
+.href {
+	display: flex;
+	gap: var(--size-spacing-5);
+	align-items: baseline;
+	justify-content: flex-start;
+}
+
+.hrefIcon {
+	color: var(--color-system-text-400);
+	transform: translate(0, 2px);
+}
+
+.href:hover {
+	text-decoration: underline;
+}
+
 .warning .heading {
 	color: #FF6900;
 }

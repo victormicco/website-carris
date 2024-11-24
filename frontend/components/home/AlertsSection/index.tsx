@@ -42,7 +42,7 @@ export function AlertsSection() {
 
 	return (
 		<Surface>
-			<Section heading={t('section_heading')} withGap>
+			<Section heading={t('section_heading')} href="/alerts" withGap>
 				<AlertsCarousel alerts={alertsActiveTodayAndTomorrow} />
 			</Section>
 		</Surface>

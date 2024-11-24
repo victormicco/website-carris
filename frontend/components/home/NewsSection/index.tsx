@@ -48,7 +48,7 @@ export function NewsSection() {
 
 	return (
 		<Surface>
-			<Section heading={t('section_heading')}>
+			<Section heading={t('section_heading')} href="/news">
 				<Carousel skeletonComponent={<NewsCardSkeleton />} skeletonQty={4} slides={carouselSlides} />
 			</Section>
 		</Surface>
