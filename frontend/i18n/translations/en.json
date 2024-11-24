@@ -691,7 +691,7 @@
 	},
 	"home": {
 		"AlertsSection": {
-			"section_heading": "Highlighted Alerts"
+			"section_heading": "Alertas Recentes"
 		},
 		"MainCarouselCard": {
 			"learn_more": "Find out more"
@@ -1019,6 +1019,9 @@
 		}
 	},
 	"news": {
+		"NewsList": {
+			"heading": "Todas as Notícias"
+		},
 		"SinglePageHeader": {
 			"publish_date": "Posted in {value, date, long}"
 		}
@@ -1229,6 +1232,10 @@
 		"Single": {
 			"heading": "Search Stops",
 			"lines_that_pass_here": "Lines passing through this stop"
+		},
+		"StopsDetailAlerts": {
+			"heading": "Alertas ativos",
+			"subheading": "Alertas ativos para esta paragem ou para linhas que passam nesta paragem."
 		},
 		"StopsDetailContentTimetableHeader": {
 			"summary": "Horários estimados de passagem na paragem <stopName>{stop_name}</stopName> para o dia <dayName>{day_name, date, long}</dayName>. <changeDay>Alterar dia ›</changeDay>",
