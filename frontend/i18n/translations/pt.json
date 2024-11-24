@@ -694,7 +694,7 @@
 	},
 	"home": {
 		"AlertsSection": {
-			"section_heading": "Alertas Recentes"
+			"section_heading": "Alertas em Destaque"
 		},
 		"MainCarouselCard": {
 			"learn_more": "Saber mais"
@@ -1023,9 +1023,6 @@
 		}
 	},
 	"news": {
-		"NewsList": {
-			"heading": "Todas as Notícias"
-		},
 		"SinglePageHeader": {
 			"publish_date": "Publicada a {value, date, long}"
 		}
