@@ -156,7 +156,7 @@
 			"park": "Perto de um Parque",
 			"police_station": "Perto de uma Esquadra de Polícia",
 			"school": "Perto de uma Escola",
-			"transit_office": "Perto de um Espaço Navegante",
+			"transit_office": "Perto de um Espaço navegante®",
 			"university": "Perto de uma Universidade"
 		},
 		"operators": {
@@ -258,7 +258,6 @@
 						"item-6": "Informação em tempo real do tempo de espera dos autocarros e das filas dos Espaços navegante® Carris Metropolitana",
 						"item-7": "Uma política de dados abertos",
 						"item-8": "Criação de uma aplicação móvel"
-
 					},
 					"text-1": "A Carris Metropolitana não se resume apenas a autocarros.",
 					"text-2": "A marca investiu também na sustentabilidade, reduzindo a idade média da sua frota para menos de um ano (em 2023), e somando 5% de veículos não poluentes ou energeticamente eficientes.",
@@ -674,13 +673,11 @@
 				"description": "Pode carregar o seu cartão navegante® personalizado diretamente através do seu telemóvel. Faça o download da app aqui.",
 				"title": "App navegante®"
 			},
-
 			"heading": "Onde Comprar",
 			"multibanco": {
 				"description": "Pode carregar o seu cartão navegante® personalizado em qualquer equipamento multibanco.",
 				"title": "Rede multibanco™"
 			},
-
 			"payshop": {
 				"description": "Pode carregar o seu cartão navegante® personalizado ou ocasional em qualquer parceiro Payshop.",
 				"title": "Rede de agentes PayShop™"
@@ -910,7 +907,6 @@
 			},
 			"heading": "Linhas mais utilizadas",
 			"text_1": "Abaixo, pode explorar as linhas mais utilizadas e o número de passageiros transportados em cada uma delas, com base nas validações e vendas a bordo dos últimos 15 dias. Esta é uma visão detalhada por linha, que lhe permite conhecer melhor as dinâmicas dos passageiros desta rede de transportes."
-
 		},
 		"MetricsPagePassengers": {
 			"heading": "Total de Passageiros",

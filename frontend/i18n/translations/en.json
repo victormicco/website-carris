@@ -3,8 +3,8 @@
 		"heading": "Service Alerts"
 	},
 	"AppError": {
-		"goto_home": "Return to main page",
-		"redirect": "Going back to the main page and in {value} second{s}.",
+		"goto_home": "Return to home page",
+		"redirect": "Returning to home page in {value} second{s}.",
 		"retry": "Retry in {value} seconds",
 		"subtitle": "We have been notified and will correct it soon. Thank you for your understanding.",
 		"sync": "Failed to sync devices.",
@@ -14,7 +14,7 @@
 	},
 	"AppRedirect": {
 		"action": "Go to Page",
-		"subtitle": "If it is not automatically redirected, use the next button.",
+		"subtitle": "If you are not automatically redirected, use the following button.",
 		"title": "Redirecting..."
 	},
 	"AppUnavailable": {
@@ -74,13 +74,13 @@
 					"rows": {
 						"1": {
 							"col_1": "NEXT_LOCALE",
-							"col_2": "carrismetropolitana.us",
+							"col_2": "carrismetropolitana.pt",
 							"col_3": "Identify the user's preferred language",
 							"col_4": "1 year"
 						},
 						"2": {
 							"col_1": "anonymous_analytics_enabled",
-							"col_2": "carrismetropolitana.us",
+							"col_2": "carrismetropolitana.pt",
 							"col_3": "Obtain statistical information about website usage",
 							"col_4": "1 year"
 						}
@@ -122,7 +122,7 @@
 	},
 	"HeaderLogo": {
 		"logo": {
-			"alt": "Metropolitan Trails"
+			"alt": "Carris Metropolitana"
 		}
 	},
 	"HeaderNavigationAccount": {
@@ -150,7 +150,7 @@
 		},
 		"facilities": {
 			"court": "Near a Courthouse",
-			"fire_station": "Near the Fire Station",
+			"fire_station": "Near a Fire Station",
 			"health_center": "Near a Health Center or Clinic",
 			"hospital": "Near a Hospital",
 			"park": "Near a Park",
@@ -161,13 +161,13 @@
 		},
 		"operators": {
 			"atlantic_ferries": "Atlantic Ferries (boats from Tróia)",
-			"ccfl": "Municipal Carris",
-			"cmet": "CMET",
+			"ccfl": "Carris municipal",
+			"cmet": "CMetropolotana",
 			"cp": "CP Comboios de Portugal",
 			"fertagus": "Fertagus (Bridge train)",
 			"metro": "Lisbon Metro",
 			"mobi_cascais": "MobiCascais",
-			"mts": "Transporte do Sul Metro",
+			"mts": "Metro Transportes do Sul",
 			"tcb": "Transportes Colectivos do Barreiro",
 			"ttsl": "Transtejo and Soflusa"
 		}
@@ -181,7 +181,7 @@
 		"placeholder": "Search line by number, name, location..."
 	},
 	"SelectStop": {
-		"label": "Search stop by id, name, location...",
+		"label": "Search stop by ID, name, location...",
 		"nothing_found": "No Results Found",
 		"placeholder": "Search stop by name, number, location..."
 	},
