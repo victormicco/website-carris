@@ -120,11 +120,6 @@
 		},
 		"title": "Política de Cookies"
 	},
-	"HeaderLogo": {
-		"logo": {
-			"alt": "Carris Metropolitana"
-		}
-	},
 	"HeaderNavigationAccount": {
 		"configs": "Personalizar Experiência",
 		"favorites": "Favoritos",
@@ -475,15 +470,8 @@
 					"price_municipal": "22,5 € / mês",
 					"title": "Social+ B"
 				},
-				"sub18": {
-					"description": "Desconto de 100% para todos os jovens estudantes menores de 18 anos. Não é necessário apresentar nenhuma declaração, mas pode ser preciso confirmar a data de nascimento.",
-					"href_label": "Saiba mais no site navegante.pt",
-					"price_metropolitano": "GRÁTIS",
-					"price_municipal": "N/A",
-					"title": "Sub18"
-				},
 				"sub23": {
-					"description": "Desconto de 100% para todos os jovens estudantes entre os 19 e os 23 anos. Por enquanto, pode ser necessário apresentar declaração de inscrição em instituição de ensino.",
+					"description": "Desconto de 100% para todos os jovens até aos 23 anos, inclusive. Não é necessário apresentar nenhuma declaração, mas pode ser preciso confirmar a data de nascimento.",
 					"href_label": "Saiba mais no site navegante.pt",
 					"price_metropolitano": "GRÁTIS",
 					"price_municipal": "N/A",
