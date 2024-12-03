@@ -679,7 +679,7 @@
 	},
 	"home": {
 		"AlertsSection": {
-			"section_heading": "Alertas Recentes"
+			"section_heading": "Recent Alerts"
 		},
 		"MainCarouselCard": {
 			"learn_more": "Find out more"
