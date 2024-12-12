@@ -774,7 +774,7 @@
 					}
 				}
 			},
-			"description": "Taxa de execução calculada com base no total de viagens corretamente executadas face ao total de viagens planeadas para os últimos 15 dias. Para esta análise são considerados dados de posição dos veículos em tempo real e dados das validações e vendas a bordo.",
+			"description": "Taxa de execução calculada com base no total de viagens executadas face ao total de viagens planeadas para os últimos 15 dias. Para esta análise são considerados dados de posição dos veículos em tempo real e dados das validações e vendas a bordo.",
 			"footnote": "A fórmula utilizada para calcular a taxa de execução aqui apresentada reflete apenas parte do conjunto de indicadores definidos contratualmente para a avaliação do desempenho e qualidade do serviço prestado pelos Operadores.",
 			"title": "das {total_trip_count, number} viagens planeadas para os últimos 15 dias, {pass_trip_count, number} foram realizadas"
 		},
