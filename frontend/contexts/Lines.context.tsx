@@ -2,6 +2,7 @@
 
 /* * */
 
+import type { CachedResource } from '@carrismetropolitana/api-types/common';
 import type { DemandMetricsByLine, ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import type { Line, Route } from '@carrismetropolitana/api-types/network';
 
@@ -52,7 +53,7 @@ export const LinesContextProvider = ({ children }) => {
 	const { data: allLinesData, isLoading: allLinesLoading } = useSWR<Line[], Error>(`${Routes.API}/lines`);
 	const { data: allRoutesData, isLoading: allRoutesLoading } = useSWR<Route[], Error>(`${Routes.API}/routes`);
 	const { data: demandByLineData, isLoading: demandByLineDataLoading } = useSWR<DemandMetricsByLine[], Error>(`${Routes.API}/metrics/demand/by_line`, { refreshInterval: 300000 });
-	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
+	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<CachedResource<ServiceMetrics[]>, Error>(`${Routes.API}/metrics/service/all`);
 
 	//
 	// B. Handle actions
@@ -70,7 +71,7 @@ export const LinesContextProvider = ({ children }) => {
 	};
 
 	const getServiceMetricsByLineId = (lineId: string) => {
-		return serviceMetricsData?.filter(serviceMetrics => serviceMetrics.line_id === lineId);
+		return serviceMetricsData?.data.filter(serviceMetrics => serviceMetrics.line_id === lineId);
 	};
 
 	//
@@ -87,7 +88,7 @@ export const LinesContextProvider = ({ children }) => {
 			demand_metrics: demandByLineData || [],
 			lines: allLinesData || [],
 			routes: allRoutesData || [],
-			service_metrics: serviceMetricsData || [],
+			service_metrics: serviceMetricsData?.data || [],
 		},
 		flags: {
 			is_loading: allLinesLoading || allRoutesLoading || demandByLineDataLoading || serviceMetricsLoading,
