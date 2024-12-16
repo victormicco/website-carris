@@ -74,19 +74,3 @@ services:
         max-file: '1'
     env_file:
       - .env.production
-
-  # # # # # # # # # # # # # # # # # # # # #
-  # # # # # # # # # # # # # # # # # # # # #
-
-  videowall:
-    image: ghcr.io/carrismetropolitana/website-videowall:alpha
-    restart: unless-stopped
-    mem_limit: 2g
-    logging:
-      options:
-        max-size: '1m'
-        max-file: '1'
-    env_file:
-      - .env.production
-    secrets:
-      - pcgidbkey
