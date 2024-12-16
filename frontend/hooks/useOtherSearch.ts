@@ -271,7 +271,7 @@ function searchDocuments<T extends SearchableDocument<T>>(
 	const sortedScoreDocs = scoredDocs.sort((a, b) => b.score - a.score);
 
 	// Filter out documents with a score less than half of the top score
-	const bestScore = sortedScoreDocs[0].score;
+	const bestScore = sortedScoreDocs[0]?.score;
 	const filteredScoreDocs = sortedScoreDocs.filter(scoredDoc => scoredDoc.score > Math.floor(bestScore / options.threshold) || bestScore === 0);
 
 	// If top score is 0, we filter out all documents
