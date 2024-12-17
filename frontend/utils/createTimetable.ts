@@ -51,7 +51,7 @@ export default function createTimetable(primaryPatternGroup: Pattern, secondaryP
 			// Find or create the hour entry in the timetable
 			let hourEntry = timetableResult.hours.find(h => h.hour_value === hourValue);
 			if (!hourEntry) {
-				hourEntry = { hour_label: hour24, hour_value: hourValue, minutes: []};
+				hourEntry = { hour_label: hour24, hour_value: hourValue, minutes: [] };
 				timetableResult.hours.push(hourEntry);
 			}
 			// Find or create the minute entry in the timetable

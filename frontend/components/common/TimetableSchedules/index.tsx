@@ -3,10 +3,10 @@
 import type { Timetable } from '@/types/timetables.types';
 import type { Minute } from '@/types/timetables.types';
 
+import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
-import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 
 /* * */
 
@@ -42,11 +42,11 @@ export default function TimetableSchedules({ selectedExceptionIds, setSelectedEx
 					{hourData.minutes.map(minuteData => (
 						<TimetableSchedulesMinute
 							key={minuteData.minute_value}
+							isHighlighted={Boolean(linesDetailContext.data.highlighted_trip_ids && minuteData.trip_ids.some(tripId => linesDetailContext.data.highlighted_trip_ids?.includes(tripId)))}
 							minuteData={minuteData}
+							onClick={() => linesDetailContext.actions.setHighlightedTripIds(minuteData.trip_ids)}
 							selectedExceptionIds={selectedExceptionIds}
 							setSelectedExceptionIds={setSelectedExceptionIds}
-							isHighlighted={Boolean(linesDetailContext.data.highlighted_trip_ids && minuteData.trip_ids.some(tripId => linesDetailContext.data.highlighted_trip_ids?.includes(tripId)))}
-							onClick={() => linesDetailContext.actions.setHighlightedTripIds(minuteData.trip_ids)}
 						/>
 					))}
 				</div>
@@ -60,16 +60,16 @@ export default function TimetableSchedules({ selectedExceptionIds, setSelectedEx
 /* * */
 
 interface TimetableSchedulesMinuteProps {
+	isHighlighted: boolean
 	minuteData: Minute
+	onClick?: () => void
 	selectedExceptionIds: string[]
 	setSelectedExceptionIds: (values: string[]) => void
-	isHighlighted: boolean
-	onClick?: () => void
 }
 
 /* * */
 
-function TimetableSchedulesMinute({ minuteData, selectedExceptionIds, setSelectedExceptionIds, isHighlighted, onClick }: TimetableSchedulesMinuteProps) {
+function TimetableSchedulesMinute({ isHighlighted, minuteData, onClick, selectedExceptionIds, setSelectedExceptionIds }: TimetableSchedulesMinuteProps) {
 	//
 
 	//
@@ -95,9 +95,9 @@ function TimetableSchedulesMinute({ minuteData, selectedExceptionIds, setSelecte
 		<p
 			key={minuteData.minute_value}
 			className={`${styles.minute} ${minuteData.exception_ids.length > 0 && styles.withException} ${isSelected && styles.isSelected} ${!isSelected && selectedExceptionIds.length > 0 && styles.isOthersSelected} ${isHighlighted && styles.isHighlighted}`}
+			onClick={onClick}
 			onMouseOut={handleMouseOutException}
 			onMouseOver={handleMouseOverException}
-			onClick={onClick}
 		>
 			{minuteData.minute_label}
 			{minuteData.exception_ids.length > 0 && minuteData.exception_ids.map(exceptionId => (

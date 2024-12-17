@@ -30,11 +30,11 @@ interface LinesDetailContextState {
 		active_waypoint: null | Waypoint
 		all_patterns: null | Pattern[][]
 		demand_metrics: DemandMetricsByLine | undefined
+		highlighted_trip_ids: null | string[]
 		line: Line | undefined
 		routes: Route[]
 		service_metrics: ServiceMetrics[]
 		valid_patterns: Pattern[] | undefined
-		highlighted_trip_ids: null | string[]
 	}
 	filters: {
 		active_pattern_id: null | string
@@ -360,11 +360,11 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			active_waypoint: dataActiveWaypointState,
 			all_patterns: dataAllPatternsState,
 			demand_metrics: dataDemandMetricsState,
+			highlighted_trip_ids: dataHighlightedTripIdsState,
 			line: dataLineState,
 			routes: dataRoutesState,
 			service_metrics: dataServiceMetricsState,
 			valid_patterns: dataValidPatternsState,
-			highlighted_trip_ids: dataHighlightedTripIdsState,
 		},
 		filters: {
 			active_pattern_id: filterActivePatternIdState,
