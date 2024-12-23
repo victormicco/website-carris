@@ -1177,11 +1177,11 @@
 			"more": {
 				"label": "More",
 				"links": {
-					"about": "Sobre a CMetropolitana",
-					"drivers": "Recrutamento de Motoristas",
-					"metrics": "A nosssa operação ao vivo",
-					"news": "Notícias",
-					"open-data": "Dados Abertos"
+					"about": "About CMetropolitana",
+					"drivers": "Work as a Driver",
+					"metrics": "Our live operation",
+					"news": "News",
+					"open-data": "Open Data"
 				}
 			},
 			"schedules": {
