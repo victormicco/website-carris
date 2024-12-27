@@ -20,9 +20,11 @@ interface Discount {
 export const availableDiscounts: Discount[] = [
 	{ _id: 'normal', price_metropolitano: 40, price_municipal: 30 },
 	{ _id: 'sub23', href: 'https://www.navegante.pt/viajar/descontos#:~:text=consumo%20de%20energia.-,Gratuitidade%20para%20jovens%20estudantes,-Os%20jovens%20estudantes', price_metropolitano: 0 },
-	{ _id: 'social-a', href: 'https://www.navegante.pt/viajar/descontos#:~:text=ser%20efetuados%20mensalmente.-,Social%20%2B,-O%20Passe%20Social', price_metropolitano: 20, price_municipal: 15 },
-	{ _id: 'social-b', href: 'https://www.navegante.pt/viajar/descontos#:~:text=ser%20efetuados%20mensalmente.-,Social%20%2B,-O%20Passe%20Social', price_metropolitano: 30, price_municipal: 22.5 },
+	{ _id: 'circula-pt-a', href: 'https://www.navegante.pt/viajar/descontos#:~:text=navegante%C2%AE%20fam%C3%ADlia-,Circula%20PT%20(anterior%20Social%20%2B),-O%20Circula%20PT', price_metropolitano: 20, price_municipal: 15 },
+	{ _id: 'circula-pt-b', href: 'https://www.navegante.pt/viajar/descontos#:~:text=navegante%C2%AE%20fam%C3%ADlia-,Circula%20PT%20(anterior%20Social%20%2B),-O%20Circula%20PT', price_metropolitano: 30, price_municipal: 22.5 },
 	{ _id: 'plus-65', href: 'https://www.navegante.pt/viajar/descontos#:~:text=operadores%20de%20transporte.-,%2B65%20anos%20e%20RP,-Se%20tem%20mais', price_metropolitano: 20 },
+	{ _id: 'circula-pt-plus-65-a', href: 'https://www.navegante.pt/viajar/descontos#:~:text=navegante%C2%AE%20fam%C3%ADlia-,Circula%20PT%20(anterior%20Social%20%2B),-O%20Circula%20PT', price_metropolitano: 10 },
+	{ _id: 'circula-pt-plus-65-b', href: 'https://www.navegante.pt/viajar/descontos#:~:text=navegante%C2%AE%20fam%C3%ADlia-,Circula%20PT%20(anterior%20Social%20%2B),-O%20Circula%20PT', price_metropolitano: 15 },
 	{ _id: 'combatente-plus-65', href: 'https://www.navegante.pt/viajar/descontos#:~:text=os%20documentos%20originais.-,navegante%20antigo%20combatente,-O%20navegante%C2%AE%20antigo', price_metropolitano: 0 },
 	{ _id: 'combatente-minus-65', href: 'https://www.navegante.pt/viajar/descontos#:~:text=os%20documentos%20originais.-,navegante%20antigo%20combatente,-O%20navegante%C2%AE%20antigo', price_metropolitano: 10, price_municipal: 0 },
 	{ _id: 'family', href: 'https://www.navegante.pt/viajar/descontos#:~:text=Oriente%20e%20Aeroporto-,navegante%C2%AE%20fam%C3%ADlia,-O%20passe%20navegante', price_metropolitano: 80, price_municipal: 60 },

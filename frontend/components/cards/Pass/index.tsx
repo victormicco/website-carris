@@ -34,7 +34,7 @@ export function Pass() {
 				<Grid columns="ab" withGap>
 
 					<div className={styles.cardWrapper}>
-						<Player src={metropolitanoAnimation} autoplay />
+						<Player src={metropolitanoAnimation} autoplay loop />
 						<div className={styles.cardContents}>
 							<p className={styles.cardTitle}>{t('metropolitano.title')}</p>
 							<p className={styles.cardDescription}>{t('metropolitano.description')}</p>
