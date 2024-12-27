@@ -1,11 +1,5 @@
 [
 	{
-		"id": "0001",
-		"src": "/assets/featured/advento.png",
-		"target": "_blank",
-		"url": "https://storage.carrismetropolitana.pt/static/advento"
-	},
-	{
 		"id": "0002",
 		"src": "/assets/featured/download_app.png",
 		"target": "_blank",
