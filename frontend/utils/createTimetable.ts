@@ -58,7 +58,7 @@ export default function createTimetable(primaryPatternGroup: Pattern, secondaryP
 			// Since we're processing the primary Pattern, ensure that the minute entry does not have any exceptions.
 			const minuteEntry = hourEntry.minutes.find(m => m.minute_value === minuteValue && m.exception_ids === undefined);
 			if (!minuteEntry) {
-				hourEntry.minutes.push({ exception_ids: [], minute_label: minute24, minute_value: minuteValue });
+				hourEntry.minutes.push({ exception_ids: [], minute_label: minute24, minute_value: minuteValue, trip_ids: trip.trip_ids });
 			}
 		});
 	});
@@ -103,7 +103,7 @@ export default function createTimetable(primaryPatternGroup: Pattern, secondaryP
 				}
 				// Create a new minute entry if it doesn't exist yet
 				if (!minuteEntry) {
-					hourEntry.minutes.push({ exception_ids: [existingException.exception_id], minute_label: minute24, minute_value: minuteValue });
+					hourEntry.minutes.push({ exception_ids: [existingException.exception_id], minute_label: minute24, minute_value: minuteValue, trip_ids: trip.trip_ids });
 				}
 				// If the minute entry already exists, add the exception ID to it
 				else {

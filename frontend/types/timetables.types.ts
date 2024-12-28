@@ -19,6 +19,7 @@ export interface Minute {
 	exception_ids: string[]
 	minute_label: string
 	minute_value: number
+	trip_ids: string[]
 }
 
 /* * */

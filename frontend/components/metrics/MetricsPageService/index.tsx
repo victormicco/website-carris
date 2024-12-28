@@ -6,6 +6,7 @@ import { LiveIcon } from '@/components/common/LiveIcon';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { Routes } from '@/utils/routes';
+import { CachedResource } from '@carrismetropolitana/api-types/common';
 import { ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
@@ -22,7 +23,7 @@ export function MetricsPageService() {
 	// A. Define Variables
 
 	const t = useTranslations('lines.LinesDetailMetricsService');
-	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<ServiceMetrics[], Error>(`${Routes.API}/metrics/service/all`);
+	const { data: serviceMetricsData, isLoading: serviceMetricsLoading } = useSWR<CachedResource<ServiceMetrics[]>, Error>(`${Routes.API}/metrics/service/all`);
 
 	//
 	// B. Transform data
@@ -31,7 +32,7 @@ export function MetricsPageService() {
 		if (!serviceMetricsData) return;
 		let totalScheduledTrips = 0;
 		let totalPassedTrips = 0;
-		serviceMetricsData.forEach((item) => {
+		serviceMetricsData.data.forEach((item) => {
 			totalScheduledTrips += item.total_trip_count;
 			totalPassedTrips += item.pass_trip_count;
 		});

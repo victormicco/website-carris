@@ -5,7 +5,7 @@
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import Lottie from 'lottie-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -34,7 +34,7 @@ export function Pass() {
 				<Grid columns="ab" withGap>
 
 					<div className={styles.cardWrapper}>
-						<Lottie animationData={metropolitanoAnimation} />
+						<Player src={metropolitanoAnimation} autoplay loop />
 						<div className={styles.cardContents}>
 							<p className={styles.cardTitle}>{t('metropolitano.title')}</p>
 							<p className={styles.cardDescription}>{t('metropolitano.description')}</p>
@@ -42,7 +42,7 @@ export function Pass() {
 					</div>
 
 					<div className={styles.cardWrapper}>
-						<Lottie animationData={municipalAnimation} />
+						<Player src={municipalAnimation} autoplay />
 						<div className={styles.cardContents}>
 							<p className={styles.cardTitle}>{t('municipal.title')}</p>
 							<p className={styles.cardDescription}>{t('municipal.description')}</p>

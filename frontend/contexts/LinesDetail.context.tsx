@@ -21,6 +21,7 @@ interface LinesDetailContextState {
 	actions: {
 		setActivePattern: (patternGroupId: string) => void
 		setActiveWaypoint: (stopId: string, stopSequence: number,) => void
+		setHighlightedTripIds: (tripIds: string[]) => void
 	}
 	data: {
 		active_alerts: SimplifiedAlert[] | undefined
@@ -29,6 +30,7 @@ interface LinesDetailContextState {
 		active_waypoint: null | Waypoint
 		all_patterns: null | Pattern[][]
 		demand_metrics: DemandMetricsByLine | undefined
+		highlighted_trip_ids: null | string[]
 		line: Line | undefined
 		routes: Route[]
 		service_metrics: ServiceMetrics[]
@@ -83,7 +85,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	const [dataActivePatternState, setDataActivePatternState] = useState<LinesDetailContextState['data']['active_pattern']>(null);
 	const [dataActiveShapeState, setDataActiveShapeState] = useState<LinesDetailContextState['data']['active_shape']>(null);
 	const [dataActiveWaypointState, setDataActiveWaypointState] = useState<LinesDetailContextState['data']['active_waypoint']>(null);
-
+	const [dataHighlightedTripIdsState, setDataHighlightedTripIdsState] = useState<LinesDetailContextState['data']['highlighted_trip_ids']>([]);
 	const [filterActivePatternIdState, setFilterActivePatternIdState] = useQueryState('active_pattern_id');
 	const [filterActiveWaypointStopIdState, setFilterActiveWaypointStopIdState] = useQueryState('active_waypoint_stop_id');
 	const [filterActiveWaypointStopSequenceState, setFilterActiveWaypointStopSequenceState] = useQueryState('active_waypoint_stop_sequence');
@@ -332,6 +334,16 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		}
 	};
 
+	/**
+	 * Set the highlighted trip ids.
+	 * @param tripIds
+	 * @returns
+	 */
+	const setHighlightedTripIds = (tripIds: string[]) => {
+		if (tripIds === dataHighlightedTripIdsState) setDataHighlightedTripIdsState(null);
+		else setDataHighlightedTripIdsState(tripIds);
+	};
+
 	//
 	// E. Define context value
 
@@ -339,6 +351,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		actions: {
 			setActivePattern,
 			setActiveWaypoint,
+			setHighlightedTripIds,
 		},
 		data: {
 			active_alerts: dataActiveAlertsState,
@@ -347,6 +360,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 			active_waypoint: dataActiveWaypointState,
 			all_patterns: dataAllPatternsState,
 			demand_metrics: dataDemandMetricsState,
+			highlighted_trip_ids: dataHighlightedTripIdsState,
 			line: dataLineState,
 			routes: dataRoutesState,
 			service_metrics: dataServiceMetricsState,

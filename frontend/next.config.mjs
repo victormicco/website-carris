@@ -35,6 +35,9 @@ const nextConfig = {
       //
       { destination: '/planner', permanent: true, source: '/planeador' },
       //
+      { destination: '/open-data', permanent: true, source: '/opendata' },
+      { destination: '/open-data', permanent: true, source: '/dados-abertos' },
+      //
       { destination: '/stores', permanent: true, source: '/encm' },
       { destination: '/stores', permanent: true, source: '/lojas' },
       { destination: '/stores', permanent: true, source: '/espacos-navegante' },

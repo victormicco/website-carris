@@ -3,5 +3,5 @@
 
 .container {
 	display: flex;
-	/* padding: var(--size-spacing-15) var(--size-spacing-20); */
+	padding: var(--size-spacing-15) var(--size-spacing-20);
 }

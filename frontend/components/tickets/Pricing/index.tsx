@@ -3,7 +3,7 @@
 /* * */
 
 import { Surface } from '@/components/layout/Surface';
-import Lottie from 'lottie-react';
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -35,7 +35,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<Lottie animationData={proximaAnimation} style={{ maxWidth: 65 }} />
+						<Player src={proximaAnimation} style={{ maxWidth: 65 }} autoplay />
 						<h3 className={styles.title}>{t('proxima.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -54,7 +54,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<Lottie animationData={longaAnimation} style={{ maxWidth: 65 }} />
+						<Player src={longaAnimation} style={{ maxWidth: 65 }} autoplay />
 						<h3 className={styles.title}>{t('longa.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -73,7 +73,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<Lottie animationData={rapidaAnimation} style={{ maxWidth: 65 }} />
+						<Player src={rapidaAnimation} style={{ maxWidth: 65 }} autoplay />
 						<h3 className={styles.title}>{t('rapida.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -92,7 +92,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<Lottie animationData={interRegionalAnimation} style={{ maxWidth: 65 }} />
+						<Player src={interRegionalAnimation} style={{ maxWidth: 65 }} autoplay />
 						<h3 className={styles.title}>{t('inter-regional.title')}</h3>
 					</div>
 					<div className={styles.pricing}>
@@ -117,7 +117,7 @@ export function Pricing() {
 			<Surface variant="persistent">
 				<div className={styles.container}>
 					<div className={styles.info}>
-						<Lottie animationData={marAnimation} style={{ maxWidth: 65 }} />
+						<Player src={marAnimation} style={{ maxWidth: 65 }} autoplay />
 						<h3 className={styles.title}>{t('mar.title')}</h3>
 					</div>
 					<div className={styles.pricing}>

@@ -89,6 +89,14 @@
 	line-height: 1;
 	padding: 0 6px;
 	font-weight: var(--font-weight-semibold);
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+
+	&:hover {
+		scale: 1.05;
+		translate: 0 -2px;
+		color: var(--color-system-text-200);
+	}
 }
 
 .column:first-child .minute {
@@ -113,6 +121,13 @@
 
 .minute.isOthersSelected {
 	color: var(--color-system-text-400);
+}
+
+.minute.isHighlighted {
+	margin: 2px;
+	color: light-dark(var(--color-system-text-100), var(--color-brand));
+	background-color: light-dark(var(--color-brand), var(--color-system-background-100));
+	border-radius: 100%;
 }
 
 /* * */
