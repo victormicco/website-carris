@@ -2,7 +2,7 @@
 
 /* * */
 
-import type { Store } from '@/types/stores.types.js';
+import type { Store } from '@carrismetropolitana/api-types/facilities';
 
 import { moveMap } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
@@ -91,7 +91,7 @@ export const StoresListContextProvider = ({ children }) => {
 		// Filter by current_status
 		if (filterByCurrentStatusState !== 'all') {
 			filterResult = filterResult.filter((store) => {
-				return store.current_status === filterByCurrentStatusState;
+				return store.realtime?.current_status === filterByCurrentStatusState;
 			});
 		}
 
@@ -108,18 +108,18 @@ export const StoresListContextProvider = ({ children }) => {
 		switch (filterOrderByState) {
 			case 'capacity':
 				filterResult.sort((a, b) => filterOrderByDirectionState === 'asc'
-					? a.currently_waiting - b.currently_waiting
-					: b.currently_waiting - a.currently_waiting);
+					? (a.realtime?.currently_waiting ?? 0) - (b.realtime?.currently_waiting ?? 0)
+					: (b.realtime?.currently_waiting ?? 0) - (a.realtime?.currently_waiting ?? 0));
 				break;
 			case 'municipality_name':
 				filterResult.sort((a, b) => filterOrderByDirectionState === 'asc'
-					? a.municipality_name.localeCompare(b.municipality_name)
-					: b.municipality_name.localeCompare(a.municipality_name));
+					? (a.municipality_name ?? '').localeCompare(b.municipality_name ?? '')
+					: (b.municipality_name ?? '').localeCompare(a.municipality_name ?? ''));
 				break;
 			case 'wait_time':
 				filterResult.sort((a, b) => filterOrderByDirectionState === 'asc'
-					? a.expected_wait_time - b.expected_wait_time
-					: b.expected_wait_time - a.expected_wait_time);
+					? (a.realtime?.expected_wait_time ?? 0) - (b.realtime?.expected_wait_time ?? 0)
+					: (b.realtime?.expected_wait_time ?? 0) - (a.realtime?.expected_wait_time ?? 0));
 				break;
 			default:
 				console.error('Invalid filterOrderByState:', filterOrderByState);
@@ -139,7 +139,7 @@ export const StoresListContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (!allStoresData) return;
-		if (allStoresData?.filter(item => item.current_status === 'open').length === 0) {
+		if (allStoresData?.filter(item => item.realtime?.current_status === 'open').length === 0) {
 			setFilterByCurrentStatusState('all');
 		}
 
@@ -201,7 +201,7 @@ export const StoresListContextProvider = ({ children }) => {
 		},
 		counters: {
 			by_current_status: {
-				open: allStoresData?.filter(item => item.current_status === 'open').length || 0,
+				open: allStoresData?.filter(item => item.realtime?.current_status === 'open').length || 0,
 			},
 		},
 		data: {

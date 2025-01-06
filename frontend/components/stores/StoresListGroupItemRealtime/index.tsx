@@ -1,6 +1,6 @@
 /* * */
 
-import type { Store } from '@/types/stores.types';
+import type { Store } from '@carrismetropolitana/api-types/facilities';
 
 import { LiveIcon } from '@/components/common/LiveIcon';
 import { Skeleton } from '@mantine/core';
@@ -28,12 +28,12 @@ export default function Component({ data }: Props) {
 	//
 	// B. Transform data
 
-	const expectedWaitTimeInMinutes = Math.round(data.expected_wait_time / 60);
+	const expectedWaitTimeInMinutes = Math.round((data.realtime?.expected_wait_time ?? 0) / 60);
 
 	//
 	// C. Render components
 
-	if (data.current_status === 'open') {
+	if (data.realtime?.current_status === 'open') {
 		return (
 			<div className={`${styles.container} ${styles.isOpen}`}>
 				<div className={styles.label}>
@@ -42,11 +42,11 @@ export default function Component({ data }: Props) {
 				</div>
 				<div className={styles.value}>
 					<IconUsers size={16} />
-					{t('people_waiting', { count: data.currently_waiting })}
+					{t('people_waiting', { count: data.realtime?.currently_waiting })}
 				</div>
 				<div className={styles.value}>
 					<IconUserStar size={16} />
-					{t('desks_open', { count: data.active_counters })}
+					{t('desks_open', { count: data.realtime?.active_counters })}
 				</div>
 				<div className={styles.value}>
 					<IconClockHour3 size={16} />
@@ -56,7 +56,7 @@ export default function Component({ data }: Props) {
 		);
 	}
 
-	if (data.current_status === 'busy') {
+	if (data.realtime?.current_status === 'busy') {
 		return (
 			<div className={`${styles.container} ${styles.isBusy}`}>
 				<div className={styles.label}>
@@ -65,11 +65,11 @@ export default function Component({ data }: Props) {
 				</div>
 				<div className={styles.value}>
 					<IconUsers size={16} />
-					{t('people_waiting', { count: data.currently_waiting })}
+					{t('people_waiting', { count: data.realtime?.currently_waiting })}
 				</div>
 				<div className={styles.value}>
 					<IconUserStar size={16} />
-					{t('desks_open', { count: data.active_counters })}
+					{t('desks_open', { count: data.realtime?.active_counters })}
 				</div>
 				<div className={styles.value}>
 					<IconClockHour3 size={16} />
@@ -79,7 +79,7 @@ export default function Component({ data }: Props) {
 		);
 	}
 
-	if (data.current_status === 'closed') {
+	if (data.realtime?.current_status === 'closed') {
 		return (
 			<div className={`${styles.container} ${styles.isClosed}`}>
 				<div className={styles.label}>{t('current_status.closed')}</div>
