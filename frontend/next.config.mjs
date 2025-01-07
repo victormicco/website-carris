@@ -60,6 +60,7 @@ const nextConfig = {
       { destination: 'https://backoffice.carrismetropolitana.pt/freeport-pt', permanent: false, source: '/freeport-pt' },
       { destination: 'https://backoffice.carrismetropolitana.pt/freeport-en', permanent: false, source: '/freeport-en' },
       { destination: 'https://backoffice.carrismetropolitana.pt/notasdeimprensa', permanent: false, source: '/notasdeimprensa' },
+      { destination: 'https://backoffice.carrismetropolitana.pt/wtclisboa', permanent: false, source: '/wtclisboa' },
       //
     ]
   },
