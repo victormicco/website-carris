@@ -36,7 +36,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			description: 'Este ano, seriam precisos 34 milhões de carros de 5 lugares para transportar os nossos passageiros.',
 			lottie_src: '/images/review-2024/animations/test-01.json',
-			number_legend: 'total de passageiros transportados em 2024',
+			number_legend: 'totals de passageiros transportados em 2024',
 			number_source: 'https://www.cmet.pt',
 			number_value: '172 549 659',
 			title: 'Este ano fomos gigantes!',
