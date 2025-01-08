@@ -3,10 +3,12 @@
 
 .container {
 	display: grid;
+	grid-template-columns: 1fr;
 	gap: 0;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 100%;
+	margin-top: -20px;
 
 	--animation-duration-open: 600ms;
 	--animation-duration-close: 600ms;
@@ -22,6 +24,10 @@
 	transition: grid-template-rows var(--animation-duration-open) ease-out;
 }
 
+.container[data-is-first='true'] {
+	margin-top: 0;
+}
+
 /* * */
 /* HEADER */
 
@@ -34,11 +40,11 @@
 	justify-content: space-between;
 	width: 100%;
 	padding: 20px 15px;
+	padding-bottom: 40px;
 	cursor: pointer;
 	background-color: var(--color-primary);
 	border-radius: 18px 18px 0 0;
 	box-shadow: 0 -4px 0 0 rgb(0 0 0 / 5%);
-	transition: all 200ms ease-out;
 }
 
 .headerTitle {
@@ -53,12 +59,30 @@
 	color: var(--color-text);
 }
 
+.container[data-open='true'] .header {
+	padding-bottom: 20px;
+	transition: all 50ms ease-out;
+}
+
+.container[data-open='false'] .header {
+	padding-bottom: 40px;
+	transition: all 50ms ease-out calc(var(--animation-duration-open) - 100ms);
+}
+
+.container[data-is-last='true'] .header {
+	padding-bottom: 20px;
+}
+
+.container[data-is-last='true'][data-open='false'] .header {
+	border-radius: 18px;
+	transition: all 50ms ease-out calc(var(--animation-duration-close) - 100ms);
+}
+
 /* * */
 /* CONTENT */
 
 .content {
-	padding-bottom: 20px;
-	margin-bottom: -20px;
+	width: 100%;
 	overflow: hidden;
 	border-right: 1px solid transparent;
 	border-left: 1px solid transparent;
@@ -66,17 +90,24 @@
 }
 
 .container[data-open='false'] .content {
-	max-height: 0;
+	clip-path: inset(0 0 100% 0);
 	background-color: var(--color-primary);
 	border-color: transparent;
-	transition: all 200ms ease-out calc(var(--animation-duration-close) - 200ms);
+	transition: all 200ms ease-out calc(var(--animation-duration-close) - 200ms),
+				clip-path var(--animation-duration-close) ease;
 }
 
 .container[data-open='true'] .content {
-	max-height: 5000px;
+	clip-path:  inset(0 0 0% 0);
 	background-color: var(--color-system-background-200);
 	border-color: var(--color-system-border-100);
-	transition: all 200ms ease-out;
+	transition: all var(--animation-duration-close) ease-out;
+}
+
+.container[data-is-last='true'] .content {
+	border-bottom: 1px solid var(--color-system-border-100);
+	border-bottom-right-radius: 18px;
+	border-bottom-left-radius: 18px;
 }
 
 .innerWrapper {
@@ -85,6 +116,7 @@
 	gap: 20px;
 	width: 100%;
 	padding: 20px;
+	padding-bottom: 40px;
 }
 
 /* * */
