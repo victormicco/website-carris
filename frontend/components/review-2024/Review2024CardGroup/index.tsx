@@ -1,7 +1,8 @@
 /* * */
 
-import { allCardsData } from '../_data/cards';
-import { Review2024Card } from '../Review2024Card';
+import { allCardsData } from '@/components/review-2024/_data/cards';
+import { Review2024Card } from '@/components/review-2024/Review2024Card';
+
 import styles from './styles.module.css';
 
 /* * */
