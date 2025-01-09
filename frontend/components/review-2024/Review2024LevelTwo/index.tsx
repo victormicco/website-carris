@@ -32,7 +32,10 @@ export function Review2024LevelTwo() {
 						<h2 className={styles.heading}>{t('municipio_growth.heading')}</h2>
 						<h5 className={styles.subheading}>{t('municipio_growth.subheading')}</h5>
 					</div>
-					<Review2024CardGroup groupId="municipio_growth" />
+					<Review2024CardGroup groupId="municipio_growth_area_1" />
+					<Review2024CardGroup groupId="municipio_growth_area_2" />
+					<Review2024CardGroup groupId="municipio_growth_area_3" />
+					<Review2024CardGroup groupId="municipio_growth_area_4" />
 				</Section>
 
 				<Section withPadding="desktop" withGap>
@@ -40,7 +43,10 @@ export function Review2024LevelTwo() {
 						<h2 className={styles.heading}>{t('municipio_pax.heading')}</h2>
 						<h5 className={styles.subheading}>{t('municipio_pax.subheading')}</h5>
 					</div>
-					<Review2024CardGroup groupId="municipio_pax" />
+					<Review2024CardGroup groupId="municipio_pax_area_1" />
+					<Review2024CardGroup groupId="municipio_pax_area_2" />
+					<Review2024CardGroup groupId="municipio_pax_area_3" />
+					<Review2024CardGroup groupId="municipio_pax_area_4" />
 				</Section>
 
 				<Section withPadding="desktop" withGap>
@@ -48,7 +54,10 @@ export function Review2024LevelTwo() {
 						<h2 className={styles.heading}>{t('municipio_terminals.heading')}</h2>
 						<h5 className={styles.subheading}>{t('municipio_terminals.subheading')}</h5>
 					</div>
-					<Review2024CardGroup groupId="municipio_terminals" />
+					<Review2024CardGroup groupId="municipio_terminals_area_1" />
+					<Review2024CardGroup groupId="municipio_terminals_area_2" />
+					<Review2024CardGroup groupId="municipio_terminals_area_3" />
+					<Review2024CardGroup groupId="municipio_terminals_area_4" />
 				</Section>
 
 			</Grid>
