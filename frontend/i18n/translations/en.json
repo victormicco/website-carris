@@ -1111,17 +1111,15 @@
 		}
 	},
 	"planner": {
-		"Page": {
-			"Navegante": {
-				"button": "View Options",
-				"heading": "Plan your trip with navegante®",
-				"subheading": "Use the navegante® service to plan your trip, from A to B, combining various transport modes, if necessary. Discover all the options included with your subscription."
-			},
-			"Partners": {
-				"disclaimer": "Edit this page on Github if you want to include your app. The order is random. Only inputs that simultaneously provide planned and real-time schedules or vehicle positions are permitted.",
-				"heading": "Our partners",
-				"subheading": "Because our data is open, there are various applications that offer personalized experiences to enhance your daily transportation."
-			}
+		"PlannerNavegante": {
+			"button": "Ver Opções",
+			"heading": "Planeie a sua viagem com o navegante®",
+			"subheading": "Utilize o serviço navegante® para planear a sua viagem, de A a B, combinando vários modos de transporte, se necessário. Descubra toda as opções que estão incluídas com a sua subscrição."
+		},
+		"PlannerPartners": {
+			"disclaimer": "Edite esta página no Github se pretende incluir a sua aplicação. A ordem é aleatória. Apenas são permitidas entradas que disponibilizem simultaneamente horários planeados e em tempo real ou posição de veículos.",
+			"heading": "Os nossos parceiros",
+			"subheading": "Porque os nossos dados são abertos, existem várias aplicações que oferecem experiências personalizadas para melhorar o seu dia-a-dia nos transportes."
 		}
 	},
 	"profile": {
