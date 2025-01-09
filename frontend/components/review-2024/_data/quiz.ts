@@ -18,7 +18,7 @@ export interface QuizSchema {
 
 /* * */
 
-export const allCardsData: QuizSchema[] = [
+export const allQuizData: QuizSchema[] = [
 
 	{
 		_id: 'test-02',

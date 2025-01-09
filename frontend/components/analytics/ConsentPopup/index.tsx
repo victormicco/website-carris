@@ -55,7 +55,17 @@ export function ConsentPopup() {
 	// C. Render Components
 
 	return (
-		<Modal classNames={{ body: styles.bodyOverride, content: styles.contentOverride }} closeOnClickOutside={false} closeOnEscape={false} onClose={() => setIsOpen(false)} opened={isOpen} overlayProps={{ backgroundOpacity: 0.55, blur: 3 }} returnFocus={true} trapFocus={false} withCloseButton={false}>
+		<Modal
+			classNames={{ body: styles.bodyOverride, content: styles.contentOverride }}
+			closeOnClickOutside={false}
+			closeOnEscape={false}
+			onClose={() => setIsOpen(false)}
+			opened={isOpen}
+			overlayProps={{ backgroundOpacity: 0.55, blur: 3 }}
+			returnFocus={true}
+			trapFocus={false}
+			withCloseButton={false}
+		>
 			<Logo />
 			<h4 className={styles.title}>{t('title')}</h4>
 			<h4 className={styles.text}>{t('text')}</h4>
