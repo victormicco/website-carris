@@ -1154,17 +1154,43 @@
 		}
 	},
 	"review-2024": {
+		"Review2024LevelFour": {
+			"digital": {
+				"heading": "Digital",
+				"subheading": "Em 2024, também viajámos virtualmente, mantendo sempre presente a necessidade de informar os nossos passageiros!"
+			}
+		},
 		"Review2024LevelOne": {
-			"a": {
+			"passageiros": {
 				"heading": "Quem fomos?",
 				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
 			},
-			"b": {
+			"recordes": {
+				"heading": "Recordes",
+				"subheading": "2024 foi cheio de pontos altos, aqui estão os recordes mais importantes que quebrámos."
+			},
+			"tops": {
 				"heading": "Tops",
 				"subheading": "Os tops e destaques da nossa rede, durante o ano de 2024."
+			}
+		},
+		"Review2024LevelThree": {
+			"municipio_lines": {
+				"heading": "Linhas Municipais",
+				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
+			}
+		},
+		"Review2024LevelTwo": {
+			"municipio_growth": {
+				"heading": "Crescimento por Município",
+				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
 			},
-			"c": {
-				"heading": "Recordes",
+			"municipio_pax": {
+				"heading": "Passageiros por Município",
+				"subheading": "Os tops e destaques da nossa rede, durante o ano de 2024."
+			},
+			"municipio_terminals": {
+				"heading": "Terminais por Município",
 				"subheading": "2024 foi cheio de pontos altos, aqui estão os recordes mais importantes que quebrámos."
 			}
 		},
