@@ -1,0 +1,113 @@
+/* * */
+/* CONTAINER */
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 100%;
+	overflow: hidden;
+	border: 2px solid var(--color-border);
+	border-radius: 18px;
+
+	--animation-duration-open: 600ms;
+	--animation-duration-close: 600ms;
+}
+
+/* * */
+/* HEADER */
+
+.header {
+	z-index: 10;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 20px;
+	background-color: var(--color-primary);
+	border: 2px solid var(--color-border);
+	box-shadow: 0 -4px 0 0 rgb(0 0 0 / 5%);
+}
+
+.headerTitle {
+	font-size: 16px;
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text);
+}
+
+/* * */
+/* QUESTION */
+
+.question {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	padding: 20px;
+}
+
+/* * */
+/* CONTENT LOTTIE */
+
+.questionLottie {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid var(--color-system-border-100);
+	border-radius: 18px;
+}
+
+/* * */
+/* CONTENT TITLE */
+
+.questionTitle {
+	font-size: 22px;
+	font-weight: var(--font-weight-bold);
+	color: var(--color-system-text-200);
+	text-align: center;
+}
+
+.questionDescription {
+	font-size: 14px;
+	font-weight: var(--font-weight-medium);
+	color: var(--color-system-text-200);
+}
+
+/* * */
+/* ANSWERS */
+
+.answersWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	width: 100%;
+}
+
+.answerOption {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 20px;
+	font-size: 18px;
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text);
+	text-align: center;
+	cursor: pointer;
+	background-color: var(--color-primary);
+	border-radius: 12px;
+	transition: all 300ms ease-out;
+}
+
+.answerOption:hover,
+.answerOption:active {
+	box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+	opacity: 0.8;
+}
