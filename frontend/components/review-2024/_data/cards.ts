@@ -191,4 +191,104 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 	},
 
+	{
+		_group: 'tops',
+		_id: 'tops_lines_area_1',
+		colors: {
+			primary: '#C61D23',
+			text: '#FFFFFF',
+		},
+		content: {
+			description: 'Se os passageiros destas linhas (5 519 192) dessem as mãos, conseguiam ir de Lisboa a Sintra mais de 250 vezes.',
+			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
+			number_legend: 'linhas com mais passageiros transportados na área 1 (Amadora, Cascais, Lisboa, Oeiras, Sintra)',
+			number_value: '1715|1709|1703',
+			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
+		},
+		header: {
+			number: '1715',
+			title: 'Top Linhas área 1',
+		},
+	},
+
+	{
+		_group: 'tops',
+		_id: 'tops_lines_area_2',
+		colors: {
+			primary: '#C61D23',
+			text: '#FFFFFF',
+		},
+		content: {
+			description: 'Os passageiros destas linhas (6 258 565) caberiam de mãos dadas na largura da foz do Tejo em Lisboa mais de 700 vezes.',
+			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
+			number_legend: 'linhas com mais passageiros transportados na área 1 (Loures, Mafra, Odivelas, Vila Franca de Xira)',
+			number_value: '2769|2711|2730',
+			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
+		},
+		header: {
+			number: '2769',
+			title: 'Top Linhas área 2',
+		},
+	},
+
+	{
+		_group: 'tops',
+		_id: 'tops_lines_area_3',
+		colors: {
+			primary: '#C61D23',
+			text: '#FFFFFF',
+		},
+		content: {
+			description: 'Os passageiros destas linhas (4 590 671) conseguiriam dar as mãos pela largura das praias da Costa da Caparica mais de 250 vezes.',
+			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
+			number_legend: 'linhas com mais passageiros transportados na área 3 (Almada, Seixal e Sesimbra)',
+			number_value: '3508|3022|3013',
+			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
+		},
+		header: {
+			number: '3508',
+			title: 'Top Linhas área 3',
+		},
+	},
+
+	{
+		_group: 'tops',
+		_id: 'tops_lines_area_4',
+		colors: {
+			primary: '#C61D23',
+			text: '#FFFFFF',
+		},
+		content: {
+			description: 'Os passageiros destas linhas (4 597 469), conseguiriam dar as mãos pelo comprimento do rio Sado mais de 360 vezes.',
+			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
+			number_legend: 'linhas com mais passageiros transportados na área 4 (Alcochete, Barreiro, Moita, Montijo, Palmela, Setúbal)',
+			number_value: '4600|4701|4512',
+			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
+		},
+		header: {
+			number: '4600',
+			title: 'Top Linhas área 4',
+		},
+	},
+
+	{
+		_group: 'tops',
+		_id: 'lines_growth',
+		colors: {
+			primary: '#F0F0F0',
+			text: '#FFFFFF',
+		},
+		content: {
+			description: 'Os passageiros destas linhas (4 597 469), conseguiriam dar as mãos pelo comprimento do rio Sado mais de 360 vezes.',
+			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
+			number_legend: 'linhas com maior taxa de crescimento entre janeiro e dezembro de 2024',
+			number_value: '"2711|4600|4701',
+			title: 'Crescem depressa!',
+		},
+		header: {
+			number: '2711',
+			title: 'Crescimento Linhas',
+		},
+	},
+
 ];

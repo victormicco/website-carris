@@ -40,7 +40,7 @@ export function Review2024LevelOne() {
 						<h2 className={styles.heading}>{t('b.heading')}</h2>
 						<h5 className={styles.subheading}>{t('b.subheading')}</h5>
 					</div>
-					<Review2024CardGroup groupId="passageiros" />
+					<Review2024CardGroup groupId="tops" />
 				</Section>
 				<Section withPadding="desktop" withGap>
 					<div className={styles.headingWrapper}>
