@@ -1200,6 +1200,18 @@
 				"subheading": "2024 foi cheio de pontos altos, aqui estão os recordes mais importantes que quebrámos."
 			}
 		},
+		"Review2024Page": {
+			"modal": {
+				"cancel": "Ficar na Quiz",
+				"confirm": "Perder os Pontos",
+				"message": "Para evitar batotas, vai perder os seus pontos se sair da página. Tem a certeza que quer sair?",
+				"title": "Vai perder os seu pontos!"
+			}
+		},
+		"Review2024QuizPoints": {
+			"points": "{points, plural, =1 {# ponto} other {# pontos}}",
+			"progress": "{answered} / {total} perguntas"
+		},
 		"Review2024TabSelector": {
 			"heading": "2024 em revista",
 			"tabs": {
