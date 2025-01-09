@@ -34,6 +34,9 @@ export function Review2024LevelThree() {
 					</div>
 					<Review2024CardGroup groupId="municipio_lines_area_1" />
 					<Review2024CardGroup groupId="municipio_lines_area_2" />
+				</Section>
+
+				<Section withPadding="desktop" withGap>
 					<Review2024CardGroup groupId="municipio_lines_area_3" />
 					<Review2024CardGroup groupId="municipio_lines_area_4" />
 				</Section>

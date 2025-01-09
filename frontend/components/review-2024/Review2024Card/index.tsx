@@ -39,7 +39,7 @@ export function Review2024Card({ cardData, isFirstChild, isLastChild }: Props) {
 	// C. Transform data
 
 	const stylesData: CustomCSSProperties = {
-		'--color-border': cardData.colors.border || 'transparent',
+		'--color-border': cardData.colors.border || cardData.colors.primary,
 		'--color-primary': cardData.colors.primary,
 		'--color-text': cardData.colors.text,
 	};

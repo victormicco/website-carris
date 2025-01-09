@@ -27,314 +27,106 @@ export interface Review2024CardSchema {
 export const allCardsData: Review2024CardSchema[] = [
 
 	//
-	// Group: "municipio_lines_area_1"
+	// Group: "digital"
 
 	{
-		_group: 'municipio_lines_area_1',
-		_id: 'municipio_lines_a1_01',
+		_group: 'digital',
+		_id: 'followers_total',
 		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
+			primary: '#3D85C6',
+			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
+			description: 'Seria preciso um prédio de 966 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
+			number_legend: 'total de seguidores novos na nossa comunidade digital',
+			number_value: '6 762',
+			title: 'Este ano, andámos ligados!',
 		},
 		header: {
-			number: 'YY%',
-			title: 'Amadora',
+			number: '6K',
+			title: 'Seguidores',
 		},
 	},
 
 	{
-		_group: 'municipio_lines_area_1',
-		_id: 'municipio_lines_a1_04',
+		_group: 'digital',
+		_id: 'news_total',
 		colors: {
 			primary: '#FFDD00',
 			text: '#000000',
 		},
 		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
+			description: 'Este ano, publicámos uma notícia a cada 6 dias.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
+			number_legend: 'total de notícias publicadas pela Carris Metropolitana em 2024',
+			number_value: '64',
+			title: 'Em 2024, contámos tudo!',
 		},
 		header: {
-			number: 'YY%',
-			title: 'Oeiras',
+			number: '64',
+			title: 'Notícias',
 		},
 	},
 
 	{
-		_group: 'municipio_lines_area_1',
-		_id: 'municipio_lines_a1_05',
+		_group: 'digital',
+		_id: 'realtime_daily',
 		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
+			border: '#00CD32',
+			primary: '#FFFFFF',
+			text: '#00CD32',
 		},
 		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
+			description: 'Este ano, guardámos 3 milhões de eventos por dia enviados pelos nossos autocarro, a notificar a sua localização.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
+			number_legend: 'eventos recibidos em real time, por dia',
+			number_value: '3 000 000',
+			title: 'Este ano, sabemos por onde andámos!',
 		},
 		header: {
-			number: 'YY%',
-			title: 'Sintra',
-		},
-	},
-
-	//
-	// Group: "municipio_lines_area_2"
-
-	{
-		_group: 'municipio_lines_area_2',
-		_id: 'municipio_lines_a2_01',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Loures',
+			number: '3M',
+			title: 'Eventos Tempo Real',
 		},
 	},
 
 	{
-		_group: 'municipio_lines_area_2',
-		_id: 'municipio_lines_a2_02',
+		_group: 'digital',
+		_id: 'app_total',
 		colors: {
-			primary: '#FFDD00',
-			text: '#000000',
+			primary: '#C61D23',
+			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
+			description: 'Seriam precisos 345 autocarros standard para caberem 90 mil telemóveis.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
+			number_legend: 'utilizadores totais da aplicação Carris Metropolitana',
+			number_value: '90 000',
+			title: '2024 foi o ano de viajar no bolso dos passageiros!',
 		},
 		header: {
-			number: 'YY%',
-			title: 'Mafra',
+			number: '90K',
+			title: 'Aplicação',
 		},
 	},
 
 	{
-		_group: 'municipio_lines_area_2',
-		_id: 'municipio_lines_a2_03',
+		_group: 'digital',
+		_id: 'website_daily',
 		colors: {
-			primary: '#F0F0F0',
+			primary: '#F5A000',
 			text: '#000000',
 		},
 		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
+			description: 'Uma pessoa teria que verificar o telemóvel 137 vezes por dia durante um ano inteiro para atingir as 50 mil visitas que recebemos diariamente no site!',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
+			number_legend: 'visitantes diários ao nosso website',
+			number_value: '50 000',
+			title: 'Este ano estivemos sempre à distância de um clique!',
 		},
 		header: {
-			number: 'YY%',
-			title: 'Odivelas',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_2',
-		_id: 'municipio_lines_a2_04',
-		colors: {
-			primary: '#FFDD00',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Vila Franca de Xira',
-		},
-	},
-
-	//
-	// Group: "municipio_lines_area_3"
-
-	{
-		_group: 'municipio_lines_area_3',
-		_id: 'municipio_lines_a3_01',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Almada',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_3',
-		_id: 'municipio_lines_a3_02',
-		colors: {
-			primary: '#FFDD00',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Seixal',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_3',
-		_id: 'municipio_lines_a3_03',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Sesimbra',
-		},
-	},
-
-	//
-	// Group: "municipio_lines_area_4"
-
-	{
-		_group: 'municipio_lines_area_4',
-		_id: 'municipio_lines_a4_01',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Alcochete',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_4',
-		_id: 'municipio_lines_a4_03',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Moita',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_4',
-		_id: 'municipio_lines_a4_04',
-		colors: {
-			primary: '#FFDD00',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Montijo',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_4',
-		_id: 'municipio_lines_a4_05',
-		colors: {
-			primary: '#F0F0F0',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Palmela',
-		},
-	},
-
-	{
-		_group: 'municipio_lines_area_4',
-		_id: 'municipio_lines_a4_06',
-		colors: {
-			primary: '#FFDD00',
-			text: '#000000',
-		},
-		content: {
-			description: 'Só nesta linha levámos X pessoas a ver as vistas de Alcochete.',
-			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
-			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
-			number_value: 'YY%',
-			title: 'Em 2024, passeámos  juntos por Alcochete!',
-		},
-		header: {
-			number: 'YY%',
-			title: 'Setúbal',
+			number: '50K',
+			title: 'Website',
 		},
 	},
 
