@@ -3,6 +3,7 @@
 /* * */
 
 import { Review2024Intro } from '@/components/review-2024/Review2024Intro';
+import { Review2024LevelFive } from '@/components/review-2024/Review2024LevelFive';
 import { Review2024LevelFour } from '@/components/review-2024/Review2024LevelFour';
 import { Review2024LevelOne } from '@/components/review-2024/Review2024LevelOne';
 import { Review2024LevelThree } from '@/components/review-2024/Review2024LevelThree';
@@ -31,6 +32,7 @@ export function Review2024Page() {
 			<Review2024LevelTwo />
 			<Review2024LevelThree />
 			<Review2024LevelFour />
+			<Review2024LevelFive />
 		</>
 	);
 
