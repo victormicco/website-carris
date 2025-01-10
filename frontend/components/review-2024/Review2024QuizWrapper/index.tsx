@@ -6,12 +6,12 @@ import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { allQuizData, type Review2024QuizAnswerSchema } from '@/components/review-2024/_data/quiz';
+import { Review2024QuizFinalResult } from '@/components/review-2024/Review2024QuizFinalResult';
 import { Review2024QuizPoints } from '@/components/review-2024/Review2024QuizPoints';
+import { Review2024QuizQuestion } from '@/components/review-2024/Review2024QuizQuestion';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { Review2024QuizFinalResult } from '../Review2024QuizFinalResult';
-import { Review2024QuizQuestion } from '../Review2024QuizQuestion';
 import styles from './styles.module.css';
 
 /* * */
@@ -42,7 +42,7 @@ export function Review2024QuizWrapper({ points, progress, setPoints, setProgress
 		if (answerStatus === null) {
 			if (answerData.is_correct) {
 				setAnswerStatus('correct');
-				setPoints(points + 542);
+				setPoints(points);
 			}
 			else {
 				setAnswerStatus('wrong');
