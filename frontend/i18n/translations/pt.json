@@ -1209,15 +1209,15 @@
 			}
 		},
 		"Review2024QuizFinalResult": {
-			"points": "Já tens {points, plural, =1 {# ponto} other {# pontos}}!"
+			"points": "Já tens {points, plural, =1 {# ponto} other {# pontos}}"
 		},
 		"Review2024QuizPoints": {
-			"points": "Já tens {points, plural, =1 {# ponto} other {# pontos}}"
+			"points": "Ganhaste {points, plural, =1 {# ponto} other {# pontos}}!"
 		},
 		"Review2024QuizQuestion": {
 			"next_question": "Próxima Pergunta ›",
 			"points": "Vale {points, plural, =1 {# ponto} other {# pontos}}",
-			"progress": "#{current} / {total}"
+			"progress": "Pergunta {current} de {total}"
 		},
 		"Review2024TabSelector": {
 			"heading": "2024 em revista",
