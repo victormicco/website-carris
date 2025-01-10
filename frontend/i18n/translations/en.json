@@ -1209,8 +1209,11 @@
 			}
 		},
 		"Review2024QuizPoints": {
-			"points": "{points, plural, =1 {# ponto} other {# pontos}}",
-			"progress": "{answered} / {total} perguntas"
+			"points": "Já tens {points, plural, =1 {# ponto} other {# pontos}}"
+		},
+		"Review2024QuizQuestion": {
+			"points": "Vale {points, plural, =1 {# ponto} other {# pontos}}",
+			"progress": "Pergunta {current} de {total}"
 		},
 		"Review2024TabSelector": {
 			"heading": "2024 em revista",
