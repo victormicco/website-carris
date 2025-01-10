@@ -61,7 +61,7 @@ export function Review2024QuizWrapper({ answerStatus, points, progress, setAnswe
 		return (
 			<Surface variant="persistent" forceOverflow>
 				<Section withPadding="desktop" withGap>
-					<Review2024QuizFinalResult points={points} />
+					<Review2024QuizFinalResult points={15} />
 				</Section>
 			</Surface>
 		);

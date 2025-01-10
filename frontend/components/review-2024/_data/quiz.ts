@@ -8,7 +8,7 @@ export interface Review2024QuizAnswerSchema {
 
 export interface Review2024QuizSchema {
 	_id: string
-	_points?: number
+	_points: number
 	answers: Review2024QuizAnswerSchema[]
 	colors: {
 		border?: string
