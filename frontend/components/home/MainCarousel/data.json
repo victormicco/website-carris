@@ -1,4 +1,11 @@
+
 [
+	{
+		"id": "0001",
+		"src": "/assets/featured/tempo-real.png",
+		"target": "_blank",
+		"url": "https://www.carrismetropolitana.pt/news/27134"
+	},
 	{
 		"id": "0002",
 		"src": "/assets/featured/download_app.png",
