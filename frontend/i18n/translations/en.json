@@ -1158,7 +1158,7 @@
 			"share": {
 				"copied": "Link copiado!",
 				"copy": "Copiar Link",
-				"message": "Basta copiar o link e partilhar com os seus amigos e familiares!",
+				"message": "Partilhe este dado através, copiando o link",
 				"title": "Partilhar este cartão",
 				"tooltip": "Partilhar este cartão"
 			}
@@ -1186,21 +1186,21 @@
 		"Review2024LevelThree": {
 			"municipio_lines": {
 				"heading": "Linhas Municipais",
-				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
+				"subheading": "Aqui, revelamos as linhas mais usadas de cada município."
 			}
 		},
 		"Review2024LevelTwo": {
 			"municipio_growth": {
 				"heading": "Crescimento por Município",
-				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
+				"subheading": "Explore a evolução do seu município em 2024."
 			},
 			"municipio_pax": {
 				"heading": "Passageiros por Município",
-				"subheading": "Os tops e destaques da nossa rede, durante o ano de 2024."
+				"subheading": "Descubra quantos viajámos em cada município."
 			},
 			"municipio_terminals": {
-				"heading": "Terminais por Município",
-				"subheading": "2024 foi cheio de pontos altos, aqui estão os recordes mais importantes que quebrámos."
+				"heading": "Destaque de Terminais",
+				"subheading": "Nesta secção destacámos alguns dos terminais com maior crescimento em 2024."
 			}
 		},
 		"Review2024Page": {
@@ -1217,7 +1217,7 @@
 			},
 			"bad": {
 				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}!",
-				"title": "A CMetropolitana é bem diferente do que imaginavas!"
+				"title": "Foi quase lá... Volta a viajar pelo nosso 2024 para acertares mais da próxima vez!"
 			},
 			"good": {
 				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}!",
@@ -1229,11 +1229,11 @@
 			},
 			"perfect": {
 				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}! Envia o teu currículo e vem melhorar os transportes públicos connosco!",
-				"title": "Uau. Perfeito. Sem falhas. Isto é a tua praia."
+				"title": "Uau. Perfeito, sem falhas! Isto é a tua praia."
 			},
 			"terrible": {
 				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}!",
-				"title": "Não foi o teu melhor dia, mas não desistas!"
+				"title": "Não foi o teu melhor dia, mas não desistas... Volta a viajar pelo nosso 2024 para acertares mais da próxima vez!"
 			}
 		},
 		"Review2024QuizPoints": {
