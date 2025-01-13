@@ -88,7 +88,7 @@ export function Review2024Card({ cardData, isFirstChild, isLastChild }: Props) {
 					<p className={styles.urlCopy}>{shareUrl}</p>
 					<CopyButton timeout={1500} value={shareUrl || ''}>
 						{({ copied, copy }) => (
-							<Button onClick={copy} w="100%">
+							<Button onClick={copy} variant="secondary" w="100%">
 								{copied ? t('share.copied') : t('share.copy')}
 							</Button>
 						)}
