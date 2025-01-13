@@ -171,11 +171,11 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Este ano, 27% das nossas paragens já tinham PIPs!',
+			description: 'Este ano, 27% das nossas paragens já tinham PIPs.',
 			lottie_src: '/assets/review-2024/animations/passageiros/pips_total.json',
-			number_legend: 'total de passageiros transportados sobre o tejo em 2024 (Ponte 25 de abril e Ponte Vasco da Gama)',
+			number_legend: 'total de painéis de informação ao público (PIPs) disponíveis em 2024 (Interiores e Exteriores)',
 			number_value: '470',
-			title: 'total de painéis de informação ao público (PIPs) disponíveis em 2024 (Interiores e Exteriores)',
+			title: 'Em 2024, estivemos em cima do acontecimento!',
 		},
 		header: {
 			number: '470',
@@ -198,7 +198,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, fomos muito longe.',
 		},
 		header: {
-			number: '300Km',
+			number: '300K',
 			title: 'Quilómetros',
 		},
 	},
@@ -240,7 +240,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Os passageiros destas linhas (6 258 565) caberiam de mãos dadas na largura da foz do Tejo em Lisboa mais de 700 vezes.',
 			line_ids: ['2769', '2711', '2730'],
 			lottie_src: '/assets/review-2024/animations/tops/tops_lines_area_2.json',
-			number_legend: 'linhas com mais passageiros transportados na área 1 (Loures, Mafra, Odivelas, Vila Franca de Xira)',
+			number_legend: 'linhas com mais passageiros transportados na área 2 (Loures, Mafra, Odivelas, Vila Franca de Xira)',
 			number_value: '2769|2711|2730',
 			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
 		},
@@ -1529,6 +1529,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 1 070 393 pessoas a ver as vistas da Amadora.',
+			line_ids: ['1005'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados na Amadora',
 			number_value: '1005',
@@ -1549,6 +1550,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 836 769 pessoas a ver as vistas de Oeiras.',
+			line_ids: ['1103'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Oeiras',
 			number_value: '1103',
@@ -1570,6 +1572,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 1 093 375 pessoas a ver as vistas de Sintra.',
+			line_ids: ['1251'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
 			number_value: '1251',
@@ -1594,6 +1597,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 297 244 pessoas a ver as vistas de Loures.',
+			line_ids: ['2031'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Loures',
 			number_value: '2031',
@@ -1614,6 +1618,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 77 672 pessoas a ver as vistas de Mafra.',
+			line_ids: ['2126'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Mafra',
 			number_value: '2126',
@@ -1635,6 +1640,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 467 232 pessoas a ver as vistas de Odivelas.',
+			line_ids: ['2212'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Odivelas',
 			number_value: '2212',
@@ -1655,6 +1661,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 	1 182 030 pessoas a ver as vistas de Vila Franca de Xira.',
+			line_ids: ['2303'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Vila Franca de Xira',
 			number_value: '2303',
@@ -1679,6 +1686,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 1 650 700 pessoas a ver as vistas de Almada.',
+			line_ids: ['3022'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Almada',
 			number_value: '3022',
@@ -1720,6 +1728,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 150 299 pessoas a ver as vistas de Sesimbra.',
+			line_ids: ['3220'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Sesimbra',
 			number_value: '3220',
@@ -1744,6 +1753,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 8 883 pessoas a ver as vistas de Alcochete.',
+			line_ids: ['4001'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Alcochete',
 			number_value: '4001',
@@ -1765,6 +1775,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 68 099 pessoas a ver as vistas da Moita.',
+			line_ids: ['4102'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados na Moita',
 			number_value: '4102',
@@ -1785,6 +1796,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 391 600 pessoas a ver as vistas do Montijo.',
+			line_ids: ['4203'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados no Montijo',
 			number_value: '4203',
@@ -1806,6 +1818,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 44 778 pessoas a ver as vistas de Palmela.',
+			line_ids: ['4307'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Palmela',
 			number_value: '4307',
@@ -1826,6 +1839,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			description: 'Só nesta linha levámos 662 573 pessoas a ver as vistas de Setúbal.',
+			line_ids: ['4426'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Setúbal',
 			number_value: '4426',
