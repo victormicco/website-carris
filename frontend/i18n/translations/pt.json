@@ -1158,7 +1158,7 @@
 			"share": {
 				"copied": "Link copiado!",
 				"copy": "Copiar Link",
-				"message": "Partilhe este dado através, copiando o link",
+				"message": "Partilhe este dado, copiando o link.",
 				"title": "Partilhar este cartão",
 				"tooltip": "Partilhar este cartão"
 			}
