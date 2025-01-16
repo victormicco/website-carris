@@ -355,7 +355,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'O melhor dia de todos!',
 		},
 		header: {
-			number: '688K',
+			number: '688m',
 			title: 'Dia Útil',
 		},
 	},
@@ -375,7 +375,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Aos fins de semana também conta!',
 		},
 		header: {
-			number: '305K',
+			number: '305m',
 			title: 'Sábado',
 		},
 	},
@@ -395,7 +395,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'A Cmetropolitana não tira férias!',
 		},
 		header: {
-			number: '274K',
+			number: '274m',
 			title: 'Domingo/Feriado',
 		},
 	},
@@ -414,7 +414,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  96 121 passageiros ao longo de 2024',
-			number_value: '8%',
+			number_value: '+8%',
 			title: 'Na Amadora não parámos de crescer!',
 		},
 		header: {
@@ -433,7 +433,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  33 382 passageiros ao longo de 2024',
-			number_value: '16%',
+			number_value: '+16%',
 			title: 'Em Cascais não parámos de crescer!',
 		},
 		header: {
@@ -453,7 +453,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de 21 3185 passageiros ao longo de 2024',
-			number_value: '13%',
+			number_value: '+13%',
 			title: 'Em Lisboa não parámos de crescer!',
 		},
 		header: {
@@ -472,7 +472,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  108 407 passageiros ao longo de 2024',
-			number_value: '10%',
+			number_value: '+10%',
 			title: 'Em Oeiras não parámos de crescer!',
 		},
 		header: {
@@ -492,7 +492,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  202 625 passageiros ao longo de 2024',
-			number_value: '8%',
+			number_value: '+8%',
 			title: 'Em Sintra não parámos de crescer!',
 		},
 		header: {
@@ -515,7 +515,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de 113 458 passageiros ao longo de 2024',
-			number_value: '6%',
+			number_value: '+6%',
 			title: 'Em Loures não parámos de crescer!',
 		},
 		header: {
@@ -534,7 +534,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de 44 701 passageiros ao longo de 2024',
-			number_value: '16%',
+			number_value: '+16%',
 			title: 'Em Mafra não parámos de crescer!',
 		},
 		header: {
@@ -554,7 +554,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  110 971 passageiros ao longo de 2024',
-			number_value: '8%',
+			number_value: '+8%',
 			title: 'Em Odivelas não parámos de crescer!',
 		},
 		header: {
@@ -573,7 +573,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  103 534 passageiros ao longo de 2024',
-			number_value: '14%',
+			number_value: '+14%',
 			title: 'Em Vila Franca de Xira não parámos de crescer!',
 		},
 		header: {
@@ -596,7 +596,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  202 709 passageiros  ao longo de 2024',
-			number_value: '14%',
+			number_value: '+14%',
 			title: 'Em Almada não parámos de crescer!',
 		},
 		header: {
@@ -615,7 +615,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  257 546 passageiros ao longo de 2024',
-			number_value: '20%',
+			number_value: '+20%',
 			title: 'No Seixal não parámos de crescer!',
 		},
 		header: {
@@ -635,7 +635,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  26 023 passageiros ao longo de 2024',
-			number_value: '12%',
+			number_value: '+12%',
 			title: 'Em Sesimbra não parámos de crescer!',
 		},
 		header: {
@@ -658,7 +658,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  6 649 passageiros  ao longo de 2024',
-			number_value: '6%',
+			number_value: '+6%',
 			title: 'Em Alcochete não parámos de crescer!',
 		},
 		header: {
@@ -677,7 +677,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  21 413 passageiros ao longo de 2024',
-			number_value: '17%',
+			number_value: '+17%',
 			title: 'No Barreiro não parámos de crescer!',
 		},
 		header: {
@@ -697,7 +697,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  36 955 passageiros ao longo de 2024',
-			number_value: '16%',
+			number_value: '+16%',
 			title: 'Na Moita não parámos de crescer!',
 		},
 		header: {
@@ -716,7 +716,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  34 344 passageiros ao longo de 2024',
-			number_value: '13%',
+			number_value: '+13%',
 			title: 'No Montijo não parámos de crescer!',
 		},
 		header: {
@@ -736,7 +736,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  23 915 passageiros ao longo de 2024',
-			number_value: '17%',
+			number_value: '+17%',
 			title: 'Em Palmela não parámos de crescer!',
 		},
 		header: {
@@ -755,7 +755,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
 			number_legend: 'Aumento de  89 303 passageiros ao longo de 2024',
-			number_value: '14%',
+			number_value: '+14%',
 			title: 'Em Setúbal não parámos de crescer!',
 		},
 		header: {
@@ -885,7 +885,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Todos estes passageiros conseguiriam encher o Pavilhão Paz e Amizade mais de 10 mil vezes.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_pax.json',
 			number_legend: 'total de passageiros transportados em Loures em 2024',
-			number_value: 'YY%',
+			number_value: '21 917 890',
 			title: 'Em Loures fomos gigantes!',
 		},
 		header: {
@@ -1167,7 +1167,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos pela Amadora!',
 		},
 		header: {
-			number: '1005',
+			number: '',
 			title: 'Amadora',
 		},
 	},
@@ -1189,7 +1189,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Oeiras!',
 		},
 		header: {
-			number: '1103',
+			number: '',
 			title: 'Oeiras',
 		},
 	},
@@ -1212,7 +1212,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Sintra!',
 		},
 		header: {
-			number: '1251',
+			number: '',
 			title: 'Sintra',
 		},
 	},
@@ -1238,7 +1238,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Loures!',
 		},
 		header: {
-			number: '2031',
+			number: '',
 			title: 'Loures',
 		},
 	},
@@ -1260,7 +1260,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Mafra!',
 		},
 		header: {
-			number: '2126',
+			number: '',
 			title: 'Mafra',
 		},
 	},
@@ -1283,7 +1283,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Odivelas!',
 		},
 		header: {
-			number: '2212',
+			number: '',
 			title: 'Odivelas',
 		},
 	},
@@ -1305,7 +1305,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Vila Franca de Xira!',
 		},
 		header: {
-			number: '2303',
+			number: '',
 			title: 'Vila Franca de Xira',
 		},
 	},
@@ -1331,7 +1331,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Almada!',
 		},
 		header: {
-			number: '3022',
+			number: '',
 			title: 'Almada',
 		},
 	},
@@ -1353,7 +1353,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos pelo Seixal!',
 		},
 		header: {
-			number: '3113',
+			number: '',
 			title: 'Seixal',
 		},
 	},
@@ -1376,7 +1376,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Sesimbra!',
 		},
 		header: {
-			number: '3220',
+			number: '',
 			title: 'Sesimbra',
 		},
 	},
@@ -1401,7 +1401,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Alcochete!',
 		},
 		header: {
-			number: '4001',
+			number: '',
 			title: 'Alcochete',
 		},
 	},
@@ -1424,7 +1424,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos pela Moita!',
 		},
 		header: {
-			number: '4102',
+			number: '',
 			title: 'Moita',
 		},
 	},
@@ -1446,7 +1446,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos pelo Montijo!',
 		},
 		header: {
-			number: '4203',
+			number: '',
 			title: 'Montijo',
 		},
 	},
@@ -1469,7 +1469,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Palmela!',
 		},
 		header: {
-			number: '4307',
+			number: '',
 			title: 'Palmela',
 		},
 	},
@@ -1491,7 +1491,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Em 2024, passeámos  juntos por Setúbal!',
 		},
 		header: {
-			number: '4426',
+			number: '',
 			title: 'Setúbal',
 		},
 	},
@@ -1510,7 +1510,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Agualva-Cacém (Estação) ganhou mais de 65 mil passageiros, tendo transportado no total mais de 1 milhão durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '45,38%',
+			number_value: '+45,38%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1530,11 +1530,11 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Algés (Estação) ganhou mais de 19 mil passageiros, tendo transportado no total mais de 1.9 milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '22,81%',
+			number_value: '+22,81%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
-			number: '22%',
+			number: '23%',
 			title: 'Algés (Estação)',
 		},
 	},
@@ -1550,7 +1550,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal da Amadora (Estação) ganhou mais de 36 mil passageiros, tendo transportado no total mais de 1.7 milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '27,55%',
+			number_value: '+27,55%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1570,7 +1570,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal do Barreiro (Cais Fluvial) ganhou mais de mil passageiros, tendo transportado no total mais 480 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '2,68%',
+			number_value: '+2,68%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1593,7 +1593,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Bucelas ganhou mais de 2 mil passageiros, tendo transportado no total mais 260 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '10,57%',
+			number_value: '+10,57%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1613,7 +1613,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Carcavelos (Estação) ganhou mais de 2 mil passageiros, tendo transportado no total mais 160 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '17,44%',
+			number_value: '+17,44%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1633,7 +1633,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal do Fogueteiro (Estação) ganhou mais de 25 mil passageiros, tendo transportado no total mais de 1.3 milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '22,63%',
+			number_value: '+22,63%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1653,7 +1653,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal da Gare do Oriente (Estação) ganhou mais de 84 mil passageiros, tendo transportado no total mais 4 milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '25,16%',
+			number_value: '+25,16%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1673,7 +1673,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o Terminal Intermodal de Mafra ganhou mais de 8 mil passageiros, tendo transportado no total mais 320 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '27,18%',
+			number_value: '+27,18%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1694,7 +1694,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal da Moita (Estação) ganhou mais de mil passageiros, tendo transportado no total mais 53 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '18,18%',
+			number_value: '+18,18%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1717,7 +1717,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Odivelas (Metro) ganhou mais de 11 mil passageiros, tendo transportado no total mais 2 Milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '5,68%',
+			number_value: '+5,68%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1737,7 +1737,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Palmela (Terminal) ganhou mais de 4 mil passageiros, tendo transportado no total mais 240 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '18,95%',
+			number_value: '+18,95%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1757,7 +1757,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal do Pragal (Estação) ganhou mais de 15 mil passageiros, tendo transportado no total mais de 1.5 milhões durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '12,79%',
+			number_value: '+12,79%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1777,7 +1777,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Póvoa Sta Iria (Estação) ganhou mais de 7 mil passageiros, tendo transportado no total mais de 290 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '29,86%',
+			number_value: '+29,86%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1797,7 +1797,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, o terminal de Setúbal - ITS (Terminal) ganhou mais de 34 mil passageiros, tendo transportado no total mais de 1 milhão durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
-			number_value: '45,20%',
+			number_value: '+45,20%',
 			title: 'Em 2024, tivemos alguns pontos de encontro favoritos!',
 		},
 		header: {
@@ -1817,14 +1817,14 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Seria preciso um prédio de 966 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
+			description: 'Acabámos 2024 com 25 553 seguidores somados por todos os nosso canais digitais. Seria preciso um prédio de mais de 2 100 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
 			lottie_src: '/assets/review-2024/animations/digital/followers_total.json',
 			number_legend: 'total de seguidores novos na nossa comunidade digital',
-			number_value: '6 762',
+			number_value: '25 553',
 			title: 'Este ano, andámos ligados!',
 		},
 		header: {
-			number: '6K',
+			number: '25m',
 			title: 'Seguidores',
 		},
 	},
@@ -1885,7 +1885,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: '2024 foi o ano de viajar no bolso dos passageiros!',
 		},
 		header: {
-			number: '90K',
+			number: '90m',
 			title: 'Aplicação',
 		},
 	},
@@ -1905,7 +1905,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			title: 'Este ano estivemos sempre à distância de um clique!',
 		},
 		header: {
-			number: '50K',
+			number: '50m',
 			title: 'Website',
 		},
 	},
