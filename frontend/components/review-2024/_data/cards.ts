@@ -1870,7 +1870,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Acabámos 2024 com 25 553 seguidores somados por todos os nossos canais digitais. \n\n Seria preciso um prédio de mais de 3 500 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
+			description: 'Acabámos 2024 com 25 553 seguidores somados por todos os nossos canais digitais. \n Seria preciso um prédio de mais de 3 500 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
 			lottie_src: '/assets/review-2024/animations/digital/followers_total.json',
 			number_legend: 'total de seguidores novos na nossa comunidade digital',
 			number_value: '25 553',
