@@ -2,7 +2,6 @@
 
 import type { Waypoint } from '@carrismetropolitana/api-types/network';
 
-import Button from '@/components/common/Button';
 import { IconDisplay } from '@/components/common/IconDisplay';
 import { useLocationsContext } from '@/contexts/Locations.context';
 import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
