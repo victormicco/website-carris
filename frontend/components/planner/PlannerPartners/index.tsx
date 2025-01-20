@@ -53,6 +53,15 @@ const partnerApps = shuffleArray([
 		title: 'Transit',
 		url: 'https://transit.app',
 	},
+	{
+		description: {
+			// en: 'Apple Maps provides real time and estimated information on schedules and routes.',
+			// pt: 'Apple Maps disponibliza informação planeada e em tempo real da Carris Metropolitana.',
+		},
+		image_url: 'assets/planner/apple maps.png',
+		title: 'Apple Maps',
+		url: 'https://www.apple.com/maps/',
+	},
 ]);
 
 /* * */
