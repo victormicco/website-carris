@@ -50,6 +50,7 @@ export function PathWaypointHeader({ isFirstStop, isLastStop, isSelected, waypoi
 		if (!isSelected) return;
 		stopIdClipboard.copy(waypointData.stop_id);
 	};
+
 	//
 	// D. Render components
 
