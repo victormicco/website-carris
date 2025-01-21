@@ -4,6 +4,7 @@
 
 import { Section } from '@/components/layout/Section';
 import { Skeleton } from '@mantine/core';
+import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -19,7 +20,12 @@ export function NewsDetailHeader({ newsData }) {
 	const t = useTranslations('news.SinglePageHeader');
 
 	//
-	// B. Render Components
+	// B. Transform data
+
+	const formattedDate = DateTime.fromISO(newsData?.publish_date).toJSDate();
+
+	//
+	// C. Render Components
 
 	if (!newsData) {
 		return (
@@ -33,7 +39,7 @@ export function NewsDetailHeader({ newsData }) {
 	return (
 		<Section withBottomDivider withGap withPadding>
 			<h1 className={styles.title}>{newsData?.title || 'title'}</h1>
-			<p className={styles.publishDate}>{t('publish_date', { value: newsData?.date })}</p>
+			<p className={styles.publishDate}>{t('publish_date', { value: formattedDate })}</p>
 		</Section>
 	);
 
