@@ -323,12 +323,11 @@ export const allCardsData: Review2024CardSchema[] = [
 		_id: 'lines_lisboa',
 		_type: 'lines',
 		colors: {
-			border: '#C61D23',
-			primary: '#FFFFFF',
-			text: '#5A5A64',
+			primary: '#FFDD00',
+			text: '#000000',
 		},
 		content: {
-			description: 'Ao longo de 2024, transportámos 68 982 369 (68.9 Milhões) de passageiros até Lisboa. Isto representou um crescimento de 21.28%, face a 2024. Estas foram as 3 linhas que se destacaram na ligação à cidade: \n Top 1 - A linha 4702  teve um crescimento de 571%. \n Top 2- A linha 4705 teve um crescimento de 142%. \n Top 3 -  A linha 2134 teve um crescimento de 111%',
+			description: 'Ao longo de 2024, transportámos 68 982 369 (68.9 Milhões) de passageiros até Lisboa. Isto representou um crescimento de 21.28%, face a 2024. \n\n Estas foram as 3 linhas que se destacaram na ligação à cidade: \n Top 1 - A linha 4702  teve um crescimento de 571%. \n Top 2- A linha 4705 teve um crescimento de 142%. \n Top 3 -  A linha 2134 teve um crescimento de 111%',
 			line_ids: ['4702', '4705', '2134'],
 			lottie_src: '/assets/review-2024/animations/tops/lines_growth.json',
 			number_legend: 'linhas com maior taxa de crescimento ao longo de 2024',
@@ -337,7 +336,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		header: {
 			number: '68M',
-			title: 'Ligações Lisboa',
+			title: 'Ligações a Lisboa',
 		},
 	},
 
@@ -1642,7 +1641,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Ao longo de 2024, o terminal do Barreiro (Estação) ganhou mais de 9 mil passageiros, tendo transportado no total mais de 20 mil durante o ano.',
+			description: 'Ao longo de 2024, o terminal do Barreiro (Campo Luso) ganhou mais de 9 mil passageiros, tendo transportado no total mais de 20 mil durante o ano.',
 			lottie_src: '/assets/review-2024/animations/terminais/terminals.json',
 			number_legend: 'taxa de crescimento ao longo de 2024',
 			number_value: '+45,40%',
@@ -1650,7 +1649,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		header: {
 			number: '+45%',
-			title: 'Barreiro A (Estação)',
+			title: 'Barreiro (Campo Luso)',
 		},
 	},
 
