@@ -11,11 +11,22 @@
 /* STOP NAME */
 
 .stopName{
-	font-size: 15px;
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-spacing-5);
+	justify-content: baseline;
 	max-width: 400px;
-	line-height: 1.3;
+	font-size: 15px;
 	font-weight: var(--font-weight-bold);
-    color: var(--color-system-text-100)
+	line-height: 1.3;
+    color: var(--color-system-text-100);
+}
+
+.stopNameUrl {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-system-text-200);
 }
 
 /* * */
@@ -41,25 +52,25 @@
 /* STOP ID */
 
 .stopId {
-	font-size: 12px;
-	transform: translate(0, 1px);
 	margin-left: var(--size-spacing-10);
+	font-size: 12px;
 	font-weight: var(--font-weight-semibold);
 	color: var(--color-system-text-400);
 	transition: all 200ms ease;
+	transform: translate(0, 1px);
 }
 
 .isSelected .stopId:hover {
-	cursor: pointer;
 	color: var(--color-system-text-200);
+	cursor: pointer;
 }
 
 .stopIdCopyIcon {
 	width: 11px;
 	height: 11px;
-	color: transparent;
-	margin-left: 3px;
 	margin-bottom: 2px;
+	margin-left: 3px;
+	color: transparent;
 	vertical-align: text-bottom;
 	transition: all 200ms ease;
 }

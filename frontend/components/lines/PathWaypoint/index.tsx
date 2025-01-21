@@ -71,12 +71,14 @@ export function PathWaypoint({ arrivals, id, isFirstStop, isLastStop, isSelected
 					isSelected={isSelected}
 					waypointData={waypointData}
 				/>
+
 				{isSelected && operationalDayContext.flags.is_today_selected && (
 					<PathWaypointNextArrivals
 						realtimeArrivals={realtimeArrivals}
 						scheduledArrivals={scheduledArrivals}
 					/>
 				)}
+
 				{isSelected && (
 					<PathWaypointTimetable />
 				)}

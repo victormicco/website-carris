@@ -7,7 +7,7 @@ import { Review2024LevelFour } from '@/components/review-2024/Review2024LevelFou
 import { Review2024LevelOne } from '@/components/review-2024/Review2024LevelOne';
 import { Review2024LevelSix } from '@/components/review-2024/Review2024LevelSix';
 import { Review2024LevelThree } from '@/components/review-2024/Review2024LevelThree';
-import { Review2024LevelTwoA } from '@/components/review-2024/Review2024LevelTwoA';
+// import { Review2024LevelTwoA } from '@/components/review-2024/Review2024LevelTwoA';
 import { Review2024LevelTwoB } from '@/components/review-2024/Review2024LevelTwoB';
 import { Review2024LevelTwoC } from '@/components/review-2024/Review2024LevelTwoC';
 import { Review2024QuizWrapper } from '@/components/review-2024/Review2024QuizWrapper';
@@ -46,7 +46,7 @@ export function Review2024Page() {
 				<>
 					<Review2024LevelOne />
 					<Review2024LevelThree />
-					<Review2024LevelTwoA />
+					{/* <Review2024LevelTwoA /> */}
 					<Review2024LevelTwoB />
 					<Review2024LevelTwoC />
 					<Review2024LevelFour />

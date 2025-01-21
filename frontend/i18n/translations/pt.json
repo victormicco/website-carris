@@ -1158,7 +1158,7 @@
 			"share": {
 				"copied": "Link copiado!",
 				"copy": "Copiar Link",
-				"message": "Partilhe este dado através, copiando o link",
+				"message": "Partilhe este dado, copiando o link",
 				"title": "Partilhar este cartão",
 				"tooltip": "Partilhar este cartão"
 			}
@@ -1171,7 +1171,7 @@
 		},
 		"Review2024LevelOne": {
 			"passageiros": {
-				"heading": "Quem fomos?",
+				"heading": "Os Nossos Passageiros",
 				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
 			},
 			"recordes": {
@@ -1228,7 +1228,7 @@
 				"title": "Incrível! Dominas a CMetropolitana!"
 			},
 			"perfect": {
-				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}! Envia o teu currículo e vem melhorar os transportes públicos connosco!",
+				"subtitle": "{points, plural, =1 {Ganhaste # ponto...} other {Ganhaste # pontos...}}!",
 				"title": "Uau. Perfeito, sem falhas! Isto é a tua praia."
 			},
 			"terrible": {
@@ -1246,8 +1246,8 @@
 		},
 		"Review2024QuizWrapper": {
 			"digital": {
-				"heading": "Paragens Importantes",
-				"subheading": "Tudo sobre os passageiros da CMetropolitana ao longo de 2024."
+				"heading": "Quiz Interativo",
+				"subheading": "Teste os seus conhecimentos sobre o desempenho da nossa rede em 2024 e veja como se saiu!"
 			}
 		},
 		"Review2024TabSelector": {
