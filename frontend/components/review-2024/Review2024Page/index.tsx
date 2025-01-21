@@ -46,7 +46,7 @@ export function Review2024Page() {
 				<>
 					<Review2024LevelOne />
 					<Review2024LevelThree />
-					<Review2024LevelTwoA />
+					{/* <Review2024LevelTwoA /> */}
 					<Review2024LevelTwoB />
 					<Review2024LevelTwoC />
 					<Review2024LevelFour />
