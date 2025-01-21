@@ -9,7 +9,6 @@ interface Props {
 /* * */
 
 export function StopsDebugDetail({ data, stop }: Props) {
-	console.log('AQUI', data);
 	return (
 		<>
 			<div className={styles.container}>

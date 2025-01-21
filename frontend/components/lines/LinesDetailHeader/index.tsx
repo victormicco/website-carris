@@ -10,11 +10,13 @@ import { Surface } from '@/components/layout/Surface';
 import { LineBadge } from '@/components/lines/LineBadge';
 import { SelectActivePatternGroup } from '@/components/lines/SelectActivePatternGroup';
 // import { SelectActivePatternGroupExplainer } from '@/components/lines/SelectActivePatternGroupExplainer';
+import { useDebugContext } from '@/contexts/Debug.context';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import toast from '@/utils/toast';
 import { useTranslations } from 'next-intl';
 
+import { LineDebugDetail } from '../LineDebugDetail';
 import styles from './styles.module.css';
 
 /* * */
@@ -28,6 +30,9 @@ export function LinesDetailHeader() {
 	const t = useTranslations('lines.LinesDetail');
 	const profileContext = useProfileContext();
 	const linesDetailContext = useLinesDetailContext();
+	const debugContext = useDebugContext();
+
+	const totalStops = linesDetailContext.data.active_waypoint?.stop_sequence;
 
 	//
 	// B. Handle actions
@@ -50,39 +55,49 @@ export function LinesDetailHeader() {
 	}
 
 	return (
-		<Surface>
+		<>
+			<Surface>
 
-			<Section withBottomDivider withPadding>
-				<BackButton href="/lines" />
-			</Section>
+				<Section withBottomDivider withPadding>
+					<BackButton href="/lines" />
+				</Section>
 
-			<Section withBottomDivider withPadding>
-				<div className={styles.headingSection}>
-					<div className={styles.headingSectionRow}>
-						<LineBadge lineData={linesDetailContext.data.line} size="lg" />
-						<FavoriteToggle color={linesDetailContext.data.line.color} isActive={linesDetailContext.flags.is_favorite} onToggle={handleToggleFavorite} />
+				<Section withBottomDivider withPadding>
+					<div className={styles.headingSection}>
+						<div className={styles.headingSectionRow}>
+							<LineBadge lineData={linesDetailContext.data.line} size="lg" />
+							<FavoriteToggle color={linesDetailContext.data.line.color} isActive={linesDetailContext.flags.is_favorite} onToggle={handleToggleFavorite} />
+						</div>
+						<div className={styles.lineName}>
+							{linesDetailContext.data.line.long_name}
+						</div>
 					</div>
-					<div className={styles.lineName}>
-						{linesDetailContext.data.line.long_name}
-					</div>
-				</div>
-			</Section>
+				</Section>
 
-			<Section withPadding>
-				{/* <div className={styles.patternSelectorExplainerWrapper}>
+				<Section withPadding>
+					{/* <div className={styles.patternSelectorExplainerWrapper}>
 					<SelectActivePatternGroupExplainer />
 				</div> */}
-				<div className={styles.container}>
-					<div className={styles.operationalDaySelectorWrapper}>
-						<SelectOperationalDay />
+					<div className={styles.container}>
+						<div className={styles.operationalDaySelectorWrapper}>
+							<SelectOperationalDay />
+						</div>
+						<div className={styles.patternSelectorWrapper}>
+							<SelectActivePatternGroup />
+						</div>
 					</div>
-					<div className={styles.patternSelectorWrapper}>
-						<SelectActivePatternGroup />
-					</div>
-				</div>
-			</Section>
+				</Section>
 
-		</Surface>
+			</Surface>
+
+			<Surface variant={debugContext.flags.is_debug_mode ? 'debug' : 'default'}>
+				{debugContext.flags.is_debug_mode && (
+					<Section withPadding>
+						<LineDebugDetail line_color={linesDetailContext.data.line.color} pattern_id={linesDetailContext.data.active_pattern} total_stops={totalStops} />
+					</Section>
+				)}
+			</Surface>
+		</>
 	);
 
 	//
