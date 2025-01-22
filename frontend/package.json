@@ -19,7 +19,7 @@
 		"@mantine/modals": "7.16.1",
 		"@mantine/notifications": "7.16.1",
 		"@rajesh896/broprint.js": "2.1.1",
-		"@tabler/icons-react": "3.28.1",
+		"@tabler/icons-react": "3.29.0",
 		"@turf/turf": "7.2.0",
 		"@vis.gl/react-maplibre": "1.0.0-alpha.4",
 		"classnames": "2.5.1",
@@ -47,7 +47,7 @@
 		"uuid": "11.0.5"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20250121.1109.5",
+		"@carrismetropolitana/api-types": "20250121.2104.44",
 		"@carrismetropolitana/eslint": "20250103.1610.23",
 		"@types/geojson": "7946.0.15",
 		"@types/jsonwebtoken": "9.0.7",

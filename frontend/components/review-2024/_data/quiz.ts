@@ -30,8 +30,8 @@ export const allQuizData: Review2024QuizSchema[] = [
 		_id: '01',
 		_points: 10,
 		answers: [
-			{ _id: 'a', is_correct: true, label: '174 milhões' },
-			{ _id: 'b', is_correct: false, label: '17,4 milhões' },
+			{ _id: 'a', is_correct: true, label: '174 Milhões' },
+			{ _id: 'b', is_correct: false, label: '17,4 Milhões' },
 		],
 		colors: {
 			primary: '#C61D23',
@@ -49,14 +49,14 @@ export const allQuizData: Review2024QuizSchema[] = [
 		_points: 15,
 		answers: [
 			{ _id: 'a', is_correct: false, label: '40 Milhões' },
-			{ _id: 'b', is_correct: true, label: '93 Milhões' },
+			{ _id: 'b', is_correct: true, label: '88 Milhões' },
 		],
 		colors: {
 			primary: '#0C807E',
 			text: '#FFFFFF',
 		},
 		question: {
-			description: 'Em 2024 fizemos Portugal de Norte a Sul 400 vezes por dia!',
+			description: 'Em 2024 fizemos Portugal de Norte a Sul mais de 158 mil vezes!',
 			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
 			title: 'Quantos quilómetros percorremos em 2024?',
 		},
@@ -112,7 +112,7 @@ export const allQuizData: Review2024QuizSchema[] = [
 		question: {
 			description: 'Em 2024, a área 1 encheu mais de 1900 vezes o Estádio Nacional do Jamor!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_1.json',
-			title: 'Em que área transportámos mais passageiros em 2024 (58,7 milhões)?',
+			title: 'Em que área transportámos mais passageiros em 2024 (59 Milhões)?',
 		},
 	},
 
@@ -139,14 +139,14 @@ export const allQuizData: Review2024QuizSchema[] = [
 		_points: 20,
 		answers: [
 			{ _id: 'a', is_correct: false, label: 'Vila Franca de Xira' },
-			{ _id: 'b', is_correct: true, label: 'Cascais' },
+			{ _id: 'b', is_correct: true, label: 'Moita' },
 		],
 		colors: {
 			primary: '#000000',
 			text: '#FFFFFF',
 		},
 		question: {
-			description: 'Se um grupo do número de passageiros de Cascais desse as mãos, conseguiria ir de Lisboa à Baía de Cascais mais de 120 vezes! No total foram 2 364 120.',
+			description: 'Moita cresceu 42% em número de passageiros desde 2023! Um grupo com o número total de passageiros da Moita (2.6 Milhões) em 2024 conseguiria encher o Parque Municipal da Moita mais de 1000 vezes.',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_pax.json',
 			title: 'Qual foi o município da amL em que mais aumentou o número de passageiros em 2024?',
 		},
@@ -182,9 +182,9 @@ export const allQuizData: Review2024QuizSchema[] = [
 			text: '#000000',
 		},
 		question: {
-			description: 'Em 2024, tivemos alguns pontos de encontro favoritos, e muitos deles ganharam muita popularidade este ano!',
+			description: 'Ao longo de 2024, o terminal da Moita (Estação) ganhou mais de 33 mil passageiros, tendo transportado no total mais de 53 mil durante o ano!',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_pax.json',
-			title: 'Em 2024, mais que um terminal cresceu mais que 40%. Verdade ou mentira?',
+			title: 'Em 2024, mais que um terminal cresceu mais que 100%. Verdade ou mentira?',
 		},
 	},
 

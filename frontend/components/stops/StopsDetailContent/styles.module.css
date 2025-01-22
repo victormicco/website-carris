@@ -4,7 +4,7 @@
 .container {
 	display: grid;
 	grid-template:
-		"a b" minmax(500px, auto) / 1fr 1fr;
+		"a b" minmax(100vh, auto) / 1fr 1fr;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 100%;

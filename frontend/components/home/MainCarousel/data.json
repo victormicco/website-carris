@@ -1,31 +1,25 @@
 [
 	{
 		"id": "0001",
+		"src": "/assets/featured/review-2024.png",
+		"target": "_blank",
+		"url": "https://www.carrismetropolitana.pt/viagem-2024"
+	},
+	{
+		"id": "0002",
 		"src": "/assets/featured/tempo-real.png",
 		"target": "_blank",
 		"url": "https://www.carrismetropolitana.pt/news/27134"
 	},
 	{
-		"id": "0002",
+		"id": "0003",
 		"src": "/assets/featured/download_app.png",
 		"target": "_blank",
 		"url": "https://backoffice.carrismetropolitana.pt/viagemvirtual"
 	},
 	{
-		"id": "0003",
-		"src": "/assets/featured/new_website.png",
-		"target": "_self",
-		"url": "https://www.carrismetropolitana.pt/news/25450"
-	},
-	{
 		"id": "0004",
 		"src": "/assets/featured/join_whatsapp.png",
 		"url": "/news/7243"
-	},
-	{
-		"id": "0005",
-		"src": "/assets/featured/participe.png",
-		"target": "_self",
-		"url": "https://backoffice.carrismetropolitana.pt/participe"
 	}
 ]
