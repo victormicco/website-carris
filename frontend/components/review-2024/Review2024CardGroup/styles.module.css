@@ -15,4 +15,5 @@
 	font-size: var(--font-size-subtitle);
 	font-weight: var(--font-weight-subtitle);
 	margin-bottom: var(--size-spacing-5);
+	padding: 20px;
 }
