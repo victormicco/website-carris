@@ -30,7 +30,7 @@
 		"jsonwebtoken": "9.0.2",
 		"luxon": "3.5.0",
 		"maplibre-gl": "5.0.1",
-		"next": "15.1.5",
+		"next": "15.1.6",
 		"next-intl": "3.26.3",
 		"nuqs": "2.3.1",
 		"react": "19.0.0",
@@ -47,7 +47,7 @@
 		"uuid": "11.0.5"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20250121.2104.44",
+		"@carrismetropolitana/api-types": "20250122.1936.57",
 		"@carrismetropolitana/eslint": "20250103.1610.23",
 		"@types/geojson": "7946.0.15",
 		"@types/jsonwebtoken": "9.0.7",

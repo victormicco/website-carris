@@ -2,7 +2,7 @@
 
 /* * */
 
-import type { District, Locality, Municipality } from '@carrismetropolitana/api-types/locations';
+import type { District, Locality, Municipality, Parish } from '@carrismetropolitana/api-types/locations';
 
 import { Routes } from '@/utils/routes';
 import { ApiResponse } from '@carrismetropolitana/api-types/common';
@@ -16,11 +16,13 @@ interface LocationsContextState {
 		getDistrictById: (districtId: string) => District | undefined
 		getLocalityById: (localityId: string) => Locality | undefined
 		getMunicipalityById: (municipalityId: string) => Municipality | undefined
+		getParishById: (parishId: string) => Parish | undefined
 	}
 	data: {
 		districts: District[]
 		localitites: Locality[]
 		municipalities: Municipality[]
+		parishes: Parish[]
 	}
 	flags: {
 		is_loading: boolean
@@ -49,7 +51,8 @@ export const LocationsContextProvider = ({ children }) => {
 
 	const { data: fetchedDistrictsData, isLoading: fetchedDistrictsLoading } = useSWR<ApiResponse<District[]>, Error>(`${Routes.API}/locations/districts`);
 	const { data: fetchedMunicipalitiesData, isLoading: fetchedMunicipalitiesLoading } = useSWR<ApiResponse<Municipality[]>, Error>(`${Routes.API}/locations/municipalities`);
-	const { data: fetchedLocalitiesData, isLoading: fetchedLocalitiesLoading } = useSWR<Locality[], Error>(`${Routes.API}/locations/localities`);
+	const { data: fetchedParishesData, isLoading: fetchedParishesLoading } = useSWR<ApiResponse<Parish[]>, Error>(`${Routes.API}/locations/parishes`);
+	const { data: fetchedLocalitiesData, isLoading: fetchedLocalitiesLoading } = useSWR<ApiResponse<Locality[]>, Error>(`${Routes.API}/locations/localities`);
 
 	//
 	// B. Transform data
@@ -64,6 +67,16 @@ export const LocationsContextProvider = ({ children }) => {
 		return fetchedMunicipalitiesData.data;
 	}, [fetchedMunicipalitiesData]);
 
+	const allParishesData = useMemo(() => {
+		if (fetchedParishesData?.status !== 'success') return [];
+		return fetchedParishesData.data;
+	}, [fetchedParishesData]);
+
+	const allLocalitiesData = useMemo(() => {
+		if (fetchedLocalitiesData?.status !== 'success') return [];
+		return fetchedLocalitiesData.data;
+	}, [fetchedLocalitiesData]);
+
 	//
 	// C. Handle actions
 
@@ -75,8 +88,12 @@ export const LocationsContextProvider = ({ children }) => {
 		return allMunicipalitiesData.find(item => item.id === municipalityId);
 	};
 
+	const getParishById = (parishId: string): Parish | undefined => {
+		return allParishesData.find(item => item.id === parishId);
+	};
+
 	const getLocalityById = (localityId: string): Locality | undefined => {
-		return fetchedLocalitiesData?.find(item => item.id === localityId);
+		return allLocalitiesData?.find(item => item.id === localityId);
 	};
 
 	//
@@ -87,14 +104,16 @@ export const LocationsContextProvider = ({ children }) => {
 			getDistrictById,
 			getLocalityById,
 			getMunicipalityById,
+			getParishById,
 		},
 		data: {
 			districts: allDistrictsData || [],
-			localitites: fetchedLocalitiesData || [],
+			localitites: allLocalitiesData || [],
 			municipalities: allMunicipalitiesData || [],
+			parishes: allParishesData || [],
 		},
 		flags: {
-			is_loading: fetchedDistrictsLoading || fetchedMunicipalitiesLoading || fetchedLocalitiesLoading,
+			is_loading: fetchedDistrictsLoading || fetchedMunicipalitiesLoading || fetchedParishesLoading || fetchedLocalitiesLoading,
 		},
 	};
 

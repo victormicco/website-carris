@@ -172,7 +172,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Ao longo de 2024, passámos os 200 Painéis de Informação ao Público instalados.',
+			description: 'Ao longo de 2024, abrimos janelas para o futuro!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pips_total.json',
 			number_legend: 'total de painéis de informação ao público (PIPs) disponíveis em 2024 (Interiores e Exteriores)',
 			number_value: '214',
@@ -192,7 +192,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Em 2024 fizemos Portugal de Norte a Sul 400 vezes por dia!',
+			description: 'Em 2024, fizemos Portugal de Norte a Sul 158 462 (158 mil) vezes!',
 			lottie_src: '/assets/review-2024/animations/passageiros/kms_total.json',
 			number_legend: 'total de quilómetros percorridos em 2024',
 			number_value: '88 897 439 (88.8 Milhões)',

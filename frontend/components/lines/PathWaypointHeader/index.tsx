@@ -42,7 +42,6 @@ export function PathWaypointHeader({ isFirstStop, isLastStop, isSelected, waypoi
 	const stopData = stopsContext.actions.getStopById(waypointData.stop_id);
 	const localityData = stopData?.locality_id ? locationsContext.actions.getLocalityById(stopData.locality_id) : undefined;
 	const municipalityData = stopData?.municipality_id ? locationsContext.actions.getMunicipalityById(stopData.municipality_id) : undefined;
-
 	//
 	// C. Handle actions
 

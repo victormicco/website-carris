@@ -2,6 +2,8 @@
 
 import { NextArrivals } from '@/components/common/NextArrivals';
 import { LineDisplay } from '@/components/lines/LineDisplay';
+import { StopsDebugDetail } from '@/components/stops/StopDebugDetail';
+import { useDebugContext } from '@/contexts/Debug.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 import { Arrival, ArrivalStatus } from '@/types/stops.types';
@@ -28,6 +30,7 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 	const t = useTranslations('stops.StopsDetailContentTimetableRow');
 	const stopsDetailContext = useStopsDetailContext();
 	const locationsContext = useLocationsContext();
+	const debugContext = useDebugContext();
 
 	//
 	// B. Transform data
@@ -76,9 +79,14 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 				/>
 			</div>
 
+			{isSelected && debugContext.flags.is_debug_mode && (
+				<div className={styles.details}>
+					<StopsDebugDetail arrivalData={arrivalData} />
+				</div>
+			)}
+
 			{isSelected && (
 				<div className={styles.details}>
-
 					{thisPattern.locality_ids.length > 0 && (
 						<div className={styles.localitiesListWrapper}>
 							<p className={styles.localitiesLabel}>{t('localities.label')}</p>
@@ -92,7 +100,6 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 							</p>
 						</div>
 					)}
-
 				</div>
 			)}
 
