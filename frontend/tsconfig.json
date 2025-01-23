@@ -40,7 +40,7 @@
 		".next/types/**/*.ts",
 		"**/*.ts",
 		"**/*.tsx"
-	],
+, "opengraph/OpenGraphDefault.js", "opengraph/OpenGraphEncmDefault.js", "app/(views)/(website)/news/[news_id]/opengraph-image.js"	],
 	"exclude": [
 		"**/node_modules",
 		"**/.*/",

@@ -1,6 +1,6 @@
 /* * */
 
-import CarrisMetropolitanaLogo from '@/components/CarrisMetropolitanaLogo/CarrisMetropolitanaLogo';
+import CMetropolitanaLogoLight from '@/components/common/CMetropolitanaLogoLight';
 import cutStringAtLength from '@/services/cutStringAtLength';
 
 /* * */
@@ -55,7 +55,7 @@ export default function OpenGraphLinesDynamic({ lineData }) {
 	return (
 		<div style={{ alignItems: 'flex-start', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'flex-start', padding: 50, width: '100%' }}>
 			<div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-				<CarrisMetropolitanaLogo height={130} />
+				<CMetropolitanaLogoLight height={130} />
 			</div>
 
 			<div style={{ alignItems: 'flex-start', display: 'flex', flexDirection: 'column', gap: 15, justifyContent: 'flex-start', marginBottom: 40, marginLeft: 15, marginTop: 70 }}>
@@ -68,7 +68,7 @@ export default function OpenGraphLinesDynamic({ lineData }) {
 				{/* {lineData.facilities.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', gap: 25 }}>
             {lineData.facilities.map((item) => (
-              <FacilityIcon key={item} name={item} size={facilitiesIconSize} />
+              <FacilitsyIcon key={item} name={item} size={facilitiesIconSize} />
             ))}
           </div>
         )} */}

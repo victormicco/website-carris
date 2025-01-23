@@ -53,6 +53,29 @@
 		"**/components/**/*.css": "${dirname} (${extname})",
 		"**/components/**/*.js": "${dirname} (${extname})",
 		"**/components/**/*.tsx": "${dirname} (${extname})"
-	}
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#b9b4b0",
+		"activityBar.background": "#b9b4b0",
+		"activityBar.foreground": "#15202b",
+		"activityBar.inactiveForeground": "#15202b99",
+		"activityBarBadge.background": "#28784b",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"commandCenter.border": "#15202b99",
+		"sash.hoverBorder": "#b9b4b0",
+		"statusBar.background": "#a19a95",
+		"statusBar.foreground": "#15202b",
+		"statusBarItem.hoverBackground": "#89807a",
+		"statusBarItem.remoteBackground": "#a19a95",
+		"statusBarItem.remoteForeground": "#15202b",
+		"titleBar.activeBackground": "#a19a95",
+		"titleBar.activeForeground": "#15202b",
+		"titleBar.inactiveBackground": "#a19a9599",
+		"titleBar.inactiveForeground": "#15202b99"
+	},
+	"peacock.color": "#a19a95"
 
 }
