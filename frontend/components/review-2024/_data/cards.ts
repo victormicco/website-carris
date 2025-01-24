@@ -68,11 +68,11 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Em 2024, a área 1 encheu mais de 1900 vezes o Estádio Nacional do Jamor!',
+			description: 'Em 2024, a Área 1 encheu mais de 1900 vezes o Estádio Nacional do Jamor!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_1.json',
-			number_legend: 'total de passageiros transportados na área 1 em 2024 (Amadora, Cascais, Lisboa, Oeiras e Sintra)',
+			number_legend: 'total de passageiros transportados na Área 1 em 2024 (Amadora, Cascais, Lisboa, Oeiras e Sintra)',
 			number_value: '59 098 165 (59 Milhões)',
-			title: 'A área 1 fez de 2024 um ano maior!',
+			title: 'A Área 1 fez de 2024 um ano maior!',
 		},
 		header: {
 			number: '59M',
@@ -88,12 +88,12 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Em 2024, na área 2 couberam todos os turistas que visitam Portugal por ano mais de duas vezes!',
+			description: 'Em 2024, na Área 2 couberam todos os turistas que visitam Portugal por ano mais de duas vezes!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_2.json',
-			number_legend: 'total de passageiros transportados na área 2 em 2024 (Loures, Mafra,  Odivelas Vila Franca de Xira)',
+			number_legend: 'total de passageiros transportados na Área 2 em 2024 (Loures, Mafra,  Odivelas Vila Franca de Xira)',
 			number_source: 'https://www.jornaldenegocios.pt/empresas/turismo---lazer/detalhe/portugal-recebeu-265-milhoes-de-turistas-em-2023-mais-19-face-a-2022',
 			number_value: '58 292 739 (58.2 Milhões)',
-			title: 'A área 2 fez de 2024 um ano maior!',
+			title: 'A Área 2 fez de 2024 um ano maior!',
 		},
 		header: {
 			number: '58M',
@@ -109,12 +109,12 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Em 2024, a área 3 encheu mais de 850 vezes a ponte 25 de abril!',
+			description: 'Em 2024, a Área 3 encheu mais de 850 vezes a ponte 25 de abril!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_3.json',
-			number_legend: 'total de passageiros transportados na área 3 em 2024 (Almada, Seixal e Sesimbra)',
+			number_legend: 'total de passageiros transportados na Área 3 em 2024 (Almada, Seixal e Sesimbra)',
 			number_source: 'https://web.archive.org/web/20201203182555/http:/rpee.lnec.pt/Ficheiros/rpee_serieIII_n14/rpee_sIII_n14_pg05_18.pdf',
 			number_value: '37 407 951 (37.4 Milhões)',
-			title: 'A área 3 fez de 2024 um ano maior!',
+			title: 'A Área 3 fez de 2024 um ano maior!',
 		},
 		header: {
 			number: '37M',
@@ -130,12 +130,12 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Em 2024, na área 4 transportámos toda a população estudantil portuguesa 11 vezes!',
+			description: 'Em 2024, na Área 4 transportámos toda a população estudantil portuguesa 11 vezes!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_4.json',
-			number_legend: 'total de passageiros transportados na área 4 em 2024 (Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)',
+			number_legend: 'total de passageiros transportados na Área 4 em 2024 (Alcochete, Moita, Montijo, Palmela, Setúbal e Barreiro)',
 			number_source: 'https://www.pordata.pt/pt/estatisticas/educacao/do-pre-escolar-ao-secundario/alunos-matriculados-do-pre-escolar-ao-secundario',
 			number_value: '19 216 530 (19.2 Milhões)',
-			title: 'A área 4 fez de 2024 um ano maior!',
+			title: 'A Área 4 fez de 2024 um ano maior!',
 		},
 		header: {
 			number: '19M',
@@ -151,12 +151,12 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Ao longo do ano de 2024, seriam precisas 41 Pontes Vasco da Gama e 213 pontes 25 de abril para caberem todos estes passageiros ao mesmo tempo!',
+			description: 'Ao longo do ano de 2024, seriam precisas 41 Pontes Vasco da Gama e 213 Pontes 25 de Abril para caberem todos estes passageiros ao mesmo tempo!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_bridges.json',
-			number_legend: 'total de passageiros transportados sobre o tejo em 2024 (Ponte 25 de abril e Ponte Vasco da Gama)',
+			number_legend: 'total de passageiros transportados sobre o Tejo em 2024 (Ponte 25 de Abril e Ponte Vasco da Gama)',
 			number_source: 'https://web.archive.org/web/20170112103807/http:/www.lusoponte.pt/pvg_projecto_estatisticas.htm',
 			number_value: '10 278 762 (10.2 Milhões)',
-			title: 'Em 2024, fizémos pontes dentro da amL.',
+			title: 'Em 2024, fizemos pontes dentro da amL.',
 		},
 		header: {
 			number: '10M',
@@ -216,16 +216,16 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Se os passageiros destas linhas (5 519 192) dessem as mãos, conseguiam ir de Lisboa a Sintra mais de 250 vezes. \n\n Ranking: \n Top 1- Linha 1715 transportou 2,271,212 passageiros (2.2 Milhões) \n Top 2 - Linha 1709 transportou 1,666,446 passageiros (1.6 Milhões) \n Top 3 - Linha 1703 transportou 1,581,534 passageiros (1.5 Milhões)',
+			description: 'Se os passageiros destas linhas (5 519 192) dessem as mãos, conseguiam ir de Lisboa a Sintra mais de 250 vezes. \n\n Ranking: \n Top 1- Linha 1715 transportou 2 271 212 passageiros (2.2 Milhões) \n Top 2 - Linha 1709 transportou 1 666 446 passageiros (1.6 Milhões) \n Top 3 - Linha 1703 transportou 1 581 534 passageiros (1.5 Milhões)',
 			line_ids: ['1715', '1709', '1703'],
 			lottie_src: '/assets/review-2024/animations/tops/tops_lines_area_1.json',
-			number_legend: ' linhas com mais passageiros transportados na área 1 ao longo do ano de 2024 (Amadora, Cascais, Lisboa, Oeiras, Sintra)',
+			number_legend: ' linhas com mais passageiros transportados na Área 1 ao longo do ano de 2024 (Amadora, Cascais, Lisboa, Oeiras, Sintra)',
 			number_value: '1715|1709|1703',
 			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
 		},
 		header: {
 			number: '',
-			title: 'Top Linhas área 1',
+			title: 'Top Linhas Área 1',
 		},
 	},
 
@@ -238,16 +238,16 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Os passageiros destas linhas (6 258 565) caberiam de mãos dadas na largura da foz do Tejo em Lisboa mais de 700 vezes. \n\n Ranking \n Top 1- Linha 2769 transportou 2,292,407 passageiros \n Top 2 - Linha 2711 transportou 1,999,079 passageiros \n Top 3 - Linha 2730 transportou 1,967,079 passageiros',
+			description: 'Os passageiros destas linhas (6 258 565) caberiam de mãos dadas na largura da foz do Tejo em Lisboa mais de 700 vezes. \n\n Ranking \n Top 1- Linha 2769 transportou 2 292 407 passageiros (2.2 Milhões) \n Top 2 - Linha 2711 transportou 1 999 079 passageiros (1.9 Milhões) \n Top 3 - Linha 2730 transportou 1,967,079 passageiros (1.9 Milhões)',
 			line_ids: ['2769', '2711', '2730'],
 			lottie_src: '/assets/review-2024/animations/tops/tops_lines_area_2.json',
-			number_legend: ' linhas com mais passageiros transportados na área 1 ao longo do ano de 2024 (Loures, Mafra, Odivelas, Vila Franca de Xira)',
+			number_legend: ' linhas com mais passageiros transportados na Área 2 ao longo do ano de 2024 (Loures, Mafra, Odivelas, Vila Franca de Xira)',
 			number_value: '2769|2711|2730',
 			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
 		},
 		header: {
 			number: '',
-			title: 'Top Linhas área 2',
+			title: 'Top Linhas Área 2',
 		},
 	},
 
@@ -260,16 +260,16 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Os passageiros destas linhas (4 590 671) conseguiriam dar as mãos pela largura das praias da Costa da Caparica mais de 250 vezes. \n\n Ranking \n Top 1- Linha 3508 transportou 1,740,231 passageiros (1.7 Milhões) \n Top 2 - Linha 3022 transportou 1,650,700 passageiros (1.6 Milhões) \n Top 3 - Linha 3013 transportou 1,199,740 passageiros (1.1 Milhões)',
+			description: 'Os passageiros destas linhas (4 590 671) conseguiriam dar as mãos pela largura das praias da Costa da Caparica mais de 250 vezes. \n\n Ranking \n Top 1- Linha 3508 transportou 1 740 231 passageiros (1.7 Milhões) \n Top 2 - Linha 3022 transportou 1 650 700 passageiros (1.6 Milhões) \n Top 3 - Linha 3013 transportou 1 199 740 passageiros (1.1 Milhões)',
 			line_ids: ['3508', '3022', '3013'],
 			lottie_src: '/assets/review-2024/animations/tops/tops_lines_area_3.json',
-			number_legend: 'linhas com mais passageiros transportados na área 3 ao longo do ano de 2024 (Almada, Seixal e Sesimbra)',
+			number_legend: 'linhas com mais passageiros transportados na Área 3 ao longo do ano de 2024 (Almada, Seixal e Sesimbra)',
 			number_value: '3508|3022|3013',
 			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
 		},
 		header: {
 			number: '',
-			title: 'Top Linhas área 3',
+			title: 'Top Linhas Área 3',
 		},
 	},
 
@@ -282,16 +282,16 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Os passageiros destas linhas (4 597 469), conseguiriam dar as mãos pelo comprimento do rio Sado mais de 360 vezes. \n\n Ranking \n Top 1- Linha 4600	 transportou 2,035,134 passageiros (2 Milhões) \n Top 2 - Linha 4701 transportou 1,628,676 passageiros (1.6 Milhões) \n Top 3 - Linha 4512 transportou 933,659 passageiros (933 mil)',
+			description: 'Os passageiros destas linhas (4 597 469), conseguiriam dar as mãos pelo comprimento do rio Sado mais de 360 vezes. \n\n Ranking \n Top 1- Linha 4600	 transportou 2 035 134 passageiros (2 Milhões) \n Top 2 - Linha 4701 transportou 1 628 676 passageiros (1.6 Milhões) \n Top 3 - Linha 4512 transportou 933 659 passageiros (933 mil)',
 			line_ids: ['4600', '4701', '4512'],
 			lottie_src: '/assets/review-2024/animations/tops/tops_lines_area_4.json',
-			number_legend: 'linhas com mais passageiros transportados na área 4 ao longo do ano de 2024 (Alcochete, Barreiro, Moita, Montijo, Palmela, Setúbal)',
+			number_legend: 'linhas com mais passageiros transportados na Área 4 ao longo do ano de 2024 (Alcochete, Barreiro, Moita, Montijo, Palmela, Setúbal)',
 			number_value: '4600|4701|4512',
 			title: 'Todas as nossas linhas importam, mas 3 destacaram-se!',
 		},
 		header: {
 			number: '',
-			title: 'Top Linhas área 4',
+			title: 'Top Linhas Área 4',
 		},
 	},
 
@@ -330,7 +330,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			description: 'Ao longo de 2024, transportámos 68 982 369 (68.9 Milhões) de passageiros até Lisboa. Isto representou um crescimento de 21.28%, face a 2024. \n\n Estas foram as 3 linhas que se destacaram na ligação à cidade: \n Top 1 - A linha 2711  teve um crescimento de 56% (mais 719 mil passageiros). \n Top 2- A linha 1715 teve um crescimento de 33% (mais 558 mil de passageiros). \n Top 3 -  A linha 4701 teve um crescimento de 50% (mais 540 mil passageiros)',
 			line_ids: ['2711', '1715', '4701'],
 			lottie_src: '/assets/review-2024/animations/tops/lines_growth.json',
-			number_legend: 'linhas de ligações a Lisboa com maior taxa de crescimento, ao longo de 2024',
+			number_legend: 'linhas de ligação a Lisboa com maior taxa de crescimento, ao longo de 2024',
 			number_value: '2711|1715|4701',
 			title: 'Crescem depressa!',
 		},
@@ -411,11 +411,11 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#FFFFFF',
 		},
 		content: {
-			description: 'Num domingo, transportámos mais de  quatro plateias do passeio marítimo de Algés!',
+			description: 'Num domingo, transportámos mais de  quatro plateias do Passeio Marítimo de Algés!',
 			lottie_src: '/assets/review-2024/animations/recordes/recordes_day_dom.json',
 			number_legend: 'total de passageiros transportados num domingo (15 de agosto de 2024)',
 			number_value: '274 416 (274 mil)',
-			title: 'A Cmetropolitana não tira férias!',
+			title: 'A CMetropolitana não tira férias!',
 		},
 		header: {
 			number: '274m',
@@ -428,7 +428,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_growth_a1_01',
 		colors: {
 			border: '#FFDD00',
@@ -449,7 +449,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_growth_a1_02',
 		colors: {
 			primary: '#FFDD00',
@@ -469,7 +469,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_growth_a1_03',
 		colors: {
 			border: '#FFDD00',
@@ -490,7 +490,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_growth_a1_04',
 		colors: {
 			primary: '#FFDD00',
@@ -510,7 +510,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_growth_a1_05',
 		colors: {
 			border: '#FFDD00',
@@ -534,7 +534,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_growth_a2_01',
 		colors: {
 			border: '#FFDD00',
@@ -543,7 +543,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de 3 721 540 (3.7 Milhões) passageiros ao longo de 2024',
+			number_legend: 'Aumento de 3 721 540 (3.7 Milhões) de passageiros ao longo de 2024',
 			number_value: '+20%',
 			title: 'Em Loures não parámos de crescer!',
 		},
@@ -555,7 +555,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_growth_a2_02',
 		colors: {
 			primary: '#FFDD00',
@@ -563,7 +563,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de 525 363 (525 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de 525 363 (525 mil) de passageiros ao longo de 2024',
 			number_value: '+22%',
 			title: 'Em Mafra não parámos de crescer!',
 		},
@@ -575,7 +575,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_growth_a2_03',
 		colors: {
 			border: '#FFDD00',
@@ -584,7 +584,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  2 361 699 (2.3 Milhões) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  2 361 699 (2.3 Milhões) de passageiros ao longo de 2024',
 			number_value: '+18%',
 			title: 'Em Odivelas não parámos de crescer!',
 		},
@@ -596,7 +596,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_growth_a2_04',
 		colors: {
 			primary: '#FFDD00',
@@ -604,7 +604,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  2 038 390 (2 Milhões) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  2 038 390 (2 Milhões) de passageiros ao longo de 2024',
 			number_value: '+34%',
 			title: 'Em Vila Franca de Xira não parámos de crescer!',
 		},
@@ -619,7 +619,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_growth_a3_01',
 		colors: {
 			border: '#FFDD00',
@@ -628,7 +628,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  2 570 574 (2.5 Milhões) passageiros  ao longo de 2024',
+			number_legend: 'Aumento de  2 570 574 (2.5 Milhões) de passageiros  ao longo de 2024',
 			number_value: '+17%',
 			title: 'Em Almada não parámos de crescer!',
 		},
@@ -640,7 +640,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_growth_a3_02',
 		colors: {
 			primary: '#FFDD00',
@@ -648,7 +648,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  2 710 735 (2.7 Milhões) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  2 710 735 (2.7 Milhões) de passageiros ao longo de 2024',
 			number_value: '+21%',
 			title: 'No Seixal não parámos de crescer!',
 		},
@@ -660,7 +660,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_growth_a3_03',
 		colors: {
 			border: '#FFDD00',
@@ -669,7 +669,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  342 877 (342 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  342 877 (342 mil) de passageiros ao longo de 2024',
 			number_value: '+16%',
 			title: 'Em Sesimbra não parámos de crescer!',
 		},
@@ -684,7 +684,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_01',
 		colors: {
 			border: '#FFDD00',
@@ -693,7 +693,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  221 481 (221 mil) passageiros  ao longo de 2024',
+			number_legend: 'Aumento de  221 481 (221 mil) de passageiros  ao longo de 2024',
 			number_value: '+22%',
 			title: 'Em Alcochete não parámos de crescer!',
 		},
@@ -705,7 +705,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_02',
 		colors: {
 			primary: '#FFDD00',
@@ -713,7 +713,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  334 986 (334 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  334 986 (334 mil) de passageiros ao longo de 2024',
 			number_value: '+30%',
 			title: 'No Barreiro não parámos de crescer!',
 		},
@@ -725,7 +725,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_03',
 		colors: {
 			border: '#FFDD00',
@@ -734,7 +734,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  789 413 (789 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  789 413 (789 mil) de passageiros ao longo de 2024',
 			number_value: '+42%',
 			title: 'Na Moita não parámos de crescer!',
 		},
@@ -746,7 +746,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_04',
 		colors: {
 			primary: '#FFDD00',
@@ -754,7 +754,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  742 358 (742 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  742 358 (742 mil) de passageiros ao longo de 2024',
 			number_value: '+35%',
 			title: 'No Montijo não parámos de crescer!',
 		},
@@ -766,7 +766,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_05',
 		colors: {
 			border: '#FFDD00',
@@ -775,7 +775,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  430 586 (430 mil) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  430 586 (430 mil) de passageiros ao longo de 2024',
 			number_value: '+41%',
 			title: 'Em Palmela não parámos de crescer!',
 		},
@@ -787,7 +787,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_growth_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_growth_a4_06',
 		colors: {
 			primary: '#FFDD00',
@@ -795,7 +795,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		},
 		content: {
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_growth.json',
-			number_legend: 'Aumento de  1 810 770 (1.8 Milhões) passageiros ao longo de 2024',
+			number_legend: 'Aumento de  1 810 770 (1.8 Milhões) de passageiros ao longo de 2024',
 			number_value: '+33%',
 			title: 'Em Setúbal não parámos de crescer!',
 		},
@@ -810,7 +810,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_pax_a1_01',
 		colors: {
 			border: '#FFDD00',
@@ -832,7 +832,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_pax_a1_02',
 		colors: {
 			primary: '#FFDD00',
@@ -853,7 +853,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_pax_a1_03',
 		colors: {
 			border: '#FFDD00',
@@ -875,7 +875,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_pax_a1_04',
 		colors: {
 			primary: '#FFDD00',
@@ -896,7 +896,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_pax_a1_05',
 		colors: {
 			border: '#FFDD00',
@@ -921,7 +921,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_pax_a2_01',
 		colors: {
 			border: '#FFDD00',
@@ -943,7 +943,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_pax_a2_02',
 		colors: {
 			primary: '#FFDD00',
@@ -964,7 +964,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_pax_a2_03',
 		colors: {
 			border: '#FFDD00',
@@ -986,7 +986,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_pax_a2_04',
 		colors: {
 			primary: '#FFDD00',
@@ -1010,7 +1010,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_pax_a3_01',
 		colors: {
 			border: '#FFDD00',
@@ -1032,7 +1032,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_pax_a3_02',
 		colors: {
 			primary: '#FFDD00',
@@ -1053,7 +1053,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_pax_a3_03',
 		colors: {
 			border: '#FFDD00',
@@ -1078,7 +1078,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_01',
 		colors: {
 			border: '#FFDD00',
@@ -1100,7 +1100,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_02',
 		colors: {
 			primary: '#FFDD00',
@@ -1121,7 +1121,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_03',
 		colors: {
 			border: '#FFDD00',
@@ -1143,7 +1143,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_04',
 		colors: {
 			primary: '#FFDD00',
@@ -1164,7 +1164,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_05',
 		colors: {
 			border: '#FFDD00',
@@ -1186,7 +1186,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_pax_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_pax_a4_06',
 		colors: {
 			primary: '#FFDD00',
@@ -1210,7 +1210,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_lines_a1_01',
 		_type: 'lines',
 		colors: {
@@ -1234,7 +1234,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_lines_a1_04',
 		_type: 'lines',
 		colors: {
@@ -1257,7 +1257,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_1',
-		_group_title: 'Area 1',
+		_group_title: 'Área 1',
 		_id: 'municipio_lines_a1_05',
 		_type: 'lines',
 		colors: {
@@ -1266,7 +1266,7 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Só nesta linha levámos 1 093 375 pessoas a ver as vistas de Sintra, ao longo de 2024. \n\n Linha 1251 Portela Sintra (Estação Sul) - Rio De Mouro (Estação Sul)',
+			description: 'Só nesta linha levámos 1 093 375 pessoas a ver as vistas de Sintra, ao longo de 2024. \n\n Linha 1251 \n Portela Sintra (Estação Sul) - Rio De Mouro (Estação Sul)',
 			line_ids: ['1251'],
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_lines.json',
 			number_legend: 'linha municipal com mais passageiros transportados em Sintra, em 2024',
@@ -1284,7 +1284,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_lines_a2_01',
 		_type: 'lines',
 		colors: {
@@ -1308,7 +1308,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_lines_a2_02',
 		_type: 'lines',
 		colors: {
@@ -1331,7 +1331,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_lines_a2_03',
 		_type: 'lines',
 		colors: {
@@ -1355,7 +1355,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_2',
-		_group_title: 'Area 2',
+		_group_title: 'Área 2',
 		_id: 'municipio_lines_a2_04',
 		_type: 'lines',
 		colors: {
@@ -1381,7 +1381,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_lines_a3_01',
 		_type: 'lines',
 		colors: {
@@ -1405,7 +1405,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_lines_a3_02',
 		_type: 'lines',
 		colors: {
@@ -1428,7 +1428,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_3',
-		_group_title: 'Area 3',
+		_group_title: 'Área 3',
 		_id: 'municipio_lines_a3_03',
 		_type: 'lines',
 		colors: {
@@ -1455,7 +1455,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_lines_a4_01',
 		_type: 'lines',
 		colors: {
@@ -1478,7 +1478,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_lines_a4_03',
 		_type: 'lines',
 		colors: {
@@ -1502,7 +1502,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_lines_a4_04',
 		_type: 'lines',
 		colors: {
@@ -1525,7 +1525,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_lines_a4_05',
 		_type: 'lines',
 		colors: {
@@ -1549,7 +1549,7 @@ export const allCardsData: Review2024CardSchema[] = [
 
 	{
 		_group: 'municipio_lines_area_4',
-		_group_title: 'Area 4',
+		_group_title: 'Área 4',
 		_id: 'municipio_lines_a4_06',
 		_type: 'lines',
 		colors: {
@@ -1935,7 +1935,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			description: 'Acabámos 2024 com 25 553 seguidores somados por todos os nossos canais digitais. \n Seria preciso um prédio de mais de 3 500 andares, com 3 frações por piso, para que toda a nossa comunidade vivesse junta.',
 			lottie_src: '/assets/review-2024/animations/digital/followers_total.json',
-			number_legend: 'total de seguidores novos na nossa comunidade digital',
+			number_legend: 'total de seguidores novos na nossa comunidade digital, em 2024',
 			number_value: '25 553 (25 mil)',
 			title: 'Este ano, andámos ligados!',
 		},
@@ -1953,9 +1953,9 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#000000',
 		},
 		content: {
-			description: 'Este ano, publicámos mais de 1 800 alertas no total, uma média de 5 por dia!',
+			description: 'Em 2024, publicámos mais de 1 800 alertas no total, uma média de 5 por dia!',
 			lottie_src: '/assets/review-2024/animations/digital/news_total.json',
-			number_legend: 'total de notícias publicadas pela Carris Metropolitana em 2024',
+			number_legend: 'total de notícias publicadas pela Carris Metropolitana, em 2024',
 			number_value: '1 894',
 			title: 'Em 2024, contámos tudo!',
 		},
@@ -1974,9 +1974,9 @@ export const allCardsData: Review2024CardSchema[] = [
 			text: '#00CD32',
 		},
 		content: {
-			description: 'Este ano, guardámos 3 milhões de eventos por dia enviados pelos nossos autocarro, a notificar a sua localização.',
+			description: 'Em 2024, guardámos 3 milhões de eventos por dia enviados pelos nossos autocarro, a notificar a sua localização.',
 			lottie_src: '/assets/review-2024/animations/digital/realtime_daily.json',
-			number_legend: 'eventos recibidos em real time, por dia',
+			number_legend: 'eventos recebidos em tempo real, por dia, em 2024',
 			number_value: '3 000 000 (3 Milhões)',
 			title: 'Este ano, sabemos por onde andámos!',
 		},
@@ -1996,7 +1996,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			description: 'Seriam precisos 345 autocarros standard para caberem 90 mil telemóveis.',
 			lottie_src: '/assets/review-2024/animations/digital/app_total.json',
-			number_legend: 'utilizadores totais da aplicação Carris Metropolitana',
+			number_legend: 'utilizadores totais da aplicação Carris Metropolitana, em 2024',
 			number_value: '90 000 (90 mil)',
 			title: '2024 foi o ano de viajar no bolso dos passageiros!',
 		},
@@ -2016,7 +2016,7 @@ export const allCardsData: Review2024CardSchema[] = [
 		content: {
 			description: 'Uma pessoa teria que verificar o telemóvel 137 vezes por dia durante um ano inteiro para atingir as 50 mil visitas que recebemos diariamente no site!',
 			lottie_src: '/assets/review-2024/animations/digital/website_daily.json',
-			number_legend: 'visitantes diários ao nosso website',
+			number_legend: 'visitantes diários ao nosso website, ao longo de 2024',
 			number_value: '50 000 (50 mil)',
 			title: 'Este ano estivemos sempre à distância de um clique!',
 		},

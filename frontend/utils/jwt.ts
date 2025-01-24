@@ -11,12 +11,14 @@ import jwt from 'jsonwebtoken';
  * @returns The encoded token
  */
 export async function generateJWT(payload: Record<string, any>, expiresIn: number | string = '5m'): Promise<string> {
-	const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
-		algorithm: 'HS256',
-		expiresIn,
-	});
+	// const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
+	// 	algorithm: 'HS256',
+	// 	expiresIn,
+	// });
 
-	return token;
+	return new Promise((resolve, reject) => {
+		resolve('');
+	});
 }
 
 /**

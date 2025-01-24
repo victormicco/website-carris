@@ -110,9 +110,9 @@ export const allQuizData: Review2024QuizSchema[] = [
 			text: '#FFFFFF',
 		},
 		question: {
-			description: 'Em 2024, a área 1 encheu mais de 1900 vezes o Estádio Nacional do Jamor!',
+			description: 'Em 2024, a Área 1 encheu mais de 1900 vezes o Estádio Nacional do Jamor!',
 			lottie_src: '/assets/review-2024/animations/passageiros/pax_area_1.json',
-			title: 'Em que área transportámos mais passageiros em 2024 (59 Milhões)?',
+			title: 'Em que Área transportámos mais passageiros em 2024 (59 Milhões)?',
 		},
 	},
 
@@ -184,7 +184,7 @@ export const allQuizData: Review2024QuizSchema[] = [
 		question: {
 			description: 'Ao longo de 2024, o terminal da Moita (Estação) ganhou mais de 33 mil passageiros, tendo transportado no total mais de 53 mil durante o ano!',
 			lottie_src: '/assets/review-2024/animations/municipios/municipio_pax.json',
-			title: 'Em 2024, mais que um terminal cresceu mais que 100%. Verdade ou mentira?',
+			title: 'Em 2024, houve um terminal cresceu mais que 100%. Verdade ou mentira?',
 		},
 	},
 
