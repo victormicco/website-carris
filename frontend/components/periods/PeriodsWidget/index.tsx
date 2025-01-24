@@ -35,7 +35,7 @@ export function PeriodsWidget() {
 	//
 	// B. Fetch data
 
-	const { data: periodsData } = useSWR('https://api.carrismetropolitana.pt/periods');
+	const { data: periodsData } = useSWR('https://api.carrismetropolitana.pt/v2/periods');
 
 	//
 	// C. Transform data

@@ -61,7 +61,7 @@ export const AlertsContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (!allAlertsData) return;
-		const allSimplifiedAlerts = allAlertsData?.map(alert => convertToSimplifiedAlert(alert, currentLocale));
+		const allSimplifiedAlerts = allAlertsData.map(alert => convertToSimplifiedAlert(alert, currentLocale));
 		setDataSimplifiedState(allSimplifiedAlerts);
 	}, [allAlertsData]);
 
