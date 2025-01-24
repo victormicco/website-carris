@@ -6,6 +6,7 @@ import type { Store } from '@carrismetropolitana/api-types/facilities';
 
 import { moveMap } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
+import { writeHeadMetaTag } from '@/utils/writeHeadMetaTag';
 import { useMap } from '@vis.gl/react-maplibre';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -70,7 +71,7 @@ export const StoresListContextProvider = ({ children }) => {
 
 	const [filterByCurrentStatusState, setFilterByCurrentStatusState] = useQueryState<StoresListContextState['filters']['by_current_status']>('open', parseAsStringLiteral(['all', 'open']).withDefault('open').withOptions({ clearOnDefault: true }));
 	const [filterByMunicipalityState, setFilterByMunicipalityState] = useQueryState('municipality');
-	const [filterOrderByState, setFilterOrderByState] = useQueryState <StoresListContextState['filters']['order_by']>('order_by', parseAsStringLiteral(['municipality_name', 'wait_time', 'capacity']).withDefault('municipality_name').withOptions({ clearOnDefault: true }));
+	const [filterOrderByState, setFilterOrderByState] = useQueryState<StoresListContextState['filters']['order_by']>('order_by', parseAsStringLiteral(['municipality_name', 'wait_time', 'capacity']).withDefault('municipality_name').withOptions({ clearOnDefault: true }));
 	const [filterOrderByDirectionState, setFilterOrderByDirectionState] = useQueryState('order_by_direction', parseAsStringLiteral(['asc', 'desc']).withDefault('asc').withOptions({ clearOnDefault: true }));
 	const [filterSelectedStoreState, setFilterSelectedStoreState] = useQueryState('store');
 
@@ -179,6 +180,9 @@ export const StoresListContextProvider = ({ children }) => {
 			return;
 		};
 		setDataSelectedState(foundStoreData);
+
+		// Set storeID to a head meta tag, needed for the share cards to work
+		writeHeadMetaTag(storeId, 'storeID');
 		setFilterSelectedStoreState(storeId);
 		moveMap(storesListMap, [foundStoreData.lon, foundStoreData.lat]);
 		document.getElementById(foundStoreData.id)?.scrollIntoView();

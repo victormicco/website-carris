@@ -2,6 +2,7 @@
 
 import { LinesDetail } from '@/components/lines/LinesDetail';
 import { LinesDetailContextProvider } from '@/contexts/LinesDetail.context';
+import { Metadata } from 'next';
 
 /* * */
 
@@ -24,3 +25,10 @@ export default async function Page({ params }) {
 
 	//
 }
+
+export const metadata: Metadata = {
+	openGraph: {
+		description: 'Linhas',
+		title: 'CMetropolitana - Linhas',
+	},
+};

@@ -2,6 +2,7 @@
 
 import { StopsDetail } from '@/components/stops/StopsDetail';
 import { StopsDetailContextProvider } from '@/contexts/StopsDetail.context';
+import { Metadata } from 'next';
 
 /* * */
 
@@ -24,3 +25,9 @@ export default async function Page({ params }) {
 
 	//
 }
+export const metadata: Metadata = {
+	openGraph: {
+		description: 'Paragens',
+		title: 'CMetropolitana - Paragens',
+	},
+};

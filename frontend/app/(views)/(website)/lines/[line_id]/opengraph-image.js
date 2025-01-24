@@ -27,7 +27,6 @@ export default async function Image({ params }) {
 
 	//
 	// B. Fetch data
-
 	const lineData = await fetch(params.line_id?.length && `https://api.carrismetropolitana.pt/lines/${params.line_id}`).then(res => res.json());
 
 	//

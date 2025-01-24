@@ -78,6 +78,7 @@ export function Review2024Card({ cardData, isFirstChild, isLastChild }: Props) {
 
 	const handleToggleIsOpen = () => {
 		setIsOpen(prev => !prev);
+		console.log(cardData._id);
 	};
 
 	const handleShareUrl = () => {

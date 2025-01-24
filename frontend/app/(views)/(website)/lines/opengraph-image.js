@@ -6,9 +6,10 @@ import { ImageResponse } from 'next/og';
 
 /* * */
 
-export const alt = 'Mais sobre esta Notícia';
+export const alt = 'Todas as Linhas';
 export const size = { height: 630, width: 1200 };
 export const contentType = 'image/png';
+export const description = 'Informação sobre Linhas';
 
 /* * */
 
