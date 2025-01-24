@@ -6,7 +6,6 @@ import type { Store } from '@carrismetropolitana/api-types/facilities';
 
 import { moveMap } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
-import { writeHeadMetaTag } from '@/utils/writeHeadMetaTag';
 import { useMap } from '@vis.gl/react-maplibre';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -182,7 +181,6 @@ export const StoresListContextProvider = ({ children }) => {
 		setDataSelectedState(foundStoreData);
 
 		// Set storeID to a head meta tag, needed for the share cards to work
-		writeHeadMetaTag(storeId, 'storeID');
 		setFilterSelectedStoreState(storeId);
 		moveMap(storesListMap, [foundStoreData.lon, foundStoreData.lat]);
 		document.getElementById(foundStoreData.id)?.scrollIntoView();
