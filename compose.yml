@@ -1,6 +1,6 @@
 # # #
 
-name: cmetropolitana-website
+name: cmet-website
 
 volumes:
   certbotdata:
@@ -37,7 +37,6 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/uptime.conf:/etc/nginx/conf.d/uptime.conf
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
       - ./letsencrypt:/etc/letsencrypt
       - certbotdata:/var/www/certbot
     ports:
