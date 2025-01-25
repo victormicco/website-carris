@@ -11,7 +11,7 @@ export default async function Sitemap() {
 	//
 	// A. Setup variables
 
-	const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://0.0.0.0:${process.env.PORT || 3000}`;
+	const baseUrl = process.env.NEXT_PUBLIC_URL || '';
 
 	//
 	// B. Fetch data
