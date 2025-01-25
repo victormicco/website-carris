@@ -60,7 +60,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # #
 
   frontend:
-    image: ghcr.io/carrismetropolitana/website-frontend:alpha
+    image: ghcr.io/carrismetropolitana/website-frontend:production
     restart: unless-stopped
     mem_limit: 2g
     logging:
