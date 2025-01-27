@@ -398,14 +398,24 @@
 			"iphone": "Apple iPhone",
 			"subheading": "Faça o download da app navegante® para iOS ou Android."
 		},
-		"AppNaveganteStartupMessageDefault": {
+		"AppNaveganteStartup20250115": {
 			"actions": {
+				"close": "Fechar",
 				"update_android": "Atualizar na Play Store",
 				"update_ios": "Atualizar na App Store"
 			},
-			"heading": "Nova versão disponível",
-			"subheading": "Por favor atualize a app navegante® para a versão mais recente.",
-			"text": "A nova versão inclui otimizações de desempenho e correções de erros para uma melhor experiência de utilização."
+			"heading": "A App navegante® tem uma nova versão com melhorias de usabilidade.",
+			"paragraph_1": "Agora é mais fácil:",
+			"paragraph_2": "• Consultar a validade do cartão e da gratuitidade jovem.",
+			"paragraph_3": "• Renovar o acesso à gratuitidade jovem.",
+			"paragraph_4": "• Utilizar a App em 'Dark Mode'",
+			"paragraph_5": "Simplifique a sua mobilidade com a App navegante®!"
+		},
+		"AppNaveganteStartupNaoAumenta2025": {
+			"actions": {
+				"close": "Fechar",
+				"learn_more": "Saber mais"
+			}
 		}
 	},
 	"cards": {

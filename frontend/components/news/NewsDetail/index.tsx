@@ -9,6 +9,7 @@ import { NewsDetailContent } from '@/components/news/NewsDetailContent';
 import { NewsDetailHeader } from '@/components/news/NewsDetailHeader';
 import { NewsDetailSidebar } from '@/components/news/NewsDetailSidebar';
 import { NewsData } from '@/types/news.types';
+import { Metadata } from 'next';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 

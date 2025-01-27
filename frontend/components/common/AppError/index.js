@@ -42,7 +42,7 @@ export default function Component() {
 	// C. Handle actions
 
 	const handleGoToHomepage = () => {
-		window.location.href = 'https://cmet.pt';
+		window.location.href = 'https://carrismetropolitana.pt';
 	};
 
 	//

@@ -1,13 +1,9 @@
 # # #
 
-name: cmetropolitana-website
+name: cmet-website
 
 volumes:
   certbotdata:
-
-secrets:
-  pcgidbkey:
-    file: PCGIDB.key
 
 services:
   #
@@ -41,7 +37,6 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/uptime.conf:/etc/nginx/conf.d/uptime.conf
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
       - ./letsencrypt:/etc/letsencrypt
       - certbotdata:/var/www/certbot
     ports:
@@ -65,7 +60,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # #
 
   frontend:
-    image: ghcr.io/carrismetropolitana/website-frontend:alpha
+    image: ghcr.io/carrismetropolitana/website-frontend:production
     restart: unless-stopped
     mem_limit: 2g
     logging:

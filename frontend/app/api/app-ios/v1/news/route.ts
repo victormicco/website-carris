@@ -29,7 +29,7 @@ export async function GET() {
 			cover_image_src: featuredImageMediaData?.source_url,
 			publish_date: newsData.date,
 			title: newsData.title.rendered,
-			url: `https://cmet.pt/app-ios/news/${newsData.id}`,
+			url: `https://carrismetropolitana.pt/app-ios/news/${newsData.id}`,
 		});
 
 		//

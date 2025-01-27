@@ -24,13 +24,13 @@ export const URLS = Object.freeze({
 	 */
 	app_navegante: {
 		android_standalone: {
-			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
+			prod: 'https://play.google.com/store/apps/details?id=pt.card4b.navegante',
 		},
 		apple_app_store: {
 			prod: 'https://apps.apple.com/pt/app/navegante/id6484591306',
 		},
 		google_play_store: {
-			prod: 'https://play.google.com/store/apps/details?id=pt.carrismetropolitana.mobile',
+			prod: 'https://play.google.com/store/apps/details?id=pt.card4b.navegante',
 		},
 	},
 

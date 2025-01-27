@@ -5,3 +5,7 @@
 	width: 100%;
 	max-width: none;
 }
+
+.container * {
+	user-select: none;
+}
