@@ -1,11 +1,9 @@
 /* * */
 
-import AlertsList from '@/components/alerts/AlertsList';
+import { AlertsList } from '@/components/alerts/AlertsList';
 
 /* * */
 
 export default function Page() {
-	return (
-		<AlertsList />
-	);
+	return <AlertsList />;
 }

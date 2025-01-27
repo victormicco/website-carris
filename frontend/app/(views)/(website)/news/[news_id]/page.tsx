@@ -1,38 +1,49 @@
 /* * */
 
 import { NewsDetail } from '@/components/news/NewsDetail';
+import { type Metadata } from 'next';
 
 /* * */
 
-export async function generateMetadata({ params }) {
-	const data = await params;
-	try {
-		const id = await data.news_id;
-		const newsData = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/news/${id}`).then(res => res.json());
+export async function generateMetadata({ params }): Promise<Metadata> {
+	//
 
-		return {
-			description: newsData.title,
-			openGraph: {
-				description: newsData.title,
-				title: newsData.title,
-			},
-			title: newsData.title,
-		};
-	}
-	catch (error) {
-		console.error('There was an error loading the page metadata: ', error);
-		return {
-			description: 'Notícias',
-			openGraph: {
-				description: 'Notícias',
-				title: 'CMetropolitana - Notícias',
-			},
-			title: 'Notícias',
-		};
-	}
+	//
+	// A. Setup variables
+
+	const { news_id } = await params;
+
+	//
+	// B. Fetch data
+
+	const newsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/news/${news_id}`);
+	const newsData = await newsResponse.json();
+
+	//
+	// C. Render components
+
+	return {
+		description: 'Leia a notícia completa em www.cmetropolitana.pt',
+		title: newsData.title,
+	};
+
+	//
 }
 
+/* * */
+
 export default async function Page({ params }) {
+	//
+
+	//
+	// A. Setup variables
+
 	const { news_id } = await params;
+
+	//
+	// B. Render components
+
 	return <NewsDetail newsId={news_id} />;
+
+	//
 }

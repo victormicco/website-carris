@@ -25,7 +25,6 @@ export function Review2024CardGroup({ groupId }: Props) {
 	if (groupId.startsWith('terminals')) {
 		groupCards.sort((a, b) => Number(b.header.number.replace('%', '')) - Number(a.header.number.replace('%', '')));
 	}
-
 	//
 	// B. Render components
 

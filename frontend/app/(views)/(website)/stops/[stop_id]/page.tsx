@@ -2,36 +2,43 @@
 
 import { StopsDetail } from '@/components/stops/StopsDetail';
 import { StopsDetailContextProvider } from '@/contexts/StopsDetail.context';
+import { Routes } from '@/utils/routes';
+import { type Stop } from '@carrismetropolitana/api-types/network';
+import { type Metadata } from 'next';
 
 /* * */
 
-export async function generateMetadata({ params }) {
-	const data = await params;
-	try {
-		const id = await data.stop_id;
-		const stopData = await fetch(`https://api.carrismetropolitana.pt/stops/${id}`).then(res => res.json());
-		const stopAddress = stopData.name + ', ' + stopData.municipality_name;
-		return {
-			description: stopAddress,
-			openGraph: {
-				description: stopAddress,
-				title: stopData.short_name,
-			},
-			title: stopData.short_name,
-		};
-	}
-	catch (error) {
-		console.error('There was an error loading the page metadata: ', error);
-		return {
-			description: 'Paragens',
-			openGraph: {
-				description: 'Paragens',
-				title: 'CMetropolitana - Paragens',
-			},
-			title: 'Paragens',
-		};
-	}
+export async function generateMetadata({ params }): Promise<Metadata> {
+	//
+
+	//
+	// A. Setup variables
+
+	const { stop_id } = await params;
+
+	//
+	// B. Fetch data
+
+	const allStopsResponse = await fetch(`${Routes.API}/stops`);
+	const allStopsData: Stop[] = await allStopsResponse.json();
+
+	//
+	// C. Transform data
+
+	const stopData = allStopsData.find(item => item.id === stop_id);
+
+	//
+	// D. Render components
+
+	return {
+		description: `Horários em tempo real na paragem #${stopData?.id}`,
+		title: stopData?.long_name,
+	};
+
+	//
 }
+
+/* * */
 
 export default async function Page({ params }) {
 	//

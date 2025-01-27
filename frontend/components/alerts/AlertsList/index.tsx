@@ -5,7 +5,7 @@ import AlertsListToolbar from '@/components/alerts/AlertsListToolbar';
 
 /* * */
 
-export default function Component() {
+export function AlertsList() {
 	return (
 		<>
 			<AlertsListToolbar />

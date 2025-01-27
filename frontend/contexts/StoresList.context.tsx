@@ -70,7 +70,7 @@ export const StoresListContextProvider = ({ children }) => {
 
 	const [filterByCurrentStatusState, setFilterByCurrentStatusState] = useQueryState<StoresListContextState['filters']['by_current_status']>('open', parseAsStringLiteral(['all', 'open']).withDefault('open').withOptions({ clearOnDefault: true }));
 	const [filterByMunicipalityState, setFilterByMunicipalityState] = useQueryState('municipality');
-	const [filterOrderByState, setFilterOrderByState] = useQueryState <StoresListContextState['filters']['order_by']>('order_by', parseAsStringLiteral(['municipality_name', 'wait_time', 'capacity']).withDefault('municipality_name').withOptions({ clearOnDefault: true }));
+	const [filterOrderByState, setFilterOrderByState] = useQueryState<StoresListContextState['filters']['order_by']>('order_by', parseAsStringLiteral(['municipality_name', 'wait_time', 'capacity']).withDefault('municipality_name').withOptions({ clearOnDefault: true }));
 	const [filterOrderByDirectionState, setFilterOrderByDirectionState] = useQueryState('order_by_direction', parseAsStringLiteral(['asc', 'desc']).withDefault('asc').withOptions({ clearOnDefault: true }));
 	const [filterSelectedStoreState, setFilterSelectedStoreState] = useQueryState('store');
 
@@ -179,6 +179,8 @@ export const StoresListContextProvider = ({ children }) => {
 			return;
 		};
 		setDataSelectedState(foundStoreData);
+
+		// Set storeID to a head meta tag, needed for the share cards to work
 		setFilterSelectedStoreState(storeId);
 		moveMap(storesListMap, [foundStoreData.lon, foundStoreData.lat]);
 		document.getElementById(foundStoreData.id)?.scrollIntoView();

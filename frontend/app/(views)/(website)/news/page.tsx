@@ -1,19 +1,17 @@
 /* * */
 
 import { NewsList } from '@/components/news/NewsList';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
+
+/* * */
+
+export const metadata: Metadata = {
+	description: 'Todas as noticias da CMetropolitana.',
+	title: 'CMetropolitana | Notícias',
+};
 
 /* * */
 
 export default function Page() {
 	return <NewsList />;
 }
-
-export const metadata: Metadata = {
-	description: 'Todas as noticias da carris metropolitana',
-	openGraph: {
-		description: 'Notícias',
-		title: 'CMetropolitana - Notícias',
-	},
-	title: 'CMetropolitana - Notícias',
-};

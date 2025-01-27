@@ -24,7 +24,7 @@ interface Props {
 
 /* * */
 
-export default function Component({ alertId }: Props) {
+export function AlertsDetail({ alertId }: Props) {
 	//
 
 	//
