@@ -24,11 +24,11 @@ export function AppNaveganteStartupNaoAumenta2025() {
 	// B. Handle actions
 
 	const handleClose = () => {
-		if (environmentContext.data.value === 'app-ios') {
+		if (environmentContext.data.value === 'app-navegante-ios') {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(window as any).webkit.messageHandlers.closeButtonClicked.postMessage('');
 		}
-		if (environmentContext.data.value === 'app-android') {
+		if (environmentContext.data.value === 'app-navegante-android') {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(window as any).Android.closeButtonClicked();
 		}
