@@ -1,6 +1,7 @@
 /* * */
 
 import { availableFormats } from '@/i18n/config';
+import { type Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
@@ -21,9 +22,9 @@ const inter = Inter({
 
 /* * */
 
-export const metadata = {
+export const metadata: Metadata = {
 	description: 'Horários e Paragens em Tempo Real',
-	metadataBase: process.env.NEXT_PUBLIC_URL ? new URL(process.env.NEXT_PUBLIC_URL) : '',
+	metadataBase: process.env.NEXT_PUBLIC_URL ? new URL(process.env.NEXT_PUBLIC_URL) : null,
 	title: 'CMetropolitana',
 };
 
