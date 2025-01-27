@@ -4,7 +4,7 @@ import CMetropolitanaLogoLight from '@/components/common/CMetropolitanaLogoLight
 
 /* * */
 
-export default function OpenGraphStopsDefault() {
+export function OpenGraphStopsDefault() {
 	return (
 		<div style={{ backgroundColor: '#fff', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between', width: '100%' }}>
 			<div style={{ alignItems: 'flex-start', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', padding: 60 }}>

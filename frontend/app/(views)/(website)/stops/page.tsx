@@ -5,15 +5,13 @@ import { Metadata } from 'next';
 
 /* * */
 
-export default function Page() {
-	return (
-		<StopsList />
-	);
-}
-
 export const metadata: Metadata = {
-	openGraph: {
-		description: 'Paragens',
-		title: 'CMetropolitana - Paragens',
-	},
+	description: 'Descubra as paragens de autocarro da CMetropolitana.',
+	title: 'CMetropolitana | Paragens',
 };
+
+/* * */
+
+export default function Page() {
+	return <StopsList />;
+}
