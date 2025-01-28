@@ -14,7 +14,6 @@ interface Props {
 /* * */
 
 export function StopsDetailContentTimetableRowDebug({ arrivalData }: Props) {
-	console.log(arrivalData);
 	return (
 		<div className={styles.container}>
 			<CopyBadge label={`Trip ID: ${arrivalData.trip_id || 'NULL'}`} value={arrivalData.trip_id || 'NULL'} />
