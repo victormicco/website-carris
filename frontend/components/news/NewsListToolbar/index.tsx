@@ -5,7 +5,7 @@
 import { FoundItemsCounter } from '@/components/common/FoundItemsCounter';
 import { Section } from '@/components/layout/Section';
 import { useNewsListContext } from '@/contexts/NewsList.context';
-import { Grid, TextInput } from '@mantine/core';
+import { TextInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import { IconArrowLoopRight, IconCalendarEvent } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -62,8 +62,8 @@ export function NewsListToolbar() {
 	return (
 		<>
 			<Section heading={t('heading')} withBottomDivider withPadding>
-				<div className="row-container" style={{ alignItems: 'center', display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
-					<TextInput leftSection={<IconArrowLoopRight size={20} />} onChange={handleTextInputChange} placeholder={t('SearchInput.placeholder')} type="search" value={textInput || ''} w="70%" />
+				<div className="row-container" style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+					<TextInput leftSection={<IconArrowLoopRight size={20} />} onChange={handleTextInputChange} placeholder={t('SearchInput.placeholder')} type="search" value={textInput || ''} w="100%" />
 					<DatePickerInput
 						classNames={{ input: styles.datePickerInput, placeholder: styles.datePickerPlaceholder, section: styles.datePickerPlaceholder }}
 						dropdownType="modal"

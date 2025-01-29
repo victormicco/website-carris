@@ -2,7 +2,6 @@
 /* * */
 
 import { NewsData } from '@/types/news.types';
-import parseDateToString from '@/utils/parseDateToString';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 /* * */
@@ -64,7 +63,8 @@ export const NewsListContextProvider = ({ children }) => {
 		// Filter by news date
 		if (filterByTitle) {
 			filterResult = filterResult.filter((newsItem) => {
-				return newsItem.title.toLocaleLowerCase().includes(filterByTitle);
+				const titleLowerCase = newsItem.title.toLowerCase();
+				return titleLowerCase.includes(filterByTitle.toLowerCase());
 			});
 		}
 
@@ -81,7 +81,8 @@ export const NewsListContextProvider = ({ children }) => {
 			const date = filterByDate.split('T')[0];
 			const newsByDate = filterResult.filter(newsItem => newsItem.publish_date.includes(date));
 			filterResult = newsByDate.filter((newsItem) => {
-				return newsItem.title.toLocaleLowerCase().includes(filterByTitle);
+				const titleLowerCase = newsItem.title.toLowerCase();
+				return titleLowerCase.includes(filterByTitle.toLowerCase());
 			});
 		}
 
