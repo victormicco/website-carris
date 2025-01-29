@@ -1512,5 +1512,15 @@
 	},
 	"utils": {
 		"number": "{value, number}"
+	},
+	"vehicles": {
+		"VehiclesListToolbar": {
+			"filter_by": {
+				"search": "Search by plates, number os passengers, vehicle number."
+			},
+			"found_items_counter": "{count, plural, =0 {No vehicle found.} one {Found # vehicle} other {Found # vehicles}}",
+			"heading": "Veículos",
+			"subheading": "The pass navegante municipal Familia allows that each family pays at most the value of 2 municipal navegante pass indenpendently of the number of elemnts of the family. It is valid in all the companies of the public means of transport, in all of the 18 municipalities of the Lisbon metropolitan area."
+		}
 	}
 }
