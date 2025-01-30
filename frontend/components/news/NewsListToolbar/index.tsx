@@ -66,7 +66,7 @@ export function NewsListToolbar() {
 				<DatePickerInput
 					dropdownType="modal"
 					excludeDate={handleExcludeDates}
-					leftSection={<IconCalendarEvent />}
+					leftSection={<IconCalendarEvent size={20} />}
 					onChange={handleDateInputChange}
 					placeholder={t('filters.by_date.placeholder')}
 					size="lg"
