@@ -347,7 +347,7 @@
 				},
 				"text_search": "Search alert by title, description, location..."
 			},
-			"found_items_counter": "{count, plural, =0 {No alerts found.} one {Found # alert:} other {Found # alert:}}",
+			"found_items_counter": "{count, plural, =0 {No alerts found.} one {Found # alert:} other {Found # alerts:}}",
 			"heading": "Service Alerts",
 			"subheading": "Stay up to date with all changes on the network. Stay informed about new lines, route changes, and schedule adjustments, as well as events that may affect your journey."
 		},
@@ -1037,10 +1037,10 @@
 		"NewsListToolbar": {
 			"filters": {
 				"by_date": {
-					"placeholder": "Pesquisar por data"
+					"placeholder": "Filter by date..."
 				},
 				"by_search": {
-					"placeholder": "Pesquisar por titulo"
+					"placeholder": "Search by title..."
 				}
 			},
 			"found_items_counter": "{count, plural, =0 {No news found.} one {Found # news item} other {Found # news}}"
