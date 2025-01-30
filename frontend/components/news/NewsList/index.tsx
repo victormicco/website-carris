@@ -4,6 +4,7 @@
 
 import { BackButton } from '@/components/common/BackButton';
 import { Grid } from '@/components/layout/Grid';
+import { NoDataLabel } from '@/components/layout/NoDataLabel';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { NewsCard } from '@/components/news/NewsCard';
@@ -28,29 +29,49 @@ export function NewsList() {
 
 	return (
 		<Surface>
+
 			<Section withBottomDivider withPadding>
 				<BackButton href="/" />
 			</Section>
-			<NewsListToolbar />
-			{(!newsListContext.flags.is_loading && newsListContext.data.filtered) && (
-				<Section heading={t('heading')} withPadding>
+
+			<Section heading={t('heading')} withBottomDivider withPadding>
+				<NewsListToolbar />
+			</Section>
+
+			{newsListContext.flags.is_loading && (
+				<Section withPadding>
 					<Grid columns="abcd" withGap>
-						{newsListContext.data.filtered
-							? newsListContext.data.filtered?.map(newsItem => (
-								<NewsCard
-									key={newsItem._id}
-									_id={newsItem._id}
-									coverImageSrc={newsItem.cover_image_src}
-									publishDate={newsItem.publish_date}
-									title={newsItem.title}
-								/>
-							))
-							: Array(16).fill(null).map((_, index) =>
-								<NewsCardSkeleton key={index} />,
-							)}
+						{Array(16).fill(null).map((_, index) =>
+							<NewsCardSkeleton key={index} />,
+						)}
 					</Grid>
 				</Section>
 			)}
+
+			{!newsListContext.flags.is_loading && newsListContext.data.filtered.length > 0 && (
+				<Section withPadding>
+					<Grid columns="abcd" withGap>
+						{newsListContext.data.filtered.map(newsItem => (
+							<NewsCard
+								key={newsItem._id}
+								_id={newsItem._id}
+								coverImageSrc={newsItem.cover_image_src}
+								publishDate={newsItem.publish_date}
+								title={newsItem.title}
+							/>
+						))}
+					</Grid>
+				</Section>
+			)}
+
+			{!newsListContext.flags.is_loading && newsListContext.data.filtered.length === 0 && (
+				<Section withPadding>
+					<Grid columns="a" withGap>
+						<NoDataLabel fill />
+					</Grid>
+				</Section>
+			)}
+
 		</Surface>
 	);
 
