@@ -16,14 +16,30 @@ import styles from './styles.module.css';
 /* * */
 
 export function NewsListToolbar() {
+	//
+
+	//
 	// A. Setup variables
+
 	const newsListContext = useNewsListContext();
 	const t = useTranslations('news.NewsListToolbar');
 	const typingTimeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null);
 	const [textInput, setTextInput] = useState<null | string>(null);
 	const [dateInput, setDateInput] = useState<Date | null>(null);
+
 	//
-	// B . Handle Actions
+	// B. Transform data
+
+	useEffect(() => {
+		return () => {
+			if (typingTimeoutRef.current) {
+				clearTimeout(typingTimeoutRef.current);
+			}
+		};
+	}, []);
+
+	//
+	// C. Handle actions
 
 	const handleTextInputChange = ({ currentTarget }) => {
 		setTextInput(currentTarget.value);
@@ -48,16 +64,8 @@ export function NewsListToolbar() {
 		newsListContext.actions.updateFilterByDate(value || new Date());
 	};
 
-	// C. Cleanup;
-	useEffect(() => {
-		return () => {
-			if (typingTimeoutRef.current) {
-				clearTimeout(typingTimeoutRef.current);
-			}
-		};
-	}, []);
-
-	// D. Render Components
+	//
+	// D. Render components
 
 	return (
 		<>
@@ -81,5 +89,6 @@ export function NewsListToolbar() {
 
 		</>
 	);
+
 	//
 }
