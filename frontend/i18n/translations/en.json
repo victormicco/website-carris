@@ -1034,6 +1034,16 @@
 		"NewsList": {
 			"heading": "Todas as Notícias"
 		},
+		"NewsListToolbar": {
+			"DateInput": {
+				"placeholder": "Search by date"
+			},
+			"SearchInput": {
+				"placeholder": "Search by title"
+			},
+			"found_items_counter": "{count, plural, =0 {No news found.} one {Found # news item} other {Found # news}}",
+			"heading": "Search"
+		},
 		"SinglePageHeader": {
 			"publish_date": "Posted in {value, date, long}"
 		}
