@@ -18,12 +18,14 @@ import '@/themes/_default/styles/wordpress.css';
 
 import AccordionOverride from '@/themes/_default/overrides/Accordion.module.css';
 import ButtonOverride from '@/themes/_default/overrides/Button.module.css';
+import DatePickerInputOverride from '@/themes/_default/overrides/DatePickerInput.module.css';
 import SegmentedControlOverride from '@/themes/_default/overrides/SegmentedControl.module.css';
 import SelectOverride from '@/themes/_default/overrides/Select.module.css';
 import SkeletonOverride from '@/themes/_default/overrides/Skeleton.module.css';
 import TextInputOverride from '@/themes/_default/overrides/TextInput.module.css';
 import combineClasses from '@/utils/combineClasses';
 import { Accordion, Button, createTheme, SegmentedControl, Select, Skeleton, TextInput } from '@mantine/core';
+import { DatePickerInput } from '@mantine/dates';
 import { IconCaretLeftFilled } from '@tabler/icons-react';
 
 /* * */
@@ -71,6 +73,17 @@ export default createTheme({
 				if (props.variant === 'muted') {
 					defaultClasses = combineClasses(defaultClasses, [ButtonOverride.variantMuted]);
 				}
+				return defaultClasses;
+			},
+		}),
+
+		DatePickerInput: DatePickerInput.extend({
+			classNames: () => {
+				let defaultClasses = {
+					input: DatePickerInputOverride.input,
+					section: DatePickerInputOverride.section,
+					wrapper: DatePickerInputOverride.wrapper,
+				};
 				return defaultClasses;
 			},
 		}),

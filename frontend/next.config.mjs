@@ -40,6 +40,8 @@ const nextConfig = {
       //
       { destination: '/tickets', permanent: true, source: '/tarifarios' },
       //
+      { destination: '/cards', permanent: true, source: '/cartoes' },
+      //
       { destination: '/contacts', permanent: true, source: '/contactos' },
       { destination: '/contacts', permanent: true, source: '/apoio' },
       //

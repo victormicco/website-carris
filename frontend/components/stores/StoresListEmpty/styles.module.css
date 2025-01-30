@@ -10,7 +10,6 @@
 	height: 100%;
 	padding: var(--size-spacing-30);
 	font-weight: var(--font-weight-medium);
-	line-height: 1.3;
 	color: var(--color-system-text-300);
 	text-align: center;
 }

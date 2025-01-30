@@ -2,7 +2,7 @@
 
 import { NextArrivals } from '@/components/common/NextArrivals';
 import { LineDisplay } from '@/components/lines/LineDisplay';
-import { StopsDebugDetail } from '@/components/stops/StopDebugDetail';
+import { StopsDetailContentTimetableRowDebug } from '@/components/stops/StopsDetailContentTimetableRowDebug';
 import { useDebugContext } from '@/contexts/Debug.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
@@ -81,7 +81,7 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 
 			{isSelected && debugContext.flags.is_debug_mode && (
 				<div className={styles.details}>
-					<StopsDebugDetail arrivalData={arrivalData} />
+					<StopsDetailContentTimetableRowDebug arrivalData={arrivalData} />
 				</div>
 			)}
 

@@ -11,7 +11,7 @@
 	border-radius: 5px;
 }
 
-.input::placeholder {
+.input span {
 	color: var(--color-system-text-300);
 }
 
@@ -21,12 +21,6 @@
 
 .wrapper[data-with-right-section="true"] .input {
 	padding-right: calc(var(--size-spacing-15) + 30px);
-}
-
-.input.variantWhite {
-	color: var(--color-primary-black);
-	background-color: var(--color-primary-white);
-	border-color: #bebec8;
 }
 
 /* * */
@@ -41,14 +35,4 @@
 
 .section[data-position="left"] {
 	pointer-events: none;
-}
-
-.section.variantWhite {
-	color: var(--color-system-text-300);
-}
-
-.sizeSm {
-	height: auto;
-	max-height: none;
-	font-size: var(--input-fz,var(--input-fz, var(--mantine-font-size-sm)));
 }

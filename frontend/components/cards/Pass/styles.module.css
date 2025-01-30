@@ -37,7 +37,6 @@
 .cardTitle {
 	font-size: 26px;
 	font-weight: var(--font-weight-bold);
-	line-height: 1.2;
 	color: var(--color-system-text-100);
 }
 

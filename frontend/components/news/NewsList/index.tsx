@@ -4,12 +4,14 @@
 
 import { BackButton } from '@/components/common/BackButton';
 import { Grid } from '@/components/layout/Grid';
+import { NoDataLabel } from '@/components/layout/NoDataLabel';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { NewsCard } from '@/components/news/NewsCard';
 import { NewsCardSkeleton } from '@/components/news/NewsCardSkeleton';
+import { NewsListToolbar } from '@/components/news/NewsListToolbar';
+import { useNewsListContext } from '@/contexts/NewsList.context';
 import { useTranslations } from 'next-intl';
-import useSWR from 'swr';
 
 /* * */
 
@@ -20,14 +22,10 @@ export function NewsList() {
 	// A. Setup variables
 
 	const t = useTranslations('news.NewsList');
+	const newsListContext = useNewsListContext();
 
 	//
-	// B. Fetch Data
-
-	const { data: allNewsData } = useSWR('/api/news');
-
-	//
-	// D. Render Components
+	// B. Render Components
 
 	return (
 		<Surface>
@@ -36,10 +34,24 @@ export function NewsList() {
 				<BackButton href="/" />
 			</Section>
 
-			<Section heading={t('heading')} withPadding>
-				<Grid columns="abcd" withGap>
-					{allNewsData
-						? allNewsData?.map(newsItem => (
+			<Section heading={t('heading')} withBottomDivider withGap withPadding>
+				<NewsListToolbar />
+			</Section>
+
+			{newsListContext.flags.is_loading && (
+				<Section withPadding>
+					<Grid columns="abcd" withGap>
+						{Array(16).fill(null).map((_, index) =>
+							<NewsCardSkeleton key={index} />,
+						)}
+					</Grid>
+				</Section>
+			)}
+
+			{!newsListContext.flags.is_loading && newsListContext.data.filtered.length > 0 && (
+				<Section withPadding>
+					<Grid columns="abcd" withGap>
+						{newsListContext.data.filtered.map(newsItem => (
 							<NewsCard
 								key={newsItem._id}
 								_id={newsItem._id}
@@ -47,12 +59,18 @@ export function NewsList() {
 								publishDate={newsItem.publish_date}
 								title={newsItem.title}
 							/>
-						))
-						: Array(16).fill(null).map((_, index) =>
-							<NewsCardSkeleton key={index} />,
-						)}
-				</Grid>
-			</Section>
+						))}
+					</Grid>
+				</Section>
+			)}
+
+			{!newsListContext.flags.is_loading && newsListContext.data.filtered.length === 0 && (
+				<Section withPadding>
+					<Grid columns="a" withGap>
+						<NoDataLabel fill />
+					</Grid>
+				</Section>
+			)}
 
 		</Surface>
 	);

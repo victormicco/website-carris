@@ -2,16 +2,14 @@
 /* NAME */
 
 .name {
-	display: flex;
-	width: 100%;
+	display: -webkit-box;
 	align-items: center;
 	justify-content: flex-start;
-	color: var(--color-system-text-100);
-	line-height: 1.2;
+	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
 	-webkit-line-clamp: 3;
+	color: var(--color-system-text-100);
 	-webkit-box-orient: vertical;
 }
 

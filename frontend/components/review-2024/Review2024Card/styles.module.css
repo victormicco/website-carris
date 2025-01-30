@@ -91,17 +91,17 @@
 }
 
 .container[data-open='false'] .content {
-	clip-path: inset(0 0 100% 0);
 	background-color: var(--color-primary);
 	border-color: var(--color-border);
+	clip-path: inset(0 0 100% 0);
 	transition: all 200ms ease-out calc(var(--animation-duration-close) - 200ms),
 				clip-path var(--animation-duration-close) ease;
 }
 
 .container[data-open='true'] .content {
-	clip-path:  inset(0 0 0% 0);
 	background-color: var(--color-system-background-200);
 	border-color: var(--color-border);
+	clip-path:  inset(0 0 0% 0);
 	transition: all var(--animation-duration-close) ease-out;
 }
 
@@ -270,5 +270,4 @@
 
 .container[data-type='terminals'] .contentNumberLegend {
 	font-size: 10px;
-	line-height: 1.2;
 }
