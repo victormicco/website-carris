@@ -7,8 +7,9 @@ import { useNewsListContext } from '@/contexts/NewsList.context';
 import { TextInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import { IconCalendarEvent, IconSearch } from '@tabler/icons-react';
+import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+import { useMemo } from 'react';
 
 import styles from './styles.module.css';
 
@@ -20,47 +21,31 @@ export function NewsListToolbar() {
 	//
 	// A. Setup variables
 
-	const newsListContext = useNewsListContext();
 	const t = useTranslations('news.NewsListToolbar');
-	const typingTimeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null);
-	const [textInput, setTextInput] = useState<null | string>(null);
-	const [dateInput, setDateInput] = useState<Date | null>(null);
+	const newsListContext = useNewsListContext();
 
 	//
 	// B. Transform data
 
-	useEffect(() => {
-		return () => {
-			if (typingTimeoutRef.current) {
-				clearTimeout(typingTimeoutRef.current);
-			}
-		};
-	}, []);
+	const availableDates = useMemo(() => {
+		const formatedDates = newsListContext.data.raw.map(newsItem => DateTime.fromISO(newsItem.publish_date).toFormat('yyyyMMdd'));
+		return new Set(formatedDates);
+	}, [newsListContext.data.raw]);
 
 	//
 	// C. Handle actions
 
 	const handleTextInputChange = ({ currentTarget }) => {
-		setTextInput(currentTarget.value);
-		if (!newsListContext.flags.is_loading && newsListContext.data.raw) {
-			try {
-				if (typingTimeoutRef.current) {
-					clearTimeout(typingTimeoutRef.current);
-				}
-				typingTimeoutRef.current = setTimeout(() => {
-					newsListContext.actions.updateFilterByTitle(currentTarget.value);
-					console.log('News filtered with success ✅');
-				}, 500);
-			}
-			catch (error) {
-				console.error('Filtering failed ❌: ', error);
-			}
-		}
+		newsListContext.actions.updateFilterBySearch(currentTarget.value);
 	};
 
 	const handleDateInputChange = (value: Date | null) => {
-		setDateInput(value);
-		newsListContext.actions.updateFilterByDate(value || new Date());
+		newsListContext.actions.updateFilterByDate(value);
+	};
+
+	const handleExcludeDates = (value: Date) => {
+		const formatedDate = DateTime.fromJSDate(value).toFormat('yyyyMMdd');
+		return !availableDates.has(formatedDate);
 	};
 
 	//
@@ -68,27 +53,32 @@ export function NewsListToolbar() {
 
 	return (
 		<>
-			<div className="row-container" style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+
+			<div className={styles.innerWrapper}>
 				<TextInput
 					leftSection={<IconSearch size={20} />}
 					onChange={handleTextInputChange}
 					placeholder={t('filters.by_search.placeholder')}
 					type="search"
-					value={textInput || ''}
+					value={newsListContext.filters.by_search}
 					w="100%"
 				/>
 				<DatePickerInput
 					dropdownType="modal"
+					excludeDate={handleExcludeDates}
 					leftSection={<IconCalendarEvent />}
 					onChange={handleDateInputChange}
 					placeholder={t('filters.by_date.placeholder')}
 					size="lg"
-					value={dateInput}
+					value={newsListContext.filters.by_date}
 					valueFormat="DD MMM YYYY"
+					allowDeselect
+					clearable
 				/>
 			</div>
 
 			<FoundItemsCounter text={t('found_items_counter', { count: newsListContext.data.filtered.length })} />
+
 		</>
 	);
 
