@@ -106,7 +106,7 @@ export function MapViewStylePath({ presentBeforeId, shapeData = baseGeoJsonFeatu
 					}}
 					paint={{
 						'line-color': '#ffffff',
-						'line-width': ['interpolate', ['linear'], ['zoom'], 10, 4, 20, 30],
+						'line-width': ['interpolate', ['linear'], ['zoom'], 10, 4, 20, 26],
 					}}
 				/>
 				<Layer
@@ -121,7 +121,7 @@ export function MapViewStylePath({ presentBeforeId, shapeData = baseGeoJsonFeatu
 					paint={{
 						'line-blur': 15,
 						'line-color': '#000000',
-						'line-opacity': 0.5,
+						'line-opacity': 0.3,
 						'line-width': ['interpolate', ['linear'], ['zoom'], 10, 4, 20, 40],
 					}}
 				/>
