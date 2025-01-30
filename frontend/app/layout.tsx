@@ -6,7 +6,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import { type ReactNode } from 'react';
 
 /* * */
 
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
 
 /* * */
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }) {
 	//
 
 	//
