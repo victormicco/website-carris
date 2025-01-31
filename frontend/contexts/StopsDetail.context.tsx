@@ -327,11 +327,9 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 				const hasMatchingStop = informedEntity.stopId === dataActiveStopIdState;
 				const hasMatchingRoute = dataStopState?.route_ids.includes(informedEntity.routeId || '');
 				const isActive = simplifiedAlertData.end_date ? simplifiedAlertData.end_date >= new Date() : true;
-				console.log(informedEntity, hasMatchingStop, hasMatchingRoute, isActive);
 				return (hasMatchingStop || hasMatchingRoute) && isActive;
 			});
 		});
-		console.log('activeAlerts', activeAlerts);
 		setDataActiveAlertsState(activeAlerts);
 	}, [alertsContext.data.simplified, dataStopState, dataActiveStopIdState]);
 

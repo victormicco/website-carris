@@ -91,7 +91,6 @@ export function StopsDetailContentMap() {
 		const features = stopsMap.queryRenderedFeatures(event.point);
 		if (!features.length) return;
 		for (const feature of features) {
-			console.log(feature);
 			if (feature.properties.id === stopsDetailContext.data.active_stop_id) {
 				continue;
 			}
