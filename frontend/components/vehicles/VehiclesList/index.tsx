@@ -22,9 +22,7 @@ export default function Component() {
 			<Surface>
 				<Section>
 					<div className={styles.contentWrapper}>
-						<div className={styles.mapWrapper}>
-							<VehiclesListMap />
-						</div>
+						<VehiclesListMap />
 					</div>
 				</Section>
 			</Surface>

@@ -1,134 +1,148 @@
 'use client';
 
 /* * */
-
-import type { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
-
+import { CopyBadge } from '@/components/common/CopyBadge';
 import { MapView } from '@/components/map/MapView';
+import { MapViewStylePath } from '@/components/map/MapViewStylePath';
+import { MapViewStyleVehicles, MapViewStyleVehiclesInteractiveLayerId, MapViewStyleVehiclesPrimaryLayerId } from '@/components/map/MapViewStyleVehicles';
+import { transformStopDataIntoGeoJsonFeature, useStopsContext } from '@/contexts/Stops.context';
 import { useVehiclesContext } from '@/contexts/Vehicles.context';
-import { centerMap } from '@/utils/map.utils';
-import { Layer, Source, useMap } from '@vis.gl/react-maplibre';
-import { useTranslations } from 'next-intl';
-import { useEffect, useMemo } from 'react';
+import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
+import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
+import { Routes } from '@/utils/routes';
+import { IconBike, IconBikeOff, IconWheelchair, IconWheelchairOff } from '@tabler/icons-react';
+import { Popup, useMap } from '@vis.gl/react-maplibre';
+import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
+import { DateTime } from 'luxon';
+import { useEffect, useMemo, useState } from 'react';
+
+import styles from './styles.module.css';
 
 /* * */
 
 export default function Component() {
-	//
-
-	//
 	// A. Setup variables
+	const { vehiclesListMap } = useMap();
+	const vehiclesListContext = useVehiclesListContext();
+	const vehiclesContext = useVehiclesContext();
+	const stopsContext = useStopsContext();
+	const [activePathShapeGeoJson, setActivePathShapeGeoJson] = useState<Feature<Geometry, GeoJsonProperties> | FeatureCollection<Geometry, GeoJsonProperties> | undefined>(undefined);
 
-	const { storesListMap } = useMap();
-	const vehiclesListContext = useVehiclesContext();
-	const t = useTranslations('stores.StoresListMap');
+	// B. Fetch Data
+	const findTodaysDate = () => {
+		return DateTime.now().toFormat('yyyyLLdd');
+	};
 
-	//
+	const fetchPattern = async (patternId) => {
+		const date = await findTodaysDate();
+		console.log(date);
+		if (patternId) {
+			const actualPattern = await fetch(`${Routes.API}/patterns/${patternId}`).then(res => res.json());
+			const isAvailable = actualPattern.filter(item => item.valid_on.includes(date));
+			return isAvailable;
+		}
+	};
+
+	const fetchShape = async (id) => {
+		if (id) {
+			const shape = await fetch(`${Routes.API}/shapes/${id[0].shape_id}`).then(res => res.json());
+			return shape.geojson;
+		}
+	};
+
+	const activeVehiclesGeoJson = useMemo(() => {
+		return vehiclesContext.actions.getAllVehiclesGeoJsonFC();
+	}, [vehiclesContext.data.vehicles]);
+
+	const activePathWaypointsGeoJson = useMemo(() => {
+		const patternId = vehiclesListContext.data.selected?.pattern_id;
+		const vehiclesByPatternId = vehiclesContext.actions.getVehiclesByPatternId(patternId || '');
+		const collection = getBaseGeoJsonFeatureCollection();
+
+		if (!vehiclesListContext.data.selected?.pattern_id) return;
+
+		vehiclesByPatternId.forEach((pathStop) => {
+			const stopData = stopsContext.actions.getStopById(pathStop.stop_id || '');
+			if (!stopData) return;
+			const result = transformStopDataIntoGeoJsonFeature(stopData);
+			result.properties = {
+				...result.properties,
+			};
+			collection.features.push(result);
+		});
+
+		return collection;
+	}, [vehiclesListContext.data.selected, vehiclesContext.data.vehicles]);
+
 	// B. Transform data
 
-	const allVehiclesCollection: FeatureCollection<Geometry, GeoJsonProperties> | null = useMemo(() => {
-		if (!vehiclesListContext.data.vehicles) return null;
-		const formattedFeatures: Feature<Geometry, GeoJsonProperties>[] = vehiclesListContext.data.vehicles.map((vehicleItem) => {
-			return {
-				geometry: {
-					coordinates: [vehicleItem.lon, vehicleItem.lat],
-					type: 'Point',
-				},
-				properties: {
-					current_status: vehicleItem.realtime?.current_status,
-					store_id: storeItem.id,
-					license_plate: vehicleItem.license_plate,
-				},
-				type: 'Feature',
-			};
-		});
-		return {
-			features: formattedFeatures || [],
-			type: 'FeatureCollection',
+	useEffect(() => {
+		const fetchData = async () => {
+			const patternId = vehiclesListContext.data.selected?.pattern_id;
+
+			if (!patternId) return;
+
+			const shapeId = await fetchPattern(patternId);
+			if (!shapeId) return;
+
+			const shapeGeoJson = await fetchShape(shapeId);
+
+			setActivePathShapeGeoJson(shapeGeoJson);
 		};
-	}, [storesListContext.data.raw, t]);
 
-	// useEffect(() => {
-	// 	if (!allStoresFeatureCollection || !storesListMap) return;
-	// 	centerMap(storesListMap, allStoresFeatureCollection.features);
-	// }, [allStoresFeatureCollection, storesListMap]);
+		fetchData();
+	}, [vehiclesListContext.data.selected]);
 
-	//
+	useEffect(() => {
+		const vehicleFC = vehiclesContext.actions.getVehiclesByTripIdGeoJsonFC(vehiclesListContext.data.selected?.trip_id || '');
+		if (!vehicleFC?.features.length) return;
+	}, [vehiclesListContext.data.selected, vehiclesListContext.data.raw, vehiclesListMap]);
+
 	// C. Handle actions
+	function handleLayerClick(event) {
+		if (event.features) {
+			vehiclesListContext.actions.updateSelectedVehicle(event.features[0].properties.id);
+		}
+	}
 
-	// const handleMapClick = (event) => {
-	// 	if (event?.features[0]) {
-	// 		storesListContext.actions.updateSelectedStore(event.features[0].properties.store_id);
-	// 	}
-	// };
-
-	//
 	// D. Render component
-
 	return (
 		<MapView
-			id="storesListMap"
-			interactiveLayerIds={['stores-base']}
-			// onClick={handleMapClick}
-			primarySourceId="stores"
+			id="vehiclesListMap"
+			interactiveLayerIds={[MapViewStyleVehiclesInteractiveLayerId]}
+			onClick={handleLayerClick}
 		>
-			{allStoresFeatureCollection && (
-				<Source data={allStoresFeatureCollection} id="stores" type="geojson">
-					<Layer
-						id="vehicles-base"
-						source="vechicles"
-						type="symbol"
-						layout={{
-							'icon-allow-overlap': true,
-							'icon-anchor': 'bottom',
-							'icon-ignore-placement': true,
-							'icon-image': [
-								'match', ['get', 'current_status'],
-								'open', 'cmet-store-open',
-								'busy', 'cmet-store-busy',
-								'closed', 'cmet-store-closed',
-								'#000000',
-							],
-							'icon-size': 0.45,
-							'symbol-placement': 'point',
-						}}
-						paint={{
-							'icon-opacity': [
-								'interpolate', ['linear'], ['zoom'],
-								10, [
-									'match', ['get', 'current_status'],
-									'closed', 0.5,
-									1,
-								],
-								11, 1,
-							],
-						}}
-					/>
-					<Layer
-						id="stores-text"
-						source="stores"
-						type="symbol"
-						layout={{
-							'symbol-placement': 'point',
-							'text-anchor': 'bottom',
-							'text-field': ['get', 'text_value'],
-							'text-font': ['Open Sans Regular'],
-							'text-offset': [0.5, -2.8],
-							'text-size': 12,
-						}}
-						paint={{
-							'text-color': [
-								'match', ['get', 'current_status'],
-								'open', '#3CB43C', // Green
-								'busy', '#F09600', // Orange
-								'closed', '#9696A0', // Gray
-								'#000000',
-							],
-						}}
-					/>
-				</Source>
+			{vehiclesListContext.data.selected
+			&& (
+				<>
+					<Popup key={vehiclesListContext.data.selected.id} anchor="left" className={styles.popupWrapper} closeButton={true} closeOnClick={true} latitude={vehiclesListContext.data.selected.lat} longitude={vehiclesListContext.data.selected.lon} maxWidth="none">
+						<div className={styles.iconList}>
+							{vehiclesListContext.data.selected.bikes_allowed ? <IconBike /> : <IconBikeOff />}
+							{vehiclesListContext.data.selected.wheelchair_accessible ? <IconWheelchair /> : <IconWheelchairOff />}
+						</div>
+						{console.log(vehiclesContext.data.vehicles)}
+						<CopyBadge label={`Sentados: ${vehiclesListContext.data.selected.capacity_seated ?? 0}`} value={vehiclesListContext.data.selected.capacity_seated ?? 0} hasBorder />
+						<CopyBadge label={`Em pé: ${vehiclesListContext.data.selected.capacity_standing ?? 0}`} value={vehiclesListContext.data.selected.capacity_standing ?? 0} />
+						<CopyBadge label={`Capacidade Total: ${vehiclesListContext.data.selected.capacity_total ?? 0}`} value={vehiclesListContext.data.selected.capacity_total ?? 0} />
+						<CopyBadge label={`Estado: ${vehiclesListContext.data.selected.current_status ?? 'Não defindo'}`} value={vehiclesListContext.data.selected.current_status ?? 'Não defindo'} />
+						<CopyBadge label={`Emissões: ${vehiclesListContext.data.selected.emission_class ?? 'Não definido'}`} value={vehiclesListContext.data.selected.emission_class ?? 'Não definido'} />
+						<CopyBadge label={`ID: ${vehiclesListContext.data.selected.id ?? 'Não definido'}`} value={vehiclesListContext.data.selected.id ?? 0} />
+						<CopyBadge label={`Marca: ${vehiclesListContext.data.selected.make ?? 'Não definido'}`} value={vehiclesListContext.data.selected.make ?? 'Não definido'} />
+						<CopyBadge label={`Modelo: ${vehiclesListContext.data.selected.model}`} value={vehiclesListContext.data.selected.model ?? 'Não definido'} />
+						<CopyBadge label={`Tipo de propulsão: ${vehiclesListContext.data.selected.propulsion ?? 'Não definido'}`} value={vehiclesListContext.data.selected.propulsion ?? 'Não defenido'} />
+					</Popup>
+				</>
 			)}
+
+			<MapViewStyleVehicles
+				vehiclesData={activeVehiclesGeoJson}
+			/>
+
+			<MapViewStylePath
+				presentBeforeId={MapViewStyleVehiclesPrimaryLayerId}
+				shapeData={activePathShapeGeoJson}
+				waypointsData={activePathWaypointsGeoJson}
+			/>
 		</MapView>
-		//
 	);
 }
