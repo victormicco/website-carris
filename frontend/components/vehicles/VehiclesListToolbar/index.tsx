@@ -125,6 +125,7 @@ export default function Component() {
 					<MultiSelect
 						leftSection={<IconTriangle size={20} />}
 						onChange={handleMakeAndModelChange}
+						placeholder="Veículo"
 						radius="sm"
 						value={make_model || ''}
 						data={

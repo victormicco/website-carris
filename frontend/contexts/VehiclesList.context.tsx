@@ -73,8 +73,6 @@ export const VehiclesListContextProvider = ({ children }) => {
 	const [filterBySearchState, setFilterBySearchState] = useQueryState('search');
 	const [filterByPropulsionState, setFilterByPropulsion] = useQueryState('propulsion');
 	const [filteredSelectedVehicleState, setfilteredSelectedVehicleState] = useQueryState('search');
-	const [make, setMake] = useState<string | undefined>(undefined);
-	const [model, setModel] = useState<string | undefined>(undefined);
 
 	//
 	// B. Fetch data
@@ -85,51 +83,53 @@ export const VehiclesListContextProvider = ({ children }) => {
 	// C. Transform data
 
 	const applyFiltersToData = () => {
-		//
-		let filterResult: Vehicle[] = allVehicleData || [];
+		let filterResult = allVehicleData || [];
 
-		if (filterResult.length !== 0) {
-			if (filterByBicycleAllowedState) {
-				filterResult = (allVehicleData || []).filter(item => item.bikes_allowed?.toString() === filterByBicycleAllowedState || false);
-			}
-
-			if (filterByWheelchairAccesibleState) {
-				filterResult = (allVehicleData || []).filter(item => item.wheelchair_accessible?.toString() === filterByBicycleAllowedState || false);
-			}
-
-			if (filterByPropulsionState !== '') {
-				filterResult = (allVehicleData || []).filter(item => item.propulsion === filterByPropulsionState || '');
-			}
-
-			if (filterByAgencyState !== '') {
-				filterResult = (allVehicleData || []).filter(item => item.agency_id === filterByAgencyState || 0);
-			}
+		if (filterByBicycleAllowedState) {
+			filterResult = filterResult.filter(
+				item => item.bikes_allowed?.toString() === filterByBicycleAllowedState,
+			);
 		}
 
-		if (filterBySearchState) {
-			filterResult = (allVehicleData || []).filter(item =>
+		if (filterByWheelchairAccesibleState) {
+			filterResult = filterResult.filter(
+				item => item.wheelchair_accessible?.toString() === filterByWheelchairAccesibleState,
+			);
+		}
+
+		if (filterByPropulsionState && filterByPropulsionState.trim() !== '') {
+			const propulsionValues = filterByPropulsionState.split(' ').filter(Boolean);
+			filterResult = filterResult.filter(item =>
+				item.propulsion && propulsionValues.includes(item.propulsion),
+			);
+		}
+
+		if (filterByAgencyState && filterByAgencyState.trim() !== '') {
+			const agencyValues = filterByAgencyState.split(' ').filter(Boolean);
+			filterResult = filterResult.filter(item =>
+				agencyValues.includes(item.agency_id.toString()),
+			);
+		}
+
+		if (filterBySearchState && filterBySearchState.trim() !== '') {
+			filterResult = filterResult.filter(item =>
 				item.license_plate?.toLowerCase().includes(filterBySearchState.toLowerCase()),
 			);
-		}
-		console.log(make);
-		if (make) {
-			filterResult = (allVehicleData || []).filter(item => item.make?.toLocaleLowerCase().includes(make.toLowerCase()));
+			console.log(filterBySearchState);
 		}
 
-		if (model) {
-			filterResult = (allVehicleData || []).filter(item => item.model?.toLocaleLowerCase().includes(model.toLowerCase()));
+		if (filterByMakeAndModelState && filterByMakeAndModelState.trim() !== '') {
+			const makeModelValues = filterByMakeAndModelState.split(' ').filter(Boolean);
+			filterResult = filterResult.filter((item) => {
+				return makeModelValues.some((val) => {
+					const [makeFilter, modelFilter] = val.split('-').map(s => s.trim().toLowerCase());
+					const itemMake = item.make?.toLowerCase() || '';
+					const itemModel = item.model?.toLowerCase() || '';
+					return itemMake.includes(makeFilter) && itemModel.includes(modelFilter);
+				});
+			});
 		}
-
-		if (filterByMakeAndModelState) {
-			filterResult = (allVehicleData || []).filter(item =>
-				item.make?.toLowerCase().includes(filterByMakeAndModelState.toLowerCase()),
-			);
-		}
-		console.log('fiter: ', filterBySearchState);
-
 		return filterResult;
-
-		//
 	};
 
 	const getAllMakesAndModels = () => {
@@ -236,13 +236,8 @@ export const VehiclesListContextProvider = ({ children }) => {
 		}
 	};
 
-	const updateFilterByAgency = (agency: string | string[]) => {
-		if (Array.isArray(agency)) {
-			setFilterByAgencyState(agency.join(' '));
-		}
-		else {
-			setFilterByAgencyState(agency);
-		}
+	const updateFilterByAgency = (agency: string[]) => {
+		setFilterByAgencyState(agency.join(' '));
 	};
 
 	const updateFilterByIsBikeAllowed = (isBikeAllowed: string) => {
@@ -264,27 +259,11 @@ export const VehiclesListContextProvider = ({ children }) => {
 	};
 
 	const updateFilterByMakeAndModel = (makeAndModel: string[]) => {
-		const extractedValues = makeAndModel.map((str) => {
-			const [make, model] = str.split('-');
-			setMake(make);
-			setModel(model);
-			return { make, model };
-		});
-		if (Array.isArray(makeAndModel)) {
-			setFilterByMakeAndModelState(makeAndModel.join(' '));
-		}
-		else {
-			setFilterByMakeAndModelState(makeAndModel);
-		}
+		setFilterByMakeAndModelState(makeAndModel.join(' '));
 	};
 
-	const updateFilterByPropulsion = (propulsion: string | string[]) => {
-		if (Array.isArray(propulsion)) {
-			setFilterByPropulsion(propulsion.join(' '));
-		}
-		else {
-			setFilterByPropulsion(propulsion);
-		}
+	const updateFilterByPropulsion = (propulsion: string[]) => {
+		setFilterByPropulsion(propulsion.join(' '));
 	};
 
 	const updateSelectedVehicle = (vehicleId: string) => {
