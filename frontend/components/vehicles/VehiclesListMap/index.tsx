@@ -5,10 +5,9 @@ import { CopyBadge } from '@/components/common/CopyBadge';
 import { MapView } from '@/components/map/MapView';
 import { MapViewStylePath } from '@/components/map/MapViewStylePath';
 import { MapViewStyleVehicles, MapViewStyleVehiclesInteractiveLayerId, MapViewStyleVehiclesPrimaryLayerId } from '@/components/map/MapViewStyleVehicles';
-import { transformStopDataIntoGeoJsonFeature, useStopsContext } from '@/contexts/Stops.context';
+import { useStopsContext } from '@/contexts/Stops.context';
 import { useVehiclesContext } from '@/contexts/Vehicles.context';
 import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
-import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
 import { IconBike, IconBikeOff, IconWheelchair, IconWheelchairOff } from '@tabler/icons-react';
 import { Popup, useMap } from '@vis.gl/react-maplibre';
@@ -35,7 +34,7 @@ export default function Component() {
 
 	const fetchPattern = async (patternId) => {
 		const date = await findTodaysDate();
-		console.log(date);
+
 		if (patternId) {
 			const actualPattern = await fetch(`${Routes.API}/patterns/${patternId}`).then(res => res.json());
 			const isAvailable = actualPattern.filter(item => item.valid_on.includes(date));
@@ -54,25 +53,23 @@ export default function Component() {
 		return vehiclesContext.actions.getAllVehiclesGeoJsonFC();
 	}, [vehiclesContext.data.vehicles]);
 
-	const activePathWaypointsGeoJson = useMemo(() => {
-		const patternId = vehiclesListContext.data.selected?.pattern_id;
-		const vehiclesByPatternId = vehiclesContext.actions.getVehiclesByPatternId(patternId || '');
-		const collection = getBaseGeoJsonFeatureCollection();
+	// const activePathWaypointsGeoJson = useMemo(() => {
+	// 	const patternId = vehiclesListContext.data.selected?.pattern_id;
 
-		if (!vehiclesListContext.data.selected?.pattern_id) return;
+	// 	if (!vehiclesListContext.data.selected?.pattern_id) return;
 
-		vehiclesByPatternId.forEach((pathStop) => {
-			const stopData = stopsContext.actions.getStopById(pathStop.stop_id || '');
-			if (!stopData) return;
-			const result = transformStopDataIntoGeoJsonFeature(stopData);
-			result.properties = {
-				...result.properties,
-			};
-			collection.features.push(result);
-		});
+	// 	// vehiclesByPatternId.forEach((pathStop) => {
+	// 	// 	const stopData = stopsContext.actions.getStopById(pathStop.stop_id || '');
+	// 	// 	if (!stopData) return;
+	// 	// 	const result = transformStopDataIntoGeoJsonFeature(stopData);
+	// 	// 	result.properties = {
+	// 	// 		...result.properties,
+	// 	// 	};
+	// 	// 	collection.features.push(result);
+	// 	// });
 
-		return collection;
-	}, [vehiclesListContext.data.selected, vehiclesContext.data.vehicles]);
+	// 	// return collection;
+	// }, [vehiclesListContext.data.selected, vehiclesContext.data.vehicles]);
 
 	// B. Transform data
 
@@ -93,14 +90,9 @@ export default function Component() {
 		fetchData();
 	}, [vehiclesListContext.data.selected]);
 
-	useEffect(() => {
-		const vehicleFC = vehiclesContext.actions.getVehiclesByTripIdGeoJsonFC(vehiclesListContext.data.selected?.trip_id || '');
-		if (!vehicleFC?.features.length) return;
-	}, [vehiclesListContext.data.selected, vehiclesListContext.data.raw, vehiclesListMap]);
-
 	// C. Handle actions
 	function handleLayerClick(event) {
-		if (event.features) {
+		if (event.features.length !== 0) {
 			vehiclesListContext.actions.updateSelectedVehicle(event.features[0].properties.id);
 		}
 	}
@@ -120,7 +112,6 @@ export default function Component() {
 							{vehiclesListContext.data.selected.bikes_allowed ? <IconBike /> : <IconBikeOff />}
 							{vehiclesListContext.data.selected.wheelchair_accessible ? <IconWheelchair /> : <IconWheelchairOff />}
 						</div>
-						{console.log(vehiclesContext.data.vehicles)}
 						<CopyBadge label={`Sentados: ${vehiclesListContext.data.selected.capacity_seated ?? 0}`} value={vehiclesListContext.data.selected.capacity_seated ?? 0} hasBorder />
 						<CopyBadge label={`Em pé: ${vehiclesListContext.data.selected.capacity_standing ?? 0}`} value={vehiclesListContext.data.selected.capacity_standing ?? 0} />
 						<CopyBadge label={`Capacidade Total: ${vehiclesListContext.data.selected.capacity_total ?? 0}`} value={vehiclesListContext.data.selected.capacity_total ?? 0} />
@@ -141,7 +132,7 @@ export default function Component() {
 			<MapViewStylePath
 				presentBeforeId={MapViewStyleVehiclesPrimaryLayerId}
 				shapeData={activePathShapeGeoJson}
-				waypointsData={activePathWaypointsGeoJson}
+				// waypointsData={activePathWaypointsGeoJson}
 			/>
 		</MapView>
 	);
