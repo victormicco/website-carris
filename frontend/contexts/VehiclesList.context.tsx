@@ -90,7 +90,6 @@ export const VehiclesListContextProvider = ({ children }) => {
 		}
 
 		if (filterByPropulsionState && filterByPropulsionState.trim() !== '') {
-			console.log('filterByPropulsionState', filterByPropulsionState);
 			const propulsionValues = filterByPropulsionState.split(' ').filter(Boolean);
 			filterResult = filterResult.filter(item =>
 				item.propulsion && propulsionValues.includes(item.propulsion),

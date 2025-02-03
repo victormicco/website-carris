@@ -45,7 +45,9 @@ export default function Component() {
 		if (patternId) {
 			const actualPattern = await fetch(`${Routes.API}/patterns/${patternId}`).then(res => res.json());
 			const isAvailable = actualPattern.filter(item => item.valid_on.includes(date));
+
 			setPattern(isAvailable);
+
 			return isAvailable;
 		}
 	}, [vehiclesListContext.data.selected]);
@@ -53,10 +55,12 @@ export default function Component() {
 	const fetchShape = useMemo(async () => {
 		if (!pattern) return [];
 		const color = pattern.map(item => item.color.toString());
-		console.log(color);
 		const shape = await fetch(`${Routes.API}/shapes/${pattern[0].shape_id}`).then(res => res.json());
+
 		shape.geojson.properties = { ...shape.geojson.properties, color: color[0] };
+
 		setActivePathShapeGeoJson(shape.geojson);
+
 		return shape.geojson;
 	}, [pattern]);
 
