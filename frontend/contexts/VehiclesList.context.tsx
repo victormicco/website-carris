@@ -3,6 +3,7 @@
 import { Routes } from '@/utils/routes';
 import { Vehicle } from '@carrismetropolitana/api-types/vehicles';
 import { useQueryState } from 'nuqs';
+import { parseAsArrayOf, parseAsString } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
@@ -89,6 +90,7 @@ export const VehiclesListContextProvider = ({ children }) => {
 		}
 
 		if (filterByPropulsionState && filterByPropulsionState.trim() !== '') {
+			console.log('filterByPropulsionState', filterByPropulsionState);
 			const propulsionValues = filterByPropulsionState.split(' ').filter(Boolean);
 			filterResult = filterResult.filter(item =>
 				item.propulsion && propulsionValues.includes(item.propulsion),
@@ -203,24 +205,14 @@ export const VehiclesListContextProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		if (
-			filterBySearchState
-			|| filterByAgencyState
-			|| filterByBicycleAllowedState
-			|| filterByMakeAndModelState
-			|| filterByWheelchairAccesibleState
-		) {
-			const filteredVehicles = applyFiltersToData();
-			setDataFilteredState(filteredVehicles || []);
-		}
-		else {
-			setDataFilteredState(allVehicleData || []);
-		}
+		const filteredVehicles = applyFiltersToData();
+		setDataFilteredState(filteredVehicles || []);
 	}, [
 		filterBySearchState,
 		filterByAgencyState,
 		filterByBicycleAllowedState,
 		filterByMakeAndModelState,
+		filterByPropulsionState,
 		filterByWheelchairAccesibleState,
 		allVehicleData,
 	]);
