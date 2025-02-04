@@ -82,15 +82,16 @@ export const AnalyticsContextProvider = ({ children }) => {
 		};
 		// Check if stored decision date has not expired
 		const daysSinceLastDecision = DateTime.now().diff(decisionDateData, 'days');
-		const yesDecisionIsExpired = dataIsEnabledState === 'yes' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_YES;
-		const noDecisionIsExpired = dataIsEnabledState === 'no' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_NO;
+		const yesDecisionIsExpired = isEnabledLocal === 'yes' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_YES;
+		const noDecisionIsExpired = isEnabledLocal === 'no' && daysSinceLastDecision.days > DECISION_EXPIRATION_IN_DAYS_NO;
+
 		if (yesDecisionIsExpired || noDecisionIsExpired) {
 			reset();
 			return;
 		}
 		// Set local state
 		setDataIsEnabledState(isEnabledLocal);
-		setFlagShouldAskState(false);
+		setFlagShouldAskState(noDecisionIsExpired);
 	});
 
 	//
