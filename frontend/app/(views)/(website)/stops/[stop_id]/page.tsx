@@ -26,12 +26,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	// C. Transform data
 
 	const stopData = allStopsData.find(item => item.id === stop_id);
-
+	const stopIds = allStopsData.flatMap(item => item.line_ids);
+	const goesTrough = allStopsData.find(item => item.line_ids && item.line_ids.some(id => stopIds.includes(id)));
 	//
 	// D. Render components
 
 	return {
-		description: `Horários em tempo real na paragem #${stopData?.id}`,
+		description: `Horários em tempo real na paragem #${stopData?.id}. Esta paragem cruza as linhas ${goesTrough?.line_ids}`,
 		title: stopData?.long_name,
 	};
 
