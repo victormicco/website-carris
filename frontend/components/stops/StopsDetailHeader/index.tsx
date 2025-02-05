@@ -34,7 +34,6 @@ export function StopsDetailHeader() {
 
 	const handleToggleFavorite = () => {
 		if (!stopsDetailContext.data.stop) return;
-
 		try {
 			profileContext.actions.toggleFavoriteStop(stopsDetailContext.data.stop.id);
 		}
@@ -44,8 +43,7 @@ export function StopsDetailHeader() {
 	};
 
 	//
-
-	// D. Render components
+	// C. Render components
 
 	if (!stopsDetailContext.data.stop) {
 		return null;
