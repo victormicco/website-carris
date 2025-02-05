@@ -46,8 +46,8 @@ export function LinesDetailHeader() {
 			toast.error({ message: t('toggle_favorite_error', { error: error.message }) });
 		}
 	};
-	//
 
+	//
 	// C. Render components
 
 	if (!linesDetailContext.data.line) {
