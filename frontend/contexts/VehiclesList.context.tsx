@@ -3,7 +3,6 @@
 import { Routes } from '@/utils/routes';
 import { Vehicle } from '@carrismetropolitana/api-types/vehicles';
 import { useQueryState } from 'nuqs';
-import { parseAsArrayOf, parseAsString } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
@@ -31,7 +30,7 @@ interface VehiclesListContextState {
 		by_isWheelchairAcessible: null | string
 		by_makeAndModel: null | string
 		by_propulsion: null | string
-		by_search: null | string
+		by_search: string
 		selected_vehicle: null | string
 	}
 	flags: {
@@ -53,7 +52,6 @@ export const VehiclesListContextProvider = ({ children }) => {
 	//
 	// A. Setup variables
 	const [dataFilteredState, setDataFilteredState] = useState<Vehicle[]>([]);
-	const [dataFilteredVehicleState, setDataFilteredVehicleState] = useState<Vehicle[]>([]);
 	const [dataSelectedState, setDataSelectedState] = useState<null | Vehicle>(null);
 	const [allAgencys, setAllAgencys] = useState<{ agency_id: number, name: string }[]>([]);
 	const [allMakesAndModels, setAllMakesAndModels] = useState<
@@ -61,12 +59,12 @@ export const VehiclesListContextProvider = ({ children }) => {
 	>([]);
 	const [allPropulsions, setAllPropulsions] = useState<null | { id: number, name: string }[]>([]);
 
-	const [filterByWheelchairAccesibleState, setWheelchairAccesibleState] = useQueryState('isWheelchair');
-	const [filterByAgencyState, setFilterByAgencyState] = useQueryState('agency');
-	const [filterByBicycleAllowedState, setByBicycleAllowedState] = useQueryState('isBikeAllowed');
-	const [filterByMakeAndModelState, setFilterByMakeAndModelState] = useQueryState('makeModel');
-	const [filterBySearchState, setFilterBySearchState] = useQueryState('search');
-	const [filterByPropulsionState, setFilterByPropulsion] = useQueryState('propulsion');
+	const [filterByWheelchairAccesibleState, setWheelchairAccesibleState] = useQueryState('isWheelchair', { clearOnDefault: true });
+	const [filterByAgencyState, setFilterByAgencyState] = useQueryState('agency', { clearOnDefault: true });
+	const [filterByBicycleAllowedState, setByBicycleAllowedState] = useQueryState('isBikeAllowed', { clearOnDefault: true });
+	const [filterByMakeAndModelState, setFilterByMakeAndModelState] = useQueryState('makeModel', { clearOnDefault: true });
+	const [filterBySearchState, setFilterBySearchState] = useQueryState('search', { clearOnDefault: true, defaultValue: '' });
+	const [filterByPropulsionState, setFilterByPropulsion] = useQueryState('propulsion', { clearOnDefault: true });
 
 	//
 	// B. Fetch data
@@ -89,28 +87,28 @@ export const VehiclesListContextProvider = ({ children }) => {
 			);
 		}
 
-		if (filterByPropulsionState && filterByPropulsionState.trim() !== '') {
+		if (filterByPropulsionState) {
 			const propulsionValues = filterByPropulsionState.split(' ').filter(Boolean);
 			filterResult = filterResult.filter(item =>
 				item.propulsion && propulsionValues.includes(item.propulsion),
 			);
 		}
 
-		if (filterByAgencyState && filterByAgencyState.trim() !== '') {
+		if (filterByAgencyState) {
 			const agencyValues = filterByAgencyState.split(' ').filter(Boolean);
 			filterResult = filterResult.filter(item =>
 				agencyValues.includes(item.agency_id.toString()),
 			);
 		}
 
-		if (filterBySearchState && filterBySearchState.trim() !== '') {
+		if (filterBySearchState) {
 			filterResult = filterResult.filter(item =>
 				item.license_plate?.toLowerCase().includes(filterBySearchState.toLowerCase()),
 			);
 		}
 
 		if (filterByMakeAndModelState && filterByMakeAndModelState.trim() !== '') {
-			const makeModelValues = filterByMakeAndModelState.split(' ').filter(Boolean);
+			const makeModelValues = filterByMakeAndModelState.split(',').filter(Boolean);
 			filterResult = filterResult.filter((item) => {
 				return makeModelValues.some((val) => {
 					const [makeFilter, modelFilter] = val.split('-').map(s => s.trim().toLowerCase());
@@ -226,17 +224,17 @@ export const VehiclesListContextProvider = ({ children }) => {
 	//
 	// D. Handle actions
 
-	const updateFilterBySearch = (search: string | string[]) => {
-		if (Array.isArray(search)) {
-			setFilterBySearchState(search.join(' '));
-		}
-		else {
-			setFilterBySearchState(search);
-		}
+	const updateFilterBySearch = (search: string) => {
+		setFilterBySearchState(search);
 	};
 
 	const updateFilterByAgency = (agency: string[]) => {
-		setFilterByAgencyState(agency.join(' '));
+		if (agency.length !== 0) {
+			setFilterByAgencyState(agency.join(' '));
+		}
+		else {
+			setFilterByAgencyState(null);
+		}
 	};
 
 	const updateFilterByIsBikeAllowed = (isBikeAllowed: string) => {
@@ -258,11 +256,21 @@ export const VehiclesListContextProvider = ({ children }) => {
 	};
 
 	const updateFilterByMakeAndModel = (makeAndModel: string[]) => {
-		setFilterByMakeAndModelState(makeAndModel.join(' '));
+		if (makeAndModel.length === 0) {
+			setFilterByMakeAndModelState(null);
+		}
+		else {
+			setFilterByMakeAndModelState(makeAndModel.join(','));
+		}
 	};
 
-	const updateFilterByPropulsion = (propulsion: string[]) => {
-		setFilterByPropulsion(propulsion.join(' '));
+	const updateFilterByPropulsion = (propulsionOptions: string[]) => {
+		if (propulsionOptions.length === 0) {
+			setFilterByPropulsion(null);
+		}
+		else {
+			setFilterByPropulsion(propulsionOptions.join(' ').trim());
+		}
 	};
 
 	const updateSelectedVehicle = (vehicleId: string) => {
@@ -271,7 +279,6 @@ export const VehiclesListContextProvider = ({ children }) => {
 
 		if (foundVehicleData) {
 			setDataSelectedState(foundVehicleData[0] || null);
-			setDataFilteredVehicleState([foundVehicleData[0] || null]);
 		}
 	};
 

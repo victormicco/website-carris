@@ -1,5 +1,5 @@
 import { Section } from '@/components/layout/Section';
-import { VehicleListMapPopupBadge } from '@/components/vehicles/VehicleListMapPopupBadge';
+import { VehicleListMapBadge } from '@/components/vehicles/VehicleListMapBadge';
 import { Table } from '@mantine/core';
 import {
 	IconBike,
@@ -10,7 +10,7 @@ import {
 
 import styles from './styles.module.css';
 
-export function VehicleListMapPopup({ lineData, selectedVehicle }) {
+export function VehicleListMapDetails({ lineData, selectedVehicle }) {
 	// A. Setup Variables
 
 	const id = selectedVehicle.id;
@@ -30,7 +30,7 @@ export function VehicleListMapPopup({ lineData, selectedVehicle }) {
 	return (
 		<Section>
 			<div key={id} className={styles.dataWrapper}>
-				<VehicleListMapPopupBadge lineData={lineData} />
+				<VehicleListMapBadge lineData={lineData} />
 
 				<div className={styles.iconList}>
 					{selectedVehicle.bikes_allowed ? <IconBike /> : <IconBikeOff />}

@@ -23,7 +23,7 @@ const cx = classNames.bind(styles);
 
 /* * */
 
-export function VehicleListMapPopupBadge({ lineData }: Props) {
+export function VehicleListMapBadge({ lineData }: Props) {
 	// A. Render components
 	return (
 		<>
