@@ -95,7 +95,7 @@ export default function Component() {
 	return (
 		<>
 			<Section withGap withPadding>
-				<Grid columns="abc" withGap>
+				<Grid columns="ab" withGap>
 					<TextInput leftSection={<IconArrowLoopRight size={20} />} onChange={handleTextInputChange} placeholder={t('filter_by.search')} type="search" value={textInput || ''} />
 					<Select
 						leftSection={<IconBike size={20} />}
@@ -161,11 +161,9 @@ export default function Component() {
 				</Grid>
 				<FoundItemsCounter text={t('found_items_counter', { count: vehiclesContext.data.vehicles.length })} />
 			</Section>
-			<Section>
+			<Section withPadding>
 				{!selectedVehicle && (<NoDataLabel text="Selecione um veículo." />)}
-				{selectedVehicle && (
-					<VehicleListMapPopup lineData={lineData} selectedVehicle={selectedVehicle} />
-				)}
+				{selectedVehicle && (<VehicleListMapPopup lineData={lineData} selectedVehicle={selectedVehicle} />)}
 			</Section>
 		</>
 	);

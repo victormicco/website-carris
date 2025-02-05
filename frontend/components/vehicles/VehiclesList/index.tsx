@@ -19,10 +19,12 @@ export default function Component() {
 	return (
 		<>
 			<Surface>
-				<Section heading={t('heading')} subheading={t('subheading')} withGap withPadding />
+				<Section heading={t('heading')} subheading={t('subheading')} />
 			</Surface>
 			<Surface>
-				<VehiclesListGroup />
+				<Section withGap withPadding>
+					<VehiclesListGroup />
+				</Section>
 			</Surface>
 			<Surface>
 				<div className={styles.container}>

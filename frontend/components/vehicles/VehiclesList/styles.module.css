@@ -12,8 +12,8 @@
 @media (width < 1000px) {
 	.container {
 		grid-template:
-			"b" 50vh [b_]
-			"a" auto [a_] / 1fr;
+			"a" 50vh [a_]
+			"b" auto [b_] / 1fr;
 	}
 }
 
@@ -21,11 +21,8 @@
 /* MAP WRAPPER */
 
 .sidebarWrapper {
-	position: sticky;
-	top: var(--size-height-header);
 	grid-area: b;
 	height: 100%;
-	max-height: calc(100vh - var(--size-height-header));;
 	border-left: 1px solid var(--color-system-border-100);
 }
 
@@ -34,4 +31,5 @@
 		position: static;
 		border: none;
 	}
+
 }

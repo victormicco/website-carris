@@ -7,7 +7,6 @@ import {
 	IconWheelchair,
 	IconWheelchairOff,
 } from '@tabler/icons-react';
-import { Popup } from '@vis.gl/react-maplibre';
 
 import styles from './styles.module.css';
 
@@ -30,7 +29,7 @@ export function VehicleListMapPopup({ lineData, selectedVehicle }) {
 	// B. Render Components
 	return (
 		<Section>
-			<div key={id}>
+			<div key={id} className={styles.dataWrapper}>
 				<VehicleListMapPopupBadge lineData={lineData} />
 
 				<div className={styles.iconList}>
@@ -39,7 +38,7 @@ export function VehicleListMapPopup({ lineData, selectedVehicle }) {
 					<p className={styles.license_plate}>{license_plate ? license_plate : 'Não Definido'}</p>
 				</div>
 
-				<div>
+				<div className={styles.tableWrapper}>
 					<Table striped withColumnBorders withRowBorders withTableBorder>
 						<Table.Thead>
 							<Table.Tr>

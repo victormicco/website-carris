@@ -1,19 +1,8 @@
-/* POPUP WRAPPER */
-.popupWrapper div div{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-  padding: 5px;
-  border-radius: 10px;
-  height: 200px;
-  overflow: scroll;
-}
-
 /* ICON LIST */
 .iconList {
   flex-direction: row !important;
   justify-content: center;
+  padding: 10px;
 }
 
 /* LICENSE PLATE */
@@ -22,4 +11,18 @@
   font-size: var(--font-size-text);
   padding: 2px;
   border-radius: 10px;
+}
+
+/* DATA WRAPPER */
+.dataWrapper{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TABLE WRAPPER  */
+.tableWrapper{
+  padding: 10px;
+  width: 100%;
 }

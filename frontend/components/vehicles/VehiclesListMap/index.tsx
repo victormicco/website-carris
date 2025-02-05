@@ -116,7 +116,6 @@ export default function Component() {
 				shapeData={activePathShapeGeoJson}
 				waypointsData={activePathWaypointsGeoJson}
 			/>
-
 		</MapView>
 	);
 }
