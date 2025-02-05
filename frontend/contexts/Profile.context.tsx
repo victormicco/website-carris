@@ -97,8 +97,14 @@ export const ProfileContextProvider = ({ children }) => {
 	const toggleFavoriteLine = async (lineId: string) => {
 		if (!analyticsContext.flags.is_enabled) return;
 		const favoriteLinesSet = new Set(dataFavoriteLinesState || []);
-		if (favoriteLinesSet.has(lineId)) favoriteLinesSet.delete(lineId);
-		else favoriteLinesSet.add(lineId);
+		if (favoriteLinesSet.has(lineId)) {
+			favoriteLinesSet.delete(lineId);
+			analyticsContext.actions.capture(ampli => ampli.removeFavoriteLine({ line_id: lineId }));
+		}
+		else {
+			favoriteLinesSet.add(lineId);
+			analyticsContext.actions.capture(ampli => ampli.addFavoriteLine({ line_id: lineId }));
+		}
 		setDataFavoriteLinesState(Array.from(favoriteLinesSet));
 	};
 
