@@ -4,17 +4,24 @@
 
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import VehiclesListGroup from '@/components/vehicles/VehiclesListGroup';
+import VehiclesListMap from '@/components/vehicles/VehiclesListMap';
 import VehiclesListToolbar from '@/components/vehicles/VehiclesListToolbar';
 import { useTranslations } from 'next-intl';
 
-import VehiclesListMap from '../VehiclesListMap';
 import styles from './styles.module.css';
 
 /* * */
 
 export function VehiclesList() {
+	//
+
+	//
+	// A. Setup variables
+
 	const t = useTranslations('vehicles.VehiclesListToolbar');
+
+	//
+	// B. Render components
 
 	return (
 		<>
@@ -23,7 +30,7 @@ export function VehiclesList() {
 			</Surface>
 			<Surface>
 				<Section withGap withPadding>
-					<VehiclesListGroup />
+					<p>Informação</p>
 				</Section>
 			</Surface>
 			<Surface>
@@ -37,4 +44,6 @@ export function VehiclesList() {
 			</Surface>
 		</>
 	);
+
+	//
 }
