@@ -1,0 +1,9 @@
+/* NO DATA CONTAINER*/
+.noDataContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+}
