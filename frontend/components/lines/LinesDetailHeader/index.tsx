@@ -32,8 +32,6 @@ export function LinesDetailHeader() {
 	const linesDetailContext = useLinesDetailContext();
 	const debugContext = useDebugContext();
 
-	const totalStops = linesDetailContext.data.active_waypoint?.stop_sequence;
-
 	//
 	// B. Handle actions
 
@@ -77,9 +75,8 @@ export function LinesDetailHeader() {
 				<Section withPadding>
 					<div className={styles.container}>
 						{/* <div className={styles.patternSelectorExplainerWrapper}>
-						<SelectActivePatternGroupExplainer />
-					</div> */}
-
+							<SelectActivePatternGroupExplainer />
+						</div> */}
 						<div className={styles.operationalDaySelectorWrapper}>
 							<SelectOperationalDay />
 						</div>
@@ -97,7 +94,7 @@ export function LinesDetailHeader() {
 						<LineDebugDetail
 							activePattern={linesDetailContext.data.active_pattern}
 							lineColor={linesDetailContext.data.line.color}
-							totalStops={totalStops}
+							totalStops={linesDetailContext.data.active_pattern?.path.length}
 						/>
 					</Section>
 				</Surface>
