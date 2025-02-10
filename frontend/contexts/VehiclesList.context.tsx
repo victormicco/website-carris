@@ -2,11 +2,11 @@
 
 /* * */
 
-import { Routes } from '@/utils/routes';
 import { Vehicle } from '@carrismetropolitana/api-types/vehicles';
 import { useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
-import useSWR from 'swr';
+
+import { useVehiclesContext } from './Vehicles.context';
 
 /* * */
 
@@ -24,7 +24,6 @@ interface VehiclesListContextState {
 		agencies: null | { agency_id: number, name: string }[]
 		filtered: Vehicle[]
 		makes_and_models: null | { id: number, models: { id: number, name: string }[], name: string }[]
-		propulsions: null | { id: number, name: string }[]
 		raw: Vehicle[]
 		selected: null | Vehicle
 	}
@@ -58,12 +57,13 @@ export const VehiclesListContextProvider = ({ children }) => {
 	//
 	// A. Setup variables
 
+	const vehiclesContext = useVehiclesContext();
+
 	const [dataFilteredState, setDataFilteredState] = useState<Vehicle[]>([]);
 	const [dataSelectedState, setDataSelectedState] = useState<null | Vehicle>(null);
 
 	const [allAgencies, setAllAgencies] = useState<{ agency_id: number, name: string }[]>([]);
 	const [allMakesAndModels, setAllMakesAndModels] = useState<{ id: number, models: { id: number, name: string }[], name: string }[]>([]);
-	const [allPropulsions, setAllPropulsions] = useState<null | { id: number, name: string }[]>([]);
 
 	const [filterByWheelchairAccesibleState, setWheelchairAccesibleState] = useQueryState('isWheelchair', { clearOnDefault: true });
 	const [filterByAgencyState, setFilterByAgencyState] = useQueryState('agency', { clearOnDefault: true });
@@ -73,15 +73,20 @@ export const VehiclesListContextProvider = ({ children }) => {
 	const [filterByPropulsionState, setFilterByPropulsion] = useQueryState('propulsion', { clearOnDefault: true });
 
 	//
-	// B. Fetch data
-
-	const { data: allVehicleData, isLoading: allVehiclesLoading } = useSWR<Vehicle[], Error>(`${Routes.API}/vehicles`, { refreshInterval: 30000 });
-
-	//
 	// C. Transform data
 
 	const applyFiltersToData = () => {
-		let filterResult = allVehicleData || [];
+		//
+
+		let filterResult = vehiclesContext.data.vehicles || [];
+
+		if (filterBySearchState) {
+			filterResult = filterResult.filter((item) => {
+				const matchedVehicleId = item.id?.toLowerCase().includes(filterBySearchState.toLowerCase());
+				const matchedLicensePlate = item.license_plate?.toLowerCase().includes(filterBySearchState.toLowerCase());
+				return matchedVehicleId || matchedLicensePlate;
+			});
+		}
 
 		if (filterByBicycleAllowedState) {
 			filterResult = filterResult.filter(item => item.bikes_allowed?.toString() === filterByBicycleAllowedState);
@@ -101,10 +106,6 @@ export const VehiclesListContextProvider = ({ children }) => {
 			filterResult = filterResult.filter(item => agencyValues.includes(item.agency_id.toString()));
 		}
 
-		if (filterBySearchState) {
-			filterResult = filterResult.filter(item => item.license_plate?.toLowerCase().includes(filterBySearchState.toLowerCase()));
-		}
-
 		if (filterByMakeAndModelState && filterByMakeAndModelState.trim() !== '') {
 			const makeModelValues = filterByMakeAndModelState.split(',').filter(Boolean);
 			filterResult = filterResult.filter((item) => {
@@ -116,15 +117,18 @@ export const VehiclesListContextProvider = ({ children }) => {
 				});
 			});
 		}
+
 		return filterResult;
+
+		//
 	};
 
 	const getAllMakesAndModels = () => {
-		if (!allVehicleData) return [];
+		if (!vehiclesContext.data.vehicles) return [];
 		const makesMap = new Map();
 		let makeIdCounter = 1;
 		let modelIdCounter = 1;
-		allVehicleData.forEach((vehicle) => {
+		vehiclesContext.data.vehicles.forEach((vehicle) => {
 			if (vehicle.make !== undefined && vehicle.model !== undefined) {
 				const makeName = vehicle.make;
 				const modelName = vehicle.model;
@@ -150,7 +154,7 @@ export const VehiclesListContextProvider = ({ children }) => {
 
 	const getAllAgencies = () => {
 		const agenciesMap = new Map();
-		allVehicleData?.forEach((vehicle) => {
+		vehiclesContext.data.vehicles?.forEach((vehicle) => {
 			if (vehicle.agency_id !== undefined) {
 				const agency_Id = vehicle.agency_id;
 				const agencyOverrides = {
@@ -170,43 +174,16 @@ export const VehiclesListContextProvider = ({ children }) => {
 		return agencies;
 	};
 
-	const getAllPropulsion = () => {
-		if (!allVehicleData) return [];
-		const propulsionsMap = new Map();
-		let idCounter = 1;
-		allVehicleData.forEach((vehicle) => {
-			if (vehicle.propulsion !== undefined) {
-				const propulsionType = vehicle.propulsion;
-				if (!propulsionsMap.has(propulsionType)) {
-					propulsionsMap.set(propulsionType, { id: idCounter, name: propulsionType });
-					idCounter++;
-				}
-			}
-		});
-		const propulsions = Array.from(propulsionsMap.values());
-		setAllPropulsions(propulsions);
-		return propulsions;
-	};
-
 	useEffect(() => {
 		const filteredVehicles = applyFiltersToData();
-		setDataFilteredState(filteredVehicles || []);
-	}, [
-		filterBySearchState,
-		filterByAgencyState,
-		filterByBicycleAllowedState,
-		filterByMakeAndModelState,
-		filterByPropulsionState,
-		filterByWheelchairAccesibleState,
-		allVehicleData,
-	]);
+		setDataFilteredState(filteredVehicles);
+	}, [filterBySearchState, filterByAgencyState, filterByBicycleAllowedState, filterByMakeAndModelState, filterByPropulsionState, filterByWheelchairAccesibleState, vehiclesContext.data.vehicles]);
 
 	useEffect(() => {
-		if (!allVehicleData && !allVehiclesLoading) return;
+		if (!vehiclesContext.data.vehicles) return;
 		getAllAgencies();
 		getAllMakesAndModels();
-		getAllPropulsion();
-	}, [allVehicleData]);
+	}, [vehiclesContext.data.vehicles]);
 
 	//
 	// D. Handle actions
@@ -251,8 +228,8 @@ export const VehiclesListContextProvider = ({ children }) => {
 	};
 
 	const updateSelectedVehicle = (vehicleId: string) => {
-		if (!allVehicleData) return;
-		const foundVehicleData = allVehicleData.filter(item => item.id === vehicleId) || null;
+		if (!vehiclesContext.data.vehicles) return;
+		const foundVehicleData = vehiclesContext.data.vehicles.filter(item => item.id === vehicleId) || null;
 
 		if (foundVehicleData) {
 			setDataSelectedState(foundVehicleData[0] || null);
@@ -276,8 +253,7 @@ export const VehiclesListContextProvider = ({ children }) => {
 			agencies: allAgencies || [],
 			filtered: dataFilteredState,
 			makes_and_models: allMakesAndModels || [],
-			propulsions: allPropulsions || [],
-			raw: allVehicleData || [],
+			raw: vehiclesContext.data.vehicles || [],
 			selected: dataSelectedState,
 		},
 		filters: {
@@ -290,7 +266,7 @@ export const VehiclesListContextProvider = ({ children }) => {
 			selected_vehicle: dataSelectedState?.id || null,
 		},
 		flags: {
-			is_loading: allVehiclesLoading,
+			is_loading: vehiclesContext.flags.is_loading,
 		},
 	};
 

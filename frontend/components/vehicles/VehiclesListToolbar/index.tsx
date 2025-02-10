@@ -8,8 +8,9 @@ import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
 import { MultiSelect, Select, TextInput } from '@mantine/core';
-import { IconArrowLoopRight, IconBike, IconGasStation, IconTriangle, IconUser, IconWheelchair } from '@tabler/icons-react';
+import { IconArrowLoopRight, IconBike, IconDisabled2, IconGasStation, IconTriangle, IconUser } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 
 /* * */
 
@@ -20,7 +21,24 @@ export function VehiclesListToolbar() {
 	// A. Setup variables
 
 	const t = useTranslations('vehicles.VehiclesListToolbar');
+	const optionsLabels = useTranslations('options');
+
 	const vehiclesListContext = useVehiclesListContext();
+
+	//
+	// B. Transform data
+
+	const propulsionOptions = useMemo(() => {
+		if (!vehiclesListContext.data.raw) return [];
+		const allOptionsValues = new Set<string>(vehiclesListContext.data.raw.map(item => item.propulsion).filter(Boolean).map(String));
+		return Array.from(allOptionsValues).map(value => ({ label: optionsLabels(`VehiclePropulsion.${value}`), value: value })) || [];
+	}, [vehiclesListContext.data.raw]);
+
+	const agencyOptions = useMemo(() => {
+		if (!vehiclesListContext.data.raw) return [];
+		const allOptionsValues = new Set<string>(vehiclesListContext.data.raw.map(item => item.agency_id).filter(Boolean));
+		return Array.from(allOptionsValues).map(value => ({ label: optionsLabels(`Agency.${value}`), value: value })) || [];
+	}, [vehiclesListContext.data.raw]);
 
 	//
 	// B. Handle Actions
@@ -55,12 +73,18 @@ export function VehiclesListToolbar() {
 	return (
 		<Section withBottomDivider withGap withPadding>
 			<Grid columns="a" withGap>
-				<TextInput leftSection={<IconArrowLoopRight size={20} />} onChange={handleTextInputChange} placeholder={t('filter_by.search')} type="search" value={vehiclesListContext.filters.by_search} />
+				<TextInput
+					leftSection={<IconArrowLoopRight size={20} />}
+					onChange={handleTextInputChange}
+					placeholder={t('filters.by_search.placeholder')}
+					type="search"
+					value={vehiclesListContext.filters.by_search}
+				/>
 				<MultiSelect
-					data={vehiclesListContext.data?.propulsions?.map(p => ({ label: p.name, value: p.name })) || []}
+					data={propulsionOptions}
 					leftSection={<IconGasStation size={20} />}
 					onChange={handlePropulsionChange}
-					placeholder={t('filter_by.propulsion')}
+					placeholder={t('filters.by_propulsion.placeholder')}
 					radius="sm"
 					value={vehiclesListContext.filters.by_propulsion?.split(' ') || []}
 					clearable
@@ -71,14 +95,14 @@ export function VehiclesListToolbar() {
 			<ExpandToggle defaultState={!!vehiclesListContext.filters.by_agency || !!vehiclesListContext.filters.by_isBicicleAllowed || !!vehiclesListContext.filters.by_isWheelchairAcessible || !!vehiclesListContext.filters.by_makeAndModel}>
 				<Grid columns="a" withGap>
 					<Select
-						leftSection={<IconWheelchair size={20} />}
+						leftSection={<IconDisabled2 size={20} />}
 						onChange={handleReducedMobilityChange}
-						placeholder={t('filter_by.wheel_chair')}
+						placeholder={t('filters.by_wheelchair.placeholder')}
 						radius="sm"
 						value={vehiclesListContext.filters.by_isWheelchairAcessible}
 						data={[
-							{ label: 'Não', value: 'false' },
-							{ label: 'Sim', value: 'true' },
+							{ label: t('filters.by_wheelchair.options.false'), value: 'false' },
+							{ label: t('filters.by_wheelchair.options.true'), value: 'true' },
 						]}
 						clearable
 						searchable
@@ -86,7 +110,7 @@ export function VehiclesListToolbar() {
 					<Select
 						leftSection={<IconBike size={20} />}
 						onChange={handleBikesAllowedInputChange}
-						placeholder={t('filter_by.bicycle')}
+						placeholder={t('filters.by_bicycle.placeholder')}
 						radius="sm"
 						value={vehiclesListContext.filters.by_isBicicleAllowed}
 						data={[
@@ -97,10 +121,10 @@ export function VehiclesListToolbar() {
 						searchable
 					/>
 					<MultiSelect
-						data={vehiclesListContext.data?.agencies?.map(a => ({ label: a.name, value: a.agency_id.toString() })) || []}
+						data={agencyOptions}
 						leftSection={<IconUser size={20} />}
 						onChange={handleAgencyIdChange}
-						placeholder={t('filter_by.operator')}
+						placeholder={t('filters.by_agency.placeholder')}
 						radius="sm"
 						value={vehiclesListContext.filters.by_agency?.split(' ') || []}
 						clearable
@@ -109,7 +133,7 @@ export function VehiclesListToolbar() {
 					<MultiSelect
 						leftSection={<IconTriangle size={20} />}
 						onChange={handleMakeAndModelChange}
-						placeholder={t('filter_by.make_model')}
+						placeholder={t('filters.by_make_model.placeholder')}
 						radius="sm"
 						value={vehiclesListContext.filters.by_makeAndModel?.split(',') || []}
 						data={

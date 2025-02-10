@@ -4,8 +4,8 @@ import { Table } from '@mantine/core';
 import {
 	IconBike,
 	IconBikeOff,
-	IconWheelchair,
-	IconWheelchairOff,
+	IconDisabled2,
+	IconDisabled2Off,
 } from '@tabler/icons-react';
 
 import styles from './styles.module.css';
@@ -45,7 +45,7 @@ export function VehicleListMapDetails({ lineData, selectedVehicle }) {
 
 				<div className={styles.iconList}>
 					{bikes_allowed ? <IconBike /> : <IconBikeOff />}
-					{wheelchair_accessible ? <IconWheelchair /> : <IconWheelchairOff />}
+					{wheelchair_accessible ? <IconDisabled2 /> : <IconDisabled2Off />}
 					<p className={styles.license_plate}>{license_plate}</p>
 				</div>
 
