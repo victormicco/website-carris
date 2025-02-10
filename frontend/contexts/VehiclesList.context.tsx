@@ -159,6 +159,11 @@ export const VehiclesListContextProvider = ({ children }) => {
 		setDataSelectedState(foundVehicleData || null);
 	};
 
+	useEffect(() => {
+		if (!dataSelectedState) return;
+		updateSelectedVehicle(dataSelectedState.id);
+	}, [vehiclesContext.data.vehicles, dataSelectedState]);
+
 	//
 	// E. Define context value
 
