@@ -1542,6 +1542,9 @@
 			"heading": "Frota",
 			"subheading": "Descubra todos os nossos veículos e acompanhe em tempo real a operação completa da CMetropolitana."
 		},
+		"VehiclesListDetails": {
+			"no_data": "Selecione um veículo"
+		},
 		"VehiclesListInfoBlock": {
 			"heading": "Informação do Veículo"
 		},
