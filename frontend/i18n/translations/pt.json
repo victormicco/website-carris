@@ -1567,7 +1567,11 @@
 				"by_agency": {
 					"placeholder": "Todos os operadores"
 				},
-				"by_bicycle": {
+				"by_bikes": {
+					"options": {
+						"false": "Não",
+						"true": "Sim"
+					},
 					"placeholder": "Permite Bicicletas"
 				},
 				"by_make_model": {

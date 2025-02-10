@@ -1,16 +1,20 @@
+/* * */
+
 import { Section } from '@/components/layout/Section';
-import { VehicleListMapBadge } from '@/components/vehicles/VehicleListMapBadge';
+import { LineBadge } from '@/components/lines/LineBadge';
 import { Table } from '@mantine/core';
-import {
-	IconBike,
-	IconBikeOff,
-	IconDisabled2,
-	IconDisabled2Off,
-} from '@tabler/icons-react';
+import { IconBike, IconBikeOff, IconDisabled2, IconDisabledOff } from '@tabler/icons-react';
 
 import styles from './styles.module.css';
 
+/* * */
+
 export function VehicleListMapDetails({ lineData, selectedVehicle }) {
+	//
+
+	//
+	// A. Setup variables
+
 	const {
 		bikes_allowed,
 		capacity_seated = 'Não Definido',
@@ -41,11 +45,11 @@ export function VehicleListMapDetails({ lineData, selectedVehicle }) {
 	return (
 		<Section>
 			<div key={id} className={styles.dataWrapper}>
-				<VehicleListMapBadge lineData={lineData} />
+				<LineBadge lineData={lineData} />
 
 				<div className={styles.iconList}>
 					{bikes_allowed ? <IconBike /> : <IconBikeOff />}
-					{wheelchair_accessible ? <IconDisabled2 /> : <IconDisabled2Off />}
+					{wheelchair_accessible ? <IconDisabled2 /> : <IconDisabledOff />}
 					<p className={styles.license_plate}>{license_plate}</p>
 				</div>
 

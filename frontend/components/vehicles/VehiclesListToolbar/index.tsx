@@ -40,35 +40,35 @@ export function VehiclesListToolbar() {
 		return Array.from(allOptionsValues).map(value => ({ label: optionsLabels(`Agency.${value}`), value: value })) || [];
 	}, [vehiclesListContext.data.raw]);
 
+	const makeAndModelOptions = useMemo(() => {
+		if (!vehiclesListContext.data.raw) return [];
+		const allOptionsMap = new Map<string, Set<string>>();
+		vehiclesListContext.data.raw.forEach((item) => {
+			if (!item.make || !item.model) return;
+			if (!allOptionsMap.has(item.make)) allOptionsMap.set(item.make, new Set<string>());
+			allOptionsMap.get(item.make)?.add(item.model);
+		});
+		return Array
+			.from(allOptionsMap.entries())
+			.map(([make, models]) => ({
+				group: make,
+				items: Array
+					.from(models)
+					.map(model => ({ label: `${make} - ${model}`, value: `${make}-${model}` }))
+					.sort((a, b) => a.label.localeCompare(b.label)),
+			}))
+			.sort((a, b) => a.group.localeCompare(b.group));
+	}, [vehiclesListContext.data.raw]);
+
 	//
-	// B. Handle Actions
+	// C. Handle actions
 
 	const handleTextInputChange = ({ currentTarget }) => {
 		vehiclesListContext.actions.updateFilterBySearch(currentTarget.value);
 	};
 
-	const handleBikesAllowedInputChange = (option: string) => {
-		vehiclesListContext.actions.updateFilterByIsBikeAllowed(option);
-	};
-
-	const handleReducedMobilityChange = (option: string) => {
-		vehiclesListContext.actions.updateFilterByWheelchair(option);
-	};
-
-	const handleAgencyIdChange = (option: string[]) => {
-		vehiclesListContext.actions.updateFilterByAgency(option);
-	};
-
-	const handleMakeAndModelChange = (option: string[]) => {
-		vehiclesListContext.actions.updateFilterByMakeAndModel(option);
-	};
-
-	const handlePropulsionChange = (option: string[]) => {
-		vehiclesListContext.actions.updateFilterByPropulsion(option);
-	};
-
 	//
-	// C. Render components
+	// D. Render components
 
 	return (
 		<Section withBottomDivider withGap withPadding>
@@ -83,7 +83,7 @@ export function VehiclesListToolbar() {
 				<MultiSelect
 					data={propulsionOptions}
 					leftSection={<IconGasStation size={20} />}
-					onChange={handlePropulsionChange}
+					onChange={vehiclesListContext.actions.updateFilterByPropulsion}
 					placeholder={t('filters.by_propulsion.placeholder')}
 					radius="sm"
 					value={vehiclesListContext.filters.by_propulsion?.split(' ') || []}
@@ -92,14 +92,14 @@ export function VehiclesListToolbar() {
 				/>
 			</Grid>
 
-			<ExpandToggle defaultState={!!vehiclesListContext.filters.by_agency || !!vehiclesListContext.filters.by_isBicicleAllowed || !!vehiclesListContext.filters.by_isWheelchairAcessible || !!vehiclesListContext.filters.by_makeAndModel}>
+			<ExpandToggle defaultState={!!vehiclesListContext.filters.by_agency || !!vehiclesListContext.filters.by_bikes || !!vehiclesListContext.filters.by_wheelchair || !!vehiclesListContext.filters.by_make_and_model}>
 				<Grid columns="a" withGap>
 					<Select
 						leftSection={<IconDisabled2 size={20} />}
-						onChange={handleReducedMobilityChange}
+						onChange={vehiclesListContext.actions.updateFilterByWheelchair}
 						placeholder={t('filters.by_wheelchair.placeholder')}
 						radius="sm"
-						value={vehiclesListContext.filters.by_isWheelchairAcessible}
+						value={vehiclesListContext.filters.by_wheelchair}
 						data={[
 							{ label: t('filters.by_wheelchair.options.false'), value: 'false' },
 							{ label: t('filters.by_wheelchair.options.true'), value: 'true' },
@@ -109,13 +109,13 @@ export function VehiclesListToolbar() {
 					/>
 					<Select
 						leftSection={<IconBike size={20} />}
-						onChange={handleBikesAllowedInputChange}
-						placeholder={t('filters.by_bicycle.placeholder')}
+						onChange={vehiclesListContext.actions.updateFilterByBikes}
+						placeholder={t('filters.by_bikes.placeholder')}
 						radius="sm"
-						value={vehiclesListContext.filters.by_isBicicleAllowed}
+						value={vehiclesListContext.filters.by_bikes}
 						data={[
-							{ label: 'Não', value: 'false' },
-							{ label: 'Sim', value: 'true' },
+							{ label: t('filters.by_bikes.options.false'), value: 'false' },
+							{ label: t('filters.by_bikes.options.true'), value: 'true' },
 						]}
 						clearable
 						searchable
@@ -123,7 +123,7 @@ export function VehiclesListToolbar() {
 					<MultiSelect
 						data={agencyOptions}
 						leftSection={<IconUser size={20} />}
-						onChange={handleAgencyIdChange}
+						onChange={vehiclesListContext.actions.updateFilterByAgency}
 						placeholder={t('filters.by_agency.placeholder')}
 						radius="sm"
 						value={vehiclesListContext.filters.by_agency?.split(' ') || []}
@@ -131,20 +131,12 @@ export function VehiclesListToolbar() {
 						searchable
 					/>
 					<MultiSelect
+						data={makeAndModelOptions}
 						leftSection={<IconTriangle size={20} />}
-						onChange={handleMakeAndModelChange}
+						onChange={vehiclesListContext.actions.updateFilterByMakeAndModel}
 						placeholder={t('filters.by_make_model.placeholder')}
 						radius="sm"
-						value={vehiclesListContext.filters.by_makeAndModel?.split(',') || []}
-						data={
-							vehiclesListContext.data?.makes_and_models?.map(make => ({
-								group: make.name,
-								items: make.models.map(model => ({
-									label: model.name,
-									value: `${make.name}-${model.name}`,
-								})),
-							})) || []
-						}
+						value={vehiclesListContext.filters.by_make_and_model?.split(',') || []}
 						clearable
 						searchable
 					/>
