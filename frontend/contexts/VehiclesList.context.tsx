@@ -11,13 +11,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 interface VehiclesListContextState {
 	actions: {
-		updateFilterByAgency: (agency: string[]) => void
-		updateFilterByBikes: (isBikeAllowed: string) => void
-		updateFilterByMakeAndModel: (makeAndModel: string[]) => void
-		updateFilterByPropulsion: (propulsion: string[]) => void
-		updateFilterBySearch: (search: string) => void
-		updateFilterByWheelchair: (isWheelchairAcessible: string) => void
-		updateSelectedVehicle: (vehicleId: string) => void
+		updateFilterByAgency: (values: string[]) => void
+		updateFilterByBikes: (value: string) => void
+		updateFilterByMakeAndModel: (values: string[]) => void
+		updateFilterByPropulsion: (values: string[]) => void
+		updateFilterBySearch: (value: string) => void
+		updateFilterByWheelchair: (value: string) => void
+		updateSelectedVehicle: (value: null | string) => void
 	}
 	data: {
 		filtered: Vehicle[]
@@ -56,8 +56,8 @@ export const VehiclesListContextProvider = ({ children }) => {
 
 	const vehiclesContext = useVehiclesContext();
 
-	const [dataFilteredState, setDataFilteredState] = useState<Vehicle[]>([]);
-	const [dataSelectedState, setDataSelectedState] = useState<null | Vehicle>(null);
+	const [dataFilteredState, setDataFilteredState] = useState<VehiclesListContextState['data']['filtered']>([]);
+	const [dataSelectedState, setDataSelectedState] = useState<VehiclesListContextState['data']['selected']>(null);
 
 	const [filterByWheelchairState, setFilterByWheelchairState] = useQueryState('by_wheelchair', { clearOnDefault: true });
 	const [filterByAgencyState, setFilterByAgencyState] = useQueryState('by_agency', { clearOnDefault: true });
@@ -152,12 +152,11 @@ export const VehiclesListContextProvider = ({ children }) => {
 		else setFilterByPropulsionState(values.sort((a, b) => a.localeCompare(b)).join(';'));
 	};
 
-	const updateSelectedVehicle = (vehicleId: string) => {
+	const updateSelectedVehicle = (vehicleId: null | string) => {
+		if (!vehicleId) setDataSelectedState(null);
 		if (!vehiclesContext.data.vehicles) return;
-		const foundVehicleData = vehiclesContext.data.vehicles.filter(item => item.id === vehicleId) || null;
-		if (foundVehicleData) {
-			setDataSelectedState(foundVehicleData[0] || null);
-		}
+		const foundVehicleData = vehiclesContext.data.vehicles.find(item => item.id === vehicleId);
+		setDataSelectedState(foundVehicleData || null);
 	};
 
 	//
