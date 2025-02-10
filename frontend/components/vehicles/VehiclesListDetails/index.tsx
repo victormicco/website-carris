@@ -46,6 +46,7 @@ export function VehiclesListDetails() {
 		{ label: 'Propulsão', value: vehiclesListContext.data.selected?.propulsion ? optionLabels(`VehiclePropulsion.${vehiclesListContext.data.selected.propulsion}`) : t('unknown') },
 		{ label: 'Emission Class', value: vehiclesListContext.data.selected?.emission_class ? optionLabels(`VehicleEmissionClass.${vehiclesListContext.data.selected.emission_class}`) : t('unknown') },
 		{ label: 'Estado Atual', value: vehiclesListContext.data.selected?.current_status },
+		{ label: 'Trip ID', value: vehiclesListContext.data.selected?.trip_id || t('unknown') },
 	];
 
 	//

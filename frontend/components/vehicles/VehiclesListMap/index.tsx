@@ -47,14 +47,15 @@ export function VehiclesListMap() {
 
 	useEffect(() => {
 		(async () => {
-			if (!activePatternData) return [];
-			if (activePatternData.shape_id) {
-				const fetchedShapeResponse = await fetch(`${Routes.API}/shapes/${activePatternData.shape_id}`);
-				const fetchedShapeData = await fetchedShapeResponse.json();
-				setActiveShapeData(fetchedShapeData);
+			if (!activePatternData || activePatternData.shape_id) {
+				setActiveShapeData(undefined);
+				return;
 			}
+			const fetchedShapeResponse = await fetch(`${Routes.API}/shapes/${activePatternData.shape_id}`);
+			const fetchedShapeData = await fetchedShapeResponse.json();
+			setActiveShapeData(fetchedShapeData);
 		})();
-	}, [activePatternData]);
+	}, [activePatternData?.shape_id]);
 
 	//
 	// C. Transform data
