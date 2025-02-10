@@ -8,7 +8,7 @@ import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
 import { MultiSelect, Select, TextInput } from '@mantine/core';
-import { IconArrowLoopRight, IconBike, IconDisabled2, IconGasStation, IconTriangle, IconUser } from '@tabler/icons-react';
+import { IconArrowLoopRight, IconBike, IconDisabled2, IconGasStation, IconHomeHeart, IconTriangle } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
@@ -85,7 +85,7 @@ export function VehiclesListToolbar() {
 					leftSection={<IconGasStation size={20} />}
 					onChange={vehiclesListContext.actions.updateFilterByPropulsion}
 					placeholder={t('filters.by_propulsion.placeholder')}
-					value={vehiclesListContext.filters.by_propulsion?.split(' ') || []}
+					value={vehiclesListContext.filters.by_propulsion ? vehiclesListContext.filters.by_propulsion?.split(';') : []}
 					clearable
 					searchable
 				/>
@@ -119,10 +119,10 @@ export function VehiclesListToolbar() {
 					/>
 					<MultiSelect
 						data={agencyOptions}
-						leftSection={<IconUser size={20} />}
+						leftSection={<IconHomeHeart size={20} />}
 						onChange={vehiclesListContext.actions.updateFilterByAgency}
 						placeholder={t('filters.by_agency.placeholder')}
-						value={vehiclesListContext.filters.by_agency?.split(' ') || []}
+						value={vehiclesListContext.filters.by_agency ? vehiclesListContext.filters.by_agency?.split(';') : []}
 						clearable
 						searchable
 					/>
@@ -131,7 +131,7 @@ export function VehiclesListToolbar() {
 						leftSection={<IconTriangle size={20} />}
 						onChange={vehiclesListContext.actions.updateFilterByMakeAndModel}
 						placeholder={t('filters.by_make_model.placeholder')}
-						value={vehiclesListContext.filters.by_make_and_model?.split(',') || []}
+						value={vehiclesListContext.filters.by_make_and_model ? vehiclesListContext.filters.by_make_and_model?.split(';') : []}
 						clearable
 						searchable
 					/>
