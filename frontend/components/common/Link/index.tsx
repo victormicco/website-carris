@@ -34,7 +34,7 @@ export function Link({ track = true, ...props }: Props) {
 			const hrefString = props.href?.toString() || 'not provided';
 			const target = hrefString.includes('//') ? hrefString.split('//')[1].split('/')[0] : 'not provided';
 			const internalTarget = hrefString || 'not provided';
-			analyticsContext.actions.capture(ampli => ampli.clickExternalLink({
+			analyticsContext.actions.capture(ampli => ampli.clickLink({
 				destination_target: hrefString.startsWith('/') ? internalTarget : target,
 				destination_url: hrefString,
 				pathname: currentWindowUrl,

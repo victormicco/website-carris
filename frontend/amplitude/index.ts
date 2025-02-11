@@ -64,14 +64,10 @@ export interface ClickDebugToggleProperties {
   is_enabled: string;
 }
 
-export interface ClickExternalLinkProperties {
+export interface ClickLinkProperties {
   destination_target: string;
   destination_url: string;
   pathname: string;
-}
-
-export interface ClickSocialIconProperties {
-  social_app: string;
 }
 
 export interface RemoveFavoriteLineProperties {
@@ -112,21 +108,11 @@ export class ClickDebugToggle implements BaseEvent {
   }
 }
 
-export class ClickExternalLink implements BaseEvent {
-  event_type = 'Click External Link';
+export class ClickLink implements BaseEvent {
+  event_type = 'Click Link';
 
   constructor(
-    public event_properties: ClickExternalLinkProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class ClickSocialIcon implements BaseEvent {
-  event_type = 'Click Social Icon';
-
-  constructor(
-    public event_properties: ClickSocialIconProperties,
+    public event_properties: ClickLinkProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -317,37 +303,20 @@ export class Ampli {
   }
 
   /**
-   * Click External Link
+   * Click Link
    *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20External%20Link)
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Link)
    *
    * Event has no description in tracking plan.
    *
    * @param properties The event's properties (e.g. destination_target)
    * @param options Amplitude event options.
    */
-  clickExternalLink(
-    properties: ClickExternalLinkProperties,
+  clickLink(
+    properties: ClickLinkProperties,
     options?: EventOptions,
   ) {
-    return this.track(new ClickExternalLink(properties), options);
-  }
-
-  /**
-   * Click Social Icon
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Social%20Icon)
-   *
-   * Event has no description in tracking plan.
-   *
-   * @param properties The event's properties (e.g. social_app)
-   * @param options Amplitude event options.
-   */
-  clickSocialIcon(
-    properties: ClickSocialIconProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new ClickSocialIcon(properties), options);
+    return this.track(new ClickLink(properties), options);
   }
 
   /**
