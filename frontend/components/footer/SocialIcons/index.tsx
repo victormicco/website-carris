@@ -26,7 +26,6 @@ export function SocialIcons() {
 			<Link
 				className={`${styles.iconWrapper} ${styles.apple}`}
 				href={URLS.app.apple_app_store.prod}
-				onClick={() => analyticsContext.actions.capture(ampli => ampli.clickSocialIcon({ social_app: 'AppStore' }))}
 				rel="noopener noreferrer"
 				target="_blank"
 			>
