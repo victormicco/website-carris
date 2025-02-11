@@ -1,7 +1,6 @@
 /* * */
 
 import { Link } from '@/components/common/Link';
-import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { URLS } from '@/settings/urls.settings';
 import { IconBrandAndroid, IconBrandApple, IconBrandFacebook, IconBrandInstagram, IconBrandTwitter, IconBrandWhatsapp } from '@tabler/icons-react';
 
@@ -13,22 +12,12 @@ export function SocialIcons() {
 	//
 
 	//
-	// A. Setup variables
-
-	const analyticsContext = useAnalyticsContext();
-
-	//
-	// C.Render Components
+	// A.Render Components
 
 	return (
 		<div className={styles.container}>
 
-			<Link
-				className={`${styles.iconWrapper} ${styles.apple}`}
-				href={URLS.app.apple_app_store.prod}
-				rel="noopener noreferrer"
-				target="_blank"
-			>
+			<Link className={`${styles.iconWrapper} ${styles.apple}`} href={URLS.app.apple_app_store.prod} rel="noopener noreferrer" target="_blank">
 				<IconBrandApple />
 			</Link>
 
