@@ -803,7 +803,9 @@
 			"title": "das {total_trip_count, number} viagens planeadas para os últimos 15 dias, {pass_trip_count, number} foram realizadas"
 		},
 		"LinesDetailPath": {
-			"no_data": "Selecione um Percurso / Destino"
+			"no_data": "Selecione um Percurso / Destino",
+			"summary": "Linha <lineNumber>{line_number}</lineNumber> com destino a <destinationName>{destination_name}</destinationName> no dia <dayName>{day_name, date, long}</dayName>. <changeDay>Alterar dia ›</changeDay>"
+
 		},
 		"LinesListToolbar": {
 			"by_current_view": {
@@ -1125,6 +1127,28 @@
 			}
 		}
 	},
+	"options": {
+		"Agency": {
+			"41": "Viação Alvorada",
+			"42": "Rodoviária de Lisboa",
+			"43": "TST",
+			"44": "Alsa Todi"
+		},
+		"VehicleEmissionClass": {
+			"euro_1": "EURO 1",
+			"euro_2": "EURO 2",
+			"euro_3": "EURO 3",
+			"euro_4": "EURO 4",
+			"euro_5": "EURO 5",
+			"euro_6": "EURO 6"
+		},
+		"VehiclePropulsion": {
+			"diesel": "Diesel",
+			"electricity": "Eletricidade",
+			"lpg_auto": "GPL",
+			"natural_gas": "Gás Natural"
+		}
+	},
 	"periods": {
 		"PeriodsWidgetItem": {
 			"from": "inicia a {value, date, dayShort} {value, date, monthShort} {value, date, yearLong}",
@@ -1317,9 +1341,10 @@
 				"links": {
 					"about": "Sobre a CMetropolitana",
 					"drivers": "Recrutamento de Motoristas",
-					"metrics": "A nosssa operação ao vivo",
+					"metrics": "A nossa Operação ao Vivo",
 					"news": "Notícias",
-					"open-data": "Dados Abertos"
+					"open-data": "Dados Abertos",
+					"vehicles": "Frota"
 				}
 			},
 			"schedules": {
@@ -1533,5 +1558,51 @@
 	},
 	"utils": {
 		"number": "{value, number}"
+	},
+	"vehicles": {
+		"VehiclesList": {
+			"heading": "Frota",
+			"subheading": "Descubra todos os nossos veículos e acompanhe em tempo real a operação completa da CMetropolitana."
+		},
+		"VehiclesListDetails": {
+			"no_data": "Selecione um veículo",
+			"unknown": "Desconhecido"
+		},
+		"VehiclesListInfoBlock": {
+			"heading": "Informação do Veículo"
+		},
+		"VehiclesListToolbar": {
+			"filters": {
+				"by_agency": {
+					"placeholder": "Todos os operadores"
+				},
+				"by_bikes": {
+					"options": {
+						"false": "Não",
+						"true": "Sim"
+					},
+					"placeholder": "Permite Bicicletas"
+				},
+				"by_make_model": {
+					"placeholder": "Marca e Modelo"
+				},
+				"by_propulsion": {
+					"placeholder": "Todos os tipos de propulsão"
+				},
+				"by_search": {
+					"placeholder": "Pesquisar por id, matrícula..."
+				},
+				"by_wheelchair": {
+					"options": {
+						"false": "Não",
+						"true": "Sim"
+					},
+					"placeholder": "Permite Mobilidade Reduzida"
+				}
+
+			},
+			"found_items_counter": "{count, plural, =0 {Nenhum Veículo encontrado.} one {Encontrado # veículo:} other {Encontrados # veículos:}}",
+			"select_vehicle": "Selecione um veículo"
+		}
 	}
 }
