@@ -2,11 +2,10 @@
 
 /* * */
 
+import { type Ampli, ampli } from '@/amplitude';
 import pjson from '@/package.json';
-import { getCurrentBrowserFingerPrint } from '@rajesh896/broprint.js';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { UAParser } from 'ua-parser-js';
 
 /* * */
 
@@ -22,7 +21,7 @@ const LOCAL_STORAGE_KEYS = {
 
 interface AnalyticsContextState {
 	actions: {
-		capture: (key: string, properties?: Record<string, number | string>) => Promise<void>
+		capture: (callback: (instance: Ampli) => void) => void
 		disable: () => void
 		enable: () => void
 		reset: () => void
@@ -105,6 +104,13 @@ export const AnalyticsContextProvider = ({ children }) => {
 		}
 	}, [dataIsEnabledState]);
 
+	useEffect(() => {
+		if (flagIsEnabledState) {
+			ampli.load({ client: { configuration: { appVersion: pjson.version, autocapture: false } }, environment: 'default' });
+			ampli.ping();
+		}
+	}, [flagIsEnabledState]);
+
 	const enable = () => {
 		// Set local state and save decision to local storage
 		setDataIsEnabledState('yes');
@@ -127,55 +133,9 @@ export const AnalyticsContextProvider = ({ children }) => {
 		setFlagShouldAskState(true);
 	};
 
-	const capture = async (key, properties = {}) => {
-		try {
-			return;
-			// Only capture anonymous analytics if user has allowed it
-			// eslint-disable-next-line no-unreachable
-			if (!dataIsEnabledState) return;
-			// Parse user-agent string
-			const parsedUserAgent = window.navigator.userAgent ? new UAParser(window.navigator.userAgent).getResult() : null;
-			// Fetch all the other properties
-			await fetch('https://stats.carrismetropolitana.pt/collector/usage/website', {
-				body: JSON.stringify({
-					//
-					app_version: pjson.version,
-					device_locale: navigator.language,
-					device_screen_height: document.documentElement.clientHeight,
-					device_screen_orientation: window.innerHeight > window.innerWidth ? 'portrait' : 'landscape',
-					device_screen_width: document.documentElement.clientWidth,
-					//
-					device_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-					//
-					event_key: key,
-					event_properties: properties,
-					//
-					fingerprint: await getCurrentBrowserFingerPrint(),
-					//
-					ip_address: null, // Server side
-					//
-					referer: document.referrer,
-					//
-					ua: parsedUserAgent?.ua,
-					ua_browser_name: parsedUserAgent?.browser?.name,
-					ua_browser_version: parsedUserAgent?.browser?.version,
-					ua_cpu_architecture: parsedUserAgent?.cpu?.architecture,
-					ua_device_model: parsedUserAgent?.device?.model,
-					ua_device_type: parsedUserAgent?.device?.type,
-					ua_device_vendor: parsedUserAgent?.device?.vendor,
-					ua_engine_name: parsedUserAgent?.engine?.name,
-					ua_engine_version: parsedUserAgent?.engine?.version,
-					ua_os_name: parsedUserAgent?.os?.name,
-					ua_os_version: parsedUserAgent?.os?.version,
-					//
-				}),
-				headers: { 'Content-Type': 'application/json; charset=utf-8' },
-				method: 'POST',
-			});
-		}
-		// eslint-disable-next-line no-unreachable
-		catch (error) {
-			console.log(error);
+	const capture = (callback: (instance: Ampli) => void) => {
+		if (flagIsEnabledState && ampli) {
+			callback(ampli);
 		}
 	};
 

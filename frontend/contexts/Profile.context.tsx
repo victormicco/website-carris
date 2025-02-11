@@ -97,16 +97,30 @@ export const ProfileContextProvider = ({ children }) => {
 	const toggleFavoriteLine = async (lineId: string) => {
 		if (!analyticsContext.flags.is_enabled) return;
 		const favoriteLinesSet = new Set(dataFavoriteLinesState || []);
-		if (favoriteLinesSet.has(lineId)) favoriteLinesSet.delete(lineId);
-		else favoriteLinesSet.add(lineId);
+		if (favoriteLinesSet.has(lineId)) {
+			favoriteLinesSet.delete(lineId);
+			analyticsContext.actions.capture(ampli => ampli.removeFavoriteLine({ line_id: lineId }));
+		}
+		else {
+			favoriteLinesSet.add(lineId);
+			analyticsContext.actions.capture(ampli => ampli.addFavoriteLine({ line_id: lineId }));
+		}
 		setDataFavoriteLinesState(Array.from(favoriteLinesSet));
 	};
 
 	const toggleFavoriteStop = async (stopId: string) => {
 		if (!analyticsContext.flags.is_enabled) return;
+
 		const favoriteStopsSet = new Set(dataFavoriteStopsState || []);
-		if (favoriteStopsSet.has(stopId)) favoriteStopsSet.delete(stopId);
-		else favoriteStopsSet.add(stopId);
+
+		if (favoriteStopsSet.has(stopId)) {
+			favoriteStopsSet.delete(stopId);
+			analyticsContext.actions.capture(ampli => ampli.removeFavoriteStop({ stop_id: stopId }));
+		}
+		else {
+			favoriteStopsSet.add(stopId);
+			analyticsContext.actions.capture(ampli => ampli.addFavoriteStop({ stop_id: stopId }));
+		}
 		setDataFavoriteStopsState(Array.from(favoriteStopsSet));
 	};
 

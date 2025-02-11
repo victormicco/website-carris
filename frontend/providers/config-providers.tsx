@@ -2,6 +2,7 @@
 
 /* * */
 
+import { AnalyticsContextProvider } from '@/contexts/Analytics.context';
 import { DebugContextProvider } from '@/contexts/Debug.context';
 import { SWRConfig, SWRConfiguration } from 'swr';
 
@@ -38,9 +39,11 @@ export function ConfigProviders({ children }) {
 
 	return (
 		<SWRConfig value={swrSettings}>
-			<DebugContextProvider>
-				{children}
-			</DebugContextProvider>
+			<AnalyticsContextProvider>
+				<DebugContextProvider>
+					{children}
+				</DebugContextProvider>
+			</AnalyticsContextProvider>
 		</SWRConfig>
 	);
 
