@@ -28,7 +28,6 @@ export default function Component() {
 
 	const handleEnable = () => {
 		analyticsContext.actions.enable();
-		analyticsContext.actions.capture('test');
 	};
 
 	const handleDisable = () => {
