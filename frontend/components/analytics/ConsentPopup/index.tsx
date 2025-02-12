@@ -2,11 +2,11 @@
 
 /* * */
 
+import { Link } from '@/components/common/Link';
 import { Logo } from '@/components/header/Logo';
-import { useAnalyticsContext } from '@/contexts/Analytics.context';
-import { Button, Modal } from '@mantine/core';
+import { useConsentContext } from '@/contexts/Consent.context';
+import { Button, Checkbox, Modal } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -22,32 +22,49 @@ export function ConsentPopup() {
 
 	const t = useTranslations('analytics.ConsentPopup');
 	const pathname = usePathname();
-	const analyticsContext = useAnalyticsContext();
+	const consentContext = useConsentContext();
 
-	const [isOpen, setIsOpen] = useState(false);
+	const [showOptions, setShowOptions] = useState(false);
+	const [optionAnalyticsDecision, setOptionAnalyticsDecision] = useState(true);
+	const [optionFunctionalDecision, setOptionFunctionalDecision] = useState(true);
 
-	if (analyticsContext === null) return;
-	useEffect(() => {
-		// Check if analyticsContext and pathname are ready
-		if (!pathname) return;
-		// Check if pathname is the cookies policy page
-		const regexPatternToMatchCookiesPolicy = /^(\/[a-z]{2})?\/cookies\/?$/;
-		const isPrivacyPage = regexPatternToMatchCookiesPolicy.test(pathname);
-		// Set the modal state based on the context and pathname
-		setIsOpen(analyticsContext.flags.should_ask && !isPrivacyPage);
-	}, [analyticsContext.flags.should_ask, pathname]);
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	//
 	// B. Handle actions
 
-	const handleEnable = () => {
-		analyticsContext.actions.enable();
-		setIsOpen(false);
+	useEffect(() => {
+		// Return if consentContext is not ready
+		if (!consentContext.data.init_status) return;
+		// Return if pathname is not available
+		if (!pathname) return;
+		// Check if pathname is the cookies policy page
+		const regexPatternToMatchCookiesPage = /^(\/[a-z]{2})?\/cookies\/?$/;
+		const isCookiesPage = regexPatternToMatchCookiesPage.test(pathname);
+		// Set the modal state based on the context and pathname
+		setIsPopupOpen(consentContext.data.ask_for_consent && !isCookiesPage);
+	}, [consentContext.data.init_status, consentContext.data.ask_for_consent, pathname]);
+
+	const handleAccept = () => {
+		// Set the Analytics decision based on the set option
+		if (optionAnalyticsDecision) consentContext.actions.enable(['analytics']);
+		else consentContext.actions.disable(['analytics']);
+		// Set the Functional decision based on the set option
+		if (optionFunctionalDecision) consentContext.actions.enable(['functional']);
+		else consentContext.actions.disable(['functional']);
+		// Dismiss the popup
+		setIsPopupOpen(false);
+		setShowOptions(false);
+		setOptionAnalyticsDecision(true);
+		setOptionFunctionalDecision(true);
 	};
 
-	const handleDisable = () => {
-		analyticsContext.actions.disable();
-		setIsOpen(false);
+	const handleRefuse = () => {
+		consentContext.actions.disable(['analytics', 'functional']);
+		setIsPopupOpen(false);
+		setShowOptions(false);
+		setOptionAnalyticsDecision(true);
+		setOptionFunctionalDecision(true);
 	};
 
 	//
@@ -58,27 +75,42 @@ export function ConsentPopup() {
 			classNames={{ body: styles.bodyOverride, content: styles.contentOverride }}
 			closeOnClickOutside={false}
 			closeOnEscape={false}
-			onClose={() => setIsOpen(false)}
-			opened={isOpen}
+			onClose={() => setIsPopupOpen(false)}
+			opened={isPopupOpen}
 			overlayProps={{ backgroundOpacity: 0.55, blur: 3 }}
 			returnFocus={true}
 			trapFocus={false}
 			withCloseButton={false}
 		>
+
 			<Logo />
 			<h4 className={styles.title}>{t('title')}</h4>
 			<h4 className={styles.text}>{t('text')}</h4>
-			<Link className={styles.link} href="/legal/cookies" target="_blank">
-				{t('privacy_policy')}
+
+			<div className={styles.link} onClick={() => setShowOptions(prev => !prev)}>
+				{showOptions ? t('actions.hide_options') : t('actions.show_options')}
+			</div>
+
+			{showOptions && (
+				<>
+					<Checkbox checked={optionFunctionalDecision} label={t('options.functional')} onChange={event => setOptionFunctionalDecision(event.currentTarget.checked)} size="sm" />
+					<Checkbox checked={optionAnalyticsDecision} label={t('options.analytics')} onChange={event => setOptionAnalyticsDecision(event.currentTarget.checked)} size="sm" />
+				</>
+			)}
+
+			<Link className={styles.link} href="/cookies" target="_blank">
+				{t('policy_page')}
 			</Link>
+
 			<div className={styles.answersWrapper}>
-				<Button className={styles.refuseButtonOverride} onClick={handleDisable} size="xs">
-					{t('refuse')}
+				<Button className={styles.refuseButtonOverride} onClick={handleRefuse} size="xs">
+					{t('actions.refuse')}
 				</Button>
-				<Button onClick={handleEnable} variant="primary">
-					{t('accept')}
+				<Button onClick={handleAccept} variant="primary">
+					{optionAnalyticsDecision && optionFunctionalDecision ? t('actions.accept') : t('actions.save')}
 				</Button>
 			</div>
+
 		</Modal>
 	);
 

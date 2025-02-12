@@ -5,6 +5,8 @@
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { createContext, useContext, useEffect, useState } from 'react';
 
+import { useConsentContext } from './Consent.context';
+
 /* * */
 
 const LOCAL_STORAGE_KEYS = {
@@ -55,6 +57,7 @@ export const ProfileContextProvider = ({ children }) => {
 	//
 	// A. Setup variables
 
+	const consentContext = useConsentContext();
 	const analyticsContext = useAnalyticsContext();
 
 	const [dataFavoriteLinesState, setDataFavoriteLinesState] = useState<ProfileContextState['data']['favorite_lines']>(null);
@@ -66,36 +69,42 @@ export const ProfileContextProvider = ({ children }) => {
 	// B. Fetch data
 
 	useEffect(() => {
-		//
-		setFlagIsLoadingState(true);
-		// If analytics is disabled, do not fetch Profile ID
-		if (!analyticsContext.flags.is_enabled) {
+		// Return if consent if not given for functional features
+		if (!consentContext.data.enabled_functional) {
 			setFlagIsLoadingState(false);
 			return;
 		}
-		// If analytics is enabled, fetch favorites from local storage
-		const foundFavoriteLines = localStorage.getItem(LOCAL_STORAGE_KEYS.favorite_lines);
-		const foundFavoriteStops = localStorage.getItem(LOCAL_STORAGE_KEYS.favorite_stops);
-		// If favorites were found, set them to local state
-		if (foundFavoriteLines) setDataFavoriteLinesState(JSON.parse(foundFavoriteLines));
-		if (foundFavoriteStops) setDataFavoriteStopsState(JSON.parse(foundFavoriteStops));
+		// Set loading state to true
+		setFlagIsLoadingState(true);
+		// Fetch favorites from local storage on a regular interval
+		// to accomodate changes made in other tabs.
+		const interval = setInterval(() => {
+			// Get previously stored favorite values from local storage
+			const foundFavoriteLines = localStorage.getItem(LOCAL_STORAGE_KEYS.favorite_lines);
+			const foundFavoriteStops = localStorage.getItem(LOCAL_STORAGE_KEYS.favorite_stops);
+			// If favorites were found, set them to local state
+			if (foundFavoriteLines) setDataFavoriteLinesState(JSON.parse(foundFavoriteLines));
+			if (foundFavoriteStops) setDataFavoriteStopsState(JSON.parse(foundFavoriteStops));
+		}, 1000);
 		//
 		setFlagIsLoadingState(false);
 		//
-	}, [analyticsContext.flags.is_enabled]);
+		return () => clearInterval(interval);
+		//
+	}, [consentContext.data.enabled_functional]);
 
 	//
 	// C. Handle actions
 
 	useEffect(() => {
-		if (!analyticsContext.flags.is_enabled) return;
+		if (!consentContext.data.enabled_functional) return;
 		// If favorites are updated, update local storage
 		if (dataFavoriteLinesState) localStorage.setItem(LOCAL_STORAGE_KEYS.favorite_lines, JSON.stringify(dataFavoriteLinesState));
 		if (dataFavoriteStopsState) localStorage.setItem(LOCAL_STORAGE_KEYS.favorite_stops, JSON.stringify(dataFavoriteStopsState));
 	}, [dataFavoriteLinesState, dataFavoriteStopsState]);
 
 	const toggleFavoriteLine = async (lineId: string) => {
-		if (!analyticsContext.flags.is_enabled) return;
+		if (!consentContext.data.enabled_functional) return;
 		const favoriteLinesSet = new Set(dataFavoriteLinesState || []);
 		if (favoriteLinesSet.has(lineId)) {
 			favoriteLinesSet.delete(lineId);
@@ -109,7 +118,7 @@ export const ProfileContextProvider = ({ children }) => {
 	};
 
 	const toggleFavoriteStop = async (stopId: string) => {
-		if (!analyticsContext.flags.is_enabled) return;
+		if (!consentContext.data.enabled_functional) return;
 
 		const favoriteStopsSet = new Set(dataFavoriteStopsState || []);
 
@@ -141,7 +150,7 @@ export const ProfileContextProvider = ({ children }) => {
 			favorite_stops: dataFavoriteStopsState,
 		},
 		flags: {
-			is_enabled: analyticsContext.flags.is_enabled,
+			is_enabled: consentContext.data.enabled_functional,
 			is_loading: flagIsLoadingState,
 		},
 	};
