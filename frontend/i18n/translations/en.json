@@ -91,15 +91,26 @@
 			"question_6": {
 				"accept": "Accept Cookies Policy",
 				"enabled": "Cookies Policy accepted",
+				"options": {
+					"analytics": {
+						"disable": "Dados Analíticos Aceites. Recusar?",
+						"enable": "Aceitar Dados Analíticos",
+						"label": "Dados Analíticos"
+					},
+					"functional": {
+						"disable": "Dados Funcionais Aceites. Recusar?",
+						"enable": "Aceitar Dados Funcionais",
+						"label": "Dados Funcionais"
+					}
+				},
 				"paragraphs": {
-					"1": "As they are essential for the proper functioning of the website, the use of strictly necessary or essential cookies does not require prior consent from the user. The rest (functionality, performance or advertising cookies) will only be used if the user expressly authorizes their use.",
-					"2": "Once accepted, you can revoke this consent at any time by simply returning to the Cookie Policy and selecting “Refuse and Clear Data”."
+					"1": "As they are essential for the proper functioning of the website, the use of strictly necessary or essential cookies does not require prior consent from the user. The rest (functionality, performance or advertising cookies) will only be used if the user expressly authorizes their use."
 				},
 				"refuse": "Opt Out and Clear Data",
 				"refuse_modal": {
 					"cancel": "Cancel",
 					"confirm": "Yes, delete everything",
-					"description": "By withdrawing consent you will delete all data saved on this website, including all stops and favorite lines.",
+					"description": "Ao retirar o consentimento serão apagados todos os dados guardados neste site, incluindo as suas paragens e linhas favoritas.",
 					"title": "Withdraw consent"
 				},
 				"title": "User Consent:"
@@ -360,9 +371,18 @@
 	},
 	"analytics": {
 		"ConsentPopup": {
-			"accept": "OK",
-			"privacy_policy": "Consult Cookies Policy",
-			"refuse": "No, thanks",
+			"actions": {
+				"accept": "OK",
+				"hide_options": "Esconder Opções",
+				"refuse": "Não, obrigado",
+				"save": "Guardar",
+				"show_options": "Mostrar Opções"
+			},
+			"options": {
+				"analytics": "Guardar dados analíticos",
+				"functional": "Guardar dados funcionais"
+			},
+			"policy_page": "Consultar Política de Cookies",
 			"text": "In order to improve the performance, content and security of this website, TML intends to use cookies or similar technologies.",
 			"title": "We respect your privacy"
 		}
