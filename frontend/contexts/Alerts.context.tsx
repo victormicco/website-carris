@@ -64,7 +64,6 @@ export const AlertsContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		// if (!allAlertsData) return;
-		console.log('data');
 		const allSimplifiedAlerts = allAlertsData?.map(alert => convertToSimplifiedAlert(alert, currentLocale));
 		setDataSimplifiedState(allSimplifiedAlerts || []);
 		analyticsContext.actions.capture(ampli => ampli.captureAlertsReferer({ page_referer: document.referrer }));

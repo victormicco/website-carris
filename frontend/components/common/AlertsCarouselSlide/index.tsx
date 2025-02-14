@@ -30,7 +30,6 @@ export default function Component({ alert }: Props) {
 	// B. Handle Actions
 
 	const handleAlertClick = () => {
-		console.log(alert.alert_id, alert.title);
 		analyticsContext.actions.capture(ampli => ampli.alertClicked({ alert_id: alert.alert_id, alert_title: alert.title }));
 	};
 
