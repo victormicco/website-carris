@@ -2,6 +2,7 @@
 
 /* * */
 
+import { Inquiry2024Header } from '@/components/inquiry-2024/Inquiry2024Header';
 import { Inquiry2024Intro } from '@/components/inquiry-2024/Inquiry2024Intro';
 import { Inquiry2024LevelFour } from '@/components/inquiry-2024/Inquiry2024LevelFour';
 import { Inquiry2024LevelOne } from '@/components/inquiry-2024/Inquiry2024LevelOne';
@@ -26,6 +27,7 @@ export function Inquiry2024Page() {
 	return (
 		<>
 			<Inquiry2024Intro />
+			<Inquiry2024Header />
 			<Inquiry2024LevelOne />
 			<Inquiry2024LevelThree />
 			<Inquiry2024LevelTwoA />

@@ -1,0 +1,5 @@
+.inquiryTitle {
+    font-weight: var(--font-weight-heading);
+    font-size:var(--font-size-heading) ;
+    color: var(--color-system-text-100);
+}

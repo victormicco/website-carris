@@ -1527,6 +1527,15 @@
 			"subheading": "Available to all passengers, navegante® stores are dedicated to providing information about the Carris Metropolitana network and ticketing, enabling queries to be clarified, the issuance of navegante® cards and membership to profiles and discounts. It is also possible to load titles at PayShop® service points within the navegante® agent network."
 		}
 	},
+	"survey-2024": {
+		"Survey2024Header": {
+			"AnchorAboutInquiry": "About the Survey",
+			"AnchorIndex": "Recomendation Index",
+			"AnchorPassengerCaracter": "Passanger Caracter",
+			"AnchorResults": "Results",
+			"title": "Passenger Satisfaction Survey 2024"
+		}
+	},
 	"tickets": {
 		"Pricing": {
 			"inter-regional": {

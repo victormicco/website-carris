@@ -1528,6 +1528,15 @@
 			"subheading": "As nossas lojas estão dedicadas a esclarecer dúvidas sobre a rede da CMetropolitana e a resolver todas as questões relacionadas com o passe navegante® — emissão de cartões na hora, adesão a descontos e aquisição de títulos."
 		}
 	},
+	"survey-2024": {
+		"Survey2024Header": {
+			"AnchorAboutInquiry": "Sobre o Inquérito",
+			"AnchorIndex": "Índice de Recomendação",
+			"AnchorPassengerCaracter": "Caracterização do Passageiro",
+			"AnchorResults": "Resultados",
+			"title": "Inquérito de Satisfação do Passageiro"
+		}
+	},
 	"tickets": {
 		"Pricing": {
 			"inter-regional": {

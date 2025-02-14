@@ -79,7 +79,6 @@ export function Inquiry2024Card({ cardData, isFirstChild, isLastChild }: Props) 
 
 	const handleToggleIsOpen = () => {
 		setIsOpen(prev => !prev);
-		analyticsContext.actions.capture(ampli => ampli.openCardViagem2024({ card_id: cardData._id, card_title: cardData.header.title }));
 		console.log(cardData._id);
 	};
 
@@ -102,7 +101,6 @@ export function Inquiry2024Card({ cardData, isFirstChild, isLastChild }: Props) 
 				<p className={styles.urlTitle}>{t('share.title')}</p>
 			),
 		});
-		analyticsContext.actions.capture(ampli => ampli.shareCardViagem2024({ card_id: cardData._id, card_title: cardData.header.title }));
 	};
 
 	//
