@@ -5,7 +5,6 @@
 import { Accordion, Select, TextInput } from '@mantine/core';
 import { IconAdjustments, IconFilter, IconSearch } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 import styles from './styles.module.css';
 

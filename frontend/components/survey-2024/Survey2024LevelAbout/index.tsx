@@ -2,10 +2,10 @@
 
 /* * */
 
-import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { Survey2024AboutCardGroup } from '@/components/survey-2024/Survey2024AboutCardGroup';
+import { allAboutCardsData } from '@/components/survey-2024/_data/About/cards';
+import { Survey2024AboutCard } from '@/components/survey-2024/Survey2024AboutCard';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -19,6 +19,7 @@ export function Survey2024LevelAbout() {
 	// A. Setup variables
 
 	const t = useTranslations('survey-2024.Survey2024Header');
+	const allAboutCardData = allAboutCardsData;
 
 	//
 	// B. Render components
@@ -28,7 +29,9 @@ export function Survey2024LevelAbout() {
 			<Surface forceOverflow>
 				<Section withGap withPadding>
 					<h2 className={styles.sectionTitle}>{t('AnchorAboutSurveyTitle')}</h2>
-					<Survey2024AboutCardGroup />
+					{allAboutCardData.map((cardData, index) => (
+						<Survey2024AboutCard key={index} cardData={cardData} />
+					))};
 				</Section>
 			</Surface>
 		</div>

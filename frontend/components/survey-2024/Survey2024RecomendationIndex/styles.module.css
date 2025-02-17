@@ -34,7 +34,7 @@
 /* WRAPPER */
 .wrapper{
     margin-bottom: 20px;
-    font-size: var(--font-size-subtitle);
+    font-size: var(--font-size-title);
     font-weight: var(--font-weight-bold);
     color: var(--color-system-text-100);
 }
