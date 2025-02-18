@@ -45,7 +45,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em obter informações nas paragens sobre preços, horários e serviços',
@@ -60,13 +60,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em obter informações nos autocarros sobre preços, horários e serviços',
 		},
 		header: {
-			value: '7,03',
+			value: '7,0',
 		},
 	},
 
@@ -91,13 +91,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em aceder a informações atualizadas',
 		},
 		header: {
-			value: '7,17',
+			value: '7,2',
 		},
 	},
 	{
@@ -106,13 +106,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em obter informação de quando chegará o próximo autocarro à paragem onde está',
 		},
 		header: {
-			value: '6,62',
+			value: '6,6',
 		},
 	},
 	{
@@ -121,13 +121,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em obter informação sobre como fazer as ligações entre paragens da Carris Metropolitana e outros modos de transporte',
 		},
 		header: {
-			value: '7,08',
+			value: '7,1',
 		},
 	},
 	{
@@ -142,7 +142,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 			description: 'Facilidade na aquisição do bilhete simples a bordo',
 		},
 		header: {
-			value: '8,82',
+			value: '8,8',
 		},
 	},
 
@@ -185,7 +185,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Total da duração da viagem (tempo de espera + tempo da viagem) em relação à distância percorrida',
@@ -200,7 +200,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Pontualidade dos autocarros no local de partida',
@@ -215,13 +215,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Pontualidade dos autocarros no local de chegada',
 		},
 		header: {
-			value: '6,69',
+			value: '6,7',
 		},
 	},
 	{
@@ -230,13 +230,13 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Frequência de Interrupções ou cancelamentos das viagens previstas',
 		},
 		header: {
-			value: '6,63',
+			value: '6,6',
 		},
 	},
 	{
@@ -245,7 +245,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Adequação dos horários diurnos semanais face às suas necessidades*',
@@ -260,7 +260,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Adequação dos horários noturnos face às suas necessidades*',
@@ -275,7 +275,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Adequação dos horários de fins de semana face às suas necessidades*',
@@ -294,7 +294,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Conforto das paragens que utiliza*',
@@ -309,7 +309,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Sensação de segurança nas paragens*',
@@ -324,7 +324,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Tempo de espera nas paragens',
@@ -417,12 +417,12 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 	// SUPPORT CARDS
 
 	{
-		_group: 'info_bus',
+		_group: 'info_support',
 		_id: 1,
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade em apresentar reclamações',
@@ -432,12 +432,12 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		},
 	},
 	{
-		_group: 'info_bus',
+		_group: 'info_support',
 		_id: 2,
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Facilidade na resolução de problemas',
@@ -447,7 +447,7 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		},
 	},
 	{
-		_group: 'info_bus',
+		_group: 'info_support',
 		_id: 3,
 		color: {
 			opacity: '70%',
@@ -462,12 +462,12 @@ export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 		},
 	},
 	{
-		_group: 'info_bus',
+		_group: 'info_support',
 		_id: 4,
 		color: {
 			opacity: '50%',
 			primary: '#ffcc00',
-			text: '#000000',
+			text: '#9696a5',
 		},
 		content: {
 			description: 'Apoio ao Cliente',

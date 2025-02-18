@@ -16,7 +16,7 @@ export function Survey2024ResultCard({ cardData }: Props) {
 	//
 
 	//
-	// A. Render components
+	// B. Render components
 
 	return (
 
@@ -25,7 +25,7 @@ export function Survey2024ResultCard({ cardData }: Props) {
 
 				<div className={styles.leftColumn}>
 					<div className={styles.circledNumber}>
-						<div className={styles.blurredCircle} style={{ backgroundColor: cardData.color.primary }} />
+						<div className={styles.blurredCircle} style={{ backgroundColor: cardData.color.primary, color: cardData.color.text }} />
 						<p className={styles.headerNumber} style={{ color: cardData.color.text }}>{cardData.header.value}</p>
 					</div>
 				</div>
