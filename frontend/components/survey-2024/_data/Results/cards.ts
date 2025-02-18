@@ -18,7 +18,7 @@ export interface Survery2024ResultsCardSchema {
 
 /* * */
 
-export const allAboutCardsData: Survery2024ResultsCardSchema[] = [
+export const allResultsCardData: Survery2024ResultsCardSchema[] = [
 	//
 
 	//

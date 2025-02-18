@@ -1,31 +1,16 @@
-/* * */
-/* HEADINGS */
-
-.headingWrapper {
-	display: flex;
-	flex-direction: column;
-	gap: var(--size-spacing-5);
-	align-items: flex-start;
-	justify-content: flex-start;
-	width: 100%;
+/* CARD SECTION */
+.cardWrapper{
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+	margin-top: 40px;
 }
+/* * */
+
 
 @media (width <= 650px) {
-	.headingWrapper {
-		padding: var(--size-spacing-20);
-		padding-bottom: 0;
-		padding-left: var(--size-spacing-25);
+	.cardWrapper{
+		margin: 0 auto;
+		grid-template-columns:  1fr;
 	}
-}
-
-.heading {
-	font-size: 24px;
-	font-weight: var(--font-weight-semibold);
-	color: var(--color-system-text-100);
-}
-
-.subheading {
-	font-size: 14px;
-	font-weight: var(--font-weight-bold);
-	color: var(--color-system-text-100);
 }

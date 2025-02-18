@@ -28,7 +28,7 @@ export function Survey2024LevelPasgrCharacter() {
 	return (
 		<div id="passangerChacterization">
 			<Surface forceOverflow>
-				<Accordion>
+				<Accordion defaultValue="passangerChacterization">
 					<Accordion.Item value="passangerChacterization">
 						<Accordion.Control>
 							<h2 className={styles.heading}>{t('heading')}</h2>

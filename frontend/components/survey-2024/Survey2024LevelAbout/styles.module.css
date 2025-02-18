@@ -2,9 +2,9 @@
 /* HEADINGS */
 
 .sectionTitle{
-	color: var(--color-system-text-100);
-	font-size: var(--font-size-subtitle);
-	font-weight: var(--font-weight-semibold);
+	font-weight: var(--font-weight-title);
+    font-size:var(--font-size-title) ;
+    color: var(--color-system-text-100);
 }
 
 /* * */
