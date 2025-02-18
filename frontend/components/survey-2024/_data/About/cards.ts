@@ -8,6 +8,7 @@ export interface Survery2024AboutCardSchema {
 	}
 	content: {
 		legend: string
+		lottie_src?: string
 	}
 	header: {
 		value: string
@@ -29,6 +30,7 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Total de entrevistas concretizadas',
+			lottie_src: '/assets/survey-2024/animations/sobre/Total_Interviews.json',
 		},
 		header: {
 			value: '3200',
@@ -44,6 +46,8 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Entrevistadores',
+			lottie_src: '/assets/survey-2024/animations/sobre/Total_Interviewers.json',
+
 		},
 		header: {
 			value: '55',
@@ -59,6 +63,8 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Linhas Analisadas',
+			lottie_src: '/assets/survey-2024/animations/sobre/Total_Lines.json',
+
 		},
 		header: {
 			value: '199',
@@ -74,6 +80,8 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Classes Amostrais Representativas',
+			lottie_src: '/assets/survey-2024/animations/sobre/Total_Classes.json',
+
 		},
 		header: {
 			value: '192',
@@ -89,6 +97,8 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Intervalo de Confiança',
+			lottie_src: '',
+
 		},
 		header: {
 			value: '95,5%',
@@ -103,6 +113,8 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		content: {
 			legend: 'Margem de Erro',
+			lottie_src: '',
+
 		},
 		header: {
 			value: '1,80%',

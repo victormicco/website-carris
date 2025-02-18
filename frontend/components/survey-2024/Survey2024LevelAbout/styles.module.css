@@ -8,3 +8,23 @@
 }
 
 /* * */
+/* SECTION CARDS */
+
+.cardSection {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 1200px; /* adjust as needed */
+	margin: 0 auto; 
+}
+
+
+@media(width <= 700px) {
+	.cardSection {
+	grid-template-columns: repeat(1, 1fr);
+	}
+
+}

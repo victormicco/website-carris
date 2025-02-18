@@ -26,12 +26,14 @@ export function Survey2024LevelAbout() {
 
 	return (
 		<div id="aboutSurvey">
-			<Surface forceOverflow>
+			<Surface>
 				<Section withGap withPadding>
 					<h2 className={styles.sectionTitle}>{t('AnchorAboutSurveyTitle')}</h2>
-					{allAboutCardData.map((cardData, index) => (
-						<Survey2024AboutCard key={index} cardData={cardData} />
-					))};
+					<div className={styles.cardSection}>
+						{allAboutCardData.map((cardData, index) => (
+							<Survey2024AboutCard key={index} cardData={cardData} />
+						))}
+					</div>
 				</Section>
 			</Surface>
 		</div>

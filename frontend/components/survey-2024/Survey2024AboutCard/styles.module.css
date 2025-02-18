@@ -8,8 +8,16 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 100%;
-
+	border-radius: 18px;
+	border: 1px solid #BEBEC8;
+	padding: 20px;
 }
+
+.container:nth-child(1){
+	background: #ffdd00;
+	border: 1px solid #ffdd00;
+}
+
 
 /* * */
 /* HEADER */
@@ -17,28 +25,24 @@
 .header {
 	z-index: 10;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	gap: 5px;
 	align-items: center;
-	justify-content: space-between;
 	width: 100%;
-	padding: 20px;
-	padding-bottom: 40px;
-	cursor: pointer;
-	background-color: var(--color-primary);
-	border: 2px solid var(--color-border);
-	border-radius: 18px 18px 0 0;
-	box-shadow: 0 -4px 0 0 rgb(0 0 0 / 5%);
+	padding: 10px;
+	min-height: 140px;
+	justify-content: center;
 }
 
 .headerTitle {
 	font-size: 16px;
 	font-weight: var(--font-weight-bold);
 	color: var(--color-text);
+	margin-left: 20px;
 }
 
 .headerNumber {
-	font-size: 20px;
+	font-size: 28px;
 	font-weight: var(--font-weight-bold);
 	color: var(--color-text);
 }
@@ -49,7 +53,6 @@
 
 .content {
 	width: 100%;
-	overflow: hidden;
 	border-right: 2px solid var(--color-border);
 	border-left: 2px solid var(--color-border);
 	transition: all 500ms ease-out;
@@ -111,3 +114,8 @@
 
 /* * */
 
+/* LOTTIE */
+
+.lottie{
+	width: 50%;
+}
