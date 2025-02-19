@@ -34,6 +34,34 @@ export function Survey2024LevelResults() {
 	const allBusData = allData.filter(item => item._group === 'info_bus');
 	const allSupportData = allData.filter(item => item._group === 'info_support');
 
+	const allAccordions = [
+		{
+			data: allPublicInfoData,
+			label: 'Público',
+			value: 'public-info-cards',
+		},
+		{
+			data: allNetworkData,
+			label: 'Rede',
+			value: 'network-cards',
+		},
+		{
+			data: allStopsData,
+			label: 'Paragens',
+			value: 'stops-cards',
+		},
+		{
+			data: allBusData,
+			label: 'Autocarros',
+			value: 'bus-cards',
+		},
+		{
+			data: allSupportData,
+			label: 'Suporte',
+			value: 'support-cards',
+		},
+	];
+
 	//
 
 	// C. Handle Actions
@@ -67,6 +95,21 @@ export function Survey2024LevelResults() {
 	//
 	// D. Render components
 
+	const renderAccordion = (data: typeof allAccordions[number]) => {
+		return (
+			<Accordion>
+				<Accordion.Item value={data.value}>
+					<AccordionControl>{data.label}</AccordionControl>
+					<Accordion.Panel>
+						{data.data.map((item, index) => (
+							<Survey2024ResultCard key={index} cardData={item} />
+						))}
+					</Accordion.Panel>
+				</Accordion.Item>
+			</Accordion>
+		);
+	};
+
 	return (
 		<div id="results">
 			<Surface forceOverflow>
@@ -86,75 +129,10 @@ export function Survey2024LevelResults() {
 										/>
 									))
 									: (
-										<>
-											<Accordion>
-												<Accordion.Item value="public-info-cards">
-													<AccordionControl>Informação ao Público</AccordionControl>
-													<Accordion.Panel>
-														{allPublicInfoData.map((item, index) => (
-															<Survey2024ResultCard
-																key={index}
-																cardData={item}
-															/>
-														))}
-													</Accordion.Panel>
-												</Accordion.Item>
-											</Accordion>
-											<Accordion>
-												<Accordion.Item value="network-cards">
-													<AccordionControl>Rede</AccordionControl>
-													<Accordion.Panel>
-														{allNetworkData.map((item, index) => (
-															<Survey2024ResultCard
-																key={index}
-																cardData={item}
-															/>
-														))}
-													</Accordion.Panel>
-												</Accordion.Item>
-											</Accordion>
-											<Accordion>
-												<Accordion.Item value="stops-cards">
-													<AccordionControl>Paragens</AccordionControl>
-													<Accordion.Panel>
-														{allStopsData.map((item, index) => (
-															<Survey2024ResultCard
-																key={index}
-																cardData={item}
-															/>
-														))}
-													</Accordion.Panel>
-												</Accordion.Item>
-											</Accordion>
-											<Accordion>
-												<Accordion.Item value="bus-cards">
-													<AccordionControl>Frota</AccordionControl>
-													<Accordion.Panel>
-														{allBusData.map((item, index) => (
-															<Survey2024ResultCard
-																key={index}
-																cardData={item}
-															/>
-														))}
-													</Accordion.Panel>
-												</Accordion.Item>
-											</Accordion>
-											<Accordion>
-												<Accordion.Item value="support-cards">
-													<AccordionControl>Suporte</AccordionControl>
-													<Accordion.Panel>
-														{allSupportData.map((item, index) => (
-															<Survey2024ResultCard
-																key={index}
-																cardData={item}
-															/>
-														))}
-													</Accordion.Panel>
-												</Accordion.Item>
-											</Accordion>
-										</>
+										allAccordions.map(accordion => (
+											renderAccordion(accordion)
+										))
 									)}
-
 							</div>
 						</Accordion.Panel>
 					</Accordion.Item>
