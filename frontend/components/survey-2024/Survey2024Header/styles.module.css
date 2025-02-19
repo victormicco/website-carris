@@ -20,15 +20,11 @@
 }
 
 .anchorButtonsContainer{
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    width: max-content;
+    margin: 0 auto;
    
 }
 

@@ -1528,13 +1528,25 @@
 		}
 	},
 	"survey-2024": {
+		"Survey2024AboutCard": {
+			"confidence_interval": "confidence interval",
+			"days_description": "work days, saturdays and sundays",
+			"days_title": "Days",
+			"details_title": "Details",
+			"error_margin": "error margin",
+			"hours_description": "between 6AM and 4AM",
+			"hours_title": "Hours",
+			"months_description": "from March until June 2024",
+			"months_title": "Months"
+
+		},
 		"Survey2024Header": {
 			"AnchorAboutSurvey": "About the Survey",
 			"AnchorAboutSurveyTitle": "About the Survey",
 			"AnchorIndex": "Recomendation Index",
 			"AnchorPassengerCaracter": "Passanger Caracter",
 			"AnchorResults": "Results",
-			"DownloadButton": "Download Relatório",
+			"DownloadButton": "Download Report",
 			"title": "Passenger Satisfaction Survey 2024"
 
 		},
@@ -1558,6 +1570,7 @@
 		"Survey2024ResultsToolbar": {
 			"by_avaliation": "Filter by Avaliation",
 			"by_category": "Filter by Category",
+			"confidence_interval": "Filter by Avaliation",
 			"searchInput": "Search result...",
 			"subheading": "Public Information"
 		}

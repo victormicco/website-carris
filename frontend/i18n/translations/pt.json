@@ -1529,6 +1529,18 @@
 		}
 	},
 	"survey-2024": {
+		"Survey2024AboutCard": {
+			"confidence_interval": "intervalo de confiança",
+			"days_description": "dias úteis, sábados e domingos",
+			"days_title": "Dias",
+			"details_title": "Detalhes",
+			"error_margin": "margem de erro",
+			"hours_description": "ente as 6h e 4h da manhã",
+			"hours_title": "Horas",
+			"months_description": "de março a junho 2024",
+			"months_title": "Meses"
+
+		},
 		"Survey2024Header": {
 			"AnchorAboutSurvey": "Sobre o Inquérito",
 			"AnchorAboutSurveyTitle": "Sobre o Inquérito",

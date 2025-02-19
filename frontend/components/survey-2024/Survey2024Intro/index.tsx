@@ -12,7 +12,7 @@ import styles from './styles.module.css';
 export function Survey2024Intro() {
 	return (
 		<Surface forceOverflow>
-			<Image alt="Review 2024" className={styles.image} src="/assets/survey-2024/images/survey-2024-logo.png" />
+			<Image alt="Review 2024" className={styles.image} src="/assets/survey-2024/images/AF _ Inquérito _ Banner _ Small.png" />
 		</Surface>
 	);
 }

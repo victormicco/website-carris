@@ -88,37 +88,4 @@ export const allAboutCardsData: Survery2024AboutCardSchema[] = [
 		},
 		stat_level: 1,
 	},
-
-	{
-		_id: 'Total_Trust_1',
-		colors: {
-			border: '#BEBEC8',
-			primary: '#FAFAFA',
-		},
-		content: {
-			legend: 'Intervalo de Confiança',
-			lottie_src: '',
-
-		},
-		header: {
-			value: '95,5%',
-		},
-		stat_level: 2,
-	},
-	{
-		_id: 'Total_Trust_2',
-		colors: {
-			border: '#BEBEC8',
-			primary: '#FAFAFA',
-		},
-		content: {
-			legend: 'Margem de Erro',
-			lottie_src: '',
-
-		},
-		header: {
-			value: '1,80%',
-		},
-		stat_level: 2,
-	},
 ];

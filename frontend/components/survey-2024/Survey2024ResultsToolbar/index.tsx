@@ -28,6 +28,7 @@ export function Survey2024ResultsToolbar({ handleSearch }) {
 		{ label: 'Autocarros', value: 'info_bus' },
 		{ label: 'Suporte', value: 'info_support' },
 	];
+
 	//
 
 	//
