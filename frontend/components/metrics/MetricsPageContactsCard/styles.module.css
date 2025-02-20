@@ -127,9 +127,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	padding: 15px 20px;
+	padding: 18px;
 	background-color: var(--color-system-background-300);
 	border-radius: 18px;
+	height: 120px;
 }
 
 .contentNumberValue {
@@ -210,3 +211,26 @@
 }
 
 /* * */
+/* MINI CARD CONTAINER */
+.miniCardContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: flex-end;
+	filter: drop-shadow(-6px 0px 0px #0000000D);
+}
+
+.miniCardContainer > :nth-child(1) {
+	background-color: #FFDD0033;
+	height: 65%;
+}
+
+.miniCardContainer > :nth-child(2) {
+	background-color: #FFDD0066;
+	height: 85%;
+}
+
+.miniCardContainer > :nth-child(3) {
+	background-color: #FFDD00;
+	height: 100%;
+	margin-right: 10px; /* Add margin to prevent clipping */
+}

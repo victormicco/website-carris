@@ -22,6 +22,9 @@ export function MetricsPageContacts() {
 		<Surface>
 			<div id="contactsMetrics">
 				<Section heading={t('heading')} withPadding="desktop" withGap>
+					<div className={styles.description}>
+						<p>{t('text1')} </p>
+					</div>
 					<div className={styles.container}>
 						<MetricsContactsPage2024CardGroup groupId="passageiros" />
 					</div>

@@ -3,6 +3,7 @@
 /* * */
 
 import { ContactMetrics2024CardSchema } from '@/components/metrics/MetricsPageContacts/_data/cards';
+import { IconDotsVertical, IconGripVertical, IconInfoCircleFilled, IconMoodAngry } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useQueryState } from 'nuqs';
 import { useEffect, useState } from 'react';
@@ -87,8 +88,22 @@ export function MetricsPageContactsCard({ cardData, isFirstChild, isLastChild }:
 						<p className={styles.contentNumberLegend}>{cardData.content.number_legend}</p>
 					</div>
 
-					<p className={styles.contentTitle}>{cardData.content?.title}</p>
-					<p className={styles.contentDescription} dangerouslySetInnerHTML={{ __html: cardData.content?.description?.replace(/\n/g, '<br />') || '' }} />
+					<div className={styles.miniCardContainer}>
+						<div className={styles.contentNumber}>
+							<span><IconInfoCircleFilled size={30} /></span>
+							<p className={styles.contentNumberValue}>teste1</p>
+						</div>
+
+						<div className={styles.contentNumber}>
+							<span><IconMoodAngry size={40} /></span>
+							<p className={styles.contentNumberValue}>teste2</p>
+						</div>
+
+						<div className={styles.contentNumber}>
+							<span><IconGripVertical size={50} /></span>
+							<p className={styles.contentNumberValue}>teste3</p>
+						</div>
+					</div>
 
 					<div className={styles.contentNumber}>
 						<p className={styles.contentNumberValue}>{cardData.content.number_value}</p>
