@@ -1,5 +1,6 @@
 'use client';
 
+import Button from '@/components/common/Button';
 /* * */
 
 import { MapView } from '@/components/map/MapView';
@@ -12,6 +13,7 @@ import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import getOperationalDay from '@/utils/operation';
 import { Routes } from '@/utils/routes';
 import { Pattern, Shape } from '@carrismetropolitana/api-types/network';
+import { IconX } from '@tabler/icons-react';
 import { useEffect, useMemo, useState } from 'react';
 
 /* * */
@@ -115,8 +117,19 @@ export function VehiclesListMap() {
 	//
 	// E. Render components
 
+	const handleClearSelection = () => {
+		setActivePatternData(undefined);
+		setActiveShapeData(undefined);
+		vehiclesListContext.actions.updateSelectedVehicle(null);
+	};
+
 	return (
 		<MapView id="vehiclesListMap" interactiveLayerIds={[MapViewStyleVehiclesInteractiveLayerId]} onClick={handleLayerClick}>
+			{vehiclesListContext.data.selected && (
+				<div style={{ marginLeft: '20px', marginTop: '20px' }}>
+					<Button icon={<IconX size={18} />} label="Limpar seleção" onClick={handleClearSelection} />
+				</div>
+			)}
 			<MapViewStyleVehicles showCounter="always" vehiclesData={activeVehiclesGeoJsonFC} />
 			<MapViewStylePath presentBeforeId={MapViewStyleVehiclesPrimaryLayerId} shapeData={activePathShapeGeoJson} waypointsData={activePathWaypointsGeoJson} />
 		</MapView>

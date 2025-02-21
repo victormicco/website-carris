@@ -14,18 +14,33 @@ export function ContactsCardCenterRow({ cardData }: Props) {
 	return (
 		<div className={styles.miniCardContainer}>
 			<div className={styles.miniCardcontentNumber}>
-				<span><IconInfoCircleFilled size={30} /></span>
-				<p className={styles.miniCardcontentNumberValue}>teste1</p>
+				<div className={styles.leftSection}>
+					<span><IconInfoCircleFilled size={30} /></span>
+				</div>
+				<div className={styles.rightSection}>
+					<p className={styles.miniCardContentNumberValue}>25%</p>
+					<p className={styles.miniCardContentNumberLegend}>Pedidos de Informação</p>
+				</div>
 			</div>
 
 			<div className={styles.miniCardcontentNumber}>
-				<span><IconMoodAngry size={40} /></span>
-				<p className={styles.miniCardcontentNumberValue}>teste2</p>
+				<div className={styles.leftSection}>
+					<span><IconMoodAngry size={40} /></span>
+				</div>
+				<div className={styles.rightSection}>
+					<p className={styles.miniCardContentNumberValue}>30%</p>
+					<p className={styles.miniCardContentNumberLegend}>Reclamações</p>
+				</div>
 			</div>
 
 			<div className={styles.miniCardcontentNumber}>
-				<span><IconGripVertical size={50} /></span>
-				<p className={styles.miniCardcontentNumberValue}>teste3</p>
+				<div className={styles.leftSection}>
+					<span><IconGripVertical size={50} /></span>
+				</div>
+				<div className={styles.rightSection}>
+					<p className={styles.miniCardContentNumberValue}>35%</p>
+					<p className={styles.miniCardContentNumberLegend}>Outro</p>
+				</div>
 			</div>
 		</div>
 	);

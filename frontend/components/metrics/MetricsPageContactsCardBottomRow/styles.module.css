@@ -14,7 +14,7 @@
 	flex-direction: column;
 	display: flex;	
 	align-items: flex-end;
-
+	padding: 20px;
 }
 
 /* * */
@@ -64,4 +64,16 @@
 .lottie{
 	width: 150px;
 	height: 150px;
+	
+}
+
+/* * */
+/* MEDIA QUERYS */
+
+@media (width <= 650px) {
+	.lottie{
+		width: 80px;
+		height: 80px;
+		align-self: center;
+	}
 }

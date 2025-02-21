@@ -5,7 +5,7 @@
 	flex-direction: column;
 	max-width: 33%;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: center;
 }
 
 .rightSectionTop {
@@ -38,7 +38,7 @@
 	background-color: var(--color-system-background-300);
 	border-radius: 18px;
 	height: 120px;
-	align-items: center;
+	align-items: flex-end;
 }
 
 .contentNumberValue {
@@ -61,4 +61,15 @@
 .lottie{
 	width: 150px;
 	height: 150px;
+}
+
+/* * */
+/* MEDIA QUERYS */
+
+@media (width <= 650px) {
+	.lottie{
+		width: 80px;
+		height: 80px;
+		align-self: center;
+	}
 }

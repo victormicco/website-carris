@@ -49,7 +49,7 @@ export const allCardsData: ContactMetrics2024CardSchema[] = [
 		},
 		header: {
 			number: '174M',
-			title: 'Total de Participações na AML',
+			title: 'Total de Participações na amL',
 		},
 	},
 
