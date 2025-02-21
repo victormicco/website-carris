@@ -49,4 +49,5 @@
 
 .closeButton {
 	margin-left: auto;
+	color: var(--color-system-text-300);
 }
