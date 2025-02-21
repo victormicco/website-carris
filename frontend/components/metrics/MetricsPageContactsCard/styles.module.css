@@ -125,12 +125,25 @@
 
 .contentNumber {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: flex-start;
 	gap: 5px;
-	padding: 18px;
+	padding: 20px;
 	background-color: var(--color-system-background-300);
 	border-radius: 18px;
 	height: 120px;
+	align-items: center;
+}
+.contentNumberTop {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 25px;
+	padding: 20px;
+	background-color: var(--color-system-background-300);
+	border-radius: 18px;
+	height: 120px;
+	align-items: center;
 }
 
 .contentNumberValue {
@@ -140,8 +153,9 @@
 	color: var(--color-text);
 }
 
+
 .contentNumberLegend {
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: var(--font-weight-semibold);
 	color: var(--color-text);
 	opacity: 0.8;
@@ -163,54 +177,42 @@
 }
 
 /* * */
-/* SHARE BUTTON */
+/* CONTENT SECTIONS */
 
-.shareButton {
+.leftSectionTop {
+	flex: 1;
+	flex-direction: column;
+	max-width: 33%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 50px;
-	height: 50px;
-	margin: auto;
-	color: var(--color-text);
-	cursor: pointer;
-	background-color: var(--color-primary);
-	border-radius: 999px;
-	transition: all 200ms ease;
+	justify-content: flex-start;
 }
 
-.shareButton:hover {
-	box-shadow: 0 0 15px 0 rgb(0 0 0 / 25%);
-	opacity: 0.9;
+.rightSectionTop {
+	flex: 2;
+	display: flex;	
+	flex-direction: column;
+	align-items: flex-end;
+
 }
 
-.urlTitle {
-	font-size: 18px;
-	font-weight: var(--font-weight-semibold);
-	color: var(--color-system-text-100);
+.leftSectionBottom {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
 }
 
-.urlCopy {
-	width: 100%;
-	padding: 10px;
-	font-family: 'Courier New', Courier, monospace !important;
-	font-size: 16px;
-	font-weight: var(--font-weight-semibold);
-	color: var(--color-system-text-100);
-	text-align: center;
-	cursor: text;
-	background-color: var(--color-system-background-200);
-	border: 1px solid var(--color-system-border-100);
-	border-radius: 5px;
-	transition: all 200ms ease;
+.rightSectionBottom {
+	flex: 1;
+	max-width: 33%;
+	flex-direction: column;
+	display: flex;	
+	align-items: flex-end;
+
 }
 
-.urlCopy:hover {
-	border-color: var(--color-system-border-200);
-	box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
-}
-
-/* * */
+/* * *
 /* MINI CARD CONTAINER */
 .miniCardContainer {
 	display: grid;
@@ -232,5 +234,11 @@
 .miniCardContainer > :nth-child(3) {
 	background-color: #FFDD00;
 	height: 100%;
-	margin-right: 10px; /* Add margin to prevent clipping */
+	margin-right: 10px;
+}
+
+/* LOTTIE PLAYER */
+.lottie{
+	width: 150px;
+	height: 150px;
 }
