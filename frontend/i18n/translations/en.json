@@ -824,7 +824,7 @@
 		},
 		"LinesDetailPath": {
 			"no_data": "Select a Path / Destination",
-			"summary": "Line <lineNumber>{line_number}</lineNumber> with destiny to <destinationName>{destination_name}</destinationName> on <dayName>{day_name, date, long}</dayName>. <changeDay>Change day ›</changeDay>"
+			"summary": "Line <lineNumber>{line_number}</lineNumber> headed towards <destinationName>{destination_name}</destinationName> on <dayName>{day_name, date, long}</dayName>. <changeDay>Change day ›</changeDay>"
 		},
 		"LinesListToolbar": {
 			"by_current_view": {
