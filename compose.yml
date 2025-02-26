@@ -63,7 +63,7 @@ services:
   frontend:
     image: ghcr.io/carrismetropolitana/website-frontend:production
     restart: unless-stopped
-    mem_limit: 3g
+    mem_limit: 6g
     logging:
       options:
         max-size: '1m'
