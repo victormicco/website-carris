@@ -205,11 +205,9 @@ export const StopsListContextProvider = ({ children }) => {
 			console.error('Worker not initialized');
 			return;
 		}
-
 		workerRef.current.onerror = (error) => {
 			console.error('Worker error:', error);
 		};
-
 		workerRef.current.postMessage({ filteredStops: filteredStops, type: 'stop_map_geojson' });
 	};
 
