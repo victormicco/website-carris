@@ -238,7 +238,6 @@ export const StopsListContextProvider = ({ children }) => {
 		}
 		if (!dataAllStopsFeatureCollection || []) {
 			setStopsGeoJsonFeatureCollection(dataFilteredState);
-			console.log(dataFilteredGeojsonFCState);
 		}
 	}, [dataFilteredState]);
 	//

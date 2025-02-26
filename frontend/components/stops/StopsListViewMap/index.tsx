@@ -3,13 +3,12 @@
 import { Surface } from '@/components/layout/Surface';
 import { MapView } from '@/components/map/MapView';
 import { MapViewStyleStops, MapViewStyleStopsInteractiveLayerId } from '@/components/map/MapViewStyleStops';
-import { transformStopDataIntoGeoJsonFeature } from '@/contexts/Stops.context';
 import { useStopsListContext } from '@/contexts/StopsList.context';
-import { centerMap, getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
+import { centerMap } from '@/utils/map.utils';
 import * as turf from '@turf/turf';
 import { useMap } from '@vis.gl/react-maplibre';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 /* * */
 
@@ -25,19 +24,7 @@ export function StopsListViewMap() {
 	const allStopsFeatureCollection = stopsListContext.data.all_geojson_feature_collection;
 
 	//
-	// B. Transform data
-
-	// const allStopsFeatureCollection = useMemo(() => {
-	// 	const collection = getBaseGeoJsonFeatureCollection();
-	// 	stopsListContext.data.filtered.forEach((stop) => {
-	// 		const stopFC = transformStopDataIntoGeoJsonFeature(stop);
-	// 		if (stopFC) collection.features.push(stopFC);
-	// 	});
-	// 	return collection;
-	// }, [stopsListContext.data.filtered]);
-
-	//
-	// C. Handle Actions
+	// B. Handle Actions
 
 	useEffect(() => {
 		// Exit early if there are no stops or map
@@ -47,7 +34,6 @@ export function StopsListViewMap() {
 			centerMap(stopsListMap, allStopsFeatureCollection.features);
 			return;
 		}
-		console.log(allStopsFeatureCollection);
 		// When there are search filters, center the map on the cluster with the most points
 		const clusterPoints = turf.clustersKmeans(allStopsFeatureCollection, { mutate: true, numberOfClusters: 2 });
 		const clusterPointsCount = clusterPoints.features.reduce((acc, feature) => {
@@ -77,7 +63,7 @@ export function StopsListViewMap() {
 	}
 
 	//
-	// D. Render components
+	// C. Render components
 
 	return (
 		<Surface variant="persistent" forceOverflow>
