@@ -81,11 +81,9 @@ export const AnalyticsContextProvider = ({ children }) => {
 				const wrappedAmpli = new Proxy(ampli, {
 					// Target is ampli and props is the event name
 					get(target, prop) {
-						const originalMethod = target[prop];
-						if (typeof originalMethod === 'function') {
-							return (eventProps = {}) => originalMethod({ ...defaultProps, ...eventProps });
+						if (typeof target[prop] === 'function') {
+							return (eventProps = {}) => target[prop]({ ...defaultProps, ...eventProps });
 						}
-						return originalMethod;
 					},
 				});
 
