@@ -562,6 +562,9 @@
 			"hours": "h",
 			"minutes": "min"
 		},
+		"ScrollToTopButton": {
+			"label": "Back to Top"
+		},
 		"SelectOperationalDay": {
 			"today": "Today",
 			"tomorrow": "Tomorrow"

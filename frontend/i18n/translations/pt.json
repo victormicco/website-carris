@@ -562,6 +562,9 @@
 			"hours": "h",
 			"minutes": "min"
 		},
+		"ScrollToTopButton": {
+			"label": "Início da Página"
+		},
 		"SelectOperationalDay": {
 			"today": "Hoje",
 			"tomorrow": "Amanhã"
