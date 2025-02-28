@@ -79,14 +79,13 @@ export function Survey2024LevelResults() {
 
 		if (avaliationValue) {
 			const [min, max] = JSON.parse(avaliationValue);
+			const parsedMin = parseFloat(min.toFixed(2).replace(',', '.'));
+			const parsedMax = parseFloat(max.toFixed(2).replace(',', '.'));
 
 			filteredResults = filteredResults.filter((item) => {
-				const value = parseInt(item.header.value);
-				console.log(value);
-				return value >= min && value <= max;
+				const value = parseFloat(item.header.value.replace(',', '.'));
+				return value >= parsedMin && value <= parsedMax;
 			});
-
-			console.log(filteredResults);
 		}
 
 		setFilteredData(filteredResults);

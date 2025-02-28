@@ -1,20 +1,24 @@
 /* SLIDER */
 
 .custom_slider_track::before {
-    background: red;
+    background: linear-gradient(90deg, #C61D23, #ff871a, #ffcc00, #accc27, #33b71c);
+    opacity: 1
+    /*background: linear-gradient(90deg, #C61D23 25%, #ff871a 50%, #ffcc00 75%, #accc27 90%, #33b71c 100%)*/
   }
   
   .custom_slider_bar {
-    background: transparent !important;
+    background: #fff; 
+    opacity: 0.8;
   }
   
   .custom_slider_thumb {
     border-color: #000000 !important;
+    border-width: 2px;
   }
   
   .custom_slider_mark {
     border-color: #000000 !important;
-    background-color: white;
+    background-color: #fffff;
   }
   
   .custom_slider_root {

@@ -93,11 +93,13 @@ export function Survey2024ResultsToolbar({ handleSearch }) {
 			/>
 			<div>
 				<p>{t('by_avaliation')}</p>
+
 				<RangeSlider
 					defaultValue={[0, 10]}
 					marks={marks}
 					max={10}
 					min={0}
+					minRange={0.1}
 					onChange={_value => handleAvaliationValue(_value)}
 					step={0.1}
 					value={avaliationValue ? JSON.parse(avaliationValue) : [0, 10]}
