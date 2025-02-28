@@ -42,8 +42,6 @@ self.addEventListener('message', (event: MessageEvent<ExtendStopsWorkerData>) =>
 	//
 	// Post message back to the main thread
 
-	console.log(extendedStopsData);
-
 	self.postMessage(extendedStopsData);
 
 	//

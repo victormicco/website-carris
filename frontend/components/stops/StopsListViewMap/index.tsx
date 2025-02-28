@@ -21,21 +21,20 @@ export function StopsListViewMap() {
 	const { stopsListMap } = useMap();
 	const router = useRouter();
 	const stopsListContext = useStopsListContext();
-	const allStopsFeatureCollection = stopsListContext.data.all_geojson_feature_collection;
 
 	//
 	// B. Handle Actions
 
 	useEffect(() => {
 		// Exit early if there are no stops or map
-		if (!allStopsFeatureCollection || !allStopsFeatureCollection.features.length || !stopsListMap) return;
+		if (!stopsListContext.data.filtered_geojson_fc || !stopsListContext.data.filtered_geojson_fc.features.length || !stopsListMap) return;
 		// When there are no search filters, center the map on all stops
 		if (!stopsListContext.filters.by_search.length) {
-			centerMap(stopsListMap, allStopsFeatureCollection.features);
+			centerMap(stopsListMap, stopsListContext.data.filtered_geojson_fc.features);
 			return;
 		}
 		// When there are search filters, center the map on the cluster with the most points
-		const clusterPoints = turf.clustersKmeans(allStopsFeatureCollection, { mutate: true, numberOfClusters: 2 });
+		const clusterPoints = turf.clustersKmeans(stopsListContext.data.filtered_geojson_fc, { mutate: true, numberOfClusters: 2 });
 		const clusterPointsCount = clusterPoints.features.reduce((acc, feature) => {
 			if (typeof feature.properties.cluster !== 'number') return acc;
 			const clusterId = feature.properties.cluster;
@@ -48,7 +47,7 @@ export function StopsListViewMap() {
 		console.log('filteredClusterPoints', filteredClusterPoints);
 		centerMap(stopsListMap, filteredClusterPoints);
 		//
-	}, [allStopsFeatureCollection, stopsListMap]);
+	}, [stopsListContext.data.filtered_geojson_fc, stopsListMap]);
 
 	function handleLayerClick(event) {
 		if (!stopsListMap) return;
@@ -73,7 +72,7 @@ export function StopsListViewMap() {
 					interactiveLayerIds={[MapViewStyleStopsInteractiveLayerId]}
 					onClick={handleLayerClick}
 				>
-					<MapViewStyleStops stopsData={allStopsFeatureCollection} />
+					<MapViewStyleStops stopsData={stopsListContext.data.filtered_geojson_fc} />
 				</MapView>
 			</div>
 		</Surface>
