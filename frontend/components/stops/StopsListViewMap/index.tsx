@@ -23,7 +23,7 @@ export function StopsListViewMap() {
 	const stopsListContext = useStopsListContext();
 
 	//
-	// B. Handle Actions
+	// B. Handle actions
 
 	useEffect(() => {
 		// Exit early if there are no stops or map
