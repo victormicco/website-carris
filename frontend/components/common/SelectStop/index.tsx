@@ -5,7 +5,6 @@
 import type { Stop } from '@carrismetropolitana/api-types/network';
 
 import { StopDisplay } from '@/components/stops/StopDisplay';
-import { useLocationsContext } from '@/contexts/Locations.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import { useStopsContext } from '@/contexts/Stops.context';
 import { createDocCollection } from '@/hooks/useOtherSearch';
@@ -74,9 +73,11 @@ export function SelectStop({ data = [], label, nothingFound, onSelectStopId, pla
 	//
 	// C. Search
 
-	const allStopsDataFilteredBySearchQuery = useMemo(
-		() => (debouncedSearchQuery ? search(debouncedSearchQuery) : data).slice(0, 100),
-		[debouncedSearchQuery, search, data]);
+	const allStopsDataFilteredBySearchQuery = useMemo(() => {
+		const filteredData = debouncedSearchQuery ? search(debouncedSearchQuery) : data;
+		return filteredData.slice(0, 100);
+	}, [debouncedSearchQuery, search, data]);
+
 	//
 	// D. Handle actions
 
