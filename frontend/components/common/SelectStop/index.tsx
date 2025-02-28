@@ -2,12 +2,11 @@
 
 /* * */
 
-import type { Stop } from '@carrismetropolitana/api-types/network';
-
 import { StopDisplay } from '@/components/stops/StopDisplay';
 import { useProfileContext } from '@/contexts/Profile.context';
 import { useStopsContext } from '@/contexts/Stops.context';
 import { createDocCollection } from '@/hooks/useOtherSearch';
+import { type Stop } from '@carrismetropolitana/api-types/network';
 import { ActionIcon, Combobox, Group, TextInput, useCombobox } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { IconBusStop, IconSelector, IconX } from '@tabler/icons-react';
@@ -50,7 +49,7 @@ export function SelectStop({ data = [], label, nothingFound, onSelectStopId, pla
 
 	const { search } = useMemo(() => {
 		// Prepare data for search function
-		const preparedSearchCollection = stopsContext.data.parsedStops.map((item) => {
+		const preparedSearchCollection = stopsContext.data.stops.map((item) => {
 			const isFavorite = profileContext.data.favorite_stops?.includes(item.id) ? true : false;
 
 			return {
