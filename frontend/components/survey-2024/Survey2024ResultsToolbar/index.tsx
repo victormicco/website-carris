@@ -95,6 +95,7 @@ export function Survey2024ResultsToolbar({ handleSearch }) {
 				<p>{t('by_avaliation')}</p>
 
 				<RangeSlider
+					color="#ffdd01"
 					defaultValue={[0, 10]}
 					marks={marks}
 					max={10}
@@ -105,11 +106,8 @@ export function Survey2024ResultsToolbar({ handleSearch }) {
 					value={avaliationValue ? JSON.parse(avaliationValue) : [0, 10]}
 					w="100%"
 					classNames={{
-						bar: styles.custom_slider_bar,
 						mark: styles.custom_slider_mark,
-						root: styles.custom_slider_root,
 						thumb: styles.custom_slider_thumb,
-						track: styles.custom_slider_track,
 					}}
 				/>
 			</div>
