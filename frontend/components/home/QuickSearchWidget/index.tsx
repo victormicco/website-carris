@@ -11,7 +11,6 @@ import { SegmentedControl } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import useSWR from 'swr';
 
 import styles from './styles.module.css';
 
