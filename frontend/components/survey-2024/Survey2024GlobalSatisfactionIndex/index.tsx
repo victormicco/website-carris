@@ -28,16 +28,16 @@ export function Survey2024GlobalSatisfactionIndex() {
 						<div className={styles.squircle}>
 							<div className={styles.circledNumber}>
 								<div className={styles.blurredCircle} />
-								<p className={styles.headerNumber}>7.2</p>
+								<p className={styles.headerNumber}>{t('card_value')}</p>
 							</div>
 						</div>
 					</div>
 					<div className={styles.rightColumn}>
-						<p className={styles.headerTitle}>Selo de aprovação dos passageiros </p>
+						<p className={styles.headerTitle}>{t('card_heading')}</p>
 					</div>
 				</div>
 				<div className={styles.globalSatisfactionText}>
-					<p>O Índice de Satisfação Global reflete a opinião dos milhares de passageiros que a Carris Metropolitana transporta, sobre o serviço prestado e resulta da avaliação dos diferentes temas apresentados anteriormente.</p>
+					<p>{t('card_legend')}</p>
 				</div>
 			</div>
 		</div>

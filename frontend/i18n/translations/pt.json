@@ -1544,6 +1544,16 @@
 			"months_title": "Meses"
 
 		},
+		"Survey2024CriteriaCard": {
+			"firstRowText": "classes de procura de linhas (de alta a baixa procura)",
+			"firstRowValue": "4",
+			"fourthRowText": "A distribuição equilibrada das entrevistas asseguraram a representatividade da amostra.",
+			"header": "Com que critérios?",
+			"secondRowText": "tipos de dia (úteis e não úteis)",
+			"secondRowValue": "2",
+			"thirdRowText": "períodos horários",
+			"thirdRowValue": "6"
+		},
 		"Survey2024Header": {
 			"AnchorAboutSurvey": "Sobre o Inquérito",
 			"AnchorAboutSurveyTitle": "Ficha técnica",
@@ -1551,8 +1561,22 @@
 			"AnchorPassengerCaracter": "Caracterização do Passageiro",
 			"AnchorResults": "Resultados",
 			"DownloadButton": "Descarregar Relatório",
+			"heading": "índice de Satisfação Global",
+			"legend": "A Carris Metropolitana ganhou o selo de aprovação dos passageiros",
 			"subtitle": "Selecione as opções abaixo para navegar pela página.",
-			"title": "Acesso rápido"
+			"title": "Acesso rápido",
+			"value": "7.2"
+		},
+
+		"Survey2024PrecisionCard": {
+			"firstRowText": "intervalo de confiança",
+			"firstRowValue": "99,5%",
+			"fourthRowText": "Estes valores refletem a precisão e fiabilidade dos resultados obtidos, uma vez que garantem que, se o inquérito fosse repetido múltiplas vezes nas mesmas condições, os resultados poderiam variar uma média de 1,8% em 99,5% das ocasiões. ",
+			"header": "Com que critérios?",
+			"secondRowText": "margem de erro",
+			"secondRowValue": "1,8%",
+			"thirdRowText": "classes amostrais",
+			"thirdRowValue": "192"
 		},
 		"Survey2024PsgrCharacterCard": {
 			"age_heading": "Idade",
@@ -1564,6 +1588,9 @@
 			"subheading": "Os utilizadores da Carris Metropolitana são, na sua maioria, mulheres, jovens (idades entre 14 e 34 anos), trabalhadores a tempo inteiro e com grau de instrução secundário."
 		},
 		"Survey2024RecomendationIndex": {
+			"card_heading": "Selo de aprovação dos passageiros",
+			"card_legend": "O Índice de Satisfação Global reflete a opinião dos milhares de passageiros que a Carris Metropolitana transporta, sobre o serviço prestado e resulta da avaliação dos diferentes temas apresentados anteriormente.",
+			"card_value": "7.2",
 			"recomendationIdexDescription": "\"Até que ponto recomendaria o serviço da Carris Metropolitana a um amigo ou familiar?\"",
 			"title": "Índice Global de Satisfação"
 		},

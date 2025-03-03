@@ -37,19 +37,19 @@ export function Survey2024Header() {
 			</Section>
 			<div className={styles.cardContainer}>
 				<div className={styles.globalSatisfactionText}>
-					<p>Índice de Satisfação Global</p>
+					<p>{t('heading')}</p>
 				</div>
 				<div className={styles.header}>
 					<div className={styles.leftColumn}>
 						<div className={styles.squircle}>
 							<div className={styles.circledNumber}>
 								<div className={styles.blurredCircle} />
-								<p className={styles.headerNumber}>7.2</p>
+								<p className={styles.headerNumber}>{t('value')}</p>
 							</div>
 						</div>
 					</div>
 					<div className={styles.rightColumn}>
-						<p className={styles.headerTitle}>A Carris Metropolitana ganhou o selo de aprovação dos passageiros</p>
+						<p className={styles.headerTitle}>{t('legend')}</p>
 					</div>
 				</div>
 

@@ -10,38 +10,29 @@ export function Survey2024AboutCardCriteria() {
 
 	//
 	// A. Setup Variables
-	const t = useTranslations('survey-2024');
+	const t = useTranslations('survey-2024.Survey2024CriteriaCard');
 	//
 	// B. Render Components
 	return (
 		<div>
 			<div className={styles.cardMainWrapperShadow}>
-				<p className={styles.headerTitle}>Com que critérios?</p>
+				<p className={styles.headerTitle}>{t('header')}</p>
 			</div>
 			<div className={styles.cardMainWrapper}>
 				<div className={styles.cardContent}>
 					<div className={styles.firstRow}>
-						<p>4</p>
-						<p>classes de procura de linhas
-							(de alta a baixa procura)
-						</p>
+						<p>{t('firstRowValue')}</p>
+						<p>{t('firstRowText')}</p>
 					</div>
 					<div className={styles.secondRow}>
-						<p>2</p>
-						<p>tipos de dia
-							(úteis e não úteis)
-						</p>
+						<p>{t('secondRowValue')}</p>
+						<p>{t('secondRowText')}</p>
 					</div>
 					<div className={styles.thirdRow}>
-						<p>6</p>
-						<p>períodos
-							horários
-						</p>
+						<p>{t('thirdRowValue')}</p>
+						<p>{t('thirdRowText')}</p>
 					</div>
-					<p className={styles.fourthRow}>
-						A distribuição equilibrada
-						das entrevistas asseguraram a representatividade da amostra.
-					</p>
+					<p>{t('fourthRowText')}</p>
 				</div>
 			</div>
 		</div>
