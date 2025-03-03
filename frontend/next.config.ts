@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
 			//
 			{ destination: '/news', permanent: true, source: '/noticias' },
 			//
-			{ destination: '/survey-2024', permanent: true, source: '/inquerito-2024' },
+			{ destination: '/survey', permanent: true, source: '/inquerito' },
 			//
 			{ destination: '/planner', permanent: true, source: '/planeador' },
 			//

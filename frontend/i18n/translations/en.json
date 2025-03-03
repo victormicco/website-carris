@@ -1530,8 +1530,8 @@
 			"subheading": "Available to all passengers, navegante® stores are dedicated to providing information about the Carris Metropolitana network and ticketing, enabling queries to be clarified, the issuance of navegante® cards and membership to profiles and discounts. It is also possible to load titles at PayShop® service points within the navegante® agent network."
 		}
 	},
-	"survey-2024": {
-		"Survey2024AboutCard": {
+	"survey": {
+		"SurveyAboutCard": {
 			"confidence_interval": "confidence interval",
 			"days_description": "work days, saturdays and sundays",
 			"days_title": "Days",
@@ -1543,7 +1543,7 @@
 			"months_title": "Months"
 
 		},
-		"Survey2024CriteriaCard": {
+		"SurveyCriteriaCard": {
 			"firstRowText": "classes de procura de linhas (de alta a baixa procura)",
 			"firstRowValue": "4",
 			"fourthRowText": "A distribuição equilibrada das entrevistas asseguraram a representatividade da amostra.",
@@ -1553,7 +1553,7 @@
 			"thirdRowText": "períodos horários",
 			"thirdRowValue": "6"
 		},
-		"Survey2024Header": {
+		"SurveyHeader": {
 			"AnchorAboutSurvey": "Tecnhical Information",
 			"AnchorAboutSurveyTitle": "Techincal Information",
 			"AnchorIndex": "Global Satisfaction Index",
@@ -1567,7 +1567,7 @@
 			"value": "7.2"
 
 		},
-		"Survey2024PrecisionCard": {
+		"SurveyPrecisionCard": {
 			"firstRowText": "intervalo de confiança",
 			"firstRowValue": "99,5%",
 			"fourthRowText": "Estes valores refletem a precisão e fiabilidade dos resultados obtidos, uma vez que garantem que, se o inquérito fosse repetido múltiplas vezes nas mesmas condições, os resultados poderiam variar uma média de 1,8% em 99,5% das ocasiões. ",
@@ -1577,7 +1577,7 @@
 			"thirdRowText": "classes amostrais",
 			"thirdRowValue": "192"
 		},
-		"Survey2024PsgrCharacterCard": {
+		"SurveyPsgrCharacterCard": {
 			"age_heading": "Age",
 			"deslocation_type_heading": "Desclocation Type",
 			"gender_heading": "Gender",
@@ -1586,20 +1586,20 @@
 			"occupation_heading": "Occupation",
 			"subheading": "The users of Carris Metropolitana are, at most, women, teenagers (ages between 14 and 34 years old), working full time with some degree of high school education."
 		},
-		"Survey2024RecomendationIndex": {
+		"SurveyRecomendationIndex": {
 			"card_heading": "Selo de aprovação dos passageiros",
 			"card_legend": "O Índice de Satisfação Global reflete a opinião dos milhares de passageiros que a Carris Metropolitana transporta, sobre o serviço prestado e resulta da avaliação dos diferentes temas apresentados anteriormente.",
 			"card_value": "7.2",
 			"recomendationIdexDescription": "\"How likely would you be to recommend the services of Carris Metropolitana to a friend or a member of your family?\"",
 			"title": "Global Satisfaction Index"
 		},
-		"Survey2024ResultsCard": {
+		"SurveyResultsCard": {
 			"footerInfo": "Carris Metropolitana is committed to ensuring clear and accessible communication for all passengers. Combining digital and physical media, information reaches the public in a timely manner, adapting to different habits and levels of technological familiarity. The integration of real-time data into the main mobility platforms and the expansion of Public Information Panels reinforce this strategy. Furthermore, continuous monitoring of the effectiveness of these channels allows you to adjust and improve the information experience on a daily basis.",
 			"heading": "Results",
 			"no_data": "No data available"
 
 		},
-		"Survey2024ResultsToolbar": {
+		"SurveyResultsToolbar": {
 			"by_avaliation": "Filter by Avaliation",
 			"by_category": "Filter by Category",
 			"confidence_interval": "Filter by Avaliation",
