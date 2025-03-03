@@ -562,6 +562,9 @@
 			"hours": "h",
 			"minutes": "min"
 		},
+		"ScrollToTopButton": {
+			"label": "Back to Top"
+		},
 		"SelectOperationalDay": {
 			"today": "Today",
 			"tomorrow": "Tomorrow"
@@ -824,7 +827,7 @@
 		},
 		"LinesDetailPath": {
 			"no_data": "Select a Path / Destination",
-			"summary": "Line <lineNumber>{line_number}</lineNumber> with destiny to <destinationName>{destination_name}</destinationName> on <dayName>{day_name, date, long}</dayName>. <changeDay>Change day ›</changeDay>"
+			"summary": "Line <lineNumber>{line_number}</lineNumber> headed towards <destinationName>{destination_name}</destinationName> on <dayName>{day_name, date, long}</dayName>. <changeDay>Change day ›</changeDay>"
 		},
 		"LinesListToolbar": {
 			"by_current_view": {
@@ -888,7 +891,7 @@
 					"title": "Area 3 | TST"
 				},
 				"44": {
-					"description": "Fill out the Online Form available on the operator's website or send an email to passengers@alsa.com.br with information about the line used, time and description of the object. If possible, include the vehicle number or license plate.",
+					"description": "Fill out the Online Form available on the operator's website or send an email to passageiros@alsa.com with information about the line used, time and description of the object. If possible, include the vehicle number or license plate.",
 					"title": "Area 4 | Alsa Todi"
 				}
 			},

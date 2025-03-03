@@ -30,7 +30,7 @@ export default function Component({ alertId, alertTitle, alt, href, src, target 
 	const analyticsContext = useAnalyticsContext();
 	//
 
-	// B. Handle Actions
+	// B. Handle actions
 	const handleAlertDetailClick = () => {
 		analyticsContext.actions.capture(ampli => ampli.alertClicked({ alert_id: alertId, alert_title: alertTitle || '' }));
 	};

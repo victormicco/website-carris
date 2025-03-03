@@ -27,7 +27,7 @@ export function PlannerCard({ description, imageUrl, title, url }: Props) {
 	const analyticsContext = useAnalyticsContext();
 
 	//
-	// B. Handle Actions
+	// B. Handle actions
 
 	const handlePartnerCardClick = () => {
 		analyticsContext.actions.capture(ampli => ampli.plannerUsed({ planner_clicked: title }));

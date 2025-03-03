@@ -78,12 +78,24 @@ export interface AddFavoriteStopProperties {
 
 export interface AlertClickedProperties {
   "[Amplitude] Page Path"?: any;
+  /**
+   * Id of an Alert
+   */
   alert_id: string;
+  /**
+   * Title of a Alert
+   */
   alert_title: string;
 }
 
 export interface AlertsFilterChangedProperties {
+  /**
+   * Captures a filter type
+   */
   filter_type: string;
+  /**
+   * Stores a filter value
+   */
   filter_value: string;
 }
 
@@ -93,20 +105,38 @@ export interface CaptureAlertsRefererProperties {
 
 export interface CaptureFrontendErrorProperties {
   "[Amplitude] Page Path"?: any;
+  /**
+   * Captures an error date
+   */
   error_date: string;
+  /**
+   * Error text
+   */
   error_title: string;
+  /**
+   * Captures an Error type
+   */
   error_type: string;
 }
 
 export interface CaptureNewsRefererProperties {
+  /**
+   * Captures the Referrer for a page
+   */
   page_referer: string;
 }
 
 export interface ChangeStopsViewTypeProperties {
+  /**
+   * Type of listing data
+   */
   view_type: string;
 }
 
 export interface ClickDebugToggleProperties {
+  /**
+   * Captures if something is enabled
+   */
   is_enabled: string;
 }
 
@@ -122,20 +152,38 @@ export interface ClickLinkProperties {
 }
 
 export interface DatePeriodSelectedProperties {
+  /**
+   * Captures a date value
+   */
   date_value: string;
 }
 
 export interface GithubClickedProperties {
+  /**
+   * Captures a click
+   */
   click: string;
 }
 
 export interface LostAndFoundAreaClickedProperties {
+  /**
+   * Type of contact device
+   */
   action_type: string;
+  /**
+   * Captures a clicked area
+   */
   area_clicked: string;
 }
 
 export interface OpenCardViagem2024Properties {
+  /**
+   * Id of a card
+   */
   card_id: string;
+  /**
+   * Captures a Card Title
+   */
   card_title: string;
 }
 
@@ -148,7 +196,13 @@ export interface OpenGoogleMapsClickedProperties {
    * For example, a value of https://www.amplitude.com means that the element clicked was on this page.
    */
   "[Amplitude] Page URL"?: any;
+  /**
+   * Captures a click
+   */
   click: string;
+  /**
+   * Clicked somekind of contact form
+   */
   click_from: string;
 }
 
@@ -164,6 +218,9 @@ export interface PingProperties {
 }
 
 export interface PlannerUsedProperties {
+  /**
+   * Captures if a planner card has been clicked
+   */
   planner_clicked: string;
 }
 
@@ -187,10 +244,16 @@ export interface RemoveFavoriteStopProperties {
 }
 
 export interface SearchAlertProperties {
+  /**
+   * Captures a Search Value
+   */
   search_value: string;
 }
 
 export interface SearchLineProperties {
+  /**
+   * Captures a Search Value
+   */
   search_value: string;
 }
 
@@ -204,6 +267,9 @@ export interface ShareCardViagem2024Properties {
 }
 
 export interface StopAudioPlayedProperties {
+  /**
+   * Captures when the audio is played
+   */
   audio_played: string;
   /**
    * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
@@ -229,34 +295,6 @@ export interface StopDetailRedirectedProperties {
   stop_id: string;
 }
 
-export interface StopProbeQuestion1Properties {
-  answer: string;
-  answer_date: string;
-  question_id: string;
-  question_title: string;
-}
-
-export interface StopProbeQuestion2Properties {
-  answer: string;
-  answer_date: string;
-  question_id: string;
-  question_title: string;
-}
-
-export interface StopProbeQuestion3Properties {
-  answer: string;
-  answer_date: string;
-  question_id: string;
-  question_title: string;
-}
-
-export interface StopProbeQuestion4Properties {
-  answer: string;
-  answer_date: string;
-  question_id: string;
-  question_title: string;
-}
-
 export interface StopSelectedProperties {
   /**
    * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
@@ -270,31 +308,110 @@ export interface StopSelectedProperties {
 }
 
 export interface StopTripClickedProperties {
+  /**
+   * Id of a trip
+   */
   trip_id: string;
 }
 
+export interface StopsProbeAnsweredProperties {
+  /**
+   * Stores a question 1 answer
+   */
+  question_1?: string;
+  /**
+   * Stores a question 2 answer
+   */
+  question_2?: string;
+  /**
+   * Stores a question 3 answer
+   */
+  question_3?: string;
+  /**
+   * Stores a question 4 answer
+   */
+  question_4?: string;
+  /**
+   * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
+   *
+   * | Rule | Value |
+   * |---|---|
+   * | Min Length | 6 |
+   * | Max Length | 6 |
+   */
+  stop_id: string;
+}
+
 export interface StoreSelectedProperties {
+  /**
+   * District of a Store
+   */
   store_district: string;
+  /**
+   * Captures a store ID
+   */
   store_id: string;
+  /**
+   * Location of a Store
+   */
   store_location: string;
+  /**
+   * Name of a Store
+   */
   store_name: string;
 }
 
 export interface StoresFilterChangedProperties {
+  /**
+   * Captures a filter type
+   */
   filter_type: string;
+  /**
+   * Stores a filter value
+   */
   filter_value: string;
 }
 
 export interface Viagem2024QuizAnsweredProperties {
+  /**
+   * Stores a question 1 answer
+   */
   question_1?: string;
+  /**
+   * Stores a question 10 answer
+   */
   question_10?: string;
+  /**
+   * Stores a question 2 answer
+   */
   question_2?: string;
+  /**
+   * Stores a question 3 answer
+   */
   question_3?: string;
+  /**
+   * Stores a question 4 answer
+   */
   question_4?: string;
+  /**
+   * Stores a question 5 answer
+   */
   question_5?: string;
+  /**
+   * Stores a question 6 answer
+   */
   question_6?: string;
+  /**
+   * Stores a question 7 answer
+   */
   question_7?: string;
+  /**
+   * Stores a question 8 answer
+   */
   question_8?: string;
+  /**
+   * Stores a question 9 answer
+   */
   question_9?: string;
 }
 
@@ -562,46 +679,6 @@ export class StopDetailRedirected implements BaseEvent {
   }
 }
 
-export class StopProbeQuestion1 implements BaseEvent {
-  event_type = 'Stop Probe Question 1';
-
-  constructor(
-    public event_properties: StopProbeQuestion1Properties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class StopProbeQuestion2 implements BaseEvent {
-  event_type = 'Stop Probe Question 2';
-
-  constructor(
-    public event_properties: StopProbeQuestion2Properties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class StopProbeQuestion3 implements BaseEvent {
-  event_type = 'Stop Probe Question 3';
-
-  constructor(
-    public event_properties: StopProbeQuestion3Properties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class StopProbeQuestion4 implements BaseEvent {
-  event_type = 'Stop Probe Question 4';
-
-  constructor(
-    public event_properties: StopProbeQuestion4Properties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
 export class StopSelected implements BaseEvent {
   event_type = 'Stop Selected';
 
@@ -617,6 +694,16 @@ export class StopTripClicked implements BaseEvent {
 
   constructor(
     public event_properties: StopTripClickedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class StopsProbeAnswered implements BaseEvent {
+  event_type = 'Stops Probe Answered';
+
+  constructor(
+    public event_properties: StopsProbeAnsweredProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -774,7 +861,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Accept%20Analytics%20Consent)
    *
-   * Event has no description in tracking plan.
+   * Accepted analytics consent
    *
    * @param options Amplitude event options.
    */
@@ -789,7 +876,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Add%20Favorite%20Line)
    *
-   * Event to track when a user adds a public transportation line to their list of favorites for quick access and personalized recommendations.
+   * Added a line to favorites
    *
    * @param properties The event's properties (e.g. line_id)
    * @param options Amplitude event options.
@@ -806,7 +893,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Add%20Favorite%20Stop)
    *
-   * Event to track when a user adds a stop to their favorites list.
+   * Added a stop to favorites
    *
    * @param properties The event's properties (e.g. stop_id)
    * @param options Amplitude event options.
@@ -823,7 +910,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Alert%20Clicked)
    *
-   * Event has no description in tracking plan.
+   * Clicked a specific alert
    *
    * @param properties The event's properties (e.g. [Amplitude] Page Path)
    * @param options Amplitude event options.
@@ -840,7 +927,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Alerts%20Filter%20Changed)
    *
-   * Event has no description in tracking plan.
+   * Alerts filtering type changed
    *
    * @param properties The event's properties (e.g. filter_type)
    * @param options Amplitude event options.
@@ -857,7 +944,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20Alerts%20Referer)
    *
-   * Event has no description in tracking plan.
+   * Captures the referrer on alerts page loaded
    *
    * @param properties The event's properties (e.g. page_referer)
    * @param options Amplitude event options.
@@ -874,7 +961,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20Frontend%20Error)
    *
-   * Event has no description in tracking plan.
+   * Ocurred a frontend error
    *
    * @param properties The event's properties (e.g. [Amplitude] Page Path)
    * @param options Amplitude event options.
@@ -891,7 +978,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20News%20Referer)
    *
-   * Event has no description in tracking plan.
+   * Captured the user origin when loading the news page
    *
    * @param properties The event's properties (e.g. page_referer)
    * @param options Amplitude event options.
@@ -908,7 +995,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Change%20Stops%20View%20Type)
    *
-   * Event has no description in tracking plan.
+   * Changed the stops viewing type (map, list, favorited)
    *
    * @param properties The event's properties (e.g. view_type)
    * @param options Amplitude event options.
@@ -925,7 +1012,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Debug%20Toggle)
    *
-   * Event has no description in tracking plan.
+   * Activated debug mode
    *
    * @param properties The event's properties (e.g. is_enabled)
    * @param options Amplitude event options.
@@ -942,7 +1029,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Link)
    *
-   * Event has no description in tracking plan.
+   * Clicked a footer link, can be internal or external
    *
    * @param properties The event's properties (e.g. current_page)
    * @param options Amplitude event options.
@@ -959,7 +1046,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Date%20Period%20Selected)
    *
-   * Event has no description in tracking plan.
+   * Selected a date preriod (past or future)
    *
    * @param properties The event's properties (e.g. date_value)
    * @param options Amplitude event options.
@@ -976,7 +1063,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Github%20Clicked)
    *
-   * Event has no description in tracking plan.
+   * Cliked the link that redirects to github
    *
    * @param properties The event's properties (e.g. click)
    * @param options Amplitude event options.
@@ -993,7 +1080,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Lost%20and%20Found%20Area%20Clicked)
    *
-   * Event has no description in tracking plan.
+   * Clicked an area contact method in lost and found page
    *
    * @param properties The event's properties (e.g. action_type)
    * @param options Amplitude event options.
@@ -1010,7 +1097,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Open%20Card%20Viagem%202024)
    *
-   * Event has no description in tracking plan.
+   * Expanded a card in viagem 2024
    *
    * @param properties The event's properties (e.g. card_id)
    * @param options Amplitude event options.
@@ -1027,7 +1114,10 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Open%20GoogleMaps%20Clicked)
    *
-   * Event has no description in tracking plan.
+   * Clicked the button to open the current data in google maps, this button is on the top of every map. 
+   *
+   *
+   *
    *
    * @param properties The event's properties (e.g. [Amplitude] Page Location)
    * @param options Amplitude event options.
@@ -1061,7 +1151,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Planner%20used)
    *
-   * Event has no description in tracking plan.
+   * Planner card clicked
    *
    * @param properties The event's properties (e.g. planner_clicked)
    * @param options Amplitude event options.
@@ -1078,7 +1168,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Remove%20Favorite%20Line)
    *
-   * Event to track when a user removes a specific public transportation line from their list of favorites.
+   * Removed a line from favorites
    *
    * @param properties The event's properties (e.g. line_id)
    * @param options Amplitude event options.
@@ -1095,7 +1185,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Remove%20Favorite%20Stop)
    *
-   * Event has no description in tracking plan.
+   * Removed a stop from favorites
    *
    * @param properties The event's properties (e.g. stop_id)
    * @param options Amplitude event options.
@@ -1112,7 +1202,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Search%20Alert)
    *
-   * Event has no description in tracking plan.
+   * Event trigered when the user searches for a specific alert
    *
    * @param properties The event's properties (e.g. search_value)
    * @param options Amplitude event options.
@@ -1129,7 +1219,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Search%20Line)
    *
-   * Event has no description in tracking plan.
+   * Searched for a line
    *
    * @param properties The event's properties (e.g. search_value)
    * @param options Amplitude event options.
@@ -1146,7 +1236,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Search%20Stop)
    *
-   * Event has no description in tracking plan.
+   * Searched for a stop
    *
    * @param properties The event's properties (e.g. search_value)
    * @param options Amplitude event options.
@@ -1163,7 +1253,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Share%20Card%20Viagem%202024)
    *
-   * Event has no description in tracking plan.
+   * Share button on viagem 2024 cards clicked
    *
    * @param properties The event's properties (e.g. card_id)
    * @param options Amplitude event options.
@@ -1180,7 +1270,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Audio%20Played)
    *
-   * Event has no description in tracking plan.
+   * Audio Header on Stop Detail played
    *
    * @param properties The event's properties (e.g. audio_played)
    * @param options Amplitude event options.
@@ -1197,7 +1287,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Detail%20Redirected)
    *
-   * Event has no description in tracking plan.
+   * Clicked something that redirected to a stop details page
    *
    * @param properties The event's properties (e.g. [Amplitude] Page Path)
    * @param options Amplitude event options.
@@ -1210,79 +1300,11 @@ export class Ampli {
   }
 
   /**
-   * Stop Probe Question 1
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Probe%20Question%201)
-   *
-   * Event has no description in tracking plan.
-   *
-   * @param properties The event's properties (e.g. answer)
-   * @param options Amplitude event options.
-   */
-  stopProbeQuestion1(
-    properties: StopProbeQuestion1Properties,
-    options?: EventOptions,
-  ) {
-    return this.track(new StopProbeQuestion1(properties), options);
-  }
-
-  /**
-   * Stop Probe Question 2
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Probe%20Question%202)
-   *
-   * Event has no description in tracking plan.
-   *
-   * @param properties The event's properties (e.g. answer)
-   * @param options Amplitude event options.
-   */
-  stopProbeQuestion2(
-    properties: StopProbeQuestion2Properties,
-    options?: EventOptions,
-  ) {
-    return this.track(new StopProbeQuestion2(properties), options);
-  }
-
-  /**
-   * Stop Probe Question 3
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Probe%20Question%203)
-   *
-   * Event has no description in tracking plan.
-   *
-   * @param properties The event's properties (e.g. answer)
-   * @param options Amplitude event options.
-   */
-  stopProbeQuestion3(
-    properties: StopProbeQuestion3Properties,
-    options?: EventOptions,
-  ) {
-    return this.track(new StopProbeQuestion3(properties), options);
-  }
-
-  /**
-   * Stop Probe Question 4
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Probe%20Question%204)
-   *
-   * Event has no description in tracking plan.
-   *
-   * @param properties The event's properties (e.g. answer)
-   * @param options Amplitude event options.
-   */
-  stopProbeQuestion4(
-    properties: StopProbeQuestion4Properties,
-    options?: EventOptions,
-  ) {
-    return this.track(new StopProbeQuestion4(properties), options);
-  }
-
-  /**
    * Stop Selected
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Selected)
    *
-   * Event has no description in tracking plan.
+   * Selected a specific stop
    *
    * @param properties The event's properties (e.g. stop_id)
    * @param options Amplitude event options.
@@ -1299,7 +1321,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Trip%20Clicked)
    *
-   * Event has no description in tracking plan.
+   * Cliked the row on timetable in a specific stop
    *
    * @param properties The event's properties (e.g. trip_id)
    * @param options Amplitude event options.
@@ -1312,11 +1334,28 @@ export class Ampli {
   }
 
   /**
+   * Stops Probe Answered
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stops%20Probe%20Answered)
+   *
+   * Answered a question in the quiz of viagem-2024
+   *
+   * @param properties The event's properties (e.g. question_1)
+   * @param options Amplitude event options.
+   */
+  stopsProbeAnswered(
+    properties: StopsProbeAnsweredProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new StopsProbeAnswered(properties), options);
+  }
+
+  /**
    * Store Selected
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Store%20Selected)
    *
-   * Event has no description in tracking plan.
+   * Selected a specific store
    *
    * @param properties The event's properties (e.g. store_district)
    * @param options Amplitude event options.
@@ -1333,7 +1372,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stores%20Filter%20Changed)
    *
-   * Event has no description in tracking plan.
+   * Stores filtering type changed
    *
    * @param properties The event's properties (e.g. filter_type)
    * @param options Amplitude event options.
@@ -1350,7 +1389,7 @@ export class Ampli {
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Viagem%202024%20Quiz%20Answered)
    *
-   * Event used to track answersEvent to track when a user answers a quiz question related to the Viagem 2024 campaign.
+   * Answered a question in the quiz of viagem-2024
    *
    * @param properties The event's properties (e.g. question_1)
    * @param options Amplitude event options.
