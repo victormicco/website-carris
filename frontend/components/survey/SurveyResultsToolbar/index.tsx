@@ -5,11 +5,7 @@
 import { Grid } from '@/components/layout/Grid';
 import { Section } from '@/components/layout/Section';
 import { RangeSlider, Select, TextInput } from '@mantine/core';
-import {
-	IconFilter,
-	IconSearch,
-	IconX,
-} from '@tabler/icons-react';
+import { IconFilter, IconSearch, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useQueryState } from 'nuqs';
 import { useEffect } from 'react';
@@ -19,39 +15,22 @@ import styles from './styles.module.css';
 /* * */
 
 export function SurveyResultsToolbar({ handleSearch }) {
-	//
-
-	//
 	// A. Setup variables
 	const [avaliationValue, setAvalitaionValue] = useQueryState('avaliation');
 	const [category, setCategory] = useQueryState('category');
 	const [search, setSearch] = useQueryState('search');
 	const t = useTranslations('survey.SurveyResultsToolbar');
+
 	const filterCategories = [
 		{ label: 'Paragens', value: 'info_stops' },
 		{ label: 'Rede', value: 'info_rede' },
 		{ label: 'Autocarros', value: 'info_bus' },
 		{ label: 'Suporte', value: 'info_support' },
 	];
-	const marks = [
-		{ label: '0', value: 0 },
-		{ label: '1', value: 1 },
-		{ label: '2', value: 2 },
-		{ label: '3', value: 3 },
-		{ label: '4', value: 4 },
-		{ label: '5', value: 5 },
-		{ label: '6', value: 6 },
-		{ label: '7', value: 7 },
-		{ label: '8', value: 8 },
-		{ label: '9', value: 9 },
-		{ label: '10', value: 10 },
-	];
 
-	//
+	const marks = Array.from({ length: 11 }, (_, i) => ({ label: `${i}`, value: i }));
 
-	//
-	// B. Handle Action
-
+	// B. Handle Actions
 	const handleAvaliationValue = (value: [number, number]) => {
 		setAvalitaionValue(JSON.stringify(value));
 	};
@@ -60,9 +39,7 @@ export function SurveyResultsToolbar({ handleSearch }) {
 		handleSearch(search, category, avaliationValue);
 	}, [search, category, avaliationValue]);
 
-	//
 	// C. Render components
-
 	return (
 		<Section withPadding>
 			<Grid columns="abc" withGap>
@@ -86,7 +63,7 @@ export function SurveyResultsToolbar({ handleSearch }) {
 				<Select
 					data={filterCategories}
 					leftSection={<IconFilter size={20} />}
-					onChange={_value => setCategory(_value)}
+					onChange={value => setCategory(value)}
 					onClear={() => setCategory(null)}
 					placeholder={t('by_category')}
 					value={category}
@@ -95,7 +72,6 @@ export function SurveyResultsToolbar({ handleSearch }) {
 				/>
 				<div>
 					<p>{t('by_avaliation')}</p>
-
 					<RangeSlider
 						color="#ffdd01"
 						defaultValue={[0, 10]}
@@ -103,7 +79,7 @@ export function SurveyResultsToolbar({ handleSearch }) {
 						max={10}
 						min={0}
 						minRange={0.1}
-						onChange={_value => handleAvaliationValue(_value)}
+						onChange={handleAvaliationValue}
 						step={0.1}
 						value={avaliationValue ? JSON.parse(avaliationValue) : [0, 10]}
 						w="100%"
@@ -116,6 +92,4 @@ export function SurveyResultsToolbar({ handleSearch }) {
 			</Grid>
 		</Section>
 	);
-
-	//
 }

@@ -1,6 +1,5 @@
 /* * */
 /* CONTAINER */
-
 .container {
 	display: flex;
 	flex-direction: column;
@@ -9,11 +8,8 @@
 	position: relative;
 	margin-bottom: 60px;
 }
-
-
 /* * */
 /* HEADER */
-
 .header {
 	z-index: 10;
 	display: flex;
@@ -25,21 +21,16 @@
 	min-height: 140px;
 	justify-content: center;
 }
-
-
 /* * */
 /* CONTENT */
-
 .content {
 	width: 100%;
 	border-right: 2px solid var(--color-border);
 	border-left: 2px solid var(--color-border);
 	transition: all 500ms ease-out;
 }
-
 /* * */
 /* CONTENT NUMBER */
-
 .contentNumber {
 	display: flex;
 	flex-direction: column;
@@ -48,21 +39,18 @@
 	background-color: var(--color-primary);
 	border-radius: 18px;
 }
-
 .contentNumberValue {
 	font-size: 26px;
 	font-weight: var(--font-weight-bold);
 	line-height: 1;
 	color: var(--color-text);
 }
-
 .contentNumberLegend {
 	font-size: 12px;
 	font-weight: var(--font-weight-semibold);
 	color: var(--color-text);
 	opacity: 0.8;
 }
-
 /* * */
 /* CONTENT LOTTIE */
 
@@ -75,7 +63,6 @@
 	border: 1px solid var(--color-system-border-100);
 	border-radius: 18px;
 }
-
 /* * */
 /* CONTENT TITLE */
 
@@ -84,13 +71,11 @@
 	font-weight: var(--font-weight-bold);
 	color: var(--color-system-text-200);
 }
-
 .contentDescription {
 	font-size: 14px;
 	font-weight: var(--font-weight-medium);
 	color: var(--color-system-text-200);
 }
-
 /* * */
 /* CARD WRAPPER SHADOW */
 
@@ -106,29 +91,21 @@
 	position: absolute; 
     top: -50px; 
 }
-
 .container:nth-child(1) .cardMainWrapperShadow{
 	background-color: var(--color-system-background-100);  
 
 }
 .container:nth-child(1) .cardMainWrapper{
 	background-color:var(--color-brand);  
-
 }
-
 .container:nth-child(3) .headerNumber{
 	font-size: 40px;
 }
-
 .container:nth-child(5) .headerNumber{
 	font-size: 40px;
 }
-
-
-
 /* * */
 /* CARD WRAPPER */
-
 .cardMainWrapper{
     -webkit-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
@@ -144,7 +121,6 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
-
 /* * */
 /* Content Legend */
 .contentLegend {
@@ -154,7 +130,6 @@
 	padding: 10px;
 	text-align: center;
 }
-
 /* * */
 /* Header Title */
 .headerTitle {
@@ -164,7 +139,6 @@
 	padding: 10px;
 	text-align: center;
 }
-
 /* * */
 /* Intro */
 .intro {
