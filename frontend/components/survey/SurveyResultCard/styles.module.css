@@ -4,7 +4,6 @@
 	align-items: center;
 	gap: 10px; 
   }
-
 .headerTitle {
 	font-size: 16px;
 	margin-left: 20px;
@@ -13,7 +12,6 @@
 	padding-right: 10px;
 
 }
-
 .headerNumber {
 	font-size: 20px;
 	font-weight: var(--font-weight-bold);
@@ -21,7 +19,6 @@
 	z-index: 1;
   }
 /* CIRCLED NUMBER */
-
 .circledNumber {
 	position: relative;
 	width: 80px;
@@ -30,9 +27,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
   }
-  
   .blurredCircle {
 	position: absolute;
 	width: 100%; 
@@ -40,9 +35,7 @@
 	border-radius: 50%;
 	filter: blur(3px);
   }
-  
 /* * */
-
 .container {
 	display: flex;
 	border-radius: 28px;
@@ -51,11 +44,9 @@
 	min-height: 100%;
 	background-color: var(--color-system-background-100) !important;
 }
-
 .leftColumn {
 	flex-shrink: 0;
 }
-
 .rightColumn {
 	flex-grow: 1;
 	text-align: left;

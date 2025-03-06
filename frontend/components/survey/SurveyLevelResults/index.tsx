@@ -8,6 +8,7 @@ import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { allResultsCardData, SurveryResultsCardSchema } from '@/components/survey/_data/Results/cards';
 import { SurveyResultCard } from '@/components/survey/SurveyResultCard';
+import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { Accordion, AccordionControl, Space } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -22,11 +23,9 @@ export function SurveyLevelResults() {
 
 	//
 	// A. Setup variables
-
+	const anaylticsContext = useAnalyticsContext();
 	const t = useTranslations('survey.SurveyResultsCard');
-
 	const [filteredData, setFilteredData] = useState<SurveryResultsCardSchema[]>(allResultsCardData);
-
 	// B . Fetch Data
 	const allData = allResultsCardData;
 	const allPublicInfoData = allData.filter(item => item._group === 'info_ao_publico').sort((a, b) => parseFloat(b.header.value.replace(',', '.')) - parseFloat(a.header.value.replace(',', '.')));
@@ -34,7 +33,6 @@ export function SurveyLevelResults() {
 	const allStopsData = allData.filter(item => item._group === 'info_stops').sort((a, b) => parseFloat(b.header.value.replace(',', '.')) - parseFloat(a.header.value.replace(',', '.')));
 	const allBusData = allData.filter(item => item._group === 'info_bus').sort((a, b) => parseFloat(b.header.value.replace(',', '.')) - parseFloat(a.header.value.replace(',', '.')));
 	const allSupportData = allData.filter(item => item._group === 'info_support').sort((a, b) => parseFloat(b.header.value.replace(',', '.')) - parseFloat(a.header.value.replace(',', '.')));
-
 	const allAccordions = [
 		{
 			data: allPublicInfoData,
@@ -62,18 +60,17 @@ export function SurveyLevelResults() {
 			value: 'support-cards',
 		},
 	];
-
 	//
-
 	// C. Handle Actions
-
 	const handleFilterData = (search: string, category: string, avaliationValue: string) => {
 		let filteredResults = allData;
 		if (search) {
 			filteredResults = filteredResults.filter(item => item.content.description.toLowerCase().includes(search.toLowerCase()));
+			anaylticsContext.actions.capture(ampli => ampli.survey2024FilterChanged({ filter_type: 'by_Search', filter_value: search }));
 		}
 		if (category) {
 			filteredResults = filteredResults.filter(item => item._group.toLowerCase().includes(category.toLowerCase()));
+			anaylticsContext.actions.capture(ampli => ampli.survey2024FilterChanged({ filter_type: 'by_Category', filter_value: category }));
 		}
 		if (avaliationValue) {
 			const [min, max] = JSON.parse(avaliationValue);
@@ -87,8 +84,8 @@ export function SurveyLevelResults() {
 		}
 		filteredResults = filteredResults.sort((a, b) => parseFloat(b.header.value.replace(',', '.')) - parseFloat(a.header.value.replace(',', '.')));
 		setFilteredData(filteredResults);
+		anaylticsContext.actions.captureWithDelay(ampli => ampli.survey2024FilterChanged({ filter_type: 'by_AvaliationValue', filter_value: avaliationValue }));
 	};
-
 	//
 	// D. Render components
 

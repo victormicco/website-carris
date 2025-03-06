@@ -1,5 +1,4 @@
 /* CARD CONTENT */
-
 .cardContent {
 	z-index: 10;
 	display: flex;
@@ -11,10 +10,8 @@
 	min-height: 140px;
 	justify-content: center;
 }
-
 /* * */
 /* CARD WRAPPER SHADOW */
-
 .cardMainWrapperShadow{
 	align-items: stretch;
     width: 100%;
@@ -26,10 +23,8 @@
 	border: 1px solid var(--color-system-border-200);
 	padding: 5px;
 }
-
 /* * */
 /* CARD WRAPPER */
-
 .cardMainWrapper{
     -webkit-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
@@ -40,10 +35,8 @@
     display: flex;
     height: 88%;
 }
-
 /* * */
 /* Header Title */
-
 .headerTitle {
 	font-size: 18px;
 	font-weight: var(--font-weight-bold);
@@ -51,10 +44,8 @@
 	padding: 10px;
 	text-align: center;
 }
-
 /* * */
 /* CARD CONTENT */
-
 .cardContent{
     -webkit-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.05);
@@ -62,7 +53,6 @@
     border-radius: 20px;
     background-color: var(--color-system-background-100);
 }
-
 /* CARD ROWS */
 .firstRow,
 .secondRow,
@@ -74,7 +64,6 @@
     padding: 5px 20px;
     border-bottom: 1px solid var(--color-system-border-200);
 }
-
 .firstRow p:first-child,
 .secondRow p:first-child,
 .thirdRow p:first-child {
@@ -84,7 +73,6 @@
 	color: var(--color-system-text-200);
     text-align: end;
 }
-
 .firstRow p:last-child,
 .secondRow p:last-child,
 .thirdRow p:last-child {
@@ -99,7 +87,5 @@
     font-weight: var(--color-system-text-200);
 	color: var(--color-system-text-200);
     padding: 10px;
- 
     text-align: center;
-
 }

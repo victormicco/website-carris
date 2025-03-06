@@ -12,18 +12,7 @@
     background-color: var(--color-system-background-100) ;
 }
 /* * */
-/* TITLE */
-
-.title {
-    font-size: var(--font-size-subtitle);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-system-text-300);
-    margin: 0;
-}
-/* * */
-
 /* NUMBER CONTAINER */
-
 .numberContainer {
     border-radius: 50px;
     color: #CCCC1B;
@@ -31,7 +20,6 @@
     padding: 10px;
     border: 1px solid #CCCC1B;
 }
-
 /* * */
 /* HEADER */
 .header {
@@ -39,7 +27,6 @@
 	align-items: center;
 	gap: 10px; 
   }
-
 .headerTitle {
 	font-size: 20px;
 	margin-left: 20px;
@@ -48,9 +35,7 @@
 	color: var(--color-system-text-300);
 	padding-right: 20px;
     text-align: start;
-
 }
-
 .headerNumber {
 	font-size: 30px;
 	font-weight: var(--font-weight-bold);
@@ -58,7 +43,6 @@
 	position: relative;
   }
 /* CIRCLED NUMBER */
-
 .circledNumber {
 	position: relative;
 	width: 99px;
@@ -81,25 +65,25 @@
     align-items: center;
     justify-content: center;
   }
-  
 /* * */
-
+/* COLUMNS */
 .leftColumn {
     height: 150px;
 }
-
+.rightColumn {
+	text-align: end
+}
+/* * */
+/* SQUIRCLE */
 .squircle{
     padding: 20px;
     border: 2px solid #CCCC1B;
     box-shadow: 0px 0px 3px 0px #CCCC1B;
     border-radius: 20px;
 }
-
-.rightColumn {
-	text-align: end
-}
-
-.globalSatisfactionText{
+/* * */
+/* SEAL OF APPROVAL TEXT */
+.sealOfApprovalText{
     padding: 20px;
 	color: var(--color-system-text-300);
     border-top: 1px solid var(--color-system-border-200);

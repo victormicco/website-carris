@@ -6,16 +6,15 @@ import styles from './styles.module.css';
 
 /* * */
 
-export function SurveyGlobalSatisfactionIndex() {
+export function SurveySealOfApproval() {
 	//
 
 	//
 	// A. Setup variables
-
 	const t = useTranslations('survey.SurveyRecomendationIndex');
 
+	//
 	// B. Render components
-
 	return (
 		<div id="recomendationIndex">
 			<div className={styles.container}>
@@ -32,12 +31,11 @@ export function SurveyGlobalSatisfactionIndex() {
 						<p className={styles.headerTitle}>{t('card_heading')}</p>
 					</div>
 				</div>
-				<div className={styles.globalSatisfactionText}>
+				<div className={styles.sealOfApprovalText}>
 					<p>{t('card_legend')}</p>
 				</div>
 			</div>
 		</div>
 	);
-
 	//
 }

@@ -2,9 +2,10 @@
 .cardWrapper > div{
 	align-items: stretch;	
 }
-/* * */
 
-
+.cardWrapper{
+	padding: 20px;
+}
 @media (width <= 650px) {
 	.cardWrapper{
 		align-items: stretch;	
