@@ -1,22 +1,11 @@
 /* * */
+import { Complaints } from '@carrismetropolitana/api-types/metrics';
 import { Text } from '@mantine/core';
 import { IconTriangle } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 
-/* * */
-interface Complaints {
-	_id: number
-	complaints: number
-	email: number
-	filter_value: string
-	info_requests: number
-	other: number
-	phone: number
-	total: number
-	type: string
-}
 /* * */
 interface Props {
 	data: Complaints[]

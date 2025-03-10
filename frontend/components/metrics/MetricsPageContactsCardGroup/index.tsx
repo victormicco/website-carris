@@ -1,20 +1,9 @@
 /* * */
 
+import { Complaints } from '@carrismetropolitana/api-types/metrics';
 import { Image, Text } from '@mantine/core';
 
 import styles from './styles.module.css';
-/* * */
-interface Complaints {
-	_id: number
-	complaints: number
-	email: number
-	filter_value: string
-	info_requests: number
-	other: number
-	phone: number
-	total: number
-	type: string
-}
 /* * */
 interface Props {
 	data: Complaints[]

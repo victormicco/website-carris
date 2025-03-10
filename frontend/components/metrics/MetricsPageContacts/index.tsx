@@ -9,24 +9,12 @@ import { MetricsContactsPageCardGroup } from '@/components/metrics/MetricsPageCo
 import { MetricsPageContactsToolbar } from '@/components/metrics/MetricsPageContactsToolbar';
 import { useLinesContext } from '@/contexts/Lines.context';
 import { Routes } from '@/utils/routes';
-import { DemandMetricsByAgency, DemandMetricsByAgencyMonth } from '@carrismetropolitana/api-types/metrics';
+import { Complaints, DemandMetricsByAgency, DemandMetricsByAgencyMonth } from '@carrismetropolitana/api-types/metrics';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 /* * */
-
-interface Complaints {
-	_id: number
-	complaints: number
-	email: number
-	filter_value: string
-	info_requests: number
-	other: number
-	phone: number
-	total: number
-	type: string
-}
 
 export function MetricsPageContacts() {
 	//

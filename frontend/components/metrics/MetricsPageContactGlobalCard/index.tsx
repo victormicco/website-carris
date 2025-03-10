@@ -1,28 +1,13 @@
 /* * */
 
 import { Section } from '@/components/layout/Section';
-import { Routes } from '@/utils/routes';
-import { DemandMetricsByAgency } from '@carrismetropolitana/api-types/metrics';
+import { Complaints } from '@carrismetropolitana/api-types/metrics';
 import { Text } from '@mantine/core';
 import { IconAt, IconPhoneCheck } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useState } from 'react';
-import useSWR from 'swr';
 
 import styles from './styles.module.css';
 /* * */
-
-interface Complaints {
-	_id: number
-	complaints: number
-	email: number
-	filter_value: string
-	info_requests: number
-	other: number
-	phone: number
-	total: number
-	type: string
-}
 
 interface Props {
 	allData: Complaints[]
