@@ -927,12 +927,15 @@
 			"subheading": "Here, you can view all contacts received by Carris Metropolitana, broken down by Information Requests, Complaints, and Other types of contact.",
 			"title1": "Open Data"
 		},
+		"MetricsPageContactsCardGroup": {
+			"main_value": "{value, string}"
+		},
 		"MetricsPageContactsGlobalCard": {
-			"totalContactsDesc": "last week's contacts total",
-			"totalEmailContactsDesc": "contacts by email",
-			"totalPassengersDayContactsDesc": "total passengers of the week",
-			"totalPhoneContactsDesc": "contacts by phone",
-			"total_passengers_day": "{value, number}"
+			"total_contacts_desc": "last week's contacts total",
+			"total_email_contacts_desc": "contacts by email",
+			"total_passengers_day": "{value, number}",
+			"total_passengers_day_contacts_desc": "total passengers of the week",
+			"total_phone_contacts_desc": "contacts by phone"
 		},
 		"MetricsPageContactsToolbar": {
 			"global": "Global",

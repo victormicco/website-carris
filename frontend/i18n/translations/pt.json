@@ -928,12 +928,15 @@
 			"subheading": "Aqui, consegue consultar a totalidade de contactos recebidos pela Carris Metropolitana, discriminados por Pedidos de Informação, Reclamações e Outro tipo de contacto.",
 			"title1": "Open Data"
 		},
+		"MetricsPageContactsCardGroup": {
+			"main_value": "{value, number}"
+		},
 		"MetricsPageContactsGlobalCard": {
-			"totalContactsDesc": "total de contactos na última semana",
-			"totalEmailContactsDesc": "contactos por email",
-			"totalPassengersDayContactsDesc": "total de passangeiros da semana",
-			"totalPhoneContactsDesc": "contactos telefónicos",
-			"total_passengers_day": "{value, number}"
+			"total_contacts_desc": "total de contactos na última semana",
+			"total_email_contacts_desc": "contactos por email",
+			"total_passengers_day": "{value, number}",
+			"total_passengers_day_contacts_desc": "total de passangeiros da semana",
+			"total_phone_contacts_desc": "contactos telefónicos"
 		},
 		"MetricsPageContactsToolbar": {
 			"global": "Global",

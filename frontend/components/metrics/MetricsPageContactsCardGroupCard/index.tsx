@@ -1,5 +1,6 @@
 /* * */
 import { Image, Text } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 /* * */
@@ -20,6 +21,8 @@ export function MetricsContactsPageCardGroupCard({ description1, description2, d
 	//
 	// A. Setup variables
 
+	const t = useTranslations('metrics.MetricsPageContactsCardGroup');
+
 	//
 	// B. Render components
 	return (
@@ -31,7 +34,7 @@ export function MetricsContactsPageCardGroupCard({ description1, description2, d
 				<div className={styles.cardBody}>
 					<Text className={styles.subheading}>{subheading}</Text>
 					<Image alt={title}className={styles.image} src={image} />
-					<Text className={styles.bodyValue1}>{value}</Text>
+					<Text className={styles.bodyValue1}>{t('main_value', { value: value })}</Text>
 					<Text className={styles.bodyDescription1}>{description1}</Text>
 					<div className={styles.cardBodyInnerCard}>
 						<Text className={styles.bodyDescription2}>{description2}</Text>

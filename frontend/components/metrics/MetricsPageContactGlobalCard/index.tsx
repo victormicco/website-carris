@@ -29,7 +29,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 		return (
 			<div>
 				<Text className={styles.totalPassengersContactsValue}>{t('total_passengers_day', { value: totalPassengersLastWeek })}</Text>
-				<Text className={styles.totalPassengersContactsDescription}>{t('totalPassengersDayContactsDesc')}</Text>
+				<Text className={styles.totalPassengersContactsDescription}>{t('total_passengers_day_contacts_desc')}</Text>
 			</div>
 		);
 	};
@@ -39,7 +39,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 		return (
 			<div>
 				<Text className={styles.totalContactsValue}>{totalContactsLastWeekSum}</Text>
-				<Text className={styles.totalContactsDescription}>{t('totalContactsDesc')}</Text>
+				<Text className={styles.totalContactsDescription}>{t('total_contacts_desc')}</Text>
 			</div>
 		);
 	};
@@ -53,7 +53,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 					<IconPhoneCheck className={styles.icon} size={50} />
 				</div>
 				<Text className={styles.totalPhoneContactsValue}>{totalContactsLastWeekSum}</Text>
-				<Text className={styles.totalPhoneContactsDescription}>{t('totalPhoneContactsDesc')}</Text>
+				<Text className={styles.totalPhoneContactsDescription}>{t('total_phone_contacts_desc')}</Text>
 			</div>
 		);
 	};
@@ -67,7 +67,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 					<IconAt className={styles.icon} size={50} />
 				</div>
 				<Text className={styles.totalEmailContactsValue}>{totalContactsLastWeekSum}</Text>
-				<Text className={styles.totalEmailContactsDescription}>{t('totalEmailContactsDesc')}</Text>
+				<Text className={styles.totalEmailContactsDescription}>{t('total_email_contacts_desc')}</Text>
 			</div>
 		);
 	};
@@ -79,8 +79,10 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 					{renderTotalPassegersByDay()}
 					{renderTotalContacts()}
 				</div>
-				{renderTotalPhoneContacts()}
-				{renderTotalEmailContacts()}
+				<div className={styles.globalCardSecondRow}>
+					{renderTotalPhoneContacts()}
+					{renderTotalEmailContacts()}
+				</div>
 			</div>
 		</Section>
 	);

@@ -87,11 +87,12 @@ margin: 0 auto;
 .cardBodyInnerCard{
 	display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
 	width: 100%;
 	height: 100%;
 	padding: 20px;
 	margin-top:20px;
+	text-align: start;
 	background-color: var(--color-system-background-200);
 	border-radius: 20px;
 }
