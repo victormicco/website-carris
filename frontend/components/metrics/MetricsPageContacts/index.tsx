@@ -8,7 +8,7 @@ import { MetricsPageContactsToolbar } from '@/components/metrics/MetricsPageCont
 import { useLinesContext } from '@/contexts/Lines.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
 import { Routes } from '@/utils/routes';
-import { Complaints, DemandMetricsByAgency, DemandMetricsByAgencyMonth } from '@carrismetropolitana/api-types/metrics';
+import { Complaints, DemandMetricsByAgency, DemandMetricsByAgencyMonth, DemandMetricsByLine } from '@carrismetropolitana/api-types/metrics';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -30,9 +30,15 @@ export function MetricsPageContacts() {
 		municipalComplaints: [] as Complaints[],
 		municipalityName: '',
 		totalPassengersLastWeek: 0,
+		totalPassengersLastWeekLineId: 0,
 	});
 
+	const todayStr = DateTime.local().toISODate();
+	const sevenDaysAgoStr = DateTime.local().minus({ days: 7 }).toISODate();
+
 	const { data: demandMetricsByAgencyMonthData } = useSWR<DemandMetricsByAgency[]>(`${Routes.API}/metrics/demand/by_agency/month`);
+	const { data: demandMetricsByLineMonthData } = useSWR<DemandMetricsByLine[]>(`${Routes.API}/metrics/demand/by_line`);
+
 	const { data: allComplaintsData } = useSWR(`${Routes.API}/metrics/complaints/`);
 
 	const t = useTranslations('metrics.MetricsPageContacts');
@@ -44,8 +50,6 @@ export function MetricsPageContacts() {
 
 	useEffect(() => {
 		if (!demandMetricsByAgencyMonthData || demandMetricsByAgencyMonthData.length === 0) return;
-		const todayStr = DateTime.local().toISODate();
-		const sevenDaysAgoStr = DateTime.local().minus({ days: 7 }).toISODate();
 		const byDayData = demandMetricsByAgencyMonthData.flatMap((agencyBlock) => {
 			return (agencyBlock.data as DemandMetricsByAgencyMonth[]).filter((record) => {
 				return record.day_group >= sevenDaysAgoStr && record.day_group <= todayStr;
@@ -56,6 +60,19 @@ export function MetricsPageContacts() {
 			totalPassengersLastWeek: byDayData.reduce((acc, block) => acc + block.qty, 0),
 		}));
 	}, [demandMetricsByAgencyMonthData]);
+
+	useEffect(() => {
+		if (!demandMetricsByLineMonthData || demandMetricsByLineMonthData.length === 0 || state.filter_type !== 'line' || !state.filter_value) return;
+		const byLastWeekData = demandMetricsByLineMonthData.flatMap((lineBlock) => {
+			return (lineBlock.by_day).filter((record) => {
+				return record.day >= sevenDaysAgoStr && record.day <= todayStr && lineBlock.line_id === state.filter_value;
+			});
+		});
+		setState(prevState => ({
+			...prevState,
+			totalPassengersLastWeekLineId: byLastWeekData.reduce((acc, block) => acc + block.qty, 0),
+		}));
+	}, [demandMetricsByLineMonthData, state.filter_type, state.filter_value]);
 
 	useEffect(() => {
 		if (!allComplaintsData) return;
@@ -116,7 +133,7 @@ export function MetricsPageContacts() {
 				<Section heading={t('heading')} subheading={t('subheading')} withPadding>
 					<MetricsPageContactsGlobalCard allData={state.globalComplaints} totalPassengersLastWeek={state.totalPassengersLastWeek} />
 					<MetricsPageContactsToolbar allLines={linesContext.data.lines} filter_type={handleFilterChange} filter_value={value => setState(prevState => ({ ...prevState, filter_value: value }))} />
-					<MetricsContactsPageCardGroup data={state.filtered_data} filter_type={state.filter_type} filter_value={state.filter_value} lineColor={state.lineColor} municipalityName={state.municipalityName} totalPassengersLastWeek={state.totalPassengersLastWeek} />
+					<MetricsContactsPageCardGroup data={state.filtered_data} filter_type={state.filter_type} filter_value={state.filter_value} lineColor={state.lineColor} municipalityName={state.municipalityName} totalPassengersLastWeek={state.totalPassengersLastWeek} totalPassengersLastWeekLineId={state.totalPassengersLastWeekLineId} />
 				</Section>
 			</div>
 		</Surface>
