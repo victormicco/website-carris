@@ -60,7 +60,6 @@ export function LinesDetailPathList() {
 		for (const key of Object.keys(result)) {
 			result.get(key)?.sort((a, b) => a.unixTs - b.unixTs);
 		}
-		console.log(result);
 		return result;
 	}, [patternRealtimeData, linesDetailContext.data.active_pattern?.id]);
 
