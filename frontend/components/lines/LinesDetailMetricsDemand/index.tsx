@@ -56,7 +56,7 @@ export function LinesDetailMetricsDemand() {
 				<div className={styles.infoWrapper}>
 					<div className={styles.bigNumberWrapper}>
 						<h1 className={styles.bigNumber} style={{ color: linesDetailContext.data.line?.color }}>
-							{t('big_number', { value: linesDetailContext.data.demand_metrics?.qty })}
+							{t('big_number', { value: linesDetailContext.data.demand_metrics?.qty || -1 })}
 						</h1>
 						<LiveIcon className={styles.liveIcon} color={linesDetailContext.data.line?.color} />
 					</div>

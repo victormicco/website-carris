@@ -126,7 +126,7 @@ export function MetricsCardByLine({ data, main_description, main_label }: Props)
 			</div>
 
 			<div className={styles.summaryWrapper} style={{ backgroundColor: selectedData?.line_data?.color, color: selectedData?.line_data?.text_color }}>
-				<p className={styles.summaryValue}>{t('summary_value', { value: selectedData?.qty })}</p>
+				<p className={styles.summaryValue}>{t('summary_value', { value: selectedData?.qty || -1 })}</p>
 				<p className={styles.summaryDescription}>{t('summary_description')}</p>
 			</div>
 

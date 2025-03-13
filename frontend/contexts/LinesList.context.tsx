@@ -86,7 +86,7 @@ export const LinesListContextProvider = ({ children }) => {
 		// Filter by_attribute
 
 		if (filterByAttributeState) {
-			filterResult = filterResult.filter((item) => {
+			filterResult = filterResult.filter(() => {
 				return true;
 			});
 		}
@@ -95,7 +95,7 @@ export const LinesListContextProvider = ({ children }) => {
 		// Filter by_facility
 
 		if (filterByFacilityState) {
-			filterResult = filterResult.filter((item) => {
+			filterResult = filterResult.filter(() => {
 				return true;
 			});
 		}
@@ -104,7 +104,7 @@ export const LinesListContextProvider = ({ children }) => {
 		// Filter by by_municipality_or_locality
 
 		if (filterByMunicipalityOrLocalityState) {
-			filterResult = filterResult.filter((line) => {
+			filterResult = filterResult.filter(() => {
 				return true; // line.municipality_id === filtersState.by_municipality;
 			});
 		}

@@ -2,12 +2,11 @@
 
 /* * */
 
+// import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { NewsData } from '@/types/news.types';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
-
-import { useAnalyticsContext } from './Analytics.context';
 
 /* * */
 
@@ -53,7 +52,7 @@ export const NewsListContextProvider = ({ children }) => {
 	const [filterBySearch, setFilterBySearch] = useState<NewsListContextState['filters']['by_search']>('');
 	const [filterByDate, setFilterByDate] = useState<NewsListContextState['filters']['by_date']>(null);
 
-	const analyticsContext = useAnalyticsContext();
+	// const analyticsContext = useAnalyticsContext();
 
 	//
 	// B. Fetch data

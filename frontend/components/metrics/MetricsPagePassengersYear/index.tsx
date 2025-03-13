@@ -145,7 +145,7 @@ export function MetricsPagePassengersYear() {
 					display_type="bars"
 					main_description={t('sections.by_agency.41.main_description')}
 					main_label={t('sections.by_agency.41.main_label')}
-					main_value={t('sections.by_agency.41.main_value', { value: agency41Sum })}
+					main_value={t('sections.by_agency.41.main_value', { value: agency41Sum || -1 })}
 					data_series={[
 						{
 							color: 'var(--color-brand)',
@@ -160,7 +160,7 @@ export function MetricsPagePassengersYear() {
 					display_type="bars"
 					main_description={t('sections.by_agency.42.main_description')}
 					main_label={t('sections.by_agency.42.main_label')}
-					main_value={t('sections.by_agency.42.main_value', { value: agency42Sum })}
+					main_value={t('sections.by_agency.42.main_value', { value: agency42Sum || -1 })}
 					data_series={[
 						{
 							color: 'var(--color-brand)',
@@ -175,7 +175,7 @@ export function MetricsPagePassengersYear() {
 					display_type="bars"
 					main_description={t('sections.by_agency.43.main_description')}
 					main_label={t('sections.by_agency.43.main_label')}
-					main_value={t('sections.by_agency.43.main_value', { value: agency43Sum })}
+					main_value={t('sections.by_agency.43.main_value', { value: agency43Sum || -1 })}
 					data_series={[
 						{
 							color: 'var(--color-brand)',
@@ -190,7 +190,7 @@ export function MetricsPagePassengersYear() {
 					display_type="bars"
 					main_description={t('sections.by_agency.44.main_description')}
 					main_label={t('sections.by_agency.44.main_label')}
-					main_value={t('sections.by_agency.44.main_value', { value: agency44Sum })}
+					main_value={t('sections.by_agency.44.main_value', { value: agency44Sum || -1 })}
 					data_series={[
 						{
 							color: 'var(--color-brand)',

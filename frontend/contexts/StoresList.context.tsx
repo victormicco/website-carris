@@ -8,7 +8,7 @@ import { moveMap } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
 import { useMap } from '@vis.gl/react-maplibre';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
-import { createContext, use, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
 import { useAnalyticsContext } from './Analytics.context';

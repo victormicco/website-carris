@@ -16,7 +16,7 @@ export async function generateJWT(payload: Record<string, any>, expiresIn: numbe
 	// 	expiresIn,
 	// });
 
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		resolve('');
 	});
 }

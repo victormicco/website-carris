@@ -83,7 +83,7 @@ export const AlertsListContextProvider = ({ children }) => {
 	});
 	// const [filterByMunicipalityIdState, setFilterByMunicipalityIdState] = useQueryState('municipality_id');
 
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading] = useState(false);
 
 	//
 	// B. Fetch data
