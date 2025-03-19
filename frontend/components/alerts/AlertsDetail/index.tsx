@@ -49,7 +49,6 @@ export function AlertsDetail({ alertId }: Props) {
 			const lineId = entity.route_id?.split('_')[0];
 			if (lineId) set.add(lineId);
 		});
-		console.log(set);
 		return Array.from(set);
 	}, [simplifiedAlertData]);
 
