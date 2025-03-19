@@ -29,13 +29,14 @@ export function SurveyHeader() {
 
 	//
 	// B. Render Components
+
 	const renderAnchorButtons = () => (
 		<GridNav className={styles.gridNav} items={anchorButtons} />
 	);
 
 	const renderDownloadButton = () => (
 		<div className={styles.downloadButtonContainer}>
-			<Button className={styles.downloadButton} href="/assets/survey-2024/CM_ResultadosInquerito.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
+			<Button className={styles.downloadButton} href="/assets/survey-2024/cm-resultados-inquerito-2024.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
 		</div>
 	);
 
@@ -48,7 +49,7 @@ export function SurveyHeader() {
 			<LottiePlayer
 				className={styles.lottieGlobalSatisfaction}
 				loop={false}
-				path="assets/survey/animations/sobre/ISGP.json"
+				path="/assets/survey/animations/sobre/ISGP.json"
 				play
 			/>
 			<div className={styles.header}>
