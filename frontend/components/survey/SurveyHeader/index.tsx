@@ -1,3 +1,5 @@
+/* * */
+
 import Button from '@/components/common/Button';
 import { LottiePlayer } from '@/components/common/LottiePlayer';
 import { GridNav } from '@/components/layout/GridNav';
@@ -9,6 +11,8 @@ import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 
+/* * */
+
 export function SurveyHeader() {
 	//
 
@@ -17,10 +21,10 @@ export function SurveyHeader() {
 
 	const t = useTranslations('survey.SurveyHeader');
 	const anchorButtons = [
-		{ _id: '0', href: '#aboutSurvey', label: `${t('AnchorAboutSurvey')}` },
-		{ _id: '1', href: '#passangerChacterization', label: `${t('AnchorPassengerCaracter')}` },
-		{ _id: '2', href: '#recomendationIndex', label: `${t('AnchorIndex')}` },
-		{ _id: '3', href: '#results', label: `${t('AnchorResults')}` },
+		{ _id: '0', href: '#aboutSurvey', label: t('AnchorAboutSurvey') },
+		{ _id: '1', href: '#passangerChacterization', label: t('AnchorPassengerCaracter') },
+		{ _id: '2', href: '#recomendationIndex', label: t('AnchorIndex') },
+		{ _id: '3', href: '#results', label: t('AnchorResults') },
 	];
 
 	//
@@ -31,7 +35,7 @@ export function SurveyHeader() {
 
 	const renderDownloadButton = () => (
 		<div className={styles.downloadButtonContainer}>
-			<Button className={styles.downloadButton} href="/assets/survey/CM _ Resultados Inquérito.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
+			<Button className={styles.downloadButton} href="/assets/survey/CM_ResultadosInquerito.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
 		</div>
 	);
 
