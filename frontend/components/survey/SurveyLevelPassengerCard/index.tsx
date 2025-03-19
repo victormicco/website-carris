@@ -3,7 +3,7 @@
 /* * */
 
 import { LottiePlayer } from '@/components/common/LottiePlayer';
-import { SurveyPassengersCardSchema } from '@/components/survey/_data/Passenger/cards';
+import { SurveyPassengersCardSchema } from '@/components/survey/_data/passenger';
 
 import styles from './styles.module.css';
 
@@ -12,13 +12,10 @@ import styles from './styles.module.css';
 interface Props {
 	cardData: SurveyPassengersCardSchema
 }
+
 /* * */
 
-export function SurveyPasgrCharacterCard({ cardData }: Props) {
-	//
-
-	//
-	// A. Render components
+export function SurveyLevelPassengerCard({ cardData }: Props) {
 	return (
 		<div className={styles.container} id={cardData._id}>
 			{cardData.content.lottie_src && (
@@ -29,5 +26,4 @@ export function SurveyPasgrCharacterCard({ cardData }: Props) {
 			)}
 		</div>
 	);
-	//
 }

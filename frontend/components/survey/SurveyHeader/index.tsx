@@ -22,7 +22,7 @@ export function SurveyHeader() {
 	const t = useTranslations('survey.SurveyHeader');
 	const anchorButtons = [
 		{ _id: '0', href: '#aboutSurvey', label: t('AnchorAboutSurvey') },
-		{ _id: '1', href: '#passangerChacterization', label: t('AnchorPassengerCaracter') },
+		{ _id: '1', href: '#passengerChacterization', label: t('AnchorPassengerCaracter') },
 		{ _id: '2', href: '#recomendationIndex', label: t('AnchorIndex') },
 		{ _id: '3', href: '#results', label: t('AnchorResults') },
 	];

@@ -4,7 +4,7 @@
 
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { allAboutCardsData } from '@/components/survey/_data/About/cards';
+import { allAboutCardsData } from '@/components/survey/_data/about';
 import { SurveyAboutCard } from '@/components/survey/SurveyAboutCard';
 import { SurveyAboutCardCriteria } from '@/components/survey/SurveyAboutCardCriteria';
 import { SurveyAboutCardPrecision } from '@/components/survey/SurveyAboutCardPrecision';
@@ -21,7 +21,6 @@ export function SurveyLevelAbout() {
 	// A. Setup variables
 
 	const t = useTranslations('survey');
-	const allAboutCardData = allAboutCardsData;
 
 	//
 	// B. Render components
@@ -31,7 +30,7 @@ export function SurveyLevelAbout() {
 			<Section heading={t('SurveyHeader.AnchorAboutSurveyTitle')} withPadding>
 				<div id="aboutSurvey">
 					<div className={styles.cardSection}>
-						{allAboutCardData.map((cardData, index) => (
+						{allAboutCardsData.map((cardData, index) => (
 							<SurveyAboutCard key={index} cardData={cardData} />
 						))}
 					</div>

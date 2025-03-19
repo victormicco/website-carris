@@ -1,7 +1,7 @@
 'use client';
 
 /* * */
-import { SurveryResultsCardSchema } from '@/components/survey/_data/Results/cards';
+import { SurveryResultsCardSchema } from '@/components/survey/_data/results';
 
 import styles from './styles.module.css';
 /* * */

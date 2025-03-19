@@ -4,33 +4,32 @@
 
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { allPassangersCardsData } from '@/components/survey/_data/Passenger/cards';
-import { SurveyPasgrCharacterCard } from '@/components/survey/SurveyPasgrCharacterCard';
+import { allPassengersCardsData } from '@/components/survey/_data/passenger';
+import { SurveyLevelPassengerCard } from '@/components/survey/SurveyLevelPassengerCard';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 
 /* * */
 
-export function SurveyLevelPasgrCharacter() {
+export function SurveyLevelPassenger() {
 	//
 
 	//
 	// A. Setup variables
 
-	const t = useTranslations('survey.SurveyPsgrCharacterCard');
-	const allPassengersCardData = allPassangersCardsData;
+	const t = useTranslations('survey.SurveyLevelPassenger');
 
 	//
 	// B. Render components
 
 	return (
-		<div id="passangerChacterization">
+		<div id="passengerChacterization">
 			<Surface forceOverflow>
 				<Section heading={t('heading')} subheading={t('subheading')} withPadding>
 					<div className={styles.contentWrapper}>
-						{allPassengersCardData.map((cardData, index) => (
-							<SurveyPasgrCharacterCard key={index} cardData={cardData} />
+						{allPassengersCardsData.map((cardData, index) => (
+							<SurveyLevelPassengerCard key={index} cardData={cardData} />
 						))}
 					</div>
 				</Section>
