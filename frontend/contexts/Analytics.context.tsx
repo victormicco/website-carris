@@ -59,19 +59,6 @@ export const AnalyticsContextProvider = ({ children }) => {
 		}
 	}, [consentContext.data.init_status, consentContext.data.enabled_analytics, ampli?.isLoaded]);
 
-	useEffect(() => {
-		// Capture a ping event every minute
-		const interval = setInterval(() => {
-			if (typeof window !== 'undefined' && ampli?.isLoaded) {
-				capture(() => ampli.ping({
-					app_version: pjson.version,
-					current_page: window.location.pathname,
-				}));
-			}
-		}, 60000);
-		return () => clearInterval(interval);
-	});
-
 	const capture = (callback: (instance: Ampli, props: DefaultEventProps) => void) => {
 		// Skip if analytics is disabled or Ampli is not loaded
 		if (!consentContext.data.enabled_analytics || !ampli?.isLoaded) return;
