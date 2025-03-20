@@ -2,11 +2,12 @@
 
 /* * */
 
-import { useLocaleContext } from '@/contexts/Locale.context';
+import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { enabledLocaleCodes } from '@/i18n/config';
+import { setUserLocale } from '@/i18n/locale';
 import { SegmentedControl, Skeleton } from '@mantine/core';
-import { useTranslations } from 'next-intl';
-;
+import { useLocale, useTranslations } from 'next-intl';
+import { startTransition } from 'react';
 
 import styles from './styles.module.css';
 
@@ -18,7 +19,9 @@ export function LocaleSwitcher() {
 	//
 	// A. Setup variables
 
-	const localeContext = useLocaleContext();
+	const currentLocale = useLocale();
+
+	const analyticsContext = useAnalyticsContext();
 
 	const t = useTranslations('header.LocaleSwitcher');
 
@@ -34,13 +37,21 @@ export function LocaleSwitcher() {
 	// C. Handle actions
 
 	const handleLocaleChange = (value: string) => {
-		localeContext.actions.changeLocale(value);
+		startTransition(async () => {
+			try {
+				await setUserLocale(value);
+				analyticsContext.actions.capture((ampli, props) => ampli.changedLocale({ ...props, locale: value }));
+			}
+			catch (error) {
+				console.error(error);
+			}
+		});
 	};
 
 	//
-	// E. Render Components
+	// D. Render Components
 
-	if (!localeContext.data.current_locale) {
+	if (!currentLocale) {
 		return <Skeleton height={57} width="100%" />;
 	}
 
@@ -50,7 +61,7 @@ export function LocaleSwitcher() {
 			data={availableLocalesFormatted}
 			onChange={handleLocaleChange}
 			size="xs"
-			value={localeContext.data.current_locale}
+			value={currentLocale}
 			w="100%"
 		/>
 	);

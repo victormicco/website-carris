@@ -2,18 +2,14 @@
 
 /* * */
 
-import { allEnabledLocaleCodesAndAliases, availableLocales, defaultLocaleCode, defaultLocaleCodesAndAliases } from '@/i18n/config';
+import { allEnabledLocaleCodesAndAliases, availableLocales, defaultLocaleCode, defaultLocaleCodesAndAliases, LOCALE_STORAGE_KEY } from '@/i18n/config';
 import { cookies, headers } from 'next/headers';
-
-/* * */
-
-const COOKIE_NAME = 'NEXT_LOCALE';
 
 /* * */
 
 export async function setUserLocale(locale: string) {
 	const cookieStore = await cookies();
-	cookieStore.set(COOKIE_NAME, locale);
+	cookieStore.set(LOCALE_STORAGE_KEY, locale);
 	return locale;
 }
 
@@ -46,7 +42,7 @@ export async function getUserLocale() {
 	// Read the cookie to retrieve the prefered locale setting fot the user.
 	// The locale code might be an alias, so we need to match it against the list of available locales.
 
-	const userPreferedLocale = cookieStore.get(COOKIE_NAME)?.value;
+	const userPreferedLocale = cookieStore.get(LOCALE_STORAGE_KEY)?.value;
 	const userPreferedLocaleMatched = userPreferedLocale && availableLocales.find(item => item.value === userPreferedLocale || item.alias.includes(userPreferedLocale));
 	if (userPreferedLocaleMatched) {
 		console.log(`(2) Locale set from Cookie: ${userPreferedLocaleMatched.value}`);

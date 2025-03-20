@@ -12,6 +12,7 @@ import { createContext, useContext, useEffect } from 'react';
 interface DefaultEventProps {
 	app_version: string
 	domain: string
+	locale?: string
 	pathname: string
 	referer?: string
 	referring_domain?: string
@@ -69,6 +70,7 @@ export const AnalyticsContextProvider = ({ children }) => {
 		const defaultProps: DefaultEventProps = {
 			app_version: pjson.version,
 			domain: window.location.hostname,
+			locale: document.documentElement.lang,
 			pathname: window.location.pathname,
 			referer: document.referrer,
 			referring_domain: document.referrer ? new URL(document.referrer).hostname : '',

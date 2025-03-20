@@ -4,6 +4,10 @@ import { type Formats } from 'next-intl';
 
 /* * */
 
+export const LOCALE_STORAGE_KEY = 'NEXT_LOCALE';
+
+/* * */
+
 export const availableLocales = [
 	{ alias: ['pt-PT', 'pt_PT', 'pt-BR', 'pt_BR', 'pt-GW', 'pt_GW', 'pt-MZ', 'pt_MZ'], enabled: true, value: 'pt' },
 	{ alias: ['en-US', 'en_US', 'en-GB', 'en_GB'], enabled: true, value: 'en' },
