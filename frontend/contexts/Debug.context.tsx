@@ -3,7 +3,7 @@
 /* * */
 
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 /* * */
 
@@ -43,8 +43,13 @@ export const DebugContextProvider = ({ children }) => {
 	//
 	// B. Handle actions
 
+	useEffect(() => {
+		// Capture debug mode state when it changes
+		// This should stay in its own use effect to ensure the latest value of flagIsDebugModeState is captured
+		analyticsContext.actions.capture((ampli, props) => ampli.debugModeToggled({ ...props, debug_mode: flagIsDebugModeState }));
+	}, [flagIsDebugModeState]);
+
 	const toggleDebugMode = () => {
-		analyticsContext.actions.capture(ampli => ampli.clickDebugToggle({ is_enabled: (!flagIsDebugModeState).toString() }));
 		setFlagIsDebugModeState(prev => !prev);
 	};
 

@@ -153,13 +153,6 @@ export interface ChangeStopsViewTypeProperties {
   view_type: string;
 }
 
-export interface ClickDebugToggleProperties {
-  /**
-   * Captures if something is enabled
-   */
-  is_enabled: string;
-}
-
 export interface ClickLinkProperties {
   /**
    * This property indicates the location in the app (the pathname, the screen id) where the current event was generated at.
@@ -177,6 +170,22 @@ export interface DatePeriodSelectedProperties {
    * Captures a date value
    */
   date_value: string;
+}
+
+export interface DebugModeToggledProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  /**
+   * Captures if something is enabled
+   */
+  debug_mode: boolean;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
 }
 
 export interface GithubClickedProperties {
@@ -579,16 +588,6 @@ export class ChangeStopsViewType implements BaseEvent {
   }
 }
 
-export class ClickDebugToggle implements BaseEvent {
-  event_type = 'Click Debug Toggle';
-
-  constructor(
-    public event_properties: ClickDebugToggleProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
 export class ClickLink implements BaseEvent {
   event_type = 'Click Link';
 
@@ -604,6 +603,16 @@ export class DatePeriodSelected implements BaseEvent {
 
   constructor(
     public event_properties: DatePeriodSelectedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class DebugModeToggled implements BaseEvent {
+  event_type = 'Debug Mode Toggled';
+
+  constructor(
+    public event_properties: DebugModeToggledProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -1108,23 +1117,6 @@ export class Ampli {
   }
 
   /**
-   * Click Debug Toggle
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Debug%20Toggle)
-   *
-   * Activated debug mode
-   *
-   * @param properties The event's properties (e.g. is_enabled)
-   * @param options Amplitude event options.
-   */
-  clickDebugToggle(
-    properties: ClickDebugToggleProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new ClickDebugToggle(properties), options);
-  }
-
-  /**
    * Click Link
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Link)
@@ -1156,6 +1148,23 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new DatePeriodSelected(properties), options);
+  }
+
+  /**
+   * Debug Mode Toggled
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Debug%20Mode%20Toggled)
+   *
+   * Event indicating when the debug mode has been toggled on or off within the application.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  debugModeToggled(
+    properties: DebugModeToggledProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new DebugModeToggled(properties), options);
   }
 
   /**
