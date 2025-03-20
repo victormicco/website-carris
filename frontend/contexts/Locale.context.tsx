@@ -45,7 +45,6 @@ export const LocaleContextProvider = ({ children }) => {
 	// B. Handle actions
 
 	const fetchLocaleCookie = async () => {
-		console.log('fetchLocaleCookie ran now');
 		// Get the user locale using server algorithm
 		const locale = await getUserLocale();
 		// Ensure the locale is saved in a cookie
