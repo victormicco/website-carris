@@ -110,7 +110,7 @@ export function SelectPattern({ date_filter, onChange, patterns, value, ...props
 						<Text fw="bold">{patternData.headsign}</Text>
 						{debugContext.flags.is_debug_mode && <Text c="gray" size="xs">({patternData.id})</Text>}
 					</Flex>
-					<Text size="xs">{t('option_label', { locality: firstStopLocality?.display || firstStopMunicipality?.name })}</Text>
+					<Text size="xs">{t('option_label', { locality: firstStopLocality?.display || firstStopMunicipality?.name || '' })}</Text>
 				</Flex>
 			</Group>
 		);

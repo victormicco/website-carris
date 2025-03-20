@@ -1,7 +1,7 @@
 'use client';
 /* * */
 import { LottiePlayer } from '@/components/common/LottiePlayer';
-import { SurveryAboutCardSchema } from '@/components/survey/_data/About/cards';
+import { SurveryAboutCardSchema } from '@/components/survey/_data/about';
 import { useState } from 'react';
 
 import styles from './styles.module.css';

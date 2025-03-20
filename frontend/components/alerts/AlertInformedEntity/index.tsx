@@ -15,12 +15,13 @@ import { useMemo } from 'react';
 
 interface Props {
 	lineId?: string
+	routeId?: string
 	stopId?: string
 }
 
 /* * */
 
-export default function Component({ lineId, stopId }: Props) {
+export default function Component({ lineId, routeId, stopId }: Props) {
 	//
 
 	//
@@ -34,7 +35,7 @@ export default function Component({ lineId, stopId }: Props) {
 	// B. Transform data
 
 	const lineData = useMemo<Line | undefined>(() => {
-		return linesContext.data.lines?.find(line => line.id === lineId);
+		return linesContext.data.lines?.find(line => line.id === lineId || line.route_ids.some(itemId => itemId === routeId));
 	}, [linesContext.data.lines]);
 
 	const stopData = useMemo<Stop | undefined>(() => {
@@ -45,13 +46,13 @@ export default function Component({ lineId, stopId }: Props) {
 	// C. Handle actions
 
 	const handleLineBadgeClick = () => {
-		router.push(`${Routes.LINES.route}/${lineId}`);
+		router.push(`${Routes.LINES.route}/${lineData?.id}`);
 	};
 
 	//
 	// D. Render components
 
-	if (lineId && lineData) {
+	if (lineData) {
 		return (
 			<LineBadge lineData={lineData} onClick={handleLineBadgeClick} />
 		);

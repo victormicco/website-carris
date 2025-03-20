@@ -25,7 +25,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 
 	//
 	{
-		_id: 'Total_Interviews',
+		_id: 'total_interviews',
 		colors: {
 			border: '#FFFFFF',
 			primary: '#FFDD00',
@@ -33,7 +33,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 		content: {
 			header_title: 'Com quem falámos?',
 			legend: 'total de entrevistas presenciais concretizadas',
-			lottie_src: '/assets/survey/animations/sobre/Total_Interviews.json',
+			lottie_src: '/assets/survey-2024/animations/about/total_interviews.json',
 		},
 		header: {
 			value: '3200',
@@ -41,7 +41,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 		stat_level: 1,
 	},
 	{
-		_id: 'Total_Lines',
+		_id: 'total_lines',
 		colors: {
 			border: '#BEBEC8',
 			primary: '#FAFAFA',
@@ -50,7 +50,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 			header_title: 'Onde ?',
 			intro: 'a bordo de',
 			legend: 'linhas de diferentes níveis de procura',
-			lottie_src: '/assets/survey/animations/sobre/Total_Lines.json',
+			lottie_src: '/assets/survey-2024/animations/about/total_lines.json',
 
 		},
 		header: {
@@ -59,7 +59,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 		stat_level: 1,
 	},
 	{
-		_id: 'Total_When',
+		_id: 'total_when',
 		colors: {
 			border: '#BEBEC8',
 			primary: '#FAFAFA',
@@ -68,7 +68,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 			header_title: 'Quando?',
 			intro: 'entre os meses de',
 			legend: 'de 2024',
-			lottie_src: '/assets/survey/animations/sobre/Total_Months.json',
+			lottie_src: '/assets/survey-2024/animations/about/total_when.json',
 
 		},
 		header: {
@@ -78,7 +78,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 	},
 
 	{
-		_id: 'Total_Duration',
+		_id: 'total_duration',
 		colors: {
 			border: '#BEBEC8',
 			primary: '#FAFAFA',
@@ -86,7 +86,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 		content: {
 			header_title: 'Durante Quanto Tempo?',
 			legend: 'duração média de cada entrevista',
-			lottie_src: '/assets/survey/animations/sobre/Total_Duration.json',
+			lottie_src: '/assets/survey-2024/animations/about/total_duration.json',
 
 		},
 		header: {
@@ -95,7 +95,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 		stat_level: 1,
 	},
 	{
-		_id: 'Total_Pilots',
+		_id: 'total_how',
 		colors: {
 			border: '#BEBEC8',
 			primary: '#FAFAFA',
@@ -104,7 +104,7 @@ export const allAboutCardsData: SurveryAboutCardSchema[] = [
 			header_title: 'Como Testámos?',
 			intro: '',
 			legend: 'que incluiram focus group e inquéritos piloto',
-			lottie_src: '/assets/survey/animations/sobre/Total_Pilots.json',
+			lottie_src: '/assets/survey-2024/animations/about/total_how.json',
 
 		},
 		header: {

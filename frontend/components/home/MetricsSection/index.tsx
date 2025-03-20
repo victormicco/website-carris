@@ -71,7 +71,7 @@ export function MetricsSection() {
 						data={allAgenciesChart}
 						data_key="hour_group"
 						main_label={t('demand.label')}
-						main_value={t('demand.value', { value: allAgenciesSum })}
+						main_value={t('demand.value', { value: allAgenciesSum || -1 })}
 						data_series={[
 							{
 								color: 'var(--color-brand)',

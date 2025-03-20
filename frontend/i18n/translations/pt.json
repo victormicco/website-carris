@@ -2,16 +2,6 @@
 	"AlertsCarousel": {
 		"heading": "Alertas de Serviço"
 	},
-	"AppError": {
-		"goto_home": "Voltar à página principal",
-		"redirect": "A voltar à página de principal e em {value} segundo{s}.",
-		"retry": "Nova tentativa em {value} segundos",
-		"subtitle": "Fomos notificados e iremos corrigir em breve. Obrigado pela sua compreensão.",
-		"sync": "Falha ao sincronizar os dispositivos.",
-		"title": "Ocorreu um erro inesperado",
-		"token": "Falta o token de autenticação.",
-		"unauthorized": "Falha na autenticação."
-	},
 	"AppRedirect": {
 		"action": "Ir para a Página",
 		"subtitle": "Se não for redirecionado automaticamente utilize o botão seguinte.",
@@ -543,6 +533,12 @@
 		}
 	},
 	"common": {
+		"AppError": {
+			"goto_home": "Voltar à página principal",
+			"retry": "Nova tentativa em {value} segundos",
+			"subtitle": "Fomos notificados e iremos corrigir em breve. Obrigado pela sua compreensão.",
+			"title": "Ocorreu um erro inesperado"
+		},
 		"BackButton": {
 			"label": "Voltar"
 		},
@@ -1212,7 +1208,7 @@
 			"subheading": "Utilize o serviço navegante® para planear a sua viagem, de A a B, combinando vários modos de transporte, se necessário. Descubra toda as opções que estão incluídas com a sua subscrição."
 		},
 		"PlannerPartners": {
-			"disclaimer": "Edite esta página no Github se pretende incluir a sua aplicação. A ordem é aleatória. Apenas são permitidas entradas que disponibilizem simultaneamente horários planeados e em tempo real ou posição de veículos.",
+			"disclaimer": "Edite esta página no Github se pretende incluir a sua aplicação. A ordem é aleatória. Apenas são permitidas entradas que disponibilizem posição de veículos ou horários planeados e em tempo real.",
 			"heading": "Os nossos parceiros",
 			"subheading": "Porque os nossos dados são abertos, existem várias aplicações que oferecem experiências personalizadas para melhorar o seu dia-a-dia nos transportes."
 		}
@@ -1594,24 +1590,19 @@
 			"title": "Acesso rápido",
 			"value": "7.2"
 		},
+		"SurveyLevelPassenger": {
+			"heading": "Caracterização do  Passageiro",
+			"subheading": "Os utilizadores da Carris Metropolitana são, na sua maioria, mulheres, jovens (idades entre 14 e 34 anos), trabalhadores a tempo inteiro e com grau de instrução secundário."
+		},
 		"SurveyPrecisionCard": {
 			"firstRowText": "intervalo de confiança",
 			"firstRowValue": "95,5%",
-			"fourthRowText": "Estes valores refletem a precisão e fiabilidade dos resultados obtidos, uma vez que garantem que, se o inquérito fosse repetido múltiplas vezes nas mesmas condições, os resultados poderiam variar uma média de 1,8% em 99,5% das ocasiões. ",
+			"fourthRowText": "Estes valores refletem a precisão e fiabilidade dos resultados obtidos, uma vez que garantem que, se o inquérito fosse repetido múltiplas vezes nas mesmas condições, os resultados poderiam variar uma média de 1,8% em 95,5% das ocasiões. ",
 			"header": "Qual foi a precisão?",
 			"secondRowText": "margem de erro",
 			"secondRowValue": "1,8%",
 			"thirdRowText": "classes amostrais",
 			"thirdRowValue": "192"
-		},
-		"SurveyPsgrCharacterCard": {
-			"age_heading": "Idade",
-			"deslocation_type_heading": "Regime de Deslocação",
-			"gender_heading": "Género",
-			"heading": "Caracterização do  Passageiro",
-			"instruction_level__heading": "Nível de Instrução",
-			"occupation_heading": "Ocupação",
-			"subheading": "Os utilizadores da Carris Metropolitana são, na sua maioria, mulheres, jovens (idades entre 14 e 34 anos), trabalhadores a tempo inteiro e com grau de instrução secundário."
 		},
 		"SurveyRecomendationIndex": {
 			"card_heading": "Selo de aprovação dos passageiros",

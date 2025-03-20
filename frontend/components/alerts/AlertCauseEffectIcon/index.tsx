@@ -86,7 +86,7 @@ export function AlertCauseIcon({ cause, className, withText = false }: AlertCaus
 	//
 	// C. Render components
 
-	if (withText && icon) {
+	if (withText && icon && cause) {
 		return (
 			<div className={`${styles.container} ${styles[`severityLevel_${severityLevel}`]} ${className && className}`}>
 				{icon}
@@ -162,7 +162,7 @@ export function AlertEffectIcon({ className, effect, withText = false }: AlertEf
 	//
 	// C. Render components
 
-	if (withText && icon) {
+	if (withText && icon && effect) {
 		return (
 			<div className={`${styles.container} ${styles[`severityLevel_${severityLevel}`]} ${className && className}`}>
 				{icon}

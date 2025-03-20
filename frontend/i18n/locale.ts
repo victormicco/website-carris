@@ -2,18 +2,15 @@
 
 /* * */
 
-import { allEnabledLocaleCodesAndAliases, availableLocales, defaultLocaleCode, defaultLocaleCodesAndAliases } from '@/i18n/config';
+import { allEnabledLocaleCodesAndAliases, availableLocales, defaultLocaleCode, defaultLocaleCodesAndAliases, LOCALE_STORAGE_KEY } from '@/i18n/config';
 import { cookies, headers } from 'next/headers';
 
 /* * */
 
-const COOKIE_NAME = 'NEXT_LOCALE';
-
-/* * */
-
-export async function setUserLocale(locale) {
+export async function setUserLocale(locale: string) {
 	const cookieStore = await cookies();
-	cookieStore.set(COOKIE_NAME, locale);
+	cookieStore.set(LOCALE_STORAGE_KEY, locale);
+	return locale;
 }
 
 /* * */
@@ -37,6 +34,7 @@ export async function getUserLocale() {
 	const queryStringLocaleMatched = localeQueryValue && availableLocales.find(item => item.value === localeQueryValue || item.alias.includes(localeQueryValue));
 	if (queryStringLocaleMatched) {
 		console.log(`(1) Locale set from Query String: ${queryStringLocaleMatched.value}`);
+		// return await setUserLocale(queryStringLocaleMatched.value);
 		return queryStringLocaleMatched.value;
 	}
 
@@ -44,10 +42,11 @@ export async function getUserLocale() {
 	// Read the cookie to retrieve the prefered locale setting fot the user.
 	// The locale code might be an alias, so we need to match it against the list of available locales.
 
-	const userPreferedLocale = cookieStore.get(COOKIE_NAME)?.value;
+	const userPreferedLocale = cookieStore.get(LOCALE_STORAGE_KEY)?.value;
 	const userPreferedLocaleMatched = userPreferedLocale && availableLocales.find(item => item.value === userPreferedLocale || item.alias.includes(userPreferedLocale));
 	if (userPreferedLocaleMatched) {
 		console.log(`(2) Locale set from Cookie: ${userPreferedLocaleMatched.value}`);
+		// return await setUserLocale(userPreferedLocaleMatched.value);
 		return userPreferedLocaleMatched.value;
 	}
 
@@ -57,6 +56,7 @@ export async function getUserLocale() {
 	const browserPreferedLocales = headersList.get('accept-language');
 	if (!browserPreferedLocales) {
 		console.log(`(3) No Locale Browser. Default: ${defaultLocaleCode}`);
+		// return await setUserLocale(defaultLocaleCode);
 		return defaultLocaleCode;
 	}
 
@@ -104,6 +104,7 @@ export async function getUserLocale() {
 
 	if (defaultLocaleIsViableOption) {
 		console.log(`(4) Matched default locale with browser preference: ${defaultLocaleIsViableOption.locale}`);
+		// return await setUserLocale(defaultLocaleIsViableOption.locale);
 		return defaultLocaleIsViableOption.locale;
 	}
 
@@ -115,6 +116,7 @@ export async function getUserLocale() {
 	const otherLocalesThatAreViableOptions = browserPreferedLocalesMatched.filter(lang => allEnabledLocaleCodesAndAliases.includes(lang.locale));
 	if (!otherLocalesThatAreViableOptions.length) {
 		console.log(`(5) No Locale matched from Browser. Default: ${defaultLocaleCode}`);
+		// return await setUserLocale(defaultLocaleCode);
 		return defaultLocaleCode;
 	}
 
@@ -125,6 +127,7 @@ export async function getUserLocale() {
 	const browserPreferedLocaleWithHighestQuality = otherLocalesThatAreViableOptions[0].locale;
 	if (browserPreferedLocaleWithHighestQuality) {
 		console.log(`(6) Locale matched from Browser: ${browserPreferedLocaleWithHighestQuality}`);
+		// return await setUserLocale(browserPreferedLocaleWithHighestQuality);
 		return browserPreferedLocaleWithHighestQuality;
 	}
 
@@ -132,6 +135,7 @@ export async function getUserLocale() {
 	// Return the default locale if no other locale is found.
 
 	console.log(`(7) No Locale matched: ${defaultLocaleCode}`);
+	// return await setUserLocale(defaultLocaleCode);
 	return defaultLocaleCode;
 
 	//

@@ -27,6 +27,10 @@ export function StopsDetailContentTimetableHeader() {
 	//
 	// B. Render components
 
+	if (!operationalDayContext.data.selected_day_jsdate) {
+		return null;
+	}
+
 	return (
 		<div ref={stickyElementRef} className={`${styles.container} ${isSticky ? styles.isSticky : ''}`}>
 
@@ -41,7 +45,7 @@ export function StopsDetailContentTimetableHeader() {
 							changeDay: chunks => <a className={styles.changeDay} href="#">{chunks}</a>,
 							day_name: operationalDayContext.data.selected_day_jsdate,
 							dayName: chunks => <span className={styles.dayName}>{chunks}</span>,
-							stop_name: stopsDetailContext.data.stop?.long_name,
+							stop_name: stopsDetailContext.data.stop?.long_name || '-',
 							stopName: chunks => <span className={styles.stopName}>{chunks}</span>,
 						})}
 					</p>

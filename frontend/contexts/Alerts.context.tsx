@@ -10,7 +10,7 @@ import { useLocale } from 'next-intl';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
-import { useAnalyticsContext } from './Analytics.context';
+// import { useAnalyticsContext } from './Analytics.context';
 
 /* * */
 
@@ -50,7 +50,7 @@ export const AlertsContextProvider = ({ children }) => {
 	// A. Setup variables
 
 	const currentLocale = useLocale();
-	const analyticsContext = useAnalyticsContext();
+	// const analyticsContext = useAnalyticsContext();
 
 	const [dataSimplifiedState, setDataSimplifiedState] = useState<SimplifiedAlert[]>([]);
 
@@ -66,14 +66,15 @@ export const AlertsContextProvider = ({ children }) => {
 		// if (!allAlertsData) return;
 		const allSimplifiedAlerts = allAlertsData?.map(alert => convertToSimplifiedAlert(alert, currentLocale));
 		setDataSimplifiedState(allSimplifiedAlerts || []);
-		analyticsContext.actions.capture(ampli => ampli.captureAlertsReferer({ page_referer: document.referrer }));
+		// THE CORRECT SPELLING IS REFERRER
+		// analyticsContext.actions.capture(ampli => ampli.captureAlertsReferer({ page_referrer: document.referrer }));
 	}, [allAlertsData]);
 
 	//
 	// D. Handle actions
 
 	const getSimplifiedAlertById = (alertId: string): null | SimplifiedAlert => {
-		return dataSimplifiedState.find(item => item.alert_id === alertId) || null;
+		return dataSimplifiedState.find(item => item.alert_id.toLowerCase() === alertId.toLowerCase()) || null;
 	};
 
 	const getSimplifiedAlertsByLineId = (lineId: string): SimplifiedAlert[] => {

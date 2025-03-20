@@ -31,7 +31,8 @@ export function Link({ track = true, ...props }: Props) {
 	const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		if (track && typeof window !== 'undefined') {
 			const currentWindowUrl = window.location.pathname;
-			analyticsContext.actions.capture(ampli => ampli.clickLink({
+			analyticsContext.actions.capture((ampli, eventProps) => ampli.clickLink({
+				...eventProps,
 				current_page: currentWindowUrl,
 				destination_href: props.href.toString(),
 			}));

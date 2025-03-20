@@ -2,7 +2,7 @@
 
 import CMetropolitanaLogoLight from '@/components/common/CMetropolitanaLogoLight';
 import FacilityIcon from '@/components/facilities/FacilityIcon';
-import cutStringAtLength from '@/services/cutStringAtLength';
+import { cutStringAtLength } from '@/utils/cut-string-at-length';
 import { Line } from '@carrismetropolitana/api-types/network';
 
 /* * */

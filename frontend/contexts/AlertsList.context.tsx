@@ -83,7 +83,7 @@ export const AlertsListContextProvider = ({ children }) => {
 	});
 	// const [filterByMunicipalityIdState, setFilterByMunicipalityIdState] = useQueryState('municipality_id');
 
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading] = useState(false);
 
 	//
 	// B. Fetch data
@@ -98,15 +98,10 @@ export const AlertsListContextProvider = ({ children }) => {
 
 	// Set Counters
 	const currentWeekAlerts = allAlertsData?.filter((item) => {
-		const oneWeekFromNowInUnixSeconds = DateTime.now().plus({ week: 1 }).endOf('day').toSeconds();
-		const nowInUnixSeconds = DateTime.now().startOf('day').toSeconds();
-		const alertStartDateInSeconds = DateTime.fromJSDate(item.start_date).toSeconds();
-		const alertEndDate = DateTime.fromJSDate(item.end_date).toSeconds();
-		//
-		if (alertStartDateInSeconds <= oneWeekFromNowInUnixSeconds && alertEndDate >= nowInUnixSeconds) {
-			return true;
-		}
-		return false;
+		const oneWeekFromNowInUnixSeconds = DateTime.now().plus({ week: 1 }).endOf('day').toUnixInteger();
+		const alertStartDateInSeconds = DateTime.fromJSDate(item.start_date).toUnixInteger();
+		// If the alert start date is before one week from now, then the alert is considered 'current'.
+		return alertStartDateInSeconds <= oneWeekFromNowInUnixSeconds;
 	}).length;
 
 	const applyFiltersToData = () => {
@@ -116,28 +111,20 @@ export const AlertsListContextProvider = ({ children }) => {
 
 		//
 		// Filter by_date
-		const nowInUnixSeconds = DateTime.now().startOf('day').toSeconds();
-		const oneWeekFromNowInUnixSeconds = DateTime.now().plus({ week: 1 }).endOf('day').toSeconds();
+
+		const oneWeekFromNowInUnixSeconds = DateTime.now().plus({ week: 1 }).endOf('day').toUnixInteger();
 
 		filterResult = filterResult.filter((item) => {
-			const alertStartDateInSeconds = DateTime.fromJSDate(item.start_date).toSeconds();
-			const alertEndDate = DateTime.fromJSDate(item.end_date).toSeconds();
+			const alertStartDateInSeconds = DateTime.fromJSDate(item.start_date).toUnixInteger();
 			//
 			if (filterByDateState === 'current') {
-				// If the alert start date is before one week from now, and if the end date is after or equal to today
-				// then the alert is considered 'current'.
-				if (alertStartDateInSeconds <= oneWeekFromNowInUnixSeconds && alertEndDate >= nowInUnixSeconds) {
-					return true;
-				}
-				return false;
+				// If the alert start date is before one week from now, then the alert is considered 'current'.
+				return alertStartDateInSeconds <= oneWeekFromNowInUnixSeconds;
 			}
 			else {
-				// If the alert start date is before one week from now, and if the end date is after or equal to today
-				// then the alert is considered 'current'.
-				if (alertStartDateInSeconds <= oneWeekFromNowInUnixSeconds && alertEndDate >= nowInUnixSeconds) {
-					return false;
-				}
-				return true;
+				// If the alert start date is after one week from now, then the alert is considered 'future'.
+				// Otherwise, it is considered 'current'.
+				return alertStartDateInSeconds > oneWeekFromNowInUnixSeconds;
 			}
 		});
 

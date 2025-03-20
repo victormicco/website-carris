@@ -97,7 +97,7 @@ export default function Component({ chartHeight = 100, className }: Props) {
 			<div className={styles.metricsWrapper}>
 				<div className={`${styles.rowWrapper} ${styles.primary}`}>
 					<div className={styles.realtimeValueWrapper}>
-						<p className={styles.value}>{t('today.value', { value: totalTrips })}</p>
+						<p className={styles.value}>{t('today.value', { value: totalTrips || -1 })}</p>
 						{/* <LiveIcon color="var(--color-status-info-text)" /> */}
 					</div>
 					<p className={styles.label}>{t('yearToDate.label')}</p>

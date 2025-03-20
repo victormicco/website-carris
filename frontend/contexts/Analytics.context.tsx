@@ -5,14 +5,22 @@
 import { type Ampli, ampli } from '@/amplitude';
 import { useConsentContext } from '@/contexts/Consent.context';
 import pjson from '@/package.json';
-import { expireAllCookies } from '@/utils/expire-all-cookies.util';
 import { createContext, useContext, useEffect } from 'react';
 
 /* * */
 
+interface DefaultEventProps {
+	app_version: string
+	domain: string
+	locale: string
+	pathname: string
+	referrer?: string
+	referring_domain?: string
+}
+
 interface AnalyticsContextState {
 	actions: {
-		capture: (callback: (instance: Ampli) => void) => void
+		capture: (callback: (instance: Ampli, props: DefaultEventProps) => void) => void
 		captureWithDelay: (callback: (instance: Ampli) => void) => void
 	}
 }
@@ -46,50 +54,29 @@ export const AnalyticsContextProvider = ({ children }) => {
 		if (consentContext.data.init_status && consentContext.data.enabled_analytics && !ampli?.isLoaded) {
 			ampli.load({ client: { configuration: { appVersion: pjson.version, autocapture: false } }, environment: 'default' });
 			ampli.client.setOptOut(false);
+			capture((instance, props) => instance.sessionStarted(props));
 		}
 		else if (consentContext.data.init_status && ampli?.isLoaded) {
 			ampli.client.setOptOut(true);
-			expireAllCookies();
 		}
 	}, [consentContext.data.init_status, consentContext.data.enabled_analytics, ampli?.isLoaded]);
 
-	useEffect(() => {
-		// Capture a ping event every minute
-		const interval = setInterval(() => {
-			if (typeof window !== 'undefined' && ampli?.isLoaded) {
-				capture(() => ampli.ping({
-					app_version: pjson.version,
-					current_page: window.location.pathname,
-				}));
-			}
-		}, 60000);
-		return () => clearInterval(interval);
-	});
-
-	const capture = (callback: (instance: Ampli) => void) => {
-		if (consentContext.data.enabled_analytics && ampli?.isLoaded) {
-			if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-				const defaultProps = {
-					app_version: pjson.version,
-					event_date: new Date().toISOString(),
-					page_domain: window.location.hostname,
-					page_location: window.location.href,
-					page_referer: document.referrer || window.location.origin,
-					page_title: document.title,
-				};
-
-				const wrappedAmpli = new Proxy(ampli, {
-					// Target is ampli and props is the event name
-					get(target, prop) {
-						if (typeof target[prop] === 'function') {
-							return (eventProps = {}) => target[prop]({ ...defaultProps, ...eventProps });
-						}
-					},
-				});
-
-				callback(wrappedAmpli);
-			};
-		}
+	const capture = (callback: (instance: Ampli, props: DefaultEventProps) => void) => {
+		// Skip if analytics is disabled or Ampli is not loaded
+		if (!consentContext.data.enabled_analytics || !ampli?.isLoaded) return;
+		// Skip if window or document are not available
+		if (typeof window === 'undefined' && typeof document === 'undefined') return;
+		// Setup default properties for all events
+		const defaultProps: DefaultEventProps = {
+			app_version: pjson.version,
+			domain: window.location.hostname,
+			locale: document.documentElement.lang,
+			pathname: window.location.pathname,
+			referrer: document.referrer,
+			referring_domain: document.referrer ? new URL(document.referrer).hostname : '',
+		};
+		// Execute the callback with the default event properties
+		callback(ampli, defaultProps);
 	};
 
 	const captureWithDelay = (() => {

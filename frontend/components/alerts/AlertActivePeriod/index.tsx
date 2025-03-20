@@ -29,7 +29,7 @@ export function AlertActivePeriodEnd({ date, size = 'md' }: AlertActivePeriodEnd
 	//
 	// B. Render components
 
-	if (date) {
+	if (date && !isNaN(date.getTime())) {
 		return <p className={`${styles.text} ${styles[size]}`}>{t.rich('end', { end: date, parsedDate: chunks => <strong>{chunks}</strong> })}</p>;
 	}
 
@@ -49,7 +49,7 @@ export function AlertActivePeriodStart({ date, size = 'md' }: AlertActivePeriodS
 	//
 	// B. Render components
 
-	if (date) {
+	if (date && !isNaN(date.getTime())) {
 		return <p className={`${styles.text} ${styles[size]}`}>{t.rich('start', { parsedDate: chunks => <strong>{chunks}</strong>, start: date })}</p>;
 	}
 

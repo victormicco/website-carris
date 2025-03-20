@@ -1,3 +1,5 @@
+/* * */
+
 import Button from '@/components/common/Button';
 import { LottiePlayer } from '@/components/common/LottiePlayer';
 import { GridNav } from '@/components/layout/GridNav';
@@ -9,6 +11,8 @@ import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
 
+/* * */
+
 export function SurveyHeader() {
 	//
 
@@ -17,21 +21,22 @@ export function SurveyHeader() {
 
 	const t = useTranslations('survey.SurveyHeader');
 	const anchorButtons = [
-		{ _id: '0', href: '#aboutSurvey', label: `${t('AnchorAboutSurvey')}` },
-		{ _id: '1', href: '#passangerChacterization', label: `${t('AnchorPassengerCaracter')}` },
-		{ _id: '2', href: '#recomendationIndex', label: `${t('AnchorIndex')}` },
-		{ _id: '3', href: '#results', label: `${t('AnchorResults')}` },
+		{ _id: '0', href: '#aboutSurvey', label: t('AnchorAboutSurvey') },
+		{ _id: '1', href: '#passengerChacterization', label: t('AnchorPassengerCaracter') },
+		{ _id: '2', href: '#recomendationIndex', label: t('AnchorIndex') },
+		{ _id: '3', href: '#results', label: t('AnchorResults') },
 	];
 
 	//
 	// B. Render Components
+
 	const renderAnchorButtons = () => (
 		<GridNav className={styles.gridNav} items={anchorButtons} />
 	);
 
 	const renderDownloadButton = () => (
 		<div className={styles.downloadButtonContainer}>
-			<Button className={styles.downloadButton} href="/assets/survey/CM _ Resultados Inquérito.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
+			<Button className={styles.downloadButton} href="/assets/survey-2024/cm-resultados-inquerito-2024.pdf" icon={<IconDownload size={20} />} label={t('DownloadButton')} target="_blank" />
 		</div>
 	);
 
@@ -43,8 +48,7 @@ export function SurveyHeader() {
 			</div>
 			<LottiePlayer
 				className={styles.lottieGlobalSatisfaction}
-				loop={false}
-				path="assets/survey/animations/sobre/ISGP.json"
+				path="/assets/survey-2024/animations/about/isgp.json"
 				play
 			/>
 			<div className={styles.header}>
@@ -78,5 +82,6 @@ export function SurveyHeader() {
 			</Surface>
 		</>
 	);
+
 	//
 }

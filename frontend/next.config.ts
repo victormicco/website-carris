@@ -6,15 +6,6 @@ import createNextIntlPlugin from 'next-intl/plugin';
 /* * */
 
 const nextConfig: NextConfig = {
-	images: {
-		remotePatterns: [
-			{
-				hostname: 'carrismetropolitana.pt',
-				port: '',
-				protocol: 'https',
-			},
-		],
-	},
 	output: 'standalone',
 	reactStrictMode: true,
 	async redirects() {

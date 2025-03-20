@@ -61,6 +61,7 @@ export function PathWaypointTimetable() {
 
 	//
 	// C. Handle actions
+
 	function handleNextDateClick(date: Date) {
 		operationalDayContext.actions.updateSelectedDayFromJsDate(date);
 	}

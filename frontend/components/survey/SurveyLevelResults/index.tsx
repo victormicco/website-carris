@@ -6,7 +6,7 @@ import { Grid } from '@/components/layout/Grid';
 import { NoDataLabel } from '@/components/layout/NoDataLabel';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-import { allResultsCardData, SurveryResultsCardSchema } from '@/components/survey/_data/Results/cards';
+import { allResultsCardData, SurveryResultsCardSchema } from '@/components/survey/_data/results';
 import { SurveyResultCard } from '@/components/survey/SurveyResultCard';
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { Accordion, AccordionControl } from '@mantine/core';

@@ -13,6 +13,7 @@ import { Surface } from '@/components/layout/Surface';
 import { useAlertsContext } from '@/contexts/Alerts.context';
 import { IconExternalLink } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 
 import styles from './styles.module.css';
 
@@ -39,7 +40,20 @@ export function AlertsDetail({ alertId }: Props) {
 	const simplifiedAlertData = alertsContext.actions.getSimplifiedAlertById(alertId);
 
 	//
-	// C. Render components
+	// C. Transform data
+
+	const uniqueInformedEntityLineIds = useMemo(() => {
+		const set = new Set<string>();
+
+		simplifiedAlertData?.informed_entity.forEach((entity) => {
+			const lineId = entity.route_id?.split('_')[0];
+			if (lineId) set.add(lineId);
+		});
+		return Array.from(set);
+	}, [simplifiedAlertData]);
+
+	//
+	// D. Render components
 
 	return (
 		<>
@@ -59,8 +73,8 @@ export function AlertsDetail({ alertId }: Props) {
 				{simplifiedAlertData?.informed_entity && (
 					<Section withPadding>
 						<div className={styles.infoBar}>
-							{simplifiedAlertData?.informed_entity.map((entity, index) => (
-								<AlertInformedEntity key={index} lineId={entity.line_id} />
+							{uniqueInformedEntityLineIds.map((lineId, index) => (
+								<AlertInformedEntity key={index} lineId={lineId} />
 							))}
 						</div>
 					</Section>

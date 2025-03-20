@@ -99,16 +99,12 @@ export interface AlertsFilterChangedProperties {
   filter_value: string;
 }
 
-export interface CaptureAlertsRefererProperties {
-  page_referer: string;
-}
-
-export interface CaptureFrontendErrorProperties {
-  "[Amplitude] Page Path"?: any;
+export interface ApplicationErroredProperties {
   /**
-   * Captures an error date
+   * The version of the application that generated the event.
    */
-  error_date: string;
+  app_version: string;
+  domain: string;
   /**
    * Error text
    */
@@ -117,31 +113,27 @@ export interface CaptureFrontendErrorProperties {
    * Captures an Error type
    */
   error_type: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
+export interface CaptureAlertsRefererProperties {
+  page_referer: string;
 }
 
 export interface CaptureNewsRefererProperties {
   /**
    * The version of the application that generated the event.
    */
-  app_version?: string;
+  app_version: string;
   /**
    * | Rule | Value |
    * |---|---|
    * | Regex |  |
    */
-  event_date?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  page_domain?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  page_location?: string;
+  page_location: string;
   /**
    * Captures the Referrer for a page
    */
@@ -161,13 +153,6 @@ export interface ChangeStopsViewTypeProperties {
   view_type: string;
 }
 
-export interface ClickDebugToggleProperties {
-  /**
-   * Captures if something is enabled
-   */
-  is_enabled: string;
-}
-
 export interface ClickLinkProperties {
   /**
    * This property indicates the location in the app (the pathname, the screen id) where the current event was generated at.
@@ -177,6 +162,7 @@ export interface ClickLinkProperties {
    * This property indicates the href of the destination URL. This is used when the user is navigating out of the current screen by means of a link (either in-app or in a website).
    */
   destination_href: string;
+  pathname: string;
 }
 
 export interface DatePeriodSelectedProperties {
@@ -186,11 +172,47 @@ export interface DatePeriodSelectedProperties {
   date_value: string;
 }
 
+export interface DebugModeDisabledProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
+export interface DebugModeEnabledProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
 export interface GithubClickedProperties {
   /**
    * Captures a click
    */
   click: string;
+}
+
+export interface LocaleChangedProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
 }
 
 export interface LostAndFoundAreaClickedProperties {
@@ -234,11 +256,31 @@ export interface OpenGoogleMapsClickedProperties {
   click_from: string;
 }
 
+export interface OpenedStopDetailsProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+  /**
+   * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
+   *
+   * | Rule | Value |
+   * |---|---|
+   * | Min Length | 6 |
+   * | Max Length | 6 |
+   */
+  stop_id: string;
+}
+
 export interface PingProperties {
   /**
    * The version of the application that generated the event.
    */
-  app_version?: string;
+  app_version: string;
   /**
    * This property indicates the location in the app (the pathname, the screen id) where the current event was generated at.
    */
@@ -289,6 +331,17 @@ export interface SearchStopProperties {
   search_value: string;
 }
 
+export interface SessionStartedProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
 export interface ShareCardViagem2024Properties {
   card_id: string;
   card_title: string;
@@ -310,52 +363,11 @@ export interface StopAudioPlayedProperties {
   stop_id: string;
 }
 
-export interface StopDetailRedirectedProperties {
-  "[Amplitude] Page Path"?: any;
+export interface StopSelectedProperties {
   /**
    * The version of the application that generated the event.
    */
-  app_version?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  event_date?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  page_domain?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  page_location?: string;
-  /**
-   * Captures the Referrer for a page
-   */
-  page_referer?: string;
-  /**
-   * | Rule | Value |
-   * |---|---|
-   * | Regex |  |
-   */
-  page_title?: string;
-  /**
-   * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
-   *
-   * | Rule | Value |
-   * |---|---|
-   * | Min Length | 6 |
-   * | Max Length | 6 |
-   */
-  stop_id: string;
-}
-
-export interface StopSelectedProperties {
+  app_version: string;
   /**
    * Holds a the ID of the entity "Stop", which is always a 6-digit numeric string.
    *
@@ -544,6 +556,16 @@ export class AlertsFilterChanged implements BaseEvent {
   }
 }
 
+export class ApplicationErrored implements BaseEvent {
+  event_type = 'Application Errored';
+
+  constructor(
+    public event_properties: ApplicationErroredProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
 export class CaptureAlertsReferer implements BaseEvent {
   event_type = 'Capture Alerts Referer';
 
@@ -554,21 +576,11 @@ export class CaptureAlertsReferer implements BaseEvent {
   }
 }
 
-export class CaptureFrontendError implements BaseEvent {
-  event_type = 'Capture Frontend Error';
-
-  constructor(
-    public event_properties: CaptureFrontendErrorProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
 export class CaptureNewsReferer implements BaseEvent {
   event_type = 'Capture News Referer';
 
   constructor(
-    public event_properties?: CaptureNewsRefererProperties,
+    public event_properties: CaptureNewsRefererProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -579,16 +591,6 @@ export class ChangeStopsViewType implements BaseEvent {
 
   constructor(
     public event_properties: ChangeStopsViewTypeProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class ClickDebugToggle implements BaseEvent {
-  event_type = 'Click Debug Toggle';
-
-  constructor(
-    public event_properties: ClickDebugToggleProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -614,11 +616,41 @@ export class DatePeriodSelected implements BaseEvent {
   }
 }
 
+export class DebugModeDisabled implements BaseEvent {
+  event_type = 'Debug Mode Disabled';
+
+  constructor(
+    public event_properties: DebugModeDisabledProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class DebugModeEnabled implements BaseEvent {
+  event_type = 'Debug Mode Enabled';
+
+  constructor(
+    public event_properties: DebugModeEnabledProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
 export class GithubClicked implements BaseEvent {
   event_type = 'Github Clicked';
 
   constructor(
     public event_properties: GithubClickedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class LocaleChanged implements BaseEvent {
+  event_type = 'Locale Changed';
+
+  constructor(
+    public event_properties: LocaleChangedProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -649,6 +681,16 @@ export class OpenGoogleMapsClicked implements BaseEvent {
 
   constructor(
     public event_properties: OpenGoogleMapsClickedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class OpenedStopDetails implements BaseEvent {
+  event_type = 'Opened Stop Details';
+
+  constructor(
+    public event_properties: OpenedStopDetailsProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -724,6 +766,16 @@ export class SearchStop implements BaseEvent {
   }
 }
 
+export class SessionStarted implements BaseEvent {
+  event_type = 'Session Started';
+
+  constructor(
+    public event_properties: SessionStartedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
 export class ShareCardViagem2024 implements BaseEvent {
   event_type = 'Share Card Viagem 2024';
 
@@ -739,16 +791,6 @@ export class StopAudioPlayed implements BaseEvent {
 
   constructor(
     public event_properties: StopAudioPlayedProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
-export class StopDetailRedirected implements BaseEvent {
-  event_type = 'Stop Detail Redirected';
-
-  constructor(
-    public event_properties: StopDetailRedirectedProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -1025,6 +1067,23 @@ export class Ampli {
   }
 
   /**
+   * Application Errored
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Application%20Errored)
+   *
+   * Event to track occurrences when the application encounters errors.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  applicationErrored(
+    properties: ApplicationErroredProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new ApplicationErrored(properties), options);
+  }
+
+  /**
    * Capture Alerts Referer
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20Alerts%20Referer)
@@ -1042,23 +1101,6 @@ export class Ampli {
   }
 
   /**
-   * Capture Frontend Error
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20Frontend%20Error)
-   *
-   * Ocurred a frontend error
-   *
-   * @param properties The event's properties (e.g. [Amplitude] Page Path)
-   * @param options Amplitude event options.
-   */
-  captureFrontendError(
-    properties: CaptureFrontendErrorProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new CaptureFrontendError(properties), options);
-  }
-
-  /**
    * Capture News Referer
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20News%20Referer)
@@ -1069,7 +1111,7 @@ export class Ampli {
    * @param options Amplitude event options.
    */
   captureNewsReferer(
-    properties?: CaptureNewsRefererProperties,
+    properties: CaptureNewsRefererProperties,
     options?: EventOptions,
   ) {
     return this.track(new CaptureNewsReferer(properties), options);
@@ -1090,23 +1132,6 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new ChangeStopsViewType(properties), options);
-  }
-
-  /**
-   * Click Debug Toggle
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Debug%20Toggle)
-   *
-   * Activated debug mode
-   *
-   * @param properties The event's properties (e.g. is_enabled)
-   * @param options Amplitude event options.
-   */
-  clickDebugToggle(
-    properties: ClickDebugToggleProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new ClickDebugToggle(properties), options);
   }
 
   /**
@@ -1144,6 +1169,40 @@ export class Ampli {
   }
 
   /**
+   * Debug Mode Disabled
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Debug%20Mode%20Disabled)
+   *
+   * Event indicating that the debug mode has been disabled in the user preferences.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  debugModeDisabled(
+    properties: DebugModeDisabledProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new DebugModeDisabled(properties), options);
+  }
+
+  /**
+   * Debug Mode Enabled
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Debug%20Mode%20Enabled)
+   *
+   * Event indicating when a user enables debug mode in their preferences.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  debugModeEnabled(
+    properties: DebugModeEnabledProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new DebugModeEnabled(properties), options);
+  }
+
+  /**
    * Github Clicked
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Github%20Clicked)
@@ -1158,6 +1217,23 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new GithubClicked(properties), options);
+  }
+
+  /**
+   * Locale Changed
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Locale%20Changed)
+   *
+   * Event to track when a user changes their preferred language or region settings within the app.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  localeChanged(
+    properties: LocaleChangedProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new LocaleChanged(properties), options);
   }
 
   /**
@@ -1212,6 +1288,23 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new OpenGoogleMapsClicked(properties), options);
+  }
+
+  /**
+   * Opened Stop Details
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Opened%20Stop%20Details)
+   *
+   * Event to track when a user opens the details of a Stop.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  openedStopDetails(
+    properties: OpenedStopDetailsProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new OpenedStopDetails(properties), options);
   }
 
   /**
@@ -1334,6 +1427,23 @@ export class Ampli {
   }
 
   /**
+   * Session Started
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Session%20Started)
+   *
+   * Event has no description in tracking plan.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  sessionStarted(
+    properties: SessionStartedProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new SessionStarted(properties), options);
+  }
+
+  /**
    * Share Card Viagem 2024
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Share%20Card%20Viagem%202024)
@@ -1368,30 +1478,13 @@ export class Ampli {
   }
 
   /**
-   * Stop Detail Redirected
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Detail%20Redirected)
-   *
-   * Clicked something that redirected to a stop details page
-   *
-   * @param properties The event's properties (e.g. [Amplitude] Page Path)
-   * @param options Amplitude event options.
-   */
-  stopDetailRedirected(
-    properties: StopDetailRedirectedProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new StopDetailRedirected(properties), options);
-  }
-
-  /**
    * Stop Selected
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Stop%20Selected)
    *
    * Selected a specific stop
    *
-   * @param properties The event's properties (e.g. stop_id)
+   * @param properties The event's properties (e.g. app_version)
    * @param options Amplitude event options.
    */
   stopSelected(

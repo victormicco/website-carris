@@ -1,6 +1,10 @@
 /* * */
 
-import type { Formats } from 'next-intl';
+import { type Formats } from 'next-intl';
+
+/* * */
+
+export const LOCALE_STORAGE_KEY = 'NEXT_LOCALE';
 
 /* * */
 

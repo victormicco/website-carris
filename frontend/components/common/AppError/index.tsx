@@ -5,7 +5,6 @@
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { Button } from '@mantine/core';
 import { IconTrafficCone } from '@tabler/icons-react';
-import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
@@ -13,23 +12,24 @@ import styles from './styles.module.css';
 
 /* * */
 
-export default function Component({ error }) {
+export function AppError({ error }) {
 	//
 
 	//
 	// A. Setup variables
 
-	const t = useTranslations('AppError');
+	const t = useTranslations('common.AppError');
 	const analyticsContext = useAnalyticsContext();
 
-	const [reloadInSeconds, setReloadInSeconds] = useState(10);
+	const [reloadInSeconds, setReloadInSeconds] = useState(30);
 
 	//
 	// B. Transform data
 
 	useEffect(() => {
-		const today = DateTime.now().toISODate();
-		analyticsContext.actions.capture(ampli => ampli.captureFrontendError({ error_date: today, error_title: error.message, error_type: error.name }));
+		analyticsContext.actions.capture((ampli, props) => {
+			ampli.applicationErrored({ ...props, error_title: error.message, error_type: error.name });
+		});
 	}, []);
 
 	useEffect(() => {

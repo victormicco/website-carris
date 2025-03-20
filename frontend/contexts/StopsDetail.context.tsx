@@ -232,6 +232,14 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 					// Include it in the past if the estimated arrival time is in the past.
 					return (arrival.estimated_arrival_unix || arrival.scheduled_arrival_unix) < nowInUnixSeconds;
 				})
+				.filter((arrival) => {
+					// Skip the last stop
+					const lastStopSequence = dataValidPatternsState
+						?.find(patternGroup => patternGroup.id === arrival.pattern_id)?.path
+						.sort((a, b) => a.stop_sequence - b.stop_sequence)
+						.slice(-1)[0].stop_sequence;
+					return arrival.stop_sequence !== lastStopSequence;
+				})
 				.sort((a, b) => {
 					const minimumArrivalA = a.observed_arrival_unix || a.scheduled_arrival_unix;
 					const minimumArrivalB = b.observed_arrival_unix || b.scheduled_arrival_unix;
@@ -244,6 +252,14 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 					if (arrival.observed_arrival_unix) return false;
 					// Include it in the future if the estimated arrival time is in the future.
 					return (arrival.estimated_arrival_unix || arrival.scheduled_arrival_unix) >= nowInUnixSeconds;
+				})
+				.filter((arrival) => {
+					// Skip the last stop
+					const lastStopSequence = dataValidPatternsState
+						?.find(patternGroup => patternGroup.id === arrival.pattern_id)?.path
+						.sort((a, b) => a.stop_sequence - b.stop_sequence)
+						.slice(-1)[0].stop_sequence;
+					return arrival.stop_sequence !== lastStopSequence;
 				})
 				.sort((a, b) => {
 					const minimumArrivalA = a.estimated_arrival_unix || a.scheduled_arrival_unix;
@@ -268,6 +284,11 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 		const validScheduledTrips: Arrival[] = [];
 
 		for (const patternGroup of dataValidPatternsState || []) {
+			// Skip the last stop
+			const lastStopSequence = patternGroup.path
+				.sort((a, b) => a.stop_sequence - b.stop_sequence)
+				.slice(-1)[0].stop_sequence;
+			// Find the trips for the given pattern
 			for (const trip of patternGroup.trips) {
 				// Skip if trip is not valid for the selected operational day
 				if (!trip.valid_on.includes(operationalDayContext.data.selected_day)) continue;
@@ -275,6 +296,8 @@ export const StopsDetailContextProvider = ({ children, stopId }: { children: Rea
 				for (const stopTime of trip.schedule) {
 					// Skip if not for the selected stop
 					if (stopTime.stop_id !== dataActiveStopIdState) continue;
+					// Skip the last stop
+					if (stopTime.stop_sequence === lastStopSequence) continue;
 					// Convert the arrival time into a unix timestamp.
 					// The arrival time is in 24h+ format, so we need to split it into hours, minutes, and seconds.
 					// Remember that if the hour is greater than 24, it means the arrival time is on the next day, and we need to add one day to the timestamp.
