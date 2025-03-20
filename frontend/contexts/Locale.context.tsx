@@ -45,6 +45,7 @@ export const LocaleContextProvider = ({ children }) => {
 	// B. Handle actions
 
 	const fetchLocaleCookie = async () => {
+		console.log('fetchLocaleCookie ran now');
 		// Get the user locale using server algorithm
 		const locale = await getUserLocale();
 		// Ensure the locale is saved in a cookie
@@ -57,7 +58,6 @@ export const LocaleContextProvider = ({ children }) => {
 		startTransition(async () => {
 			try {
 				await setUserLocale(value);
-				console.log(`set locale: ${value}`);
 				await fetchLocaleCookie();
 				// analyticsContext.actions.capture(ampli => ampli.changeLocale(value));
 			}
