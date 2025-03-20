@@ -83,7 +83,7 @@ export const AnalyticsContextProvider = ({ children }) => {
 			domain: window.location.hostname,
 			pathname: window.location.pathname,
 			referer: document.referrer,
-			referring_domain: new URL(document.referrer).hostname,
+			referring_domain: document.referrer ? new URL(document.referrer).hostname : '',
 		};
 		// Execute the callback with the default event properties
 		callback(ampli, defaultProps);
