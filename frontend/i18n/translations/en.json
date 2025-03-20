@@ -930,6 +930,8 @@
 			"total_contacts_desc": "last week's contacts total",
 			"total_email_contacts_desc": "contacts by email",
 			"total_passengers_day": "{value, number}",
+			"total_contacts_phone": "{value, number}",
+			"total_contacts_email": "{value, number}",
 			"total_passengers_day_contacts_desc": "total passengers of the week",
 			"total_phone_contacts_desc": "contacts by phone"
 		},

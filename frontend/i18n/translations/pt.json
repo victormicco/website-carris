@@ -928,6 +928,8 @@
 			"main_value": "{value, number}"
 		},
 		"MetricsPageContactsGlobalCard": {
+			"total_contacts_phone": "{value, number}",
+			"total_contacts_email": "{value, number}",
 			"total_contacts_desc": "total de contactos na última semana",
 			"total_email_contacts_desc": "contactos por email",
 			"total_passengers_day": "{value, number}",

@@ -25,13 +25,13 @@
 
 @media(width <= 650px) {
 	.globalCardFirstRow {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 0;
 	}
 }
 
 /* * */
-/* GLOBAL CARD FIRST ROW */
+/* GLOBAL CARD SECOND ROW */
 .globalCardSecondRow {
     display: flex;
     flex-flow: row;
