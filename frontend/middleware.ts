@@ -10,11 +10,16 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
 	const parsedUrl = new URL(request.nextUrl.pathname.toLowerCase(), request.url);
-	return NextResponse.rewrite(parsedUrl, {
-		headers: {
-			'x-href': request.nextUrl.href,
-		},
+
+	const headers = new Headers({
+		'x-href': request.nextUrl.href,
 	});
+
+	if (request.url === parsedUrl.toString()) {
+		return NextResponse.next({ headers });
+	}
+
+	return NextResponse.redirect(parsedUrl, { headers });
 }
 
 /* * */
