@@ -99,6 +99,18 @@ export interface AlertsFilterChangedProperties {
   filter_value: string;
 }
 
+export interface AnalyticsConsentAcceptedProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
 export interface ApplicationErroredProperties {
   /**
    * The version of the application that generated the event.
@@ -512,10 +524,6 @@ export class Identify implements BaseEvent {
   }
 }
 
-export class AcceptAnalyticsConsent implements BaseEvent {
-  event_type = 'Accept Analytics Consent';
-}
-
 export class AddFavoriteLine implements BaseEvent {
   event_type = 'Add Favorite Line';
 
@@ -551,6 +559,16 @@ export class AlertsFilterChanged implements BaseEvent {
 
   constructor(
     public event_properties: AlertsFilterChangedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class AnalyticsConsentAccepted implements BaseEvent {
+  event_type = 'Analytics Consent Accepted';
+
+  constructor(
+    public event_properties: AnalyticsConsentAcceptedProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -984,21 +1002,6 @@ export class Ampli {
   }
 
   /**
-   * Accept Analytics Consent
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Accept%20Analytics%20Consent)
-   *
-   * Accepted analytics consent
-   *
-   * @param options Amplitude event options.
-   */
-  acceptAnalyticsConsent(
-    options?: EventOptions,
-  ) {
-    return this.track(new AcceptAnalyticsConsent(), options);
-  }
-
-  /**
    * Add Favorite Line
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Add%20Favorite%20Line)
@@ -1064,6 +1067,23 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new AlertsFilterChanged(properties), options);
+  }
+
+  /**
+   * Analytics Consent Accepted
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Analytics%20Consent%20Accepted)
+   *
+   * Event indicating that the debug mode has been disabled in the user preferences.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  analyticsConsentAccepted(
+    properties: AnalyticsConsentAcceptedProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new AnalyticsConsentAccepted(properties), options);
   }
 
   /**

@@ -51,7 +51,7 @@ export function ConsentPopup() {
 		// Set the Analytics decision based on the set option
 		if (optionAnalyticsDecision) {
 			consentContext.actions.enable(['analytics']);
-			analyticsContext.actions.capture(ampli => ampli.acceptAnalyticsConsent());
+			analyticsContext.actions.capture((ampli, props) => ampli.analyticsConsentAccepted(props));
 		}
 		else {
 			consentContext.actions.disable(['analytics']);
