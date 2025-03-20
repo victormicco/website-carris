@@ -153,18 +153,6 @@ export interface ChangeStopsViewTypeProperties {
   view_type: string;
 }
 
-export interface ChangedLocaleProperties {
-  /**
-   * The version of the application that generated the event.
-   */
-  app_version: string;
-  domain: string;
-  locale: string;
-  pathname: string;
-  referrer?: string;
-  referring_domain?: string;
-}
-
 export interface ClickDebugToggleProperties {
   /**
    * Captures if something is enabled
@@ -196,6 +184,18 @@ export interface GithubClickedProperties {
    * Captures a click
    */
   click: string;
+}
+
+export interface LocaleChangedProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  locale: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
 }
 
 export interface LostAndFoundAreaClickedProperties {
@@ -579,16 +579,6 @@ export class ChangeStopsViewType implements BaseEvent {
   }
 }
 
-export class ChangedLocale implements BaseEvent {
-  event_type = 'Changed Locale';
-
-  constructor(
-    public event_properties: ChangedLocaleProperties,
-  ) {
-    this.event_properties = event_properties;
-  }
-}
-
 export class ClickDebugToggle implements BaseEvent {
   event_type = 'Click Debug Toggle';
 
@@ -624,6 +614,16 @@ export class GithubClicked implements BaseEvent {
 
   constructor(
     public event_properties: GithubClickedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class LocaleChanged implements BaseEvent {
+  event_type = 'Locale Changed';
+
+  constructor(
+    public event_properties: LocaleChangedProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -1108,23 +1108,6 @@ export class Ampli {
   }
 
   /**
-   * Changed Locale
-   *
-   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Changed%20Locale)
-   *
-   * Event to track when a user changes the language or region settings in the app.
-   *
-   * @param properties The event's properties (e.g. app_version)
-   * @param options Amplitude event options.
-   */
-  changedLocale(
-    properties: ChangedLocaleProperties,
-    options?: EventOptions,
-  ) {
-    return this.track(new ChangedLocale(properties), options);
-  }
-
-  /**
    * Click Debug Toggle
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Click%20Debug%20Toggle)
@@ -1190,6 +1173,23 @@ export class Ampli {
     options?: EventOptions,
   ) {
     return this.track(new GithubClicked(properties), options);
+  }
+
+  /**
+   * Locale Changed
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Locale%20Changed)
+   *
+   * Event to track when a user changes their preferred language or region settings within the app.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  localeChanged(
+    properties: LocaleChangedProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new LocaleChanged(properties), options);
   }
 
   /**

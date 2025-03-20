@@ -40,7 +40,7 @@ export function LocaleSwitcher() {
 		startTransition(async () => {
 			try {
 				await setUserLocale(value);
-				analyticsContext.actions.capture((ampli, props) => ampli.changedLocale({ ...props, locale: value }));
+				analyticsContext.actions.capture((ampli, props) => ampli.localeChanged({ ...props, locale: value }));
 			}
 			catch (error) {
 				console.error(error);
