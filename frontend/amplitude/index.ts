@@ -99,12 +99,30 @@ export interface AlertsFilterChangedProperties {
   filter_value: string;
 }
 
+export interface ApplicationErroredProperties {
+  /**
+   * The version of the application that generated the event.
+   */
+  app_version: string;
+  domain: string;
+  /**
+   * Error text
+   */
+  error_title: string;
+  /**
+   * Captures an Error type
+   */
+  error_type: string;
+  pathname: string;
+  referrer?: string;
+  referring_domain?: string;
+}
+
 export interface CaptureAlertsRefererProperties {
   page_referer: string;
 }
 
 export interface CaptureFrontendErrorProperties {
-  "[Amplitude] Page Path"?: any;
   /**
    * Captures an error date
    */
@@ -530,6 +548,16 @@ export class AlertsFilterChanged implements BaseEvent {
 
   constructor(
     public event_properties: AlertsFilterChangedProperties,
+  ) {
+    this.event_properties = event_properties;
+  }
+}
+
+export class ApplicationErrored implements BaseEvent {
+  event_type = 'Application Errored';
+
+  constructor(
+    public event_properties: ApplicationErroredProperties,
   ) {
     this.event_properties = event_properties;
   }
@@ -1036,6 +1064,23 @@ export class Ampli {
   }
 
   /**
+   * Application Errored
+   *
+   * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Application%20Errored)
+   *
+   * Event to track occurrences when the application encounters errors.
+   *
+   * @param properties The event's properties (e.g. app_version)
+   * @param options Amplitude event options.
+   */
+  applicationErrored(
+    properties: ApplicationErroredProperties,
+    options?: EventOptions,
+  ) {
+    return this.track(new ApplicationErrored(properties), options);
+  }
+
+  /**
    * Capture Alerts Referer
    *
    * [View in Tracking Plan](https://data.eu.amplitude.com/tmlmobilidade/default/events/main/latest/Capture%20Alerts%20Referer)
@@ -1059,7 +1104,7 @@ export class Ampli {
    *
    * Ocurred a frontend error
    *
-   * @param properties The event's properties (e.g. [Amplitude] Page Path)
+   * @param properties The event's properties (e.g. error_date)
    * @param options Amplitude event options.
    */
   captureFrontendError(
