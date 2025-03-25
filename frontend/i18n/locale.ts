@@ -9,7 +9,7 @@ import { cookies, headers } from 'next/headers';
 
 export async function setUserLocale(locale: string) {
 	const cookieStore = await cookies();
-	cookieStore.set(LOCALE_STORAGE_KEY, locale);
+	cookieStore.set(LOCALE_STORAGE_KEY, locale, { maxAge: 34560000000 }); // 400 days (max allowed by browsers)
 	return locale;
 }
 
@@ -34,7 +34,6 @@ export async function getUserLocale() {
 	const queryStringLocaleMatched = localeQueryValue && availableLocales.find(item => item.value === localeQueryValue || item.alias.includes(localeQueryValue));
 	if (queryStringLocaleMatched) {
 		console.log(`(1) Locale set from Query String: ${queryStringLocaleMatched.value}`);
-		// return await setUserLocale(queryStringLocaleMatched.value);
 		return queryStringLocaleMatched.value;
 	}
 
@@ -46,17 +45,16 @@ export async function getUserLocale() {
 	const userPreferedLocaleMatched = userPreferedLocale && availableLocales.find(item => item.value === userPreferedLocale || item.alias.includes(userPreferedLocale));
 	if (userPreferedLocaleMatched) {
 		console.log(`(2) Locale set from Cookie: ${userPreferedLocaleMatched.value}`);
-		// return await setUserLocale(userPreferedLocaleMatched.value);
 		return userPreferedLocaleMatched.value;
 	}
 
 	//
-	// If no locale is set, try to get the locale set on the browser using the accept-language header.
+	// If no locale is set, try to get the locale
+	// set on the browser using the accept-language header.
 
 	const browserPreferedLocales = headersList.get('accept-language');
 	if (!browserPreferedLocales) {
 		console.log(`(3) No Locale Browser. Default: ${defaultLocaleCode}`);
-		// return await setUserLocale(defaultLocaleCode);
 		return defaultLocaleCode;
 	}
 
@@ -104,7 +102,6 @@ export async function getUserLocale() {
 
 	if (defaultLocaleIsViableOption) {
 		console.log(`(4) Matched default locale with browser preference: ${defaultLocaleIsViableOption.locale}`);
-		// return await setUserLocale(defaultLocaleIsViableOption.locale);
 		return defaultLocaleIsViableOption.locale;
 	}
 
@@ -116,7 +113,6 @@ export async function getUserLocale() {
 	const otherLocalesThatAreViableOptions = browserPreferedLocalesMatched.filter(lang => allEnabledLocaleCodesAndAliases.includes(lang.locale));
 	if (!otherLocalesThatAreViableOptions.length) {
 		console.log(`(5) No Locale matched from Browser. Default: ${defaultLocaleCode}`);
-		// return await setUserLocale(defaultLocaleCode);
 		return defaultLocaleCode;
 	}
 
@@ -127,7 +123,6 @@ export async function getUserLocale() {
 	const browserPreferedLocaleWithHighestQuality = otherLocalesThatAreViableOptions[0].locale;
 	if (browserPreferedLocaleWithHighestQuality) {
 		console.log(`(6) Locale matched from Browser: ${browserPreferedLocaleWithHighestQuality}`);
-		// return await setUserLocale(browserPreferedLocaleWithHighestQuality);
 		return browserPreferedLocaleWithHighestQuality;
 	}
 
@@ -135,7 +130,6 @@ export async function getUserLocale() {
 	// Return the default locale if no other locale is found.
 
 	console.log(`(7) No Locale matched: ${defaultLocaleCode}`);
-	// return await setUserLocale(defaultLocaleCode);
 	return defaultLocaleCode;
 
 	//
