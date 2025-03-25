@@ -4,6 +4,7 @@
 
 import { Surface } from '@/components/layout/Surface';
 import { PeriodsWidgetItem } from '@/components/periods/PeriodsWidgetItem';
+import getOperationalDay from '@/utils/operation';
 import { DateTime } from 'luxon';
 import { Fragment, useEffect, useState } from 'react';
 import useSWR from 'swr';
@@ -45,20 +46,12 @@ export function PeriodsWidget() {
 			// Return early if no data is available
 			if (!periodsData) return;
 			// Setup the operational date time variable
-			let operationDateTime = DateTime.now();
-			// Get the current hour
-			const currentHourString = operationDateTime.toFormat('H');
-			// If the current hour is between 00:00 and 03:59 then set the current date to yesterday
-			if (Number(currentHourString) >= 0 && Number(currentHourString) < 4) {
-				operationDateTime = operationDateTime.minus({ days: 1 });
-			}
-			// Setup variable for the current date date in YYYYMMDD format using luxon
-			const currentDayString = operationDateTime.toFormat('yyyyMMdd');
+			const operationalDate = getOperationalDay();
 			// For each period, check if it contains the date for today
 			const result = periodsData.map((period) => {
 				// Filter valid pairs with 'until' dates before the current date
 				const validPairsFiltered = period.valid.filter((validPair) => {
-					return Number(validPair.until) >= Number(currentDayString);
+					return Number(validPair.until) >= Number(operationalDate);
 				});
 				// Format the valid pairs into the display format
 				const validPairsFormatted = validPairsFiltered.map((validPair) => {
@@ -69,7 +62,7 @@ export function PeriodsWidget() {
 				// Return the formatted period data
 				return {
 					id: period.id,
-					isActive: period.dates.includes(currentDayString) ? true : false,
+					isActive: period.dates.includes(operationalDate) ? true : false,
 					name: period.name,
 					validPairs: validPairsFormatted,
 				};
