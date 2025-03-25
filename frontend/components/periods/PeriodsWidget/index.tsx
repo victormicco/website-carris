@@ -53,12 +53,14 @@ export function PeriodsWidget() {
 				const validPairsFiltered = period.valid.filter((validPair) => {
 					return Number(validPair.until) >= Number(operationalDate);
 				});
+				console.log('validPairsFiltered', validPairsFiltered);
 				// Format the valid pairs into the display format
 				const validPairsFormatted = validPairsFiltered.map((validPair) => {
 					const fromDateFormatted = DateTime.fromFormat(validPair.from, 'yyyyMMdd').toJSDate();
 					const untilDateFormatted = DateTime.fromFormat(validPair.until, 'yyyyMMdd').toJSDate();
 					return { from: fromDateFormatted, until: untilDateFormatted };
 				});
+				console.log('validPairsFormatted', validPairsFormatted);
 				// Return the formatted period data
 				return {
 					id: period.id,
