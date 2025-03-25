@@ -81,7 +81,7 @@ export const StoresListContextProvider = ({ children }) => {
 	//
 	// B. Fetch data
 
-	const { data: allStoresData, isLoading: allStoresLoading } = useSWR<Store[], Error>(`${Routes.API}/facilities/stores`, { refreshInterval: 30000 });
+	const { data: allStoresData, isLoading: allStoresLoading } = useSWR<Store[], Error>(`${Routes.API}/facilities/stores`, { refreshInterval: 30000 }); // 30 seconds
 
 	//
 	// C. Transform data

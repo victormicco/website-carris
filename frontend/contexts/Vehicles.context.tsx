@@ -53,7 +53,7 @@ export const VehiclesContextProvider = ({ children }) => {
 	//
 	// A. Fetch data
 
-	const { data: fetchedVehiclesData, isLoading: allVehiclesLoading } = useSWR<Vehicle[], Error>(`${Routes.API}/vehicles`, { refreshInterval: 5000 });
+	const { data: fetchedVehiclesData, isLoading: allVehiclesLoading } = useSWR<Vehicle[], Error>(`${Routes.API}/vehicles`, { refreshInterval: 5000 }); // 5 seconds
 
 	const allVehiclesData = useMemo(() => {
 		if (!fetchedVehiclesData) return [];

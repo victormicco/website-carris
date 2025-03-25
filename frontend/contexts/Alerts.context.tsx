@@ -56,7 +56,7 @@ export const AlertsContextProvider = ({ children }) => {
 	//
 	// B. Fetch data
 
-	const { data: allAlertsData, isLoading: allAlertsLoading } = useSWR<Alert[], Error>(`${Routes.API}/alerts`);
+	const { data: allAlertsData, isLoading: allAlertsLoading } = useSWR<Alert[], Error>(`${Routes.API}/alerts`, { refreshInterval: 180000 }); // 3 minutes
 
 	//
 	// C. Transform data
