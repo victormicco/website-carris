@@ -16,14 +16,18 @@ const nextConfig: NextConfig = {
 			//
 			{ destination: '/stops', permanent: true, source: '/paragens' },
 			//
+			{ destination: '/planner', permanent: true, source: '/planeador' },
+			{ destination: '/planner', permanent: true, source: '/planear-viagem' },
+			//
+			{ destination: '/alerts', permanent: true, source: '/alertas' },
+			{ destination: '/alerts', permanent: true, source: '/avisos' },
+			//
 			{ destination: '/vehicles', permanent: true, source: '/veiculos' },
 			{ destination: '/vehicles', permanent: true, source: '/frota' },
 			//
 			{ destination: '/news', permanent: true, source: '/noticias' },
 			//
 			{ destination: '/survey', permanent: true, source: '/inquerito' },
-			//
-			{ destination: '/planner', permanent: true, source: '/planeador' },
 			//
 			{ destination: '/open-data', permanent: true, source: '/opendata' },
 			{ destination: '/open-data', permanent: true, source: '/dados-abertos' },
