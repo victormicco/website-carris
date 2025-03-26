@@ -44,10 +44,13 @@ export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, 
 	const calcPercentage = (value: number, total: number) => {
 		return `${((value / total) * 100).toFixed(2)}%`;
 	};
+	const calcPercentageMunicipality = (value: number, total: number) => {
+		return total > 0 ? `${((value / total) * 100).toFixed(3)}%` : '0.00%';
+	};
 
 	const createCardData = (description1: string, value: number, image: string, title: string, footer?: string) => ({
 		description1,
-		description2: filter_type === 'line' ? calcPercentage(value, totalPassengersLastWeekLineId || 0) : calcPercentage(value, totalPassengersLastWeek || 0),
+		description2: filter_type === 'line' ? calcPercentage(value, totalPassengersLastWeekLineId || 0) : calcPercentageMunicipality(value, totalPassengersLastWeek || 0),
 		description3: ` ${filter_type === 'line' ? `do total de passageiros (${totalPassengersLastWeekLineId}) transportados na linha ${filter_value} nos últimos 7 dias` : 'do total de passageiros tranpostados nos últimos 7 dias'}`,
 		filter_value: filter_value,
 		footer,
