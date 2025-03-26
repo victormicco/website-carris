@@ -58,6 +58,12 @@ export function VehiclesListMap() {
 		})();
 	}, [activePatternData]);
 
+	useEffect(() => {
+		if (vehiclesListContext.data.selected) return;
+		setActivePatternData(undefined);
+		setActiveShapeData(undefined);
+	}, [vehiclesListContext.data.selected]);
+
 	//
 	// C. Transform data
 

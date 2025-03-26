@@ -38,18 +38,18 @@ export function MetricsPagePassengers() {
 
 	return (
 		<Surface>
+			<div id="passengerMetrics">
+				<Section heading={t('heading')} withPadding>
+					<p className={styles.text}>{t('text_1')}</p>
+				</Section>
 
-			<Section heading={t('heading')} withPadding>
-				<p className={styles.text}>{t('text_1')}</p>
-			</Section>
-
-			<Section withGap withPadding>
-				<SegmentedControl data={periodOptionsLabels} onChange={setSelectedPeriod} value={selectedPeriod} w="100%" />
-				{selectedPeriod === 'day' && <MetricsPagePassengersDay />}
-				{selectedPeriod === 'month' && <MetricsPagePassengersMonth />}
-				{selectedPeriod === 'year' && <MetricsPagePassengersYear />}
-			</Section>
-
+				<Section withGap withPadding>
+					<SegmentedControl data={periodOptionsLabels} onChange={setSelectedPeriod} value={selectedPeriod} w="100%" />
+					{selectedPeriod === 'day' && <MetricsPagePassengersDay />}
+					{selectedPeriod === 'month' && <MetricsPagePassengersMonth />}
+					{selectedPeriod === 'year' && <MetricsPagePassengersYear />}
+				</Section>
+			</div>
 		</Surface>
 	);
 

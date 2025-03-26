@@ -78,20 +78,20 @@ export function MetricsPageLines() {
 
 	return (
 		<Surface>
+			<div id="linesMetrics">
+				<Section heading={t('heading')} withPadding>
+					<p className={styles.text}>{t('text_1')}</p>
+				</Section>
 
-			<Section heading={t('heading')} withPadding>
-				<p className={styles.text}>{t('text_1')}</p>
-			</Section>
-
-			<Section withPadding>
-				<Grid columns="ab" withGap>
-					<MetricsCardByLine data={topLinesForAgency41} main_description={t('agencies.41.main_description')}main_label={t('agencies.41.main_label')} />
-					<MetricsCardByLine data={topLinesForAgency42} main_description={t('agencies.42.main_description')}main_label={t('agencies.42.main_label')} />
-					<MetricsCardByLine data={topLinesForAgency43} main_description={t('agencies.43.main_description')}main_label={t('agencies.43.main_label')} />
-					<MetricsCardByLine data={topLinesForAgency44} main_description={t('agencies.44.main_description')}main_label={t('agencies.44.main_label')} />
-				</Grid>
-			</Section>
-
+				<Section withPadding>
+					<Grid columns="ab" withGap>
+						<MetricsCardByLine data={topLinesForAgency41} main_description={t('agencies.41.main_description')}main_label={t('agencies.41.main_label')} />
+						<MetricsCardByLine data={topLinesForAgency42} main_description={t('agencies.42.main_description')}main_label={t('agencies.42.main_label')} />
+						<MetricsCardByLine data={topLinesForAgency43} main_description={t('agencies.43.main_description')}main_label={t('agencies.43.main_label')} />
+						<MetricsCardByLine data={topLinesForAgency44} main_description={t('agencies.44.main_description')}main_label={t('agencies.44.main_label')} />
+					</Grid>
+				</Section>
+			</div>
 		</Surface>
 	);
 

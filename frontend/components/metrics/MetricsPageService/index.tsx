@@ -90,18 +90,19 @@ export function MetricsPageService() {
 
 	return (
 		<Surface>
-			<Section withGap withPadding>
+			<div id="serviceMetrics">
+				<Section withGap withPadding>
 
-				<div className={styles.infoWrapper}>
-					<div className={styles.bigNumberWrapper}>
-						<h1 className={styles.bigNumber} style={{ color: 'var(--color-brand)' }}>{t('big_number', { value: totalForAllLines?.percentage })}</h1>
-						<LiveIcon className={styles.liveIcon} color="var(--color-brand)" />
+					<div className={styles.infoWrapper}>
+						<div className={styles.bigNumberWrapper}>
+							<h1 className={styles.bigNumber} style={{ color: 'var(--color-brand)' }}>{t('big_number', { value: totalForAllLines?.percentage })}</h1>
+							<LiveIcon className={styles.liveIcon} color="var(--color-brand)" />
+						</div>
+						<h3 className={styles.title}>{t('title', { pass_trip_count: totalForAllLines?.pass, total_trip_count: totalForAllLines?.total })}</h3>
+						<p className={styles.description}>{t('description')}</p>
 					</div>
-					<h3 className={styles.title}>{t('title', { pass_trip_count: totalForAllLines?.pass, total_trip_count: totalForAllLines?.total })}</h3>
-					<p className={styles.description}>{t('description')}</p>
-				</div>
 
-				{/* <div className={styles.chartWrapper}>
+					{/* <div className={styles.chartWrapper}>
 					<LineChart
 						color="yellow"
 						connectNulls={false}
@@ -150,11 +151,12 @@ export function MetricsPageService() {
 					/>
 				</div> */}
 
-				<div className={styles.infoWrapper}>
-					<p className={styles.footnote}>{t('footnote')}</p>
-				</div>
+					<div className={styles.infoWrapper}>
+						<p className={styles.footnote}>{t('footnote')}</p>
+					</div>
 
-			</Section>
+				</Section>
+			</div>
 		</Surface>
 	);
 

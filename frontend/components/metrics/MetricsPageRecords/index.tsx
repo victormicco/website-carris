@@ -25,18 +25,18 @@ export function MetricsPageRecords() {
 
 	return (
 		<Surface>
+			<div id="passengerRecords">
+				<Section heading={t('heading')} withPadding>
+					<p className={styles.text}>{t('text_1')}</p>
+				</Section>
 
-			<Section heading={t('heading')} withPadding>
-				<p className={styles.text}>{t('text_1')}</p>
-			</Section>
-
-			<Section withPadding>
-				<Grid columns="ab" withGap>
-					<Image src="/images/metrics/record-1.svg" />
-					<Image src="/images/metrics/record-2.svg" />
-				</Grid>
-			</Section>
-
+				<Section withPadding>
+					<Grid columns="ab" withGap>
+						<Image src="/images/metrics/record-1-new.svg" />
+						<Image src="/images/metrics/record-2.svg" />
+					</Grid>
+				</Section>
+			</div>
 		</Surface>
 	);
 

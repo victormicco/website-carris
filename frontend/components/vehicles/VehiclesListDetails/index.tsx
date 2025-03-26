@@ -10,7 +10,7 @@ import { LineName } from '@/components/lines/LineName';
 import { useLinesContext } from '@/contexts/Lines.context';
 import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
 import { Table } from '@mantine/core';
-import { IconBike, IconBikeOff, IconDisabled2, IconDisabledOff } from '@tabler/icons-react';
+import { IconBike, IconBikeOff, IconDisabled2, IconDisabledOff, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
@@ -55,30 +55,34 @@ export function VehiclesListDetails() {
 
 	return (
 		<Section withGap withPadding>
+
 			{vehiclesListContext.data.selected ? (
-				<div className={styles.dataWrapper}>
+				<>
+					<IconX className={styles.closeButton} onClick={() => vehiclesListContext.actions.updateSelectedVehicle(null)} />
 
-					<LineBadge lineData={activeLineData} size="lg" />
-					<LineName align="center" lineData={activeLineData} size="lg" />
+					<div className={styles.dataWrapper}>
+						<LineBadge lineData={activeLineData} size="lg" />
+						<LineName align="center" lineData={activeLineData} size="lg" />
 
-					<div className={styles.iconList}>
-						{vehiclesListContext.data.selected?.bikes_allowed ? <IconBike /> : <IconBikeOff />}
-						{vehiclesListContext.data.selected?.wheelchair_accessible ? <IconDisabled2 /> : <IconDisabledOff />}
-						{vehiclesListContext.data.selected.license_plate && <LicensePlate value={vehiclesListContext.data.selected.license_plate} />}
+						<div className={styles.iconList}>
+							{vehiclesListContext.data.selected?.bikes_allowed ? <IconBike /> : <IconBikeOff />}
+							{vehiclesListContext.data.selected?.wheelchair_accessible ? <IconDisabled2 /> : <IconDisabledOff />}
+							{vehiclesListContext.data.selected.license_plate && <LicensePlate value={vehiclesListContext.data.selected.license_plate} />}
+						</div>
+
+						<Table withRowBorders>
+							<Table.Tbody>
+								{rows.map(row => (
+									<Table.Tr key={row.label}>
+										<Table.Td className={styles.rowLabel}>{row.label}</Table.Td>
+										<Table.Td className={styles.rowValue}>{row.value}</Table.Td>
+									</Table.Tr>
+								))}
+							</Table.Tbody>
+						</Table>
+
 					</div>
-
-					<Table withRowBorders>
-						<Table.Tbody>
-							{rows.map(row => (
-								<Table.Tr key={row.label}>
-									<Table.Td className={styles.rowLabel}>{row.label}</Table.Td>
-									<Table.Td className={styles.rowValue}>{row.value}</Table.Td>
-								</Table.Tr>
-							))}
-						</Table.Tbody>
-					</Table>
-
-				</div>
+				</>
 			) : (
 				<NoDataLabel text={t('no_data')} />
 			)}

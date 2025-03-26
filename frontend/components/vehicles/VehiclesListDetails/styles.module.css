@@ -44,3 +44,10 @@
 	font-weight: var(--font-weight-semibold);
 	word-break: break-all;
 }
+/* * */
+/* Deselect Button */
+
+.closeButton {
+	margin-left: auto;
+	color: var(--color-system-text-300);
+}
