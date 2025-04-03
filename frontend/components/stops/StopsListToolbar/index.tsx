@@ -27,7 +27,7 @@ export function StopsListToolbar() {
 	const currentViewOptions = [
 		{ label: t('filters.by_current_view.map'), value: 'map' },
 		{ label: t('filters.by_current_view.list'), value: 'list' },
-		{ label: t('filters.by_current_view.favorites'), value: 'favorites' },
+		{ label: t('filters.by_current_view.favorites', { count: stopsListContext.counters.favorites }), value: 'favorites' },
 	];
 
 	//
