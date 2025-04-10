@@ -59,7 +59,7 @@ export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, 
 		}
 		else if (filter_type === 'global') {
 			description2 = calcPercentageMunicipality(value, totalPassengersLastWeek || 0);
-			description3 = ' do total de passageiros transportados nos últimos 7 dias';
+			description3 = ' do total de passageiros transportados no ultimo ano';
 		}
 
 		return {
