@@ -4,6 +4,7 @@
 	grid-auto-rows: 1fr;
 	grid-gap: 20px;
 	align-items: stretch;
+	width: 100%;
 }
 
 @media (width <= 700px) {
