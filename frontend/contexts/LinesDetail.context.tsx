@@ -100,6 +100,8 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		const lineData = linesContext.actions.getLineDataById(lineId);
 		if (!lineData) return;
 		setDataLineState(lineData);
+
+		console.log(lineId);
 	}, [lineId, linesContext.data.lines]);
 
 	useEffect(() => {

@@ -45,10 +45,16 @@ export function MetricsContactsPageCardGroupCard({ description1, description2, d
 					<Image alt={title}className={styles.image} src={image} />
 					<Text className={styles.bodyValue1}>{t('main_value', { value: value })}</Text>
 					<Text className={styles.bodyDescription1}>{description1}</Text>
+
 					<div className={styles.cardBodyInnerCard} style={{ backgroundColor: line_color || '' }}>
-						<Text className={styles.bodyDescription2} style={{ color: line_color ? '#FFFFFF' : '' }}>{description2}</Text>
-						<Text className={styles.bodyDescription3} style={{ color: line_color ? '#FFFFFF' : '' }}>{description3}</Text>
+						{ description3 &&	(
+							<>
+								<Text className={styles.bodyDescription2} style={{ color: line_color ? '#FFFFFF' : '' }}>{description2}</Text>
+								<Text className={styles.bodyDescription3} style={{ color: line_color ? '#FFFFFF' : '' }}>{description3}</Text>
+							</>
+						)}
 					</div>
+
 				</div>
 				<div className={styles.cardFooter}>
 					<Text className={styles.footerNotes}>{footer}</Text>

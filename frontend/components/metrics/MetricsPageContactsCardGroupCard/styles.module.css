@@ -96,7 +96,7 @@
 .cardBodyInnerCard{
 	padding: 20px;
 	margin-top:20px;
-	text-align: start;
+	text-align: center;
 	background-color: var(--color-system-background-200);
 	border-radius: 20px;
 }

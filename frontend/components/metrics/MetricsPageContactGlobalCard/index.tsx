@@ -8,11 +8,11 @@ import styles from './styles.module.css';
 /* * */
 interface Props {
 	allData: Complaints[]
-	totalPassengersLastWeek: number
+	totalPassengersLastYear: number
 }
 /* * */
 
-export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek }: Props) {
+export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastYear }: Props) {
 	//
 
 	//
@@ -26,7 +26,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastWeek
 	const renderTotalPassegersByDay = () => {
 		return (
 			<div>
-				<Text className={styles.totalPassengersContactsValue}>{t('total_passengers_day', { value: totalPassengersLastWeek })}</Text>
+				<Text className={styles.totalPassengersContactsValue}>{t('total_passengers_day', { value: totalPassengersLastYear })}</Text>
 				<Text className={styles.totalPassengersContactsDescription}>{t('total_passengers_day_contacts_desc')}</Text>
 			</div>
 		);
