@@ -26,6 +26,7 @@ export function MetricsPageContacts() {
 		filter_value: '-',
 		filtered_data: [] as Complaints[],
 		globalComplaints: [] as Complaints[],
+		lastUpdate: '',
 		lineColor: '',
 		lineComplaints: [] as Complaints[],
 		municipalComplaints: [] as Complaints[],
@@ -103,7 +104,7 @@ export function MetricsPageContacts() {
 		const line_complaints = allComplaintsData.filter(item => item.type === 'line' && item.filter_value === state.filter_value);
 		const municipal_complaints = allComplaintsData.filter(item => item.type === 'municipality' && item.filter_value === state.filter_value);
 		const global_complaints = allComplaintsData.filter(item => item.type === 'global' && item.filter_value === '-');
-
+		const last_update = allComplaintsData.find(item => item.type === 'global' && item.filter_value === '-')?.current_date || '';
 		const lineColor = linesContext.data.lines.find(line => line.id === state.filter_value)?.color || '';
 		const municipalityName = locationsContext.data.municipalities.find(municipality => municipality.id === state.filter_value)?.name || '';
 
@@ -111,6 +112,7 @@ export function MetricsPageContacts() {
 			...prevState,
 			filtered_data: prevState.filtered_data.length ? prevState.filtered_data : global_complaints,
 			globalComplaints: global_complaints,
+			lastUpdate: last_update,
 			lineColor: lineColor,
 			lineComplaints: line_complaints,
 			municipalComplaints: municipal_complaints,
@@ -159,7 +161,7 @@ export function MetricsPageContacts() {
 				<Section heading={t('heading')} subheading={t('subheading')} withPadding>
 					<MetricsPageContactsGlobalCard allData={state.globalComplaints} totalPassengersLastYear={state.totalPassengersLastYear} />
 					<MetricsPageContactsToolbar allLines={linesContext.data.lines} filter_type={handleFilterChange} filter_value={value => setState(prevState => ({ ...prevState, filter_value: value }))} />
-					<MetricsContactsPageCardGroup data={state.filtered_data} filter_type={state.filter_type} filter_value={state.filter_value} lineColor={state.lineColor} municipalityName={state.municipalityName} totalPassengersLastWeekLineId={state.totalPassengersLastWeekLineId} totalPassengersLastYear={state.totalPassengersLastYear} />
+					<MetricsContactsPageCardGroup data={state.filtered_data} filter_type={state.filter_type} filter_value={state.filter_value} last_update={state.lastUpdate} lineColor={state.lineColor} municipalityName={state.municipalityName} totalPassengersLastWeekLineId={state.totalPassengersLastWeekLineId} totalPassengersLastYear={state.totalPassengersLastYear} />
 				</Section>
 			</div>
 		</Surface>

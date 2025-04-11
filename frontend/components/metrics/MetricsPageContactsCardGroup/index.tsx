@@ -1,6 +1,7 @@
 /* * */
 import { MetricsContactsPageCardGroupCard } from '@/components/metrics/MetricsPageContactsCardGroupCard';
 import { Complaints } from '@carrismetropolitana/api-types/metrics';
+import { DateTime } from 'luxon';
 import { useMemo } from 'react';
 
 import styles from './styles.module.css';
@@ -9,6 +10,7 @@ interface Props {
 	data: Complaints[]
 	filter_type: string
 	filter_value: string
+	last_update?: string
 	lineColor?: string
 	municipalityName?: string
 	totalPassengersLastWeek?: number
@@ -17,7 +19,7 @@ interface Props {
 }
 /* * */
 
-export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, lineColor, municipalityName, totalPassengersLastWeek, totalPassengersLastWeekLineId, totalPassengersLastYear }: Props) {
+export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, last_update, lineColor, municipalityName, totalPassengersLastWeek, totalPassengersLastWeekLineId, totalPassengersLastYear }: Props) {
 	//
 
 	//
@@ -39,6 +41,7 @@ export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, 
 		return filteredData.reduce((acc, item) => acc + item.other, 0);
 	}, [filteredData]);
 
+	const lastUpdate = last_update ? DateTime.fromISO(last_update).toFormat('dd-MM-yyyy') : null;
 	//
 	// B. Fetch data
 
@@ -57,7 +60,7 @@ export function MetricsContactsPageCardGroup({ data, filter_type, filter_value, 
 		if (filter_type !== 'global') {
 			// Add data de atualização on desc 3
 			description2 = '';
-			description3 = '';
+			description3 = last_update ? `Última atualização: ${lastUpdate}` : 'Sem data de atualização';
 		}
 		else if (filter_type === 'global') {
 			description2 = calcPercentageMunicipality(value, totalPassengersLastYear || 0);
