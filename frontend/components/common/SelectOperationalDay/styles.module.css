@@ -74,7 +74,7 @@
 	justify-content: center;
 	aspect-ratio: 1/1;
 	padding-left: var(--size-spacing-10);
-	margin-top: -3px;
+	margin-top: -7px;
 	color: var(--color-system-text-300);
 	pointer-events: none;
 }
