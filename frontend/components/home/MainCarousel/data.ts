@@ -37,7 +37,7 @@ export const CAROUSEL_SLIDES: CarouselSlide[] = [
 
 	{
 		id: '0005',
-		src: '/assets/featured/join_whatsapp.png',
+		src: '/assets/featured/join-whatsapp.png',
 		url: '/news/7243',
 	},
 
