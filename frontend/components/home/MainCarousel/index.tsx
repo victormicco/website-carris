@@ -2,6 +2,7 @@
 
 /* * */
 
+import { CAROUSEL_SLIDES } from '@/components/home/MainCarousel/data';
 import MainCarouselCard from '@/components/home/MainCarouselCard';
 import { Carousel } from '@mantine/carousel';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
@@ -9,7 +10,6 @@ import Autoplay from 'embla-carousel-autoplay';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import { useRef, useState } from 'react';
 
-import slidesData from './data.json';
 import styles from './styles.module.css';
 
 /* * */
@@ -50,10 +50,10 @@ export function MainCarousel() {
 				previousControlIcon={<IconArrowLeft size={20} />}
 				slideGap={1}
 				style={{ flex: 1 }}
-				withControls={slidesData.length > 0}
+				withControls={CAROUSEL_SLIDES.length > 0}
 				withIndicators
 			>
-				{slidesData.map(item => (
+				{CAROUSEL_SLIDES.map(item => (
 					<Carousel.Slide key={item.id}>
 						<MainCarouselCard
 							coverImageSrc={item.src}
