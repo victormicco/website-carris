@@ -4,7 +4,6 @@
 
 import { LottiePlayer } from '@/components/common/LottiePlayer';
 import { ThemeSwitch } from '@/components/responsive/ThemeSwitch';
-// import { BrandsCmet } from '@/settings/assets.settings';
 // import { Image } from '@mantine/core';
 import Link from 'next/link';
 
@@ -16,8 +15,8 @@ export function Logo() {
 	return (
 		<Link className={styles.container} href="/">
 			<ThemeSwitch
-				dark={<LottiePlayer path="/assets/header/mascot/mascot-dark.json" style={{ height: 70, width: 150 }} loop play />}
-				light={<LottiePlayer path="/assets/header/mascot/mascot-light.json" style={{ height: 70, width: 150 }} loop play />}
+				dark={<LottiePlayer path="/assets/header/zume/zume-dark.json" style={{ height: 70, width: 150 }} loop play />}
+				light={<LottiePlayer path="/assets/header/zume/zume-light.json" style={{ height: 70, width: 150 }} loop play />}
 			/>
 		</Link>
 	);
@@ -29,8 +28,8 @@ export function Logo() {
 // 	return (
 // 		<Link className={styles.container} href="/">
 // 			<ThemeSwitch
-// 				dark={<Image alt="Carris Metropolitana" src={BrandsCmet.cmet_dark} style={{ height: 40, width: 150 }} />}
-// 				light={<Image alt="Carris Metropolitana" src={BrandsCmet.cmet_light} style={{ height: 40, width: 150 }} />}
+// 				dark={<Image alt="Carris Metropolitana" src="/assets/header/static/cmet-header-dark.svg" style={{ height: 70, width: 150 }} />}
+// 				light={<Image alt="Carris Metropolitana" src="/assets/header/static/cmet-header-light.svg" style={{ height: 70, width: 150 }} />}
 // 			/>
 // 		</Link>
 // 	);

@@ -10,7 +10,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@amplitude/analytics-browser": "2.13.3",
+		"@amplitude/analytics-browser": "2.14.0",
 		"@mantine/carousel": "7.17.4",
 		"@mantine/charts": "7.17.4",
 		"@mantine/core": "7.17.4",
@@ -22,7 +22,7 @@
 		"@rajesh896/broprint.js": "2.1.1",
 		"@tabler/icons-react": "3.31.0",
 		"@turf/turf": "7.2.0",
-		"@vis.gl/react-maplibre": "8.0.3",
+		"@vis.gl/react-maplibre": "8.0.4",
 		"classnames": "2.5.1",
 		"dayjs": "1.11.13",
 		"embla-carousel-autoplay": "8.6.0",
@@ -48,7 +48,7 @@
 		"uuid": "11.1.0"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20250411.1345.40",
+		"@carrismetropolitana/api-types": "20250415.2338.18",
 		"@carrismetropolitana/eslint": "20250325.1926.5",
 		"@types/geojson": "7946.0.16",
 		"@types/jsonwebtoken": "9.0.9",

@@ -3,6 +3,12 @@
 
 .container {
 	display: flex;
-
-	/* padding: var(--size-spacing-15) var(--size-spacing-20); */
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	min-width: 150px;
+	max-width: 150px;
+	height: 70px;
+	min-height: 70px;
+	max-height: 70px;
 }
