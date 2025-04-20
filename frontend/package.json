@@ -10,7 +10,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@amplitude/analytics-browser": "2.14.0",
+		"@amplitude/analytics-browser": "2.15.0",
 		"@mantine/carousel": "7.17.4",
 		"@mantine/charts": "7.17.4",
 		"@mantine/core": "7.17.4",
@@ -31,7 +31,7 @@
 		"jsonwebtoken": "9.0.2",
 		"luxon": "3.6.1",
 		"maplibre-gl": "5.3.1",
-		"next": "15.3.0",
+		"next": "15.3.1",
 		"next-intl": "4.0.2",
 		"nuqs": "2.4.3",
 		"react": "19.1.0",
@@ -40,7 +40,7 @@
 		"react-nice-avatar": "1.5.0",
 		"react-qr-code": "2.0.15",
 		"react-viewport-list": "7.1.2",
-		"recharts": "2.15.2",
+		"recharts": "2.15.3",
 		"sharp": "0.34.1",
 		"swr": "2.3.3",
 		"ua-parser-js": "2.0.3",
@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@carrismetropolitana/api-types": "20250415.2338.18",
-		"@carrismetropolitana/eslint": "20250325.1926.5",
+		"@carrismetropolitana/eslint": "20250418.42.41",
 		"@types/geojson": "7946.0.16",
 		"@types/jsonwebtoken": "9.0.9",
 		"@types/luxon": "3.6.2",
