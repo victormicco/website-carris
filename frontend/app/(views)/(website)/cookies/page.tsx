@@ -1,6 +1,6 @@
 /* * */
 
-import CookiesPage from '@/components/cookies/Page';
+import { CookiesPage } from '@/components/cookies/Page';
 
 /* * */
 
