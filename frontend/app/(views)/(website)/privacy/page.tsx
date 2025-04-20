@@ -1,6 +1,6 @@
 /* * */
 
-import PrivacyPage from '@/components/privacy/Page';
+import { PrivacyPage } from '@/components/legal/PrivacyPage';
 
 /* * */
 

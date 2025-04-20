@@ -1,6 +1,6 @@
 /* * */
 
-import ConditionsPage from '@/components/conditions/Page';
+import { ConditionsPage } from '@/components/legal/ConditionsPage';
 
 /* * */
 

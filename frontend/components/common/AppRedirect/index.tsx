@@ -11,7 +11,13 @@ import styles from './styles.module.css';
 
 /* * */
 
-export default function Component({ toUrl }) {
+interface Props {
+	toUrl: string
+}
+
+/* * */
+
+export function AppRedirect({ toUrl }: Props) {
 	//
 
 	//

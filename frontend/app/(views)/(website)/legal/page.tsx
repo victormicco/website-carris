@@ -1,6 +1,6 @@
 /* * */
 
-import LegalPage from '@/components/legal/Page';
+import { LegalPage } from '@/components/legal/LegalPage';
 
 /* * */
 
