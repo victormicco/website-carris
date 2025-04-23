@@ -26,7 +26,6 @@ export function NewsDetailContent({ content }: { content: string }) {
 		});
 		// Select all marks with yellow background
 		document.querySelectorAll(`#news-content-wrapper mark`).forEach((el) => {
-			console.log('getComputedStyle(el).backgroundColor', getComputedStyle(el).backgroundColor);
 			const currentBackgroundColor = getComputedStyle(el).backgroundColor;
 			if (currentBackgroundColor === '#ffdd00' || currentBackgroundColor === 'rgb(255, 221, 0)') {
 				el.classList.add('override-mark-highlight');
