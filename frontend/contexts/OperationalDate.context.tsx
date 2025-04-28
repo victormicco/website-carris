@@ -10,7 +10,7 @@ import { useAnalyticsContext } from './Analytics.context';
 
 /* * */
 
-interface OperationalDayContextState {
+interface OperationalDateContextState {
 	actions: {
 		updateSelectedDay: (value: string) => void
 		updateSelectedDayFromJsDate: (value: Date) => void
@@ -33,19 +33,19 @@ interface OperationalDayContextState {
 
 /* * */
 
-const OperationalDayContext = createContext<OperationalDayContextState | undefined>(undefined);
+const OperationalDateContext = createContext<OperationalDateContextState | undefined>(undefined);
 
-export function useOperationalDayContext() {
-	const context = useContext(OperationalDayContext);
+export function useOperationalDateContext() {
+	const context = useContext(OperationalDateContext);
 	if (!context) {
-		throw new Error('useOperationalDayContext must be used within a OperationalDayContextProvider');
+		throw new Error('useOperationalDateContext must be used within a OperationalDateContextProvider');
 	}
 	return context;
 }
 
 /* * */
 
-export const OperationalDayContextProvider = ({ children }) => {
+export const OperationalDateContextProvider = ({ children }) => {
 	//
 
 	//
@@ -133,7 +133,7 @@ export const OperationalDayContextProvider = ({ children }) => {
 	//
 	// D. Define context value
 
-	const contextValue: OperationalDayContextState = {
+	const contextValue: OperationalDateContextState = {
 		actions: {
 			updateSelectedDay,
 			updateSelectedDayFromJsDate,
@@ -158,9 +158,9 @@ export const OperationalDayContextProvider = ({ children }) => {
 	// E. Render components
 
 	return (
-		<OperationalDayContext.Provider value={contextValue}>
+		<OperationalDateContext.Provider value={contextValue}>
 			{children}
-		</OperationalDayContext.Provider>
+		</OperationalDateContext.Provider>
 	);
 
 	//

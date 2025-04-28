@@ -435,7 +435,7 @@
 		"ScrollToTopButton": {
 			"label": "Back to Top"
 		},
-		"SelectOperationalDay": {
+		"SelectOperationalDate": {
 			"today": "Today",
 			"tomorrow": "Tomorrow"
 		},

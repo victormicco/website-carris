@@ -5,7 +5,7 @@ import { LineDisplay } from '@/components/lines/LineDisplay';
 import { StopsDetailContentTimetableRowDebug } from '@/components/stops/StopsDetailContentTimetableRowDebug';
 import { useDebugContext } from '@/contexts/Debug.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 import { Arrival, ArrivalStatus } from '@/types/stops.types';
 import { useTranslations } from 'next-intl';
@@ -33,8 +33,8 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 	const stopsDetailContext = useStopsDetailContext();
 	const locationsContext = useLocationsContext();
 
-	const operationalDayContext = useOperationalDayContext();
-	const selectedDay = operationalDayContext.data.selected_day;
+	const operationalDateContext = useOperationalDateContext();
+	const selectedDay = operationalDateContext.data.selected_day;
 
 	const debugContext = useDebugContext();
 

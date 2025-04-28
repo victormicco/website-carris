@@ -9,7 +9,7 @@ import { transformStopDataIntoGeoJsonFeature, useStopsContext } from '@/contexts
 import { transformVehicleDataIntoGeoJsonFeature, useVehiclesContext } from '@/contexts/Vehicles.context';
 import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
-import getOperationalDay from '@/utils/operation';
+import getOperationalDate from '@/utils/operation';
 import { Routes } from '@/utils/routes';
 import { Pattern, Shape } from '@carrismetropolitana/api-types/network';
 import { useEffect, useMemo, useState } from 'react';
@@ -36,7 +36,7 @@ export function VehiclesListMap() {
 		(async () => {
 			if (!vehiclesListContext.data.selected) return;
 			if (vehiclesListContext.data.selected.pattern_id) {
-				const todayOperationalDate = getOperationalDay();
+				const todayOperationalDate = getOperationalDate();
 				const fetchedPatternResponse = await fetch(`${Routes.API}/patterns/${vehiclesListContext.data.selected.pattern_id}`);
 				const fetchedPatternData = await fetchedPatternResponse.json();
 				const activePatternVersion = fetchedPatternData.find(item => item.valid_on.includes(todayOperationalDate));
