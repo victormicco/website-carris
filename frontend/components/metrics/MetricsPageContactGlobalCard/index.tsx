@@ -1,15 +1,19 @@
 /* * */
-import { Complaints } from '@carrismetropolitana/api-types/metrics';
+
+import { type Complaints } from '@carrismetropolitana/api-types/metrics';
 import { Text } from '@mantine/core';
 import { IconAt, IconPhoneCheck } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
+
 /* * */
+
 interface Props {
 	allData: Complaints[]
 	totalPassengersLastYear: number
 }
+
 /* * */
 
 export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastYear }: Props) {
@@ -21,7 +25,7 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastYear
 	const t = useTranslations('metrics.MetricsPageContactsGlobalCard');
 
 	//
-	// C. Render components
+	// B. Render components
 
 	const renderTotalPassegersByDay = () => {
 		return (
@@ -74,17 +78,26 @@ export function MetricsPageContactsGlobalCard({ allData, totalPassengersLastYear
 		);
 	};
 
+	//
+	// C. Render components
+
 	return (
-		<div className={styles.container}>
-			<div className={styles.globalCardFirstRow}>
-				{renderTotalPassegersByDay()}
-				{renderTotalContacts()}
+		<>
+
+			<div className={styles.container}>
+				<div className={styles.globalCardFirstRow}>
+					{renderTotalPassegersByDay()}
+					{renderTotalContacts()}
+				</div>
+				<div className={styles.globalCardSecondRow}>
+					{renderTotalPhoneContacts()}
+					{renderTotalEmailContacts()}
+				</div>
 			</div>
-			<div className={styles.globalCardSecondRow}>
-				{renderTotalPhoneContacts()}
-				{renderTotalEmailContacts()}
-			</div>
-		</div>
+
+			{allData && <p className={styles.lastUpdatedDate}>{t('last_updated', { value: Dates.fromOperationalDate(allData[0]?.current_date) })}</p>}
+
+		</>
 	);
 
 	//

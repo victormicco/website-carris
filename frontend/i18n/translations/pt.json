@@ -1041,6 +1041,7 @@
 			"total_to": "total para:"
 		},
 		"MetricsPageContactsGlobalCard": {
+			"last_updated": "Última atualização: {value, date, dayShort} {value, date, monthShort} {value, date, yearLong}",
 			"total_contacts_desc": "total de contactos no último ano",
 			"total_contacts_email": "{value, number}",
 			"total_contacts_phone": "{value, number}",

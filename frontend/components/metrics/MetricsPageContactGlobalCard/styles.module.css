@@ -124,3 +124,13 @@
 .icon{
     color: var(--color-system-text-300);
 }
+
+/* LAST UPDATED */
+.lastUpdatedDate {
+    width: 100%;
+    padding: 10px;
+    font-size: var(--font-size-muted);
+    font-weight: var(--font-weight-muted);
+    color: var(--color-system-text-300);
+    text-align:center;
+}
