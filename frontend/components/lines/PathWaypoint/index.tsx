@@ -7,7 +7,7 @@ import { PathWaypointNextArrivals } from '@/components/lines/PathWaypointNextArr
 import { PathWaypointSpine } from '@/components/lines/PathWaypointSpine';
 import { PathWaypointTimetable } from '@/components/lines/PathWaypointTimetable';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 
 import styles from './styles.module.css';
 
@@ -31,7 +31,7 @@ export function PathWaypoint({ arrivals, id, isFirstStop, isLastStop, isSelected
 	// A. Setup variables
 
 	const linesDetailContext = useLinesDetailContext();
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 
 	const now = Date.now();
 
@@ -72,7 +72,7 @@ export function PathWaypoint({ arrivals, id, isFirstStop, isLastStop, isSelected
 					waypointData={waypointData}
 				/>
 
-				{isSelected && operationalDayContext.flags.is_today_selected && (
+				{isSelected && operationalDateContext.flags.is_today_selected && (
 					<PathWaypointNextArrivals
 						realtimeArrivals={realtimeArrivals}
 						scheduledArrivals={scheduledArrivals}

@@ -1,7 +1,7 @@
 /* * */
 
-import { SelectOperationalDay } from '@/components/common/SelectOperationalDay';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { SelectOperationalDate } from '@/components/common/SelectOperationalDate';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 import { useStickyObserver } from '@/hooks/useStickyObserver';
 import { getCssVariableValue } from '@/utils/getCssVariableValue';
@@ -19,7 +19,7 @@ export function StopsDetailContentTimetableHeader() {
 
 	const t = useTranslations('stops.StopsDetailContentTimetableHeader');
 	const stopsDetailContext = useStopsDetailContext();
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 
 	const headerHeight = getCssVariableValue('--size-height-header');
 	const { isSticky, ref: stickyElementRef } = useStickyObserver({ top: headerHeight }, [1], { top: -1 });
@@ -27,7 +27,7 @@ export function StopsDetailContentTimetableHeader() {
 	//
 	// B. Render components
 
-	if (!operationalDayContext.data.selected_day_jsdate) {
+	if (!operationalDateContext.data.selected_date) {
 		return null;
 	}
 
@@ -35,7 +35,7 @@ export function StopsDetailContentTimetableHeader() {
 		<div ref={stickyElementRef} className={`${styles.container} ${isSticky ? styles.isSticky : ''}`}>
 
 			{!isSticky && (
-				<SelectOperationalDay />
+				<SelectOperationalDate />
 			)}
 
 			{isSticky && (
@@ -43,7 +43,7 @@ export function StopsDetailContentTimetableHeader() {
 					<p className={styles.stopSummaryWrapper}>
 						{t.rich('summary', {
 							changeDay: chunks => <a className={styles.changeDay} href="#">{chunks}</a>,
-							day_name: operationalDayContext.data.selected_day_jsdate,
+							day_name: operationalDateContext.data.selected_date.js_date,
 							dayName: chunks => <span className={styles.dayName}>{chunks}</span>,
 							stop_name: stopsDetailContext.data.stop?.long_name || '-',
 							stopName: chunks => <span className={styles.stopName}>{chunks}</span>,

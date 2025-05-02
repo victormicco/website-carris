@@ -4,7 +4,7 @@
 
 import { BackButton } from '@/components/common/BackButton';
 import { FavoriteToggle } from '@/components/common/FavoriteToggle';
-import { SelectOperationalDay } from '@/components/common/SelectOperationalDay';
+import { SelectOperationalDate } from '@/components/common/SelectOperationalDate';
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
 import { LineBadge } from '@/components/lines/LineBadge';
@@ -79,8 +79,8 @@ export function LinesDetailHeader() {
 						{/* <div className={styles.patternSelectorExplainerWrapper}>
 							<SelectActivePatternGroupExplainer />
 						</div> */}
-						<div className={styles.operationalDaySelectorWrapper}>
-							<SelectOperationalDay />
+						<div className={styles.operationalDateSelectorWrapper}>
+							<SelectOperationalDate />
 						</div>
 						<div className={styles.patternSelectorWrapper}>
 							<SelectActivePatternGroup />

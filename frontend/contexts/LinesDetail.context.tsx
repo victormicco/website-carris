@@ -2,16 +2,15 @@
 
 /* * */
 
-import type { SimplifiedAlert } from '@/types/alerts.types';
-import type { DemandMetricsByLine, ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
-import type { Line, Pattern, Route, Shape, Waypoint } from '@carrismetropolitana/api-types/network';
-
 import { useAlertsContext } from '@/contexts/Alerts.context';
 import { useLinesContext } from '@/contexts/Lines.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useProfileContext } from '@/contexts/Profile.context';
 import { useStopsContext } from '@/contexts/Stops.context';
+import { type SimplifiedAlert } from '@/types/alerts.types';
 import { Routes } from '@/utils/routes';
+import { type DemandMetricsByLine, type ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
+import { type Line, type Pattern, type Route, type Shape, type Waypoint } from '@carrismetropolitana/api-types/network';
 import { useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
 
@@ -72,7 +71,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	const stopsContext = useStopsContext();
 	const alertsContext = useAlertsContext();
 	const profileContext = useProfileContext();
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 
 	const [dataLineState, setDataLineState] = useState<LinesDetailContextState['data']['line']>();
 	const [dataDemandMetricsState, setDataDemandMetricsState] = useState<LinesDetailContextState['data']['demand_metrics']>();
@@ -190,11 +189,11 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 	// C. Transform data
 
 	useEffect(() => {
-		if (!dataAllPatternsState || !operationalDayContext.data.selected_day) return;
+		if (!dataAllPatternsState || !operationalDateContext.data.selected_date) return;
 		const activePatterns: Pattern[] = [];
 		for (const pattern of dataAllPatternsState) {
 			for (const patternGroup of pattern) {
-				const selected_date = operationalDayContext.data.selected_day;
+				const selected_date = operationalDateContext.data.selected_date.operational_date;
 				if (!selected_date) return;
 				// Find the closest valid date
 				const closestDate = patternGroup.valid_on.reduce((acc, curr) => {
@@ -209,7 +208,7 @@ export const LinesDetailContextProvider = ({ children, lineId }) => {
 		}
 		const sortedPatterns = activePatterns.sort((a, b) => a.id.localeCompare(b.id));
 		setDataValidPatternsState(sortedPatterns);
-	}, [dataAllPatternsState, operationalDayContext.data.selected_day]);
+	}, [dataAllPatternsState, operationalDateContext.data.selected_date]);
 
 	useEffect(() => {
 		if (!alertsContext.data.simplified) return;

@@ -19,7 +19,7 @@ export const Operators = Object.freeze({
 	},
 });
 
-export default function getOperationalDay(timestamp?: string, format?: string): string {
+export default function getOperationalDate(timestamp?: string, format?: string): string {
 	//
 
 	// Parse the transaction date using the provided format

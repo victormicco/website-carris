@@ -5,7 +5,7 @@ import { LineDisplay } from '@/components/lines/LineDisplay';
 import { StopsDetailContentTimetableRowDebug } from '@/components/stops/StopsDetailContentTimetableRowDebug';
 import { useDebugContext } from '@/contexts/Debug.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 import { Arrival, ArrivalStatus } from '@/types/stops.types';
 import { useTranslations } from 'next-intl';
@@ -33,8 +33,8 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 	const stopsDetailContext = useStopsDetailContext();
 	const locationsContext = useLocationsContext();
 
-	const operationalDayContext = useOperationalDayContext();
-	const selectedDay = operationalDayContext.data.selected_day;
+	const operationalDateContext = useOperationalDateContext();
+	const selectedDate = operationalDateContext.data.selected_date;
 
 	const debugContext = useDebugContext();
 
@@ -93,7 +93,7 @@ export function StopsDetailContentTimetableRow({ arrivalData, status }: Props) {
 
 			{isSelected && (
 				<div className={styles.details}>
-					<Link className={styles.openLinePage} href={`/lines/${arrivalData.line_id}?&day=${selectedDay}&active_pattern_id=${thisPattern?.id}`} onClick={e => e.stopPropagation()} target="_blank">{t('open_line_page')}</Link>
+					<Link className={styles.openLinePage} href={`/lines/${arrivalData.line_id}?&day=${selectedDate?.operational_date}&active_pattern_id=${thisPattern?.id}`} onClick={e => e.stopPropagation()} target="_blank">{t('open_line_page')}</Link>
 					{thisPattern.locality_ids.length > 0 && (
 						<div className={styles.localitiesListWrapper}>
 							<p className={styles.localitiesLabel}>{t('localities.label')}</p>

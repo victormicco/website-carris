@@ -5,7 +5,7 @@ import type { Waypoint } from '@carrismetropolitana/api-types/network';
 import { IconDisplay } from '@/components/common/IconDisplay';
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStopsContext } from '@/contexts/Stops.context';
 import { useClipboard } from '@mantine/hooks';
 import { IconCheck, IconCopy } from '@tabler/icons-react';
@@ -33,7 +33,7 @@ export function PathWaypointHeader({ isFirstStop, isLastStop, isSelected, waypoi
 
 	const stopsContext = useStopsContext();
 	const locationsContext = useLocationsContext();
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 	const analyticsContext = useAnalyticsContext();
 
 	const stopIdClipboard = useClipboard();
@@ -73,7 +73,7 @@ export function PathWaypointHeader({ isFirstStop, isLastStop, isSelected, waypoi
 				{isSelected && (
 					<Link
 						className={styles.stopNameUrl}
-						href={`/stops/${waypointData.stop_id}?day=${operationalDayContext.data.selected_day}`}
+						href={`/stops/${waypointData.stop_id}?day=${operationalDateContext.data.selected_date?.operational_date}`}
 						target="_blank"
 					>
 						<IconArrowUpRight onClick={handleOpenStopDetails} size={16} />

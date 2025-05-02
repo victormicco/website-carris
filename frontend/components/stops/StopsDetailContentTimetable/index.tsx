@@ -3,7 +3,7 @@
 import { StopsDetailContentTimetableRealtime } from '@/components/stops/StopsDetailContentTimetableRealtime';
 import { StopsDetailContentTimetableSchedule } from '@/components/stops/StopsDetailContentTimetableSchedule';
 import { StopsDetailContentTimetableSkeleton } from '@/components/stops/StopsDetailContentTimetableSkeleton';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
 
 import styles from './styles.module.css';
@@ -16,7 +16,7 @@ export function StopsDetailContentTimetable() {
 	//
 	// A. Setup variables
 
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 	const stopsDetailContext = useStopsDetailContext();
 
 	//
@@ -30,7 +30,7 @@ export function StopsDetailContentTimetable() {
 
 	return (
 		<div className={styles.container}>
-			{operationalDayContext.flags.is_today_selected
+			{operationalDateContext.flags.is_today_selected
 				? <StopsDetailContentTimetableRealtime />
 				: <StopsDetailContentTimetableSchedule />}
 		</div>

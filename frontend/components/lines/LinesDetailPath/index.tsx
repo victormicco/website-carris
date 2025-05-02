@@ -8,7 +8,7 @@ import { Surface } from '@/components/layout/Surface';
 import { LinesDetailPathList } from '@/components/lines/LinesDetailPathList';
 import { LinesDetailPathMap } from '@/components/lines/LinesDetailPathMap';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { useStickyObserver } from '@/hooks/useStickyObserver';
 import { getCssVariableValue } from '@/utils/getCssVariableValue';
 import { useTranslations } from 'next-intl';
@@ -26,14 +26,14 @@ export function LinesDetailPath() {
 	const t = useTranslations('lines.LinesDetailPath');
 
 	const linesDetailContext = useLinesDetailContext();
-	const operationalDayContext = useOperationalDayContext();
+	const operationalDateContext = useOperationalDateContext();
 	const headerHeight = getCssVariableValue('--size-height-header');
 	const { isSticky, ref: stickyElementRef } = useStickyObserver({ top: headerHeight }, [1], { top: -1 });
 
 	//
 	// B. Render components
 
-	if (!linesDetailContext.data.active_pattern || !operationalDayContext.data.selected_day_jsdate) {
+	if (!linesDetailContext.data.active_pattern || !operationalDateContext.data.selected_date) {
 		return (
 			<Surface>
 				<NoDataLabel text={t('no_data')} withMinHeight />
@@ -50,7 +50,7 @@ export function LinesDetailPath() {
 						<p className={styles.linesSummaryWrapper}>
 							{t.rich('summary', {
 								changeDay: chunks => <a className={styles.changeDay} href="#">{chunks}</a>,
-								day_name: operationalDayContext.data.selected_day_jsdate,
+								day_name: operationalDateContext.data.selected_date.js_date,
 								dayName: chunks => <span className={styles.dayName}>{chunks}</span>,
 								destination_name: linesDetailContext.data.active_pattern?.headsign,
 								destinationName: chunks => <span className={styles.destinationName}>{chunks}</span>,

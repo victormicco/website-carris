@@ -2,7 +2,7 @@
 
 /* * */
 
-import { useOperationalDayContext } from '@/contexts/OperationalDay.context';
+import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { SegmentedControl } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import { IconCalendarEvent } from '@tabler/icons-react';
@@ -13,14 +13,14 @@ import styles from './styles.module.css';
 
 /* * */
 
-export function SelectOperationalDay() {
+export function SelectOperationalDate() {
 	//
 
 	//
 	// A. Setup variables
 
-	const t = useTranslations('common.SelectOperationalDay');
-	const operationalDayContext = useOperationalDayContext();
+	const t = useTranslations('common.SelectOperationalDate');
+	const operationalDateContext = useOperationalDateContext();
 
 	const [selectedSegmentedControlOption, setSelectedSegmentedControlOption] = useState<string | undefined>();
 
@@ -37,12 +37,12 @@ export function SelectOperationalDay() {
 			label: (
 				<DatePickerInput
 					classNames={{ input: styles.datePickerInput, section: styles.datePickerSection, wrapper: styles.datePickerWrapper }}
-					data-selected={!operationalDayContext.flags.is_today_selected && !operationalDayContext.flags.is_tomorrow_selected}
+					data-selected={!operationalDateContext.flags.is_today_selected && !operationalDateContext.flags.is_tomorrow_selected}
 					dropdownType="modal"
 					leftSection={<IconCalendarEvent />}
-					onChange={operationalDayContext.actions.updateSelectedDayFromJsDate}
+					onChange={operationalDateContext.actions.updateSelectedDayFromJsDate}
 					size="lg"
-					value={operationalDayContext.data.selected_day_jsdate}
+					value={operationalDateContext.data.selected_date?.js_date}
 					valueFormat="DD MMM YYYY"
 					variant="unstyled"
 				/>
@@ -55,26 +55,26 @@ export function SelectOperationalDay() {
 	// B. Transform data
 
 	useEffect(() => {
-		if (operationalDayContext.flags.is_today_selected) {
+		if (operationalDateContext.flags.is_today_selected) {
 			setSelectedSegmentedControlOption('today');
 		}
-		else if (operationalDayContext.flags.is_tomorrow_selected) {
+		else if (operationalDateContext.flags.is_tomorrow_selected) {
 			setSelectedSegmentedControlOption('tomorrow');
 		}
-		else if (!operationalDayContext.flags.is_today_selected && !operationalDayContext.flags.is_tomorrow_selected) {
+		else if (!operationalDateContext.flags.is_today_selected && !operationalDateContext.flags.is_tomorrow_selected) {
 			setSelectedSegmentedControlOption('custom_date');
 		}
-	}, [operationalDayContext.flags.is_today_selected, operationalDayContext.flags.is_tomorrow_selected]);
+	}, [operationalDateContext.flags.is_today_selected, operationalDateContext.flags.is_tomorrow_selected]);
 
 	//
 	// C. Handle actions
 
 	const handleSegmentedControlChange = (value: string) => {
 		if (value === 'today') {
-			operationalDayContext.actions.updateSelectedDayToToday();
+			operationalDateContext.actions.updateSelectedDayToToday();
 		}
 		else if (value === 'tomorrow') {
-			operationalDayContext.actions.updateSelectedDayToTomorrow();
+			operationalDateContext.actions.updateSelectedDayToTomorrow();
 		}
 	};
 

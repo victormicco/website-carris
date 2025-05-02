@@ -4,7 +4,7 @@
 
 import { Surface } from '@/components/layout/Surface';
 import { PeriodsWidgetItem } from '@/components/periods/PeriodsWidgetItem';
-import getOperationalDay from '@/utils/operation';
+import getOperationalDate from '@/utils/operation';
 import { DateTime } from 'luxon';
 import { Fragment, useEffect, useState } from 'react';
 import useSWR from 'swr';
@@ -46,7 +46,7 @@ export function PeriodsWidget() {
 			// Return early if no data is available
 			if (!periodsData) return;
 			// Setup the operational date time variable
-			const operationalDate = getOperationalDay();
+			const operationalDate = getOperationalDate();
 			// For each period, check if it contains the date for today
 			const result = periodsData.map((period) => {
 				// Filter valid pairs with 'until' dates before the current date
