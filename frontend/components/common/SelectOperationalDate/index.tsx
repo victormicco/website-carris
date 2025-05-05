@@ -40,7 +40,7 @@ export function SelectOperationalDate() {
 					data-selected={!operationalDateContext.flags.is_today_selected && !operationalDateContext.flags.is_tomorrow_selected}
 					dropdownType="modal"
 					leftSection={<IconCalendarEvent />}
-					onChange={operationalDateContext.actions.updateSelectedDayFromJsDate}
+					onChange={operationalDateContext.actions.updateSelectedDateFromFormat}
 					size="lg"
 					value={operationalDateContext.data.selected_date?.js_date}
 					valueFormat="DD MMM YYYY"
@@ -71,10 +71,10 @@ export function SelectOperationalDate() {
 
 	const handleSegmentedControlChange = (value: string) => {
 		if (value === 'today') {
-			operationalDateContext.actions.updateSelectedDayToToday();
+			operationalDateContext.actions.updateSelectedDateToToday();
 		}
 		else if (value === 'tomorrow') {
-			operationalDateContext.actions.updateSelectedDayToTomorrow();
+			operationalDateContext.actions.updateSelectedDateToTomorrow();
 		}
 	};
 

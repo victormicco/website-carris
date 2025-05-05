@@ -28,8 +28,8 @@ interface SlideItemProps {
 export default function Component({ skeletonComponent, skeletonQty = 3, slides = [], slideSize = 300 }: CarouselProps) {
 	return (
 		<Carousel
-			align="start"
 			classNames={{ container: styles.container, control: styles.control, controls: styles.controlsWrapper }}
+			emblaOptions={{ align: 'start', dragFree: true, skipSnaps: true }}
 			height="100%"
 			nextControlIcon={<IconArrowRight size={20} />}
 			plugins={[WheelGesturesPlugin()]}
@@ -38,8 +38,6 @@ export default function Component({ skeletonComponent, skeletonQty = 3, slides =
 			slideSize={slideSize}
 			w="100%"
 			withControls={slides.length > 0}
-			dragFree
-			skipSnaps
 		>
 			{slides.length > 0 ? slides.map(slideItem => (
 				<Carousel.Slide key={slideItem._id}>

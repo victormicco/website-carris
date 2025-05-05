@@ -25,8 +25,6 @@ export function AlertsDetailImageThumbnail({ imageUrl, title }: Props) {
 	//
 	// A. Setup variables
 
-	console.log(imageUrl);
-
 	const t = useTranslations('alerts.AlertsDetailImageThumbnail');
 	const environmentContext = useEnvironmentContext();
 

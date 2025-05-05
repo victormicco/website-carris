@@ -44,7 +44,6 @@ export function StopsListViewMap() {
 		}, {});
 		const clusterId = Object.keys(clusterPointsCount).reduce((a, b) => (clusterPointsCount[a] > clusterPointsCount[b] ? a : b));
 		const filteredClusterPoints = clusterPoints.features.filter(feature => feature.properties.cluster === Number(clusterId));
-		console.log('filteredClusterPoints', filteredClusterPoints);
 		centerMap(stopsListMap, filteredClusterPoints);
 		//
 	}, [stopsListContext.data.filtered_fc, stopsListMap]);

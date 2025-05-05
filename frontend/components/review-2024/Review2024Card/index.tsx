@@ -80,7 +80,6 @@ export function Review2024Card({ cardData, isFirstChild, isLastChild }: Props) {
 	const handleToggleIsOpen = () => {
 		setIsOpen(prev => !prev);
 		analyticsContext.actions.capture(ampli => ampli.openCardViagem2024({ card_id: cardData._id, card_title: cardData.header.title }));
-		console.log(cardData._id);
 	};
 
 	const handleShareUrl = () => {

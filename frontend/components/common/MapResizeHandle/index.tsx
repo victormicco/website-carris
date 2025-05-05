@@ -24,7 +24,6 @@ export default function Component() {
 	// B. Handle actions
 
 	const handleMouseDown = (e) => {
-		console.log('handleMouseDown', e.clientY);
 		initialMouseYRef.current = e.clientY;
 		initialViewportHeightRef.current = mapOptionsContext.data.viewport_height;
 		document.addEventListener('mousemove', handleMouseMove);

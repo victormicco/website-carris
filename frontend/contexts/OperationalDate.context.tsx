@@ -2,7 +2,6 @@
 
 /* * */
 
-import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { type OperationalDate } from '@tmlmobilidade/types';
 import { Dates } from '@tmlmobilidade/utils';
 import { useQueryState } from 'nuqs';
@@ -12,12 +11,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 interface OperationalDateContextState {
 	actions: {
-		updateSelectedDay: (value: OperationalDate) => void
-		updateSelectedDayFromJsDate: (value: Date) => void
-		updateSelectedDayToLessOneDay: () => void
-		updateSelectedDayToPlusOneDay: () => void
-		updateSelectedDayToToday: () => void
-		updateSelectedDayToTomorrow: () => void
+		updateSelectedDate: (value: OperationalDate) => void
+		updateSelectedDateFromFormat: (value: string, format?: string) => void
+		updateSelectedDateFromJsDate: (value: Date) => void
+		updateSelectedDateToLessOneDay: () => void
+		updateSelectedDateToPlusOneDay: () => void
+		updateSelectedDateToToday: () => void
+		updateSelectedDateToTomorrow: () => void
 	}
 	data: {
 		selected_date: Dates | null
@@ -50,10 +50,8 @@ export const OperationalDateContextProvider = ({ children }) => {
 	//
 	// A. Setup variables
 
-	const analyticsContext = useAnalyticsContext();
-
-	const [selectedDayQuery, setSelectedDayQuery] = useQueryState('date');
 	const [selectedDate, setSelectedDate] = useState<Dates | null>(null);
+	const [selectedDateQuery, setSelectedDateQuery] = useQueryState('date');
 
 	//
 	// B. Transform data
@@ -68,55 +66,69 @@ export const OperationalDateContextProvider = ({ children }) => {
 		.plus({ days: 1 });
 
 	useEffect(() => {
-		if (!selectedDate && selectedDayQuery) {
-			const selectedDayValue = Dates
-				.fromFormat(selectedDayQuery, 'yyyyMMdd')
-				.set({ hour: 15 });
-			setSelectedDate(selectedDayValue);
+		if (!selectedDate) return;
+		const isToday = selectedDate.operational_date === todayDate.operational_date;
+		if (isToday) setSelectedDateQuery(null);
+		else setSelectedDateQuery(selectedDate.operational_date);
+	}, [selectedDate, todayDate]);
+
+	useEffect(() => {
+		// If no date is selected and the query is empty,
+		// set the selected date to today and the query to null
+		if (!selectedDate && !selectedDateQuery) {
+			setSelectedDate(todayDate);
 			return;
 		}
-		setSelectedDayQuery(todayDate.operational_date);
-	}, [todayDate, selectedDayQuery, selectedDate]);
+		// If no date is selected and the query has a value,
+		// set the selected date to the query value
+		if (!selectedDate && selectedDateQuery) {
+			const selectedDateValue = Dates
+				.fromOperationalDate(selectedDateQuery)
+				.set({ hour: 15 });
+			setSelectedDate(selectedDateValue);
+			return;
+		}
+	}, [todayDate, selectedDateQuery, selectedDate]);
 
 	//
 	// C. Handle actions
 
-	const updateSelectedDay = (value: string) => {
+	const updateSelectedDate = (value: string) => {
 		const dateValue = Dates
-			.fromFormat(value, 'yyyyMMdd')
+			.fromOperationalDate(value)
 			.set({ hour: 15 });
 		setSelectedDate(dateValue);
 	};
 
-	const updateSelectedDayFromJsDate = (value: Date) => {
+	const updateSelectedDateFromFormat = (value: string, format = 'yyyy-MM-dd') => {
+		const dateValue = Dates
+			.fromFormat(value, format)
+			.set({ hour: 15 });
+		setSelectedDate(dateValue);
+	};
+
+	const updateSelectedDateFromJsDate = (value: Date) => {
 		const dateValue = Dates
 			.fromJSDate(value)
 			.set({ hour: 15 });
 		setSelectedDate(dateValue);
-
-		if (dateValue.operational_date > todayDate.operational_date) {
-			analyticsContext.actions.capture(ampli => ampli.datePeriodSelected({ date_value: 'Future' }));
-		}
-		else if (dateValue.operational_date < todayDate.operational_date) {
-			analyticsContext.actions.capture(ampli => ampli.datePeriodSelected({ date_value: 'Past' }));
-		}
 	};
 
-	const updateSelectedDayToToday = () => {
+	const updateSelectedDateToToday = () => {
 		setSelectedDate(todayDate);
 	};
 
-	const updateSelectedDayToTomorrow = () => {
+	const updateSelectedDateToTomorrow = () => {
 		setSelectedDate(tomorrowDate);
 	};
 
-	const updateSelectedDayToPlusOneDay = () => {
+	const updateSelectedDateToPlusOneDay = () => {
 		if (!selectedDate) return;
 		const dateValue = selectedDate?.plus({ days: 1 });
 		setSelectedDate(dateValue);
 	};
 
-	const updateSelectedDayToLessOneDay = () => {
+	const updateSelectedDateToLessOneDay = () => {
 		if (!selectedDate) return;
 		const dateValue = selectedDate?.minus({ days: 1 });
 		setSelectedDate(dateValue);
@@ -127,12 +139,13 @@ export const OperationalDateContextProvider = ({ children }) => {
 
 	const contextValue: OperationalDateContextState = {
 		actions: {
-			updateSelectedDay,
-			updateSelectedDayFromJsDate,
-			updateSelectedDayToLessOneDay,
-			updateSelectedDayToPlusOneDay,
-			updateSelectedDayToToday,
-			updateSelectedDayToTomorrow,
+			updateSelectedDate,
+			updateSelectedDateFromFormat,
+			updateSelectedDateFromJsDate,
+			updateSelectedDateToLessOneDay,
+			updateSelectedDateToPlusOneDay,
+			updateSelectedDateToToday,
+			updateSelectedDateToTomorrow,
 		},
 		data: {
 			selected_date: selectedDate,

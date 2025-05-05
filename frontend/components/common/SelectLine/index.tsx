@@ -92,7 +92,6 @@ export function SelectLine({ data = [], label, nothingFound, onSelectLineId, pla
 	};
 
 	const handleSelectLine = (chosenSelectItemValue) => {
-		console.log(chosenSelectItemValue);
 		onSelectLineId(chosenSelectItemValue);
 		comboboxStore.closeDropdown();
 	};
