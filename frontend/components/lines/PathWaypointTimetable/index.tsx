@@ -3,8 +3,8 @@
 import Timetable from '@/components/common/Timetable';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
-import createTimetable from '@/utils/createTimetable';
-import { Dates } from '@tmlmobilidade/utils';
+import { createTimetable } from '@/utils/create-timetable';
+import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 

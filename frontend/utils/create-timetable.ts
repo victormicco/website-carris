@@ -1,9 +1,7 @@
 /* * */
 
-import type { Timetable } from '@/types/timetables.types';
-import type { Pattern, Route } from '@carrismetropolitana/api-types/network';
-
-/* * */
+import { type Timetable } from '@/types/timetables.types';
+import { type Pattern, type Route } from '@carrismetropolitana/api-types/network';
 
 /**
  * This function creates a timetable for a set of patterns of a line, for a specific stop and date.
@@ -17,7 +15,7 @@ import type { Pattern, Route } from '@carrismetropolitana/api-types/network';
  * @param operationalDate The day for which the timetable will be composed.
  * @returns The timetable for the given patterns and stop.
  */
-export default function createTimetable(primaryPatternGroup: Pattern, secondaryPatternGroups: Pattern[], mentionedRoutes: Route[], stopId: string, stopSequence: number, operationalDate: string): Timetable {
+export function createTimetable(primaryPatternGroup: Pattern, secondaryPatternGroups: Pattern[], mentionedRoutes: Route[], stopId: string, stopSequence: number, operationalDate: string): Timetable {
 	//
 
 	// 1.
@@ -73,8 +71,8 @@ export default function createTimetable(primaryPatternGroup: Pattern, secondaryP
 			if (!trip.valid_on.includes(operationalDate)) return;
 			// Find the schedule for the given Stop ID and Stop Sequence
 			trip.schedule.forEach((schedule) => {
-				// Skip if the schedule is not for the given stop and sequence combination
-				if (schedule.stop_id !== stopId || schedule.stop_sequence !== stopSequence) return;
+				// Skip if the schedule is not for the given stop ID (removed stop sequence check)
+				if (schedule.stop_id !== stopId /* || schedule.stop_sequence !== stopSequence */) return;
 				// Extract the hour and minute from the arrival time in 24h format
 				const [hourValue, minuteValue] = schedule.arrival_time.split(':').map(Number);
 				const [hour24, minute24] = schedule.arrival_time_24h.split(':').map(timeComponent => String(Number(timeComponent)).padStart(2, '0'));
@@ -127,6 +125,8 @@ export default function createTimetable(primaryPatternGroup: Pattern, secondaryP
 
 	// 6.
 	// Finish the function by returning the composed timetable
+
+	console.log('Timetable created:', timetableResult);
 
 	return timetableResult;
 
