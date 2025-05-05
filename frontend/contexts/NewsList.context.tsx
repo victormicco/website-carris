@@ -12,7 +12,7 @@ import useSWR from 'swr';
 
 interface NewsListContextState {
 	actions: {
-		updateFilterByDate: (value: Date | null) => void
+		updateFilterByDate: (value: null | string) => void
 		updateFilterBySearch: (value: string) => void
 	}
 	data: {
@@ -20,7 +20,7 @@ interface NewsListContextState {
 		raw: NewsData[]
 	}
 	filters: {
-		by_date: Date | null
+		by_date: null | string
 		by_search: string
 	}
 	flags: {
@@ -83,7 +83,7 @@ export const NewsListContextProvider = ({ children }) => {
 		if (filterByDate) {
 			filterResult = filterResult.filter((newsItem) => {
 				const newsItemDate = DateTime.fromISO(newsItem.publish_date);
-				return newsItemDate.hasSame(DateTime.fromJSDate(filterByDate), 'day');
+				return newsItemDate.hasSame(DateTime.fromFormat(filterByDate, 'yyyy-MM-dd'), 'day');
 			});
 		}
 

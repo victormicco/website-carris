@@ -39,12 +39,12 @@ export function NewsListToolbar() {
 		newsListContext.actions.updateFilterBySearch(currentTarget.value);
 	};
 
-	const handleDateInputChange = (value: Date | null) => {
+	const handleDateInputChange = (value: null | string) => {
 		newsListContext.actions.updateFilterByDate(value);
 	};
 
-	const handleExcludeDates = (value: Date) => {
-		const formatedDate = DateTime.fromJSDate(value).toFormat('yyyyMMdd');
+	const handleExcludeDates = (value: string) => {
+		const formatedDate = DateTime.fromFormat(value, 'yyyy-MM-dd').toFormat('yyyyMMdd');
 		return !availableDates.has(formatedDate);
 	};
 
