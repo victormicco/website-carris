@@ -4,7 +4,7 @@ import Timetable from '@/components/common/Timetable';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
 import { createTimetable } from '@/utils/create-timetable';
-import { DateTime } from 'luxon';
+import { Dates } from '@tmlmobilidade/utils';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
@@ -70,7 +70,7 @@ export function PathWaypointTimetable() {
 	// D. Render components
 
 	if (!timetableData || typeof timetableData === 'string') {
-		const nextDate = timetableData && Dates.fromFormat(timetableData, 'yyyyMMdd').js_date;
+		const nextDate = timetableData && Dates.fromOperationalDate(timetableData).js_date;
 		return (
 			<div className={styles.container}>
 				<p className={styles.noData}>{t('no_data')}</p>
