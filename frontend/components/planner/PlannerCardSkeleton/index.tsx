@@ -11,8 +11,6 @@ export function PlannerCardSkeleton() {
 		<div className={styles.container}>
 			<Skeleton className={styles.coverImage} />
 			<Skeleton className={styles.titleOne} />
-			<Skeleton className={styles.descriptionOne} />
-			<Skeleton className={styles.descriptionTwo} />
 		</div>
 	);
 }
