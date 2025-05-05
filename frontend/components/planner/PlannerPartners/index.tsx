@@ -9,9 +9,9 @@ import { PlannerCard } from '@/components/planner/PlannerCard';
 import { PlannerCardSkeleton } from '@/components/planner/PlannerCardSkeleton';
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { shuffleArray } from '@/utils/shuffle';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './styles.module.css';
 
