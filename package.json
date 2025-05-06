@@ -2,11 +2,11 @@
 	"name": "@carrismetropolitana/website",
 	"private": true,
 	"scripts": {
-		"build": "turbo build --filter=@carrismetropolitana/website-frontend",
+		"build": "turbo build --filter=@carrismetropolitana/website-backoffice",
 		"clean": "sh cleanup.sh",
 		"dev": "dotenv-run -f ./configs/development/secrets/.env -- turbo dev",
-		"dev:frontend": "dotenv-run -f ./configs/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-frontend",
-		"lint": "turbo lint --filter=@carrismetropolitana/website-frontend",
+		"dev:backoffice": "dotenv-run -f ./configs/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-backoffice",
+		"lint": "turbo lint --filter=@carrismetropolitana/website-backoffice",
 		"start": "turbo start"
 	},
 	"devDependencies": {
