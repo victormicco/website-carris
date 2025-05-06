@@ -1,8 +1,9 @@
 /* * */
 
-import Timetable from '@/components/common/Timetable';
+import { TimetableDisplay } from '@/components/common/TimetableDisplay';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { useOperationalDateContext } from '@/contexts/OperationalDate.context';
+import { type Timetable } from '@/types/timetables.types';
 import { createTimetable } from '@/utils/create-timetable';
 import { Dates } from '@tmlmobilidade/utils';
 import { useTranslations } from 'next-intl';
@@ -28,7 +29,7 @@ export function PathWaypointTimetable() {
 	//
 	// B. Transform data
 
-	const timetableData = useMemo(() => {
+	const timetableData = useMemo<null | string | Timetable>(() => {
 		// Setup variables
 		const activePatternGroup = linesDetailContext.data.active_pattern;
 		const secondaryPatternGroups = linesDetailContext.data.valid_patterns?.filter(patternGroup => patternGroup.version_id !== activePatternGroup?.version_id) || [];
@@ -69,7 +70,15 @@ export function PathWaypointTimetable() {
 	//
 	// D. Render components
 
-	if (!timetableData || typeof timetableData === 'string') {
+	if (!timetableData) {
+		return (
+			<div className={styles.container}>
+				<p className={styles.noData}>{t('no_data')}</p>
+			</div>
+		);
+	}
+
+	if (typeof timetableData === 'string') {
 		const nextDate = timetableData && Dates.fromOperationalDate(timetableData).js_date;
 		return (
 			<div className={styles.container}>
@@ -82,7 +91,7 @@ export function PathWaypointTimetable() {
 	return (
 		<div className={styles.container}>
 			<p className={styles.title}>{t('title')}</p>
-			<Timetable timetableData={timetableData} />
+			<TimetableDisplay timetableData={timetableData} />
 		</div>
 	);
 

@@ -1,9 +1,8 @@
 /* * */
 
-import type { Timetable } from '@/types/timetables.types';
-import type { Minute } from '@/types/timetables.types';
-
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
+import { type Timetable } from '@/types/timetables.types';
+import { type Minute } from '@/types/timetables.types';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
@@ -26,7 +25,7 @@ interface TimetableSchedulesProps {
 
 /* * */
 
-export default function TimetableSchedules({ selectedExceptionIds, setSelectedExceptionIds, timetableData }: TimetableSchedulesProps) {
+export function TimetableSchedules({ selectedExceptionIds, setSelectedExceptionIds, timetableData }: TimetableSchedulesProps) {
 	//
 
 	//

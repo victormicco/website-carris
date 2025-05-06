@@ -16,7 +16,7 @@ interface Props {
 
 /* * */
 
-export default function Component({ selectedExceptionIds, setSelectedExceptionIds, timetableData }: Props) {
+export function TimetableExceptions({ selectedExceptionIds, setSelectedExceptionIds, timetableData }: Props) {
 	//
 
 	if (!timetableData.exceptions.length) {

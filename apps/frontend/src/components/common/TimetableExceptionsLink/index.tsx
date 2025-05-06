@@ -1,8 +1,7 @@
 /* * */
 
-import type { Exception } from '@/types/timetables.types';
-
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
+import { type Exception } from '@/types/timetables.types';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 

@@ -2,10 +2,9 @@
 
 /* * */
 
-import type { Timetable } from '@/types/timetables.types';
-
-import TimetableExceptions from '@/components/common/TimetableExceptions';
-import TimetableSchedules from '@/components/common/TimetableSchedules';
+import { TimetableExceptions } from '@/components/common/TimetableExceptions';
+import { TimetableSchedules } from '@/components/common/TimetableSchedules';
+import { type Timetable } from '@/types/timetables.types';
 import { useState } from 'react';
 
 import styles from './styles.module.css';
@@ -18,7 +17,7 @@ interface Props {
 
 /* * */
 
-export default function Component({ timetableData }: Props) {
+export function TimetableDisplay({ timetableData }: Props) {
 	//
 
 	//
