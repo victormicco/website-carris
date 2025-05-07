@@ -10,8 +10,10 @@ import sharp from 'sharp';
 
 /* * */
 
-import { Media } from '@/collections/Media';
-import { Users } from '@/collections/Users';
+import { Media } from '@/schemas/Media/collection';
+import { News } from '@/schemas/News/collection';
+import { Topics } from '@/schemas/Topics/collection';
+import { Users } from '@/schemas/Users/collection';
 
 /* * */
 
@@ -25,6 +27,8 @@ export default buildConfig({
 	// Define and configure your collections in this array
 	collections: [
 		Media,
+		News,
+		Topics,
 		Users,
 	],
 
