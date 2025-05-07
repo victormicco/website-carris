@@ -14,4 +14,10 @@ export default [
     },
   },
 
+  {
+    ignores: [
+      '**/(payload)/*',
+    ],
+  },
+
 ]
