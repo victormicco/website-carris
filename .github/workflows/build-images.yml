@@ -6,7 +6,6 @@ name: 'Website | Build & Push'
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches:
       - production
