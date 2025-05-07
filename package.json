@@ -5,6 +5,7 @@
 		"build": "turbo build",
 		"build:backoffice": "turbo build --filter=@carrismetropolitana/website-backoffice",
 		"build:frontend": "turbo build --filter=@carrismetropolitana/website-frontend",
+		"build:shared": "turbo build --filter=./shared/*",
 		"clean": "sh cleanup.sh",
 		"dev": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev",
 		"dev:backoffice": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-backoffice",
@@ -26,6 +27,7 @@
 		"node": ">=18"
 	},
 	"workspaces": [
+		"shared/*",
 		"apps/*"
 	]
 }

@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
-		"build": "next build",
+		"build": "npm run generate:types && npm run generate:importmap && next build",
 		"dev": "npm run generate:types && npm run generate:importmap && next dev -p 49001",
 		"generate:importmap": "PAYLOAD_CONFIG_PATH=src/payload.config.ts npx payload generate:importmap",
 		"generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts npx payload generate:types",
@@ -13,6 +13,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@carrismetropolitana/website-settings": "*",
 		"@payloadcms/db-mongodb": "3.37.0",
 		"@payloadcms/email-nodemailer": "3.37.0",
 		"@payloadcms/next": "3.37.0",
