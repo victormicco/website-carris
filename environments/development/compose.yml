@@ -1,9 +1,9 @@
 # # #
 
-name: cmet-website
+name: cmet-website-development
 
 volumes:
-  certbotdata:
+  websitedbdata:
 
 services:
   #
@@ -11,19 +11,17 @@ services:
   # # # # # # # # # # # # # # # # # # # # #
   # # # # # # # # # # # # # # # # # # # # #
 
-  nginx:
-    image: ghcr.io/carrismetropolitana/website-nginx:test
+  websitedb:
+    image: mongo
     restart: unless-stopped
-    mem_limit: 1g
     logging:
       options:
         max-size: '1m'
         max-file: '1'
-    volumes:
-      - ./nginx/uptime.conf:/etc/nginx/uptime.conf
-      - ./letsencrypt:/etc/letsencrypt
-      - certbotdata:/var/www/certbot
     ports:
-      - 80:80
-      - 443:443
-    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+      - 69001:27017
+    volumes:
+      - websitedbdata:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=websitedbuser
+      - MONGO_INITDB_ROOT_PASSWORD=websitedbpassword
