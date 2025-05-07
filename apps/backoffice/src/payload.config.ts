@@ -19,24 +19,37 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
+
 	admin: {
 		importMap: {
 			baseDir: path.resolve(dirname),
 		},
 		user: Users.slug,
 	},
+
 	collections: [Users, Media],
+
 	db: mongooseAdapter({
 		url: process.env.DATABASE_URI || '',
 	}),
+
 	editor: lexicalEditor(),
+
 	plugins: [
 		payloadCloudPlugin(),
 		// storage-adapter-placeholder
 	],
+
+	routes: {
+		admin: '/',
+	},
+
 	secret: process.env.PAYLOAD_SECRET || '',
+
 	sharp,
+
 	typescript: {
 		outputFile: path.resolve(dirname, 'payload-types.ts'),
 	},
+
 });

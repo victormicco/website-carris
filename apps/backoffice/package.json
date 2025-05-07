@@ -7,6 +7,7 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "npx payload generate:types && npx payload generate:importmap && next dev -p 49001",
+		"dev2": "next dev -p 49001",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"start": "next start"
