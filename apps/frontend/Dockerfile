@@ -20,7 +20,7 @@ FROM base AS pruner
 
 WORKDIR /app
 
-# Install the necessary linux packages
+# Install the necessary linux packages for this stage
 # as well as the turbo monorepo tool globally.
 # Set the environment variable to production.
 
@@ -47,7 +47,7 @@ FROM base AS builder
 
 WORKDIR /app
 
-# Install the necessary linux packages
+# Install the necessary linux packages for this stage
 # as well as the turbo monorepo tool globally.
 # Set the environment variable to production.
 
