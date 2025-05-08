@@ -46,9 +46,7 @@ RUN npm ci
 
 RUN turbo run build --filter=@carrismetropolitana/website-${PROJECT}
 
-RUN ls -la .
-
-RUN ls -la /
+RUN ls -la /app/out
 
 
 # # # # # # # # #
@@ -67,8 +65,8 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=base --chown=nextjs:nodejs /app/apps/${PROJECT}/public ./apps/${PROJECT}/public
-COPY --from=base --chown=nextjs:nodejs /app/apps/${PROJECT}/.next/standalone ./
-COPY --from=base --chown=nextjs:nodejs /app/apps/${PROJECT}/.next/static ./apps/${PROJECT}/.next/static
+COPY --from=base --chown=nextjs:nodejs /app/out/apps/${PROJECT}/public ./apps/${PROJECT}/public
+COPY --from=base --chown=nextjs:nodejs /app/out/apps/${PROJECT}/.next/standalone ./
+COPY --from=base --chown=nextjs:nodejs /app/out/apps/${PROJECT}/.next/static ./apps/${PROJECT}/.next/static
 
 CMD node /app/apps/${PROJECT}/server.js
