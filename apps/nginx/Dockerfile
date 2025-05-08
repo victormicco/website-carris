@@ -39,12 +39,11 @@ FROM nginx:alpine-slim
 
 WORKDIR /app
 
-COPY --from=builder /app/configs /etc/nginx/
+COPY --from=builder /app/apps/nginx/configs /etc/nginx/
 
-
-
-
-# # #
-# Run Nginx	with auto-reload every 6 hours
+# Start the nginx server in the foreground
+# and reload the configuration every 6 hours
+# This refreshes the container preventing any memory leaks
+# that may occur over time due to the nginx process
 
 CMD ["/bin/sh", "-c", "while :; do sleep 6h & wait ${!}; nginx -s reload; done & nginx -g 'daemon off;'"]
