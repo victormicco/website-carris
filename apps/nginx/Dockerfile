@@ -32,10 +32,10 @@ COPY --from=builder /app/configs /app/configs
 
 RUN apk --no-cache add envsubst
 
-RUN set -a && . ./.variables && set +a
+RUN set -a && . ./.variables && \
+	envsubst < ./configs/nginx.conf > ./configs/nginx.conf.tmp
 
-RUN envsubst < ./configs/nginx.conf > ./configs/nginx.conf.tmp && \
-	mv ./configs/nginx.conf.tmp ./configs/nginx.conf
+RUN mv ./configs/nginx.conf.tmp ./configs/nginx.conf
 
 RUN cat ./configs/nginx.conf
 
@@ -50,7 +50,7 @@ FROM nginx:alpine-slim
 
 WORKDIR /app
 
-COPY --from=builder /app/configs /etc/nginx/
+COPY --from=replacer /app/configs /etc/nginx/
 
 
 
