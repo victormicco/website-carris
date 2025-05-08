@@ -11,16 +11,6 @@ FROM node:lts-alpine AS base
 
 ENV PROJECT=frontend
 
-# Install the necessary linux packages
-# as well as the turbo monorepo tool globally.
-# Set the environment variable to production.
-
-RUN apk update
-
-RUN apk add --no-cache libc6-compat
-
-RUN npm install -g turbo@^2
-
 
 
 # # #
@@ -29,6 +19,14 @@ RUN npm install -g turbo@^2
 FROM base AS pruner
 
 WORKDIR /app
+
+# Install the necessary linux packages
+# as well as the turbo monorepo tool globally.
+# Set the environment variable to production.
+
+RUN apk update
+RUN apk add --no-cache libc6-compat
+RUN npm install -g turbo@^2
 
 # Make the full repository available to the build step.
 # Use the turbo prune command to extract only the unnecessary
@@ -48,6 +46,14 @@ RUN turbo prune --scope=@carrismetropolitana/website-${PROJECT} --docker
 FROM base AS builder
 
 WORKDIR /app
+
+# Install the necessary linux packages
+# as well as the turbo monorepo tool globally.
+# Set the environment variable to production.
+
+RUN apk update
+RUN apk add --no-cache libc6-compat
+RUN npm install -g turbo@^2
 
 # Copy the pruned json declarations to the out directory
 # and install the necessary packages with npm.
@@ -69,7 +75,7 @@ RUN turbo run build --filter=@carrismetropolitana/website-${PROJECT}
 # # #
 # STAGE 4
 
-FROM node:lts-alpine
+FROM base as runner
 
 WORKDIR /app
 
