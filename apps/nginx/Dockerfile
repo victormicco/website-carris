@@ -20,15 +20,17 @@ RUN sh ./apps/nginx/init-cloudflare-ips.sh
 RUN mv ./cloudflare.conf ./apps/nginx/configs/cloudflare.conf
 
 # From the existing nginx configuration files,
-# replace the variables declared in the nginx.conf file
-# with the values from the current environment variables.
+# replace the variables declared in .variables file,
+# and mapped on the nginx.conf file, with the values
+# from the current environment variables.
 
 ARG ENVIRONMENT
 
 RUN apk --no-cache add envsubst
 
-RUN set -a && . ./environments/${ENVIRONMENT}/.variables && \
-	envsubst < ./apps/nginx/configs/nginx.conf > ./apps/nginx/configs/nginx.conf.tmp
+RUN set -a && . ./environments/${ENVIRONMENT}/.variables && set +a && \
+    export VARS=$(env | cut -d= -f1 | awk '{ printf "$%s ", $1 }') && \
+    envsubst "$VARS" < ./apps/nginx/configs/nginx.conf > ./apps/nginx/configs/nginx.conf.tmp
 
 RUN mv ./apps/nginx/configs/nginx.conf.tmp ./apps/nginx/configs/nginx.conf
 
