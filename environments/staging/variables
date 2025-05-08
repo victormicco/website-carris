@@ -1,0 +1,8 @@
+# # # # # # # # # # # # # # # # # # #
+# # NGINX GLOBAL CONFIG VARIABLES # #
+# # # # # # # # # # # # # # # # # # #
+
+ENVIRONMENT="staging"
+
+PRIMARY_DOMAIN="carrismetropolitana.pt"
+
