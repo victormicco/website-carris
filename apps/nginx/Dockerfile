@@ -19,6 +19,8 @@ RUN mv ./cloudflare.conf ./configs/cloudflare.conf
 # replace the variables declared in the nginx.conf file
 # with the values from the environment variables.
 
+RUN ls -la
+
 RUN apk --no-cache add envsubst
 
 RUN set -a && . ./.variables && \
