@@ -17,7 +17,7 @@ RUN ls -la .
 RUN ls -la ./environments/staging
 
 RUN sh ./apps/nginx/init-cloudflare-ips.sh
-RUN mv ./apps/nginx/cloudflare.conf ./apps/nginx/configs/cloudflare.conf
+RUN mv ./cloudflare.conf ./apps/nginx/configs/cloudflare.conf
 
 # From the existing nginx configuration files,
 # replace the variables declared in the nginx.conf file
