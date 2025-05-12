@@ -2,10 +2,9 @@
 
 /* * */
 
-import type { Vehicle } from '@carrismetropolitana/api-types/vehicles';
-
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { Routes } from '@/utils/routes';
+import { type Vehicle } from '@carrismetropolitana/api-types/vehicles';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useMemo } from 'react';
 import useSWR from 'swr';
@@ -167,6 +166,7 @@ export function transformVehicleDataIntoGeoJsonFeature(vehicleData: Vehicle): Ge
 			coordinates: [vehicleData.lon || 0, vehicleData.lat || 0],
 			type: 'Point',
 		},
+		id: vehicleData.id,
 		properties: {
 			bearing: vehicleData.bearing,
 			block_id: vehicleData.block_id,
