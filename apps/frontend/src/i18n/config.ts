@@ -4,22 +4,50 @@ import { type Formats } from 'next-intl';
 
 /* * */
 
-export const LOCALE_STORAGE_KEY = 'NEXT_LOCALE';
+import enMessages from '@/i18n/translations/en.json';
+import ptMessages from '@/i18n/translations/pt.json';
 
 /* * */
 
 export const availableLocales = [
-	{ alias: ['pt-PT', 'pt_PT', 'pt-BR', 'pt_BR', 'pt-GW', 'pt_GW', 'pt-MZ', 'pt_MZ'], enabled: true, value: 'pt' },
-	{ alias: ['en-US', 'en_US', 'en-GB', 'en_GB'], enabled: true, value: 'en' },
+
+	{
+		_id: 'pt',
+		alias: ['pt-PT', 'pt_PT', 'pt-BR', 'pt_BR', 'pt-GW', 'pt_GW', 'pt-MZ', 'pt_MZ'],
+		enabled: true,
+		messages: ptMessages,
+	},
+
+	{
+		_id: 'en',
+		alias: ['en-US', 'en_US', 'en-GB', 'en_GB'],
+		enabled: true,
+		messages: enMessages,
+	},
+
 ];
 
-export const enabledLocaleCodes = availableLocales.filter(item => item.enabled).map(({ value }) => value);
-export const enabledLocaleAliases = availableLocales.filter(item => item.enabled).flatMap(({ alias }) => alias);
-export const allEnabledLocaleCodesAndAliases = [...enabledLocaleCodes, ...enabledLocaleAliases];
+/* * */
 
-export const defaultLocaleCode = 'pt';
-export const defaultLocaleAliases = availableLocales.find(item => item.value === defaultLocaleCode)?.alias || [];
-export const defaultLocaleCodesAndAliases = [defaultLocaleCode, ...defaultLocaleAliases];
+export const DEFAULT_LOCALE_CODE = 'pt';
+
+export const LOCALE_STORAGE_KEY = 'locale';
+
+/* * */
+
+export const enabledLocales = availableLocales.filter(item => item.enabled);
+export const enabledLocaleCodes = enabledLocales.filter(item => item.enabled).map(item => item._id);
+export const allEnabledLocaleCodesAndAliases = enabledLocales.reduce((acc, item) => [...acc, item._id, ...item.alias], []);
+
+export const defaultLocale = availableLocales.find(item => item._id === DEFAULT_LOCALE_CODE);
+
+/* * */
+
+export const getMatchingLocale = (localeCode: string) => {
+	const matchingLocale = enabledLocales.find(item => item._id === localeCode || item.alias.includes(localeCode));
+	if (matchingLocale) return matchingLocale;
+	else return null;
+};
 
 /* * */
 

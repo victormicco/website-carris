@@ -35,7 +35,7 @@ export function LocaleSwitcher() {
 	// C. Handle actions
 
 	const handleLocaleChange = (value: string) => {
-		localeContext.actions.changeLocale(value);
+		localeContext.actions.setCurrentLocale(value);
 		analyticsContext.actions.capture((ampli, props) => ampli.localeChanged({ ...props, locale: value }));
 	};
 

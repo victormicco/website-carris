@@ -1,3 +1,5 @@
+'use client';
+
 /* * */
 
 import { WebsiteViewport } from '@/components/viewport/WebsiteViewport';
