@@ -5,7 +5,7 @@ import { TicketsHeader } from '@/components/tickets/TicketsHeader';
 
 /* * */
 
-export default function Component() {
+export function TicketsPage() {
 	return (
 		<>
 			<TicketsHeader />

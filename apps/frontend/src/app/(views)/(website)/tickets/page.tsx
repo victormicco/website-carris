@@ -1,6 +1,8 @@
+'use client';
+
 /* * */
 
-import TicketsPage from '@/components/tickets/Page';
+import { TicketsPage } from '@/components/tickets/TicketsPage';
 
 /* * */
 
