@@ -2,7 +2,7 @@
 /* CAROUSEL ITEM */
 
 .carouselItem {
-    padding-left: var(--size-spacing-20);
+	padding-left: var(--size-spacing-20);
 }
 
 /* * */
@@ -10,20 +10,12 @@
 
 .disclaimer {
 	display: block;
+	max-width: 700px;
+	padding: 20px;
 	font-size: 12px;
-	max-width: var(--size-width-heading);
-    color: var(--color-system-text-400);
-    padding: 20px;
+	color: var(--color-system-text-300);
 }
 
 .disclaimer:hover {
-    text-decoration: underline;
-}
-
-.tripPlannerContainer {
-    background-color: var(--color-primary-black);
-    
-    & h1 {
-        color: var(--color-brand);
-    }
+	text-decoration: underline;
 }
