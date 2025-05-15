@@ -1,0 +1,33 @@
+{
+	"name": "@carrismetropolitana/website",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"build:backoffice": "turbo build --filter=@carrismetropolitana/website-backoffice",
+		"build:frontend": "turbo build --filter=@carrismetropolitana/website-frontend",
+		"build:shared": "turbo build --filter=./shared/*",
+		"clean": "sh cleanup.sh",
+		"dev": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev",
+		"dev:backoffice": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-backoffice",
+		"dev:frontend": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-frontend",
+		"lint": "turbo lint --filter=@carrismetropolitana/website-backoffice",
+		"lint:backoffice": "turbo lint --filter=@carrismetropolitana/website-backoffice",
+		"lint:frontend": "turbo lint --filter=@carrismetropolitana/website-frontend",
+		"start": "turbo start"
+	},
+	"devDependencies": {
+		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@dotenv-run/cli": "1.3.6",
+		"@tmlmobilidade/tsconfig": "20250513.1857.29",
+		"turbo": "2.5.3",
+		"typescript": "5.8.3"
+	},
+	"packageManager": "npm@11.3.0",
+	"engines": {
+		"node": ">=18"
+	},
+	"workspaces": [
+		"shared/*",
+		"apps/*"
+	]
+}

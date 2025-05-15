@@ -1,0 +1,44 @@
+{
+	"name": "@carrismetropolitana/website-backoffice",
+	"version": "1.0.0",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"build": "npm run generate:types && npm run generate:importmap && next build",
+		"dev": "npm run generate:types && npm run generate:importmap && next dev -p 49001",
+		"generate:importmap": "PAYLOAD_CONFIG_PATH=src/payload.config.ts npx payload generate:importmap",
+		"generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts npx payload generate:types",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@carrismetropolitana/website-settings": "*",
+		"@payloadcms/db-mongodb": "3.37.0",
+		"@payloadcms/email-nodemailer": "3.37.0",
+		"@payloadcms/next": "3.37.0",
+		"@payloadcms/richtext-lexical": "3.37.0",
+		"@payloadcms/storage-s3": "3.37.0",
+		"@payloadcms/ui": "3.37.0",
+		"graphql": "16.11.0",
+		"next": "15.3.2",
+		"nodemailer": "7.0.3",
+		"payload": "3.37.0",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"sharp": "0.34.1"
+	},
+	"devDependencies": {
+		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@tmlmobilidade/tsconfig": "20250513.1857.29",
+		"@types/node": "22.15.18",
+		"@types/react": "19.1.4",
+		"@types/react-dom": "19.1.5",
+		"typescript": "5.8.3"
+	},
+	"overrides": {
+		"react": "19.1.0",
+		"react-dom": "19.1.0"
+	},
+	"packageManager": "npm@11.3.0"
+}

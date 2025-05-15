@@ -1,0 +1,44 @@
+{
+	"name": "@carrismetropolitana/website-settings",
+	"version": "1.0.0",
+	"author": "João de Vasconcelos & Jusi Monteiro",
+	"license": "AGPL-3.0-or-later",
+	"homepage": "https://github.com/carrismetropolitana/website#readme",
+	"bugs": {
+		"url": "https://github.com/carrismetropolitana/website/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/carrismetropolitana/website.git"
+	},
+	"keywords": [
+		"public transit",
+		"tml",
+		"transportes metropolitanos de lisboa",
+		"settings"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"type": "module",
+	"files": ["dist/"],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "rimraf ./dist && tsc && resolve-tspaths",
+		"clean": "sh cleanup.sh",
+		"lint": "eslint && tsc --noEmit",
+		"lint:fix": "eslint --fix"
+	},
+	"devDependencies": {
+		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@types/node": "22.15.18",
+		"resolve-tspaths": "0.8.23",
+		"rimraf": "6.0.1",
+		"typescript": "5.8.3"
+	}
+}
