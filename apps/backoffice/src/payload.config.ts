@@ -76,7 +76,7 @@ export default buildConfig({
 
 	secret: process.env.PAYLOAD_SECRET || 'placeholder',
 
-	serverURL: getPublicVariable('backoffice_url'),
+	serverURL: getPublicVariable('public_url'),
 
 	sharp: sharp,
 

@@ -14,16 +14,10 @@ export const PUBLIC_VARIABLES = Object.freeze({
 		staging: 'https://api.carrismetropolitana.pt/v2',
 	},
 
-	backoffice_url: {
+	public_url: {
 		development: 'http://localhost:49001',
 		production: 'https://carrismetropolitana.pt',
 		staging: 'https://staging.carrismetropolitana.pt',
-	},
-
-	public_url: {
-		development: 'localhost:49001',
-		production: 'carrismetropolitana.pt',
-		staging: 'staging.carrismetropolitana.pt',
 	},
 
 });
