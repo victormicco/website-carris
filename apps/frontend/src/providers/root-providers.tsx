@@ -5,17 +5,20 @@
 import { AnalyticsContextProvider } from '@/contexts/Analytics.context';
 import { ConsentContextProvider } from '@/contexts/Consent.context';
 import { LocaleContextProvider } from '@/contexts/Locale.context';
+import { Suspense } from 'react';
 
 /* * */
 
 export function RootProviders({ children }) {
 	return (
-		<LocaleContextProvider>
-			<ConsentContextProvider>
-				<AnalyticsContextProvider>
-					{children}
-				</AnalyticsContextProvider>
-			</ConsentContextProvider>
-		</LocaleContextProvider>
+		<Suspense>
+			<LocaleContextProvider>
+				<ConsentContextProvider>
+					<AnalyticsContextProvider>
+						{children}
+					</AnalyticsContextProvider>
+				</ConsentContextProvider>
+			</LocaleContextProvider>
+		</Suspense>
 	);
 }
