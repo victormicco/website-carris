@@ -4,42 +4,32 @@ import styles from './styles.module.css';
 
 /* * */
 
-export function Loader({ fixed = false, full = false, maxed = false, size = 30, visible = false }) {
+export interface LoaderProps {
+	size?: 'lg' | 'md' | 'sm' | 'xl'
+	visible?: boolean
+}
+
+/* * */
+
+export function Loader({ size = 'md', visible = true }: LoaderProps) {
 	//
 
-	if (!visible) return <div />;
-
-	// Setup spinner
-	const Spinner = () => <div className={styles.spinner} style={{ borderWidth: size / 7, height: size, width: size }} />;
-
-	// If
-	if (full) {
-		return (
-			<div className={styles.full}>
-				<Spinner />
-			</div>
-		);
+	if (!visible) {
+		return null;
 	}
 
-	// If
-	if (maxed) {
-		return (
-			<div className={styles.maxed}>
-				<Spinner />
-			</div>
-		);
-	}
-
-	// If
-	if (fixed) {
-		return (
-			<div className={styles.fixed}>
-				<Spinner />
-			</div>
-		);
-	}
-
-	return <Spinner />;
+	return (
+		<div className={styles.root} data-size={size} data-visible={visible}>
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+			<div className={styles.blade} />
+		</div>
+	);
 
 	//
 }

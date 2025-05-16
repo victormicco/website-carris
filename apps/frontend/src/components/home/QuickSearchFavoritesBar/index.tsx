@@ -78,7 +78,7 @@ export function QuickSearchFavoritesBar() {
 	if (!favoriteItemsData) {
 		return (
 			<div className={styles.container}>
-				<Loader size={26} visible />
+				<Loader size="sm" visible />
 			</div>
 		);
 	}
