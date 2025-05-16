@@ -1,6 +1,7 @@
 /* * */
 
 import { NewsDetail } from '@/components/news/NewsDetail';
+import { getPublicVariable } from '@carrismetropolitana/website-settings';
 import { type Metadata } from 'next';
 
 /* * */
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	//
 	// B. Fetch data
 
-	const newsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/news/${news_id}`);
+	const newsResponse = await fetch(`${getPublicVariable('api_url')}/api/news/${news_id}`);
 	const newsData = await newsResponse.json();
 
 	//

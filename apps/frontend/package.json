@@ -47,7 +47,7 @@
 		"ukkonen": "2.2.0"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20250505.1121.50",
+		"@carrismetropolitana/api-types": "20250516.307.56",
 		"@carrismetropolitana/eslint": "20250418.42.41",
 		"@tmlmobilidade/tsconfig": "20250516.244.22",
 		"@types/geojson": "7946.0.16",

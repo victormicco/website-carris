@@ -2,6 +2,7 @@
 
 import { OpenGraphNewsDefault } from '@/opengraph/OpenGraphNewsDefault';
 import { OpenGraphNewsDynamic } from '@/opengraph/OpenGraphNewsDynamic';
+import { getPublicVariable } from '@carrismetropolitana/website-settings';
 import fs from 'fs';
 import { ImageResponse } from 'next/og';
 
@@ -13,7 +14,7 @@ export default async function Image({ params }) {
 	//
 	// A. Fetch data
 
-	const newsResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/news/${params.news_id}`);
+	const newsResponse = await fetch(`${getPublicVariable('api_url')}/api/news/${params.news_id}`);
 	const newsData = await newsResponse.json();
 
 	//
