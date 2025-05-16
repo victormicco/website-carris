@@ -110,14 +110,6 @@ export const IconsCommon = Object.freeze({
 	TICKET: '/icons/common/ticket.svg',
 });
 
-export const IconsMobile = Object.freeze({
-	MOBILE_ANDROID_192: '/icons/mobile/android-chrome-192x192.png',
-	MOBILE_ANDROID_512: '/icons/mobile/android-chrome-512x512.png',
-	MOBILE_APPLE: '/icons/mobile/apple-touch-icon.pmg',
-});
-
-/* * */
-
 // Images
 
 export const ImagesCommon = Object.freeze({

@@ -1,7 +1,7 @@
 /* * */
 
-import { Routes } from '@/utils/routes';
 import { Line, Stop } from '@carrismetropolitana/api-types/network';
+import { getPublicVariable } from '@carrismetropolitana/website-settings';
 
 /* * */
 
@@ -11,15 +11,16 @@ export default async function Sitemap() {
 	//
 	// A. Setup variables
 
-	const baseUrl = process.env.NEXT_PUBLIC_URL || '';
+	const apiUrl = new URL(getPublicVariable('api_url'));
+	const baseUrl = new URL(getPublicVariable('public_url'));
 
 	//
 	// B. Fetch data
 
-	const allStopsResponse = await fetch(`${Routes.API}/stops`);
+	const allStopsResponse = await fetch(`${apiUrl}/stops`);
 	const allStopsData = await allStopsResponse.json();
 
-	const allLinesResponse = await fetch(`${Routes.API}/lines`);
+	const allLinesResponse = await fetch(`${apiUrl}/lines`);
 	const allLinesData = await allLinesResponse.json();
 
 	//
