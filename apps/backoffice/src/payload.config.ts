@@ -18,6 +18,10 @@ import { Users } from '@/schemas/Users/collection';
 
 /* * */
 
+import { GeneralStatus } from '@/schemas/GeneralStatus/global';
+
+/* * */
+
 export default buildConfig({
 
 	admin: { user: 'users' },
@@ -49,8 +53,7 @@ export default buildConfig({
 	}),
 
 	globals: [
-		// LegalDocuments,
-		// SocialBodies,
+		GeneralStatus,
 	],
 
 	plugins: [

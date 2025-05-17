@@ -90,8 +90,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'general-status': GeneralStatus;
+  };
+  globalsSelect: {
+    'general-status': GeneralStatusSelect<false> | GeneralStatusSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -377,6 +381,42 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general-status".
+ */
+export interface GeneralStatus {
+  id: string;
+  messages?:
+    | {
+        is_visible: boolean;
+        title: string;
+        more_info_url?: string | null;
+        severity: 'ok' | 'info' | 'warning' | 'danger';
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general-status_select".
+ */
+export interface GeneralStatusSelect<T extends boolean = true> {
+  messages?:
+    | T
+    | {
+        is_visible?: T;
+        title?: T;
+        more_info_url?: T;
+        severity?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
