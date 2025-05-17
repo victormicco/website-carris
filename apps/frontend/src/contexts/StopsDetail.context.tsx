@@ -11,7 +11,7 @@ import { type SimplifiedAlert } from '@/types/alerts.types';
 import { type Arrival } from '@/types/stops.types';
 import { Routes } from '@/utils/routes';
 import { type Line, type Pattern, type Shape, type Stop } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { DateTime } from 'luxon';
 import { notFound } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';

@@ -1,6 +1,6 @@
 /* * */
 
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
@@ -79,7 +79,7 @@ export default buildConfig({
 
 	secret: process.env.PAYLOAD_SECRET || 'placeholder',
 
-	serverURL: getPublicVariable('public_url'),
+	serverURL: getPublicVariable('server_url_backoffice'),
 
 	sharp: sharp,
 

@@ -4,7 +4,7 @@
 
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { type Vehicle } from '@carrismetropolitana/api-types/vehicles';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useMemo } from 'react';
 import useSWR from 'swr';

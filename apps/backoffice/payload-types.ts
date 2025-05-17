@@ -390,10 +390,12 @@ export interface GeneralStatus {
   id: string;
   messages?:
     | {
-        is_visible: boolean;
-        title: string;
+        is_enabled?: boolean | null;
+        title?: string | null;
         more_info_url?: string | null;
-        severity: 'ok' | 'info' | 'warning' | 'danger';
+        severity?: ('ok' | 'info' | 'warning' | 'danger') | null;
+        start_date?: string | null;
+        end_date?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -408,10 +410,12 @@ export interface GeneralStatusSelect<T extends boolean = true> {
   messages?:
     | T
     | {
-        is_visible?: T;
+        is_enabled?: T;
         title?: T;
         more_info_url?: T;
         severity?: T;
+        start_date?: T;
+        end_date?: T;
         id?: T;
       };
   updatedAt?: T;

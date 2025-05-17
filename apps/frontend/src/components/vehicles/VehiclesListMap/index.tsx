@@ -11,7 +11,7 @@ import { useVehiclesListContext } from '@/contexts/VehiclesList.context';
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import getOperationalDate from '@/utils/operation';
 import { Pattern, Shape } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { useEffect, useMemo, useState } from 'react';
 
 /* * */

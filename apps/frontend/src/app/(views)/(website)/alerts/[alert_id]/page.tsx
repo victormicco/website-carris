@@ -2,7 +2,7 @@
 
 import { AlertsDetail } from '@/components/alerts/AlertsDetail';
 import { Alert } from '@carrismetropolitana/api-types/alerts';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type Metadata } from 'next';
 
 /* * */

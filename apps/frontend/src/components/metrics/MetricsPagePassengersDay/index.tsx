@@ -5,7 +5,7 @@
 import { Grid } from '@/components/layout/Grid';
 import { MetricsDemandChart } from '@/components/metrics/MetricsDemandChart';
 import { type DemandMetricsByAgency, type DemandMetricsByAgencyDay } from '@carrismetropolitana/api-types/metrics';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';

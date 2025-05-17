@@ -5,7 +5,7 @@
 import { type CachedResource } from '@carrismetropolitana/api-types/common';
 import { type DemandMetricsByLine, type ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import { type Line, type Route } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { createContext, useContext, useMemo } from 'react';
 import useSWR from 'swr';
 

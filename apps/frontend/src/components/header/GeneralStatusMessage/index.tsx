@@ -17,9 +17,7 @@ export function GeneralStatus() {
 	//
 	// A. Fetch data
 
-	const { data: generalStatusData } = useSWR(`${getPublicVariable('backoffice_url')}/api/globals/general-status/public`);
-
-	console.log('generalStatusData', generalStatusData);
+	const { data: generalStatusData } = useSWR(`${getPublicVariable('backoffice_url')}/api/globals/general-status`);
 
 	//
 	// B. Handle actions

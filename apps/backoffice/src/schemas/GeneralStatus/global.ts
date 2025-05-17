@@ -1,5 +1,6 @@
 /* * */
 
+import { publicApiRoute } from '@/schemas/GeneralStatus/api-routes';
 import { type GlobalConfig } from 'payload';
 
 /* * */
@@ -9,6 +10,14 @@ export const GeneralStatus: GlobalConfig = {
 	access: {
 		read: () => true,
 	},
+
+	endpoints: [
+		{
+			handler: publicApiRoute,
+			method: 'get',
+			path: '/public',
+		},
+	],
 
 	fields: [
 		{

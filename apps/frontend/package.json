@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@amplitude/analytics-browser": "2.17.6",
-		"@carrismetropolitana/website-settings": "*",
+		"@carrismetropolitana/website-shared-settings": "*",
 		"@mantine/carousel": "8.0.1",
 		"@mantine/charts": "8.0.1",
 		"@mantine/core": "8.0.1",
@@ -49,6 +49,7 @@
 	"devDependencies": {
 		"@carrismetropolitana/api-types": "20250516.307.56",
 		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@carrismetropolitana/website-shared-types": "*",
 		"@tmlmobilidade/tsconfig": "20250516.244.22",
 		"@types/geojson": "7946.0.16",
 		"@types/luxon": "3.6.2",

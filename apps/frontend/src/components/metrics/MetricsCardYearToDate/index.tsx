@@ -4,7 +4,7 @@
 
 import { MetricsSectionDemandSkeleton } from '@/components/home/MetricsSectionDemandSkeleton';
 import { MonthlyMetrics } from '@/types/metrics.types';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { BarChart } from '@mantine/charts';
 import { ActionIcon, Popover } from '@mantine/core';
 import { IconInfoCircleFilled } from '@tabler/icons-react';

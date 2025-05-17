@@ -1,0 +1,124 @@
+.success .heading {
+	color: #5dba50;
+}
+
+
+
+/* * */
+/* CONTAINER */
+
+.container {
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--size-width-global);
+  margin: auto;
+  border-bottom: 1px solid var(--color-system-border-100);
+}
+
+.container.asLink {
+	  cursor: pointer;
+}
+
+.style_info.container {
+	background-color: var(--color-status-info-background);
+}
+
+.style_ok.container {
+	background-color: var(--color-status-ok-background);
+}
+
+.style_warning.container {
+	background-color: var(--color-status-warning-background);
+}
+
+.style_danger.container {
+	background-color: var(--color-status-danger-background);
+}
+
+/* * */
+/* ICON WRAPPER */
+
+.iconWrapper {
+	z-index: 1000;
+	display: flex;
+	padding: 12px;
+}
+
+.style_info .iconWrapper {
+	background-color: var(--color-status-info-text);
+}
+
+.style_ok .iconWrapper {
+	background-color: var(--color-status-ok-text);
+}
+
+.style_warning .iconWrapper {
+	background-color: var(--color-status-warning-text);
+	animation: iconWrapperShadowPulsateWarning 3000ms ease-out infinite;
+}
+
+@keyframes iconWrapperShadowPulsateWarning {
+    0%   { box-shadow: 0 0 5px 0 var(--color-status-warning-shadow); }
+    25%  { box-shadow: 0 0 15px 0 var(--color-status-warning-text); }
+    100% { box-shadow: 0 0 5px 0 var(--color-status-warning-shadow); }
+}
+
+.style_danger .iconWrapper {
+	background-color: var(--color-status-danger-text);
+    animation: iconWrapperShadowPulsateDanger 3000ms ease-out infinite;
+}
+
+@keyframes iconWrapperShadowPulsateDanger {
+    0%   { box-shadow: 0 0 5px 0 var(--color-status-danger-shadow); }
+    25%  { box-shadow: 0 0 15px 0 var(--color-status-danger-text); }
+    100% { box-shadow: 0 0 5px 0 var(--color-status-danger-shadow); }
+}
+
+
+/* * */
+/* ICON */
+
+.icon {
+	color: var(--color-primary-white);
+}
+
+/* * */
+/* MESSAGE WRAPPER */
+
+.messageWrapper {
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-spacing-15);
+	align-items: center;
+	padding-right: 15px;
+	padding-left: 15px;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.style_info .messageWrapper {
+	color: var(--color-status-info-text);
+}
+
+.style_ok .messageWrapper {
+	color: var(--color-status-ok-text);
+}
+
+.style_warning .messageWrapper {
+	color: var(--color-status-warning-text);
+}
+
+.style_danger .messageWrapper {
+	color: var(--color-status-danger-text);
+}
+
+/* * */
+/* TITLE */
+
+.title {
+	font-size: var(--font-size-subtitle);
+	font-weight: var(--font-weight-subtitle);
+}

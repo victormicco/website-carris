@@ -1,7 +1,7 @@
 /* * */
 
 import { Line, Stop } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 
 /* * */
 
@@ -12,7 +12,7 @@ export default async function Sitemap() {
 	// A. Setup variables
 
 	const apiUrl = new URL(getPublicVariable('api_url'));
-	const baseUrl = new URL(getPublicVariable('public_url'));
+	const baseUrl = new URL(getPublicVariable('server_url_frontend'));
 
 	//
 	// B. Fetch data

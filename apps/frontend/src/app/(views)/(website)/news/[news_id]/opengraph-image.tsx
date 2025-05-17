@@ -2,7 +2,7 @@
 
 import { OpenGraphNewsDefault } from '@/opengraph/OpenGraphNewsDefault';
 import { OpenGraphNewsDynamic } from '@/opengraph/OpenGraphNewsDynamic';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import fs from 'fs';
 import { ImageResponse } from 'next/og';
 
