@@ -30,4 +30,19 @@ Built with performance, accessibility, and user experience in mind.
 
 ## 📦 Repository Structure
 
-TBD
+```
+carrismetropolitana-website
+│
+├── apps/                     # Application code
+│   ├── frontend/             # Next.js public website
+│   ├── backoffice/           # PayloadCMS admin portal
+│   └── nginx/                # Web server configuration
+│
+├── environments/             # Environment-specific configurations
+│   ├── development/          # Local development setup
+│   ├── staging/              # Staging environment config
+│   └── production/           # Production deployment config
+│
+└── shared/                   # Common code and configurations
+    └── settings/             # Shared application settings
+```
