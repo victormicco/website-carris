@@ -8,6 +8,11 @@
 export interface GeneralStatusMessage {
 
 	/**
+	 * The ID of the status message.
+	 */
+	_id: string
+
+	/**
 	 * The title of the status.
 	 */
 	end_date?: number

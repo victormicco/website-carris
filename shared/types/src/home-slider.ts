@@ -4,6 +4,11 @@
 export interface HomeSliderSlide {
 
 	/**
+	 * The ID of the slide.
+	 */
+	_id: string
+
+	/**
 	 * The title of the status.
 	 */
 	end_date?: number

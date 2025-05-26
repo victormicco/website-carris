@@ -41,14 +41,15 @@ export const publicApiRoute = async () => {
 			// If all validations passed return true
 			return true;
 		})
-		.map((message) => {
+		.map((item) => {
 			return {
-				end_date: Dates.fromISO(message.end_date).unix_timestamp,
-				is_enabled: message.is_enabled,
-				more_info_url: message.more_info_url,
-				severity: message.severity,
-				start_date: Dates.fromISO(message.start_date).unix_timestamp,
-				title: message.title,
+				_id: item.id,
+				end_date: Dates.fromISO(item.end_date).unix_timestamp,
+				is_enabled: item.is_enabled,
+				more_info_url: item.more_info_url,
+				severity: item.severity,
+				start_date: Dates.fromISO(item.start_date).unix_timestamp,
+				title: item.title,
 			};
 		});
 

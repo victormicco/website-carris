@@ -30,6 +30,8 @@ export const publicApiRoute = async () => {
 		.filter((item) => {
 			// The message should be enabled
 			if (!item.is_enabled) return false;
+			// The message should have a cover image
+			if (!item.image || typeof item.image !== 'object' || !item.image.url) return false;
 			// If the message has a start date, it should be after the current date
 			const startDate = item.start_date ? Dates.fromISO(item.start_date) : null;
 			if (startDate && startDate.unix_timestamp > currentDate.unix_timestamp) return false;
@@ -41,15 +43,15 @@ export const publicApiRoute = async () => {
 			// If all validations passed return true
 			return true;
 		})
-		.map((slide) => {
-			const mediaFile = typeof slide.image !== 'string' ? slide.image : null;
+		.map((item) => {
 			return {
-				end_date: Dates.fromISO(slide.end_date).unix_timestamp,
-				image_url: mediaFile.url,
-				is_enabled: slide.is_enabled,
-				more_info_url: slide.more_info_url,
-				start_date: Dates.fromISO(slide.start_date).unix_timestamp,
-				title: slide.title,
+				_id: item.id,
+				end_date: Dates.fromISO(item.end_date).unix_timestamp,
+				image_url: typeof item.image !== 'string' ? item.image.url : null,
+				is_enabled: item.is_enabled,
+				more_info_url: item.more_info_url,
+				start_date: Dates.fromISO(item.start_date).unix_timestamp,
+				title: item.title,
 			};
 		});
 

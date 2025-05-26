@@ -69,7 +69,7 @@ export function MainCarousel() {
 				)}
 
 				{homeSliderData?.length > 0 && homeSliderData.map(item => (
-					<Carousel.Slide key={item.image_url}>
+					<Carousel.Slide key={item._id}>
 						<MainCarouselCard
 							coverImageSrc={item.image_url}
 							href={item.more_info_url}
