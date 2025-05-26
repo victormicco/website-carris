@@ -2,7 +2,8 @@
 
 /* * */
 
-import MainCarouselCard from '@/components/home/MainCarouselCard';
+import { Loader } from '@/components/common/Loader';
+import { MainCarouselCard } from '@/components/home/MainCarouselCard';
 import { HomeSliderSlide } from '@carrismetropolitana/website-shared-types';
 import { Carousel } from '@mantine/carousel';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
@@ -42,10 +43,6 @@ export function MainCarousel() {
 	//
 	// C. Render components
 
-	if (!homeSliderData || !homeSliderData.length) {
-		return null;
-	}
-
 	return (
 		<>
 			<div className={`${styles.overlay} ${isHovered ? styles.overlayIsActive : ''}`} />
@@ -61,10 +58,17 @@ export function MainCarousel() {
 				previousControlIcon={<IconArrowLeft size={20} />}
 				slideGap={1}
 				style={{ flex: 1 }}
-				withControls={homeSliderData.length > 0}
+				withControls={homeSliderData?.length > 0}
 				withIndicators
 			>
-				{homeSliderData.map(item => (
+
+				{!homeSliderData && (
+					<Carousel.Slide className={styles.loaderSlide}>
+						<Loader />
+					</Carousel.Slide>
+				)}
+
+				{homeSliderData?.length > 0 && homeSliderData.map(item => (
 					<Carousel.Slide key={item.image_url}>
 						<MainCarouselCard
 							coverImageSrc={item.image_url}
@@ -73,6 +77,7 @@ export function MainCarousel() {
 						/>
 					</Carousel.Slide>
 				))}
+
 			</Carousel>
 
 		</>

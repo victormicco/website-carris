@@ -18,7 +18,7 @@ interface Props {
 
 /* * */
 
-export default function Component({ coverImageSrc, href, title }: Props) {
+export function MainCarouselCard({ coverImageSrc, href, title }: Props) {
 	//
 
 	//
