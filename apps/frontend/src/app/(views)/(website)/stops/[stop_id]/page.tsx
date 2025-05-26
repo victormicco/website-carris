@@ -3,7 +3,7 @@
 import { StopsDetail } from '@/components/stops/StopsDetail';
 import { StopsDetailContextProvider } from '@/contexts/StopsDetail.context';
 import { type Line, type Stop } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type Metadata } from 'next';
 
 /* * */

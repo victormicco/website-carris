@@ -4,7 +4,7 @@
 
 import { ApiResponse } from '@carrismetropolitana/api-types/common';
 import { type District, type Locality, type Municipality, type Parish } from '@carrismetropolitana/api-types/locations';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { createContext, useContext, useMemo } from 'react';
 import useSWR from 'swr';
 

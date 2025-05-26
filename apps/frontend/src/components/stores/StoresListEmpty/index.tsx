@@ -21,7 +21,7 @@ export function StoresListEmpty() {
 	const storesContext = useStoresListContext();
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	if (storesContext.filters.by_municipality) {
 		return (

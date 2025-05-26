@@ -101,7 +101,7 @@ export function StopsDetailContentMap() {
 	}
 
 	//
-	// E. Render Components
+	// E. Render components
 
 	return (
 		<MapView

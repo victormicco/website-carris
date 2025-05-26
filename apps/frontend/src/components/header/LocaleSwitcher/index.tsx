@@ -40,7 +40,7 @@ export function LocaleSwitcher() {
 	};
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	if (!localeContext.data.current_locale) {
 		return <Skeleton height={57} width="100%" />;

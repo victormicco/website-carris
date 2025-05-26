@@ -10,7 +10,7 @@ import { MetricsPageComplaintsToolbar } from '@/components/metrics/MetricsPageCo
 import { useLinesContext } from '@/contexts/Lines.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
 import { type ComplaintMetrics, type DemandMetricsByAgency, type DemandMetricsByAgencyMonth, type DemandMetricsByAgencyYear, type DemandMetricsByLine } from '@carrismetropolitana/api-types/metrics';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';

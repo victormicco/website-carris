@@ -54,7 +54,7 @@ export function QuickSearchWidget() {
 	};
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<div className={styles.container}>

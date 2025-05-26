@@ -40,7 +40,7 @@ export default function Component() {
 	}));
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<>

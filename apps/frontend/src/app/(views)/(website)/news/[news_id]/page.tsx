@@ -1,7 +1,7 @@
 /* * */
 
 import { NewsDetail } from '@/components/news/NewsDetail';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type Metadata } from 'next';
 
 /* * */

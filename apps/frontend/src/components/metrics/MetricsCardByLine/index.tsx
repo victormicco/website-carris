@@ -70,7 +70,7 @@ export function MetricsCardByLine({ data, main_description, main_label }: Props)
 	}, [formattedData]);
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	if (!formattedData) {
 		return <MetricsSectionDemandSkeleton />;

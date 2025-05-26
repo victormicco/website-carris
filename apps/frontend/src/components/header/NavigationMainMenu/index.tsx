@@ -29,7 +29,7 @@ export function NavigationMainMenu({ navigationGroup }: Props) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<Menu

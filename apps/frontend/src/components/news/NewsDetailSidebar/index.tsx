@@ -63,7 +63,7 @@ export function NewsDetailSidebar({ newsData }: { newsData: NewsData }) {
 	}, [tableOfContents]);
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	function TocItem({ item }: { item: TocTreeItem }) {
 		const isActive = item.id === activeId;

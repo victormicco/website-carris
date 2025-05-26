@@ -5,6 +5,7 @@
 import { ConsentPopup } from '@/components/common/ConsentPopup';
 import { ScrollToTopButton } from '@/components/common/ScrollToTopButton';
 import { Footer } from '@/components/footer/Footer';
+import { GeneralStatus } from '@/components/header/GeneralStatus';
 import { Header } from '@/components/header/Header';
 import { useSearchParams } from 'next/navigation';
 
@@ -26,6 +27,7 @@ export function WebsiteViewport({ children }) {
 	return (
 		<div className={styles.container}>
 			{searchParams.get('origin') !== 'app' && <Header />}
+			<GeneralStatus />
 			{children}
 			{searchParams.get('origin') !== 'app' && <Footer />}
 			{searchParams.get('origin') !== 'app' && <ConsentPopup />}

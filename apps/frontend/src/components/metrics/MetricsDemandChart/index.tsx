@@ -28,7 +28,7 @@ export function MetricsDemandChart({ data, data_key, data_series, display_type =
 	// A. Setup variables
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	if (!data) {
 		return <MetricsSectionDemandSkeleton />;

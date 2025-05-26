@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@amplitude/analytics-browser": "2.17.6",
-		"@carrismetropolitana/website-settings": "*",
+		"@carrismetropolitana/website-shared-settings": "*",
 		"@mantine/carousel": "8.0.1",
 		"@mantine/charts": "8.0.1",
 		"@mantine/core": "8.0.1",
@@ -21,9 +21,9 @@
 		"@mantine/modals": "8.0.1",
 		"@mantine/notifications": "8.0.1",
 		"@next/third-parties": "15.3.2",
-		"@tabler/icons-react": "3.31.0",
-		"@tmlmobilidade/types": "20250516.244.22",
-		"@tmlmobilidade/utils": "20250516.244.22",
+		"@tabler/icons-react": "3.33.0",
+		"@tmlmobilidade/types": "20250526.1103.45",
+		"@tmlmobilidade/utils": "20250526.1103.45",
 		"@turf/turf": "7.2.0",
 		"@vis.gl/react-maplibre": "8.0.4",
 		"classnames": "2.5.1",
@@ -42,18 +42,19 @@
 		"react-qr-code": "2.0.15",
 		"react-viewport-list": "7.1.2",
 		"recharts": "2.15.3",
-		"sharp": "0.34.1",
+		"sharp": "0.34.2",
 		"swr": "2.3.3",
 		"ukkonen": "2.2.0"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/api-types": "20250516.307.56",
+		"@carrismetropolitana/api-types": "20250517.1854.22",
 		"@carrismetropolitana/eslint": "20250418.42.41",
-		"@tmlmobilidade/tsconfig": "20250516.244.22",
+		"@carrismetropolitana/website-shared-types": "*",
+		"@tmlmobilidade/tsconfig": "20250526.1103.45",
 		"@types/geojson": "7946.0.16",
 		"@types/luxon": "3.6.2",
-		"@types/node": "22.15.18",
-		"@types/react": "19.1.4",
+		"@types/node": "22.15.21",
+		"@types/react": "19.1.5",
 		"@types/react-dom": "19.1.5",
 		"postcss": "8.5.3",
 		"postcss-preset-mantine": "1.17.0",
@@ -65,5 +66,5 @@
 		"react": "19.1.0",
 		"react-dom": "19.1.0"
 	},
-	"packageManager": "npm@11.4.0"
+	"packageManager": "npm@11.4.1"
 }

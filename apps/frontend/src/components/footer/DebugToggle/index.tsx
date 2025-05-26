@@ -18,7 +18,7 @@ export function DebugToggle({ className }) {
 	const debugContext = useDebugContext();
 	const t = useTranslations('footer.DebugToggle');
 
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<div className={`${className} ${debugContext.flags.is_debug_mode ? styles.enabled : styles.disabled} ${styles.toggle}`} onClick={debugContext.actions.toggleDebugMode}>

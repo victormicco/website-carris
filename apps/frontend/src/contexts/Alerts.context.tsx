@@ -4,7 +4,7 @@
 
 import { type Alert, type SimplifiedAlert } from '@/types/alerts.types';
 import convertToSimplifiedAlert from '@/utils/convertToSimplifiedAlert';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { useLocale } from 'next-intl';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';

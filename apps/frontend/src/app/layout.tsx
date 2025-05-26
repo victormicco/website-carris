@@ -1,6 +1,6 @@
 /* * */
 
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -21,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	description: 'Horários e Paragens em Tempo Real',
-	metadataBase: new URL(getPublicVariable('public_url')),
+	metadataBase: new URL(getPublicVariable('server_url_frontend')),
 	title: 'CMetropolitana',
 };
 

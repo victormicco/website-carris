@@ -1,6 +1,6 @@
 /* * */
 
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
@@ -15,6 +15,11 @@ import { Media } from '@/schemas/Media/collection';
 import { News } from '@/schemas/News/collection';
 import { Topics } from '@/schemas/Topics/collection';
 import { Users } from '@/schemas/Users/collection';
+
+/* * */
+
+import { GeneralStatus } from '@/schemas/GeneralStatus/global';
+import { HomeSlider } from '@/schemas/HomeSlider/global';
 
 /* * */
 
@@ -49,22 +54,23 @@ export default buildConfig({
 	}),
 
 	globals: [
-		// LegalDocuments,
-		// SocialBodies,
+		GeneralStatus,
+		HomeSlider,
 	],
 
 	plugins: [
 		s3Storage({
-			bucket: process.env.CLOUDFLARE_R2_BUCKET ?? 'placeholder',
+			bucket: process.env.CLOUDFLARE_R2_BUCKET_NAME ?? 'placeholder',
 			collections: {
 				media: true,
 			},
 			config: {
-				bucketEndpoint: true,
 				credentials: {
 					accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID ?? 'placeholder',
+					accountId: process.env.CLOUDFLARE_R2_ACCOUNT_ID ?? 'placeholder',
 					secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY ?? 'placeholder',
 				},
+				endpoint: process.env.CLOUDFLARE_R2_ENDPOINT ?? 'https://placeholder.endpoint.com',
 				region: 'auto',
 			},
 		}),
@@ -76,7 +82,7 @@ export default buildConfig({
 
 	secret: process.env.PAYLOAD_SECRET || 'placeholder',
 
-	serverURL: getPublicVariable('public_url'),
+	serverURL: getPublicVariable('server_url_backoffice'),
 
 	sharp: sharp,
 

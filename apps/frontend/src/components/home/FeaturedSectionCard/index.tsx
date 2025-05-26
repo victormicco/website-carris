@@ -20,7 +20,7 @@ export default function Component({ coverImageSrc, href, title }: Props) {
 	//
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Link href={href} target="_blank">

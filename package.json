@@ -18,11 +18,11 @@
 	"devDependencies": {
 		"@carrismetropolitana/eslint": "20250418.42.41",
 		"@dotenv-run/cli": "1.3.6",
-		"@tmlmobilidade/tsconfig": "20250516.244.22",
+		"@tmlmobilidade/tsconfig": "20250526.1103.45",
 		"turbo": "2.5.3",
 		"typescript": "5.8.3"
 	},
-	"packageManager": "npm@11.4.0",
+	"packageManager": "npm@11.4.1",
 	"engines": {
 		"node": ">=18"
 	},

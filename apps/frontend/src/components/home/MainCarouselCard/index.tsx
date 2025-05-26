@@ -13,13 +13,12 @@ import styles from './styles.module.css';
 interface Props {
 	coverImageSrc: string
 	href?: string
-	target?: string
 	title: string
 }
 
 /* * */
 
-export default function Component({ coverImageSrc, href, target, title }: Props) {
+export function MainCarouselCard({ coverImageSrc, href, title }: Props) {
 	//
 
 	//
@@ -38,7 +37,7 @@ export default function Component({ coverImageSrc, href, target, title }: Props)
 
 	return (
 		<div className={styles.container}>
-			<Link className={styles.learnMore} href={href} target={target}>
+			<Link className={styles.learnMore} href={href} target="_blank">
 				{t('learn_more')}
 				<IconArrowRight size={18} />
 			</Link>

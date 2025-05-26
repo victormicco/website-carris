@@ -42,7 +42,7 @@ export function AppRedirect({ toUrl }: Props) {
 	};
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<div className={styles.container}>

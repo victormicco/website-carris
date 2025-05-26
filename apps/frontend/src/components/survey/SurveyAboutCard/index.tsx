@@ -18,7 +18,7 @@ export function SurveyAboutCard({ cardData }: Props) {
 	// A. Setup Variables
 	const [isStopped, setIsStopped] = useState <boolean | false > (false);
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<div className={styles.container}>

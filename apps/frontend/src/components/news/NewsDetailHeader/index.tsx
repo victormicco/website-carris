@@ -25,7 +25,7 @@ export function NewsDetailHeader({ newsData }) {
 	const formattedDate = DateTime.fromISO(newsData?.publish_date).toJSDate();
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	if (!newsData) {
 		return (

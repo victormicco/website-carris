@@ -25,7 +25,7 @@ export function NewsList() {
 	const newsListContext = useNewsListContext();
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<Surface>

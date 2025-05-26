@@ -10,7 +10,7 @@ import { useStopsContext } from '@/contexts/Stops.context';
 import { type SimplifiedAlert } from '@/types/alerts.types';
 import { type DemandMetricsByLine, type ServiceMetrics } from '@carrismetropolitana/api-types/metrics';
 import { type Line, type Pattern, type Route, type Shape, type Waypoint } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';
 

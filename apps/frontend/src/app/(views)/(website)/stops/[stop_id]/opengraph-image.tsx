@@ -6,7 +6,7 @@ import { formatStopLocation } from '@/utils/formatStopLocation';
 import { ApiResponse } from '@carrismetropolitana/api-types/common';
 import { Locality, Municipality } from '@carrismetropolitana/api-types/locations';
 import { type Line, type Stop } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import fs from 'fs';
 import { ImageResponse } from 'next/og';
 

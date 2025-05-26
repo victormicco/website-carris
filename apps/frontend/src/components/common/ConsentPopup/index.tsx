@@ -79,7 +79,7 @@ export function ConsentPopup() {
 	};
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Modal

@@ -1,124 +1,63 @@
-.success .heading {
-	color: #5dba50;
-}
-
-
-
 /* * */
 /* CONTAINER */
 
 .container {
-  z-index: 1000;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  max-width: var(--size-width-global);
-  margin: auto;
-  border-bottom: 1px solid var(--color-system-border-100);
-}
-
-.container.asLink {
-	  cursor: pointer;
-}
-
-.style_info.container {
-	background-color: var(--color-status-info-background);
-}
-
-.style_ok.container {
-	background-color: var(--color-status-ok-background);
-}
-
-.style_warning.container {
-	background-color: var(--color-status-warning-background);
-}
-
-.style_danger.container {
-	background-color: var(--color-status-danger-background);
-}
-
-/* * */
-/* ICON WRAPPER */
-
-.iconWrapper {
-	z-index: 1000;
-	display: flex;
-	padding: 12px;
-}
-
-.style_info .iconWrapper {
-	background-color: var(--color-status-info-text);
-}
-
-.style_ok .iconWrapper {
-	background-color: var(--color-status-ok-text);
-}
-
-.style_warning .iconWrapper {
-	background-color: var(--color-status-warning-text);
-	animation: iconWrapperShadowPulsateWarning 3000ms ease-out infinite;
-}
-
-@keyframes iconWrapperShadowPulsateWarning {
-    0%   { box-shadow: 0 0 5px 0 var(--color-status-warning-shadow); }
-    25%  { box-shadow: 0 0 15px 0 var(--color-status-warning-text); }
-    100% { box-shadow: 0 0 5px 0 var(--color-status-warning-shadow); }
-}
-
-.style_danger .iconWrapper {
-	background-color: var(--color-status-danger-text);
-    animation: iconWrapperShadowPulsateDanger 3000ms ease-out infinite;
-}
-
-@keyframes iconWrapperShadowPulsateDanger {
-    0%   { box-shadow: 0 0 5px 0 var(--color-status-danger-shadow); }
-    25%  { box-shadow: 0 0 15px 0 var(--color-status-danger-text); }
-    100% { box-shadow: 0 0 5px 0 var(--color-status-danger-shadow); }
-}
-
-
-/* * */
-/* ICON */
-
-.icon {
-	color: var(--color-primary-white);
-}
-
-/* * */
-/* MESSAGE WRAPPER */
-
-.messageWrapper {
 	display: flex;
 	flex-direction: row;
-	gap: var(--size-spacing-15);
+	gap: var(--size-spacing-10);
 	align-items: center;
-	padding-right: 15px;
-	padding-left: 15px;
-	overflow-x: auto;
-	white-space: nowrap;
+	justify-content: flex-start;
+	width: 100%;
+	padding: var(--size-spacing-20);
+	border-radius: var(--border-radius-lg);
 }
 
-.style_info .messageWrapper {
-	color: var(--color-status-info-text);
+.container[data-severity="ok"] {
+	color: var(--color-status-ok-background);
+	background-color: var(--color-status-ok-text);
+	box-shadow: 0 0 5px var(--color-status-ok-shadow);
 }
 
-.style_ok .messageWrapper {
-	color: var(--color-status-ok-text);
+.container[data-severity="info"] {
+	color: var(--color-status-info-background);
+	background-color: var(--color-status-info-text);
+	box-shadow: 0 0 5px var(--color-status-info-shadow);
 }
 
-.style_warning .messageWrapper {
-	color: var(--color-status-warning-text);
+.container[data-severity="warning"] {
+	color: var(--color-status-warning-background);
+	background-color: var(--color-status-warning-text);
+	box-shadow: 0 0 5px var(--color-status-warning-shadow);
 }
 
-.style_danger .messageWrapper {
-	color: var(--color-status-danger-text);
+.container[data-severity="danger"] {
+	color: var(--color-status-danger-background);
+	background-color: var(--color-status-danger-text);
+	box-shadow: 0 0 5px var(--color-status-danger-shadow);
 }
 
 /* * */
 /* TITLE */
 
 .title {
-	font-size: var(--font-size-subtitle);
-	font-weight: var(--font-weight-subtitle);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1;
 }
+
+/* --color-status-info-background: #fff;
+--color-status-info-border: #054B8C;
+--color-status-info-text: #054B8C;
+--color-status-info-shadow: #054b8c80;
+--color-status-ok-background: #EBF5EB;
+--color-status-ok-border: #D7EBD7;
+--color-status-ok-text: #3CB43C;
+--color-status-ok-shadow: #2D8C3C80;
+--color-status-warning-background: #FFFAF5;
+--color-status-warning-border: #FFF0D7;
+--color-status-warning-text: #F09600;
+--color-status-warning-shadow: #F0960080;
+--color-status-danger-background: #FFF5F5;
+--color-status-danger-border: #FAE6DC;
+--color-status-danger-text: #e64b23;
+--color-status-danger-shadow: #e64a2380; */

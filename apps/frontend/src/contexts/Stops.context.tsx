@@ -6,7 +6,7 @@ import { useLocationsContext } from '@/contexts/Locations.context';
 import { getBaseGeoJsonFeatureCollection } from '@/utils/map.utils';
 import { type ExtendStopsWorkerData } from '@/workers/extend-stops.worker';
 import { type Stop } from '@carrismetropolitana/api-types/network';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 
