@@ -16,7 +16,7 @@ export function GeneralStatus() {
 	//
 	// A. Fetch data
 
-	const { data: generalStatusData } = useSWR<GeneralStatusMessage[]>('/admin/api/globals/general-status/public');
+	const { data: generalStatusData } = useSWR<GeneralStatusMessage[]>('/admin/api/public/general-status');
 
 	//
 	// B. Render components

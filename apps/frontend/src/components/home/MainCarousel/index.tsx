@@ -38,7 +38,7 @@ export function MainCarousel() {
 	//
 	// B. Fetch data
 
-	const { data: homeSliderData } = useSWR<HomeSliderSlide[]>('/admin/api/globals/home-slider/public');
+	const { data: homeSliderData } = useSWR<HomeSliderSlide[]>('/admin/api/public/home-slider');
 
 	//
 	// C. Render components
