@@ -1,6 +1,5 @@
 /* * */
 
-import { publicApiRoute } from '@/schemas/HomeSlider/api-routes';
 import { type GlobalConfig } from 'payload';
 
 /* * */
@@ -10,14 +9,6 @@ export const HomeSlider: GlobalConfig = {
 	access: {
 		read: () => true,
 	},
-
-	endpoints: [
-		{
-			handler: publicApiRoute,
-			method: 'get',
-			path: '/public',
-		},
-	],
 
 	fields: [
 		{

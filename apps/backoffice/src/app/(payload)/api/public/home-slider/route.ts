@@ -7,7 +7,7 @@ import { getPayload } from 'payload';
 
 /* * */
 
-export const publicApiRoute = async () => {
+export const GET = async () => {
 	//
 
 	//
