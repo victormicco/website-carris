@@ -19,6 +19,7 @@ export const balloonDefaultSize = {
 /* * */
 
 export const createBallonElement = () => {
+	if (typeof window === 'undefined') return;
 	const balloon = window.document.createElement('balloon');
 	// Choose a random balloon asset
 	balloon.innerHTML = balloonsAssets[Math.floor(Math.random() * balloonsAssets.length)] || balloonsAssets[0];
@@ -89,8 +90,8 @@ function createBalloonAnimation({ balloon, targetX, targetY, targetZ, x, y, z, z
 
 export function balloons(): Promise<void> {
 	return new Promise((resolve) => {
+		if (typeof window === 'undefined') return;
 		const balloonsContainer = window.document.createElement('balloons');
-
 		Object.assign(balloonsContainer.style, {
 			contain: 'style, layout, paint',
 			display: 'inline-block',
