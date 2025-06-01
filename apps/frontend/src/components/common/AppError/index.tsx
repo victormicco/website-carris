@@ -48,7 +48,7 @@ export function AppError({ error }) {
 	};
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<div className={styles.container}>

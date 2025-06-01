@@ -27,7 +27,7 @@ export function PeriodsWidgetItem({ periodData }) {
 	}, [periodData]);
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	if (!periodData) {
 		return null;

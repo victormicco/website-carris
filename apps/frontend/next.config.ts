@@ -1,5 +1,6 @@
 /* * */
 
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -11,6 +12,17 @@ const nextConfig: NextConfig = {
 	async redirects() {
 		return [
 			//
+
+			{
+				// BACKOFFICE API
+				// Please keep this block here as it is used to redirect requests
+				// from the frontend to the backoffice API. This is only used while in development.
+				// In production, since the API is hosted in the same domain, it is Nginx that handles
+				// the actual redirection based on the /admin path.
+				destination: `${getPublicVariable('server_url_backoffice')}/admin/:path*`,
+				permanent: false,
+				source: '/admin/:path*',
+			},
 
 			/* * */
 			/* SCHEDULES */

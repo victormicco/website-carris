@@ -22,7 +22,7 @@ export function ScrollToTopButton({ showAfterHeight }: Props) {
 	const [scroll, scrollTo] = useWindowScroll();
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<Affix position={{ bottom: 20, right: 20 }}>

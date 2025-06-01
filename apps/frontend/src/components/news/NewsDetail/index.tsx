@@ -48,7 +48,7 @@ export function NewsDetail({ newsId }) {
 	}, [newsData]);
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Surface>

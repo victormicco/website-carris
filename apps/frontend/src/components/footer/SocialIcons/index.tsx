@@ -12,7 +12,7 @@ export function SocialIcons() {
 	//
 
 	//
-	// A.Render Components
+	// A.Render components
 
 	return (
 		<div className={styles.container}>

@@ -8,7 +8,7 @@ import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { useLinesDetailContext } from '@/contexts/LinesDetail.context';
 import { NextArrival } from '@/types/timetables.types';
 import { PatternRealtime } from '@/utils/types';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { useEffect, useMemo } from 'react';
 import useSWR from 'swr';
 

@@ -2,13 +2,15 @@
 
 /* * */
 
-import { CAROUSEL_SLIDES } from '@/components/home/MainCarousel/data';
-import MainCarouselCard from '@/components/home/MainCarouselCard';
+import { Loader } from '@/components/common/Loader';
+import { MainCarouselCard } from '@/components/home/MainCarouselCard';
+import { HomeSliderSlide } from '@carrismetropolitana/website-shared-types';
 import { Carousel } from '@mantine/carousel';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import { useRef, useState } from 'react';
+import useSWR from 'swr';
 
 import styles from './styles.module.css';
 
@@ -34,11 +36,17 @@ export function MainCarousel() {
 	}));
 
 	//
-	// B. Render Components
+	// B. Fetch data
+
+	const { data: homeSliderData } = useSWR<HomeSliderSlide[]>('/admin/api/public/home-slider');
+
+	//
+	// C. Render components
 
 	return (
 		<>
 			<div className={`${styles.overlay} ${isHovered ? styles.overlayIsActive : ''}`} />
+
 			<Carousel
 				classNames={{ control: styles.control, controls: styles.controlsWrapper, root: styles.root }}
 				emblaOptions={{ align: 'start' }}
@@ -50,20 +58,28 @@ export function MainCarousel() {
 				previousControlIcon={<IconArrowLeft size={20} />}
 				slideGap={1}
 				style={{ flex: 1 }}
-				withControls={CAROUSEL_SLIDES.length > 0}
+				withControls={homeSliderData?.length > 0}
 				withIndicators
 			>
-				{CAROUSEL_SLIDES.map(item => (
-					<Carousel.Slide key={item.id}>
+
+				{!homeSliderData && (
+					<Carousel.Slide className={styles.loaderSlide}>
+						<Loader />
+					</Carousel.Slide>
+				)}
+
+				{homeSliderData?.length > 0 && homeSliderData.map(item => (
+					<Carousel.Slide key={item._id}>
 						<MainCarouselCard
-							coverImageSrc={item.src}
-							href={item.url}
-							target={item.target}
+							coverImageSrc={item.image_url}
+							href={item.more_info_url}
 							title="item.title"
 						/>
 					</Carousel.Slide>
 				))}
+
 			</Carousel>
+
 		</>
 	);
 

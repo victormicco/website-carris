@@ -32,7 +32,7 @@ export function PlannerNavegante() {
 	};
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Surface>

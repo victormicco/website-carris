@@ -5,7 +5,7 @@
 import { useAnalyticsContext } from '@/contexts/Analytics.context';
 import { moveMap } from '@/utils/map.utils';
 import { type Store } from '@carrismetropolitana/api-types/facilities';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { useMap } from '@vis.gl/react-maplibre';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
 import { createContext, useContext, useEffect, useState } from 'react';

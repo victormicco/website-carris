@@ -26,7 +26,7 @@ export function SchedulesSection() {
 	const menuItemsFormatted = supportNavigationGroup?.links.filter(item => item.target !== '_blank').map(item => ({ ...item, label: mainNavLabels(`schedules.links.${item._id}`) })) || [];
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Surface>

@@ -17,7 +17,7 @@ export function AppUnavailable() {
 	const t = useTranslations('AppUnavailable');
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<Surface>

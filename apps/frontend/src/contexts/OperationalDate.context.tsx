@@ -57,12 +57,10 @@ export const OperationalDateContextProvider = ({ children }) => {
 	// B. Transform data
 
 	const todayDate = Dates
-		.now()
-		.setZone('Europe/Lisbon');
+		.now('Europe/Lisbon');
 
 	const tomorrowDate = Dates
-		.now()
-		.setZone('Europe/Lisbon')
+		.now('Europe/Lisbon')
 		.plus({ days: 1 });
 
 	useEffect(() => {
@@ -83,7 +81,7 @@ export const OperationalDateContextProvider = ({ children }) => {
 		// set the selected date to the query value
 		if (!selectedDate && selectedDateQuery) {
 			const selectedDateValue = Dates
-				.fromOperationalDate(selectedDateQuery)
+				.fromOperationalDate(selectedDateQuery, 'Europe/Lisbon')
 				.set({ hour: 15 });
 			setSelectedDate(selectedDateValue);
 			return;
@@ -95,14 +93,14 @@ export const OperationalDateContextProvider = ({ children }) => {
 
 	const updateSelectedDate = (value: string) => {
 		const dateValue = Dates
-			.fromOperationalDate(value)
+			.fromOperationalDate(value, 'Europe/Lisbon')
 			.set({ hour: 15 });
 		setSelectedDate(dateValue);
 	};
 
 	const updateSelectedDateFromFormat = (value: string, format = 'yyyy-MM-dd') => {
 		const dateValue = Dates
-			.fromFormat(value, format)
+			.fromFormat(value, format, 'Europe/Lisbon')
 			.set({ hour: 15 });
 		setSelectedDate(dateValue);
 	};

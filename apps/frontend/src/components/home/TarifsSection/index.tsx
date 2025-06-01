@@ -26,7 +26,7 @@ export function TarifsSection() {
 	const menuItemsFormatted = navigationGroup?.links.map(item => ({ ...item, label: mainNavLabels(`tarifs.links.${item._id}`) })) || [];
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Surface>

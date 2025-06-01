@@ -44,7 +44,7 @@ export function NewsSection() {
 	}));
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<Surface>

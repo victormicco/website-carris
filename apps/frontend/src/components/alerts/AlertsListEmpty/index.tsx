@@ -21,7 +21,7 @@ export default function Component() {
 	const alertsContext = useAlertsListContext();
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	return (
 		<div className={styles.container}>

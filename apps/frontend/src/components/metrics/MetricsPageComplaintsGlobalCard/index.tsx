@@ -94,7 +94,7 @@ export function MetricsPageComplaintsGlobalCard({ allData, totalPassengersLastYe
 				</div>
 			</div>
 
-			{allData?.length > 0 && <p className={styles.lastUpdatedDate}>{t('last_updated', { value: Dates.fromOperationalDate(allData[0].last_update).js_date })}</p>}
+			{allData?.length > 0 && <p className={styles.lastUpdatedDate}>{t('last_updated', { value: Dates.fromOperationalDate(allData[0].last_update, 'Europe/Lisbon').js_date })}</p>}
 
 		</>
 	);

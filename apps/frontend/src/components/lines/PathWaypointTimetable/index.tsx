@@ -79,7 +79,7 @@ export function PathWaypointTimetable() {
 	}
 
 	if (typeof timetableData === 'string') {
-		const nextDate = timetableData && Dates.fromOperationalDate(timetableData).setZone('Europe/Lisbon').js_date;
+		const nextDate = timetableData && Dates.fromOperationalDate(timetableData, 'Europe/Lisbon').js_date;
 		return (
 			<div className={styles.container}>
 				<p className={styles.noData}>{t('no_data')}</p>

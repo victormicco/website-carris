@@ -1,5 +1,5 @@
 {
-	"name": "@carrismetropolitana/website-settings",
+	"name": "@carrismetropolitana/website-shared-settings",
 	"version": "1.0.0",
 	"author": "João de Vasconcelos & Jusi Monteiro",
 	"license": "AGPL-3.0-or-later",
@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@carrismetropolitana/eslint": "20250418.42.41",
-		"@types/node": "22.15.18",
+		"@types/node": "22.15.29",
 		"resolve-tspaths": "0.8.23",
 		"rimraf": "6.0.1",
 		"typescript": "5.8.3"

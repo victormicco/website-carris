@@ -31,7 +31,7 @@ export function NewsCard({ _id, coverImageSrc, publishDate, title }: NewsCardPro
 	const publishDateObject = DateTime.fromISO(publishDate).toJSDate();
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<Link className={styles.container} href={`${Routes.NEWS.route}/${_id}`}>

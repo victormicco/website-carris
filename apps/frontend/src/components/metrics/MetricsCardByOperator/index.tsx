@@ -32,7 +32,7 @@ export default function Component({ backgroundImage, backgroundImageClassName, c
 	const t = useTranslations('HomeMetricsSectionDemand');
 
 	//
-	// D. Render Components
+	// D. Render components
 
 	if (!metrics) {
 		return <MetricsSectionDemandSkeleton />;

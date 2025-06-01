@@ -38,7 +38,7 @@ export function Footer() {
 	const secondaryMenuItemsFormatted = secondaryNavigationGroup?.links.map(item => ({ ...item, label: footerNavLabels(`secondary.links.${item._id}`) })) || [];
 
 	//
-	// C. Render Components
+	// C. Render components
 
 	return (
 		<Surface variant={debugContext.flags.is_debug_mode ? 'debug' : 'default'}>

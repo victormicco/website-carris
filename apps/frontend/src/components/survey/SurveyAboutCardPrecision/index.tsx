@@ -17,7 +17,7 @@ export function SurveyAboutCardPrecision() {
 		{ name: 'thirdRow', text: t('thirdRowText'), value: t('thirdRowValue') },
 	];
 		//
-	// B. Render Components
+	// B. Render components
 	return (
 		<div>
 			<div className={styles.cardMainWrapperShadow}>

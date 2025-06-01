@@ -37,6 +37,7 @@
 /* ROOT */
 
 .root {
+	height: 100%;
 	overflow: hidden;
 	cursor: grab;
 	background-color: var(--color-system-background-100);
@@ -145,4 +146,13 @@
 	.slideWrapper {
 		padding-top: 0;
 	}
+}
+
+/* * */
+/* LOADER SLIDE */
+
+.loaderSlide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

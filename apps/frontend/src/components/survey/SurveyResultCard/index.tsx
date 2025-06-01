@@ -20,7 +20,7 @@ export function SurveyResultCard({ cardData }: Props) {
 	const { primary, text } = color;
 
 	//
-	// B.Render Components
+	// B.Render components
 
 	return (
 		<div className={styles.container} id={_id?.toString() || ''} style={{ border: `1px solid ${primary}` }}>

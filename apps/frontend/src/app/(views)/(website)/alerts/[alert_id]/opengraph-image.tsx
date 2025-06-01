@@ -3,7 +3,7 @@
 import { OpenGraphAlertsDefault } from '@/opengraph/OpenGraphAlertsDefault';
 import { OpenGraphAlertsDynamic } from '@/opengraph/OpenGraphAlertsDynamic';
 import { type Alert } from '@carrismetropolitana/api-types/alerts';
-import { getPublicVariable } from '@carrismetropolitana/website-settings';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import fs from 'fs';
 import { ImageResponse } from 'next/og';
 

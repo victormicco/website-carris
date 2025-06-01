@@ -15,7 +15,7 @@ export function SurveyResultsInfoAccordion() {
 	// A. Setup Variables
 	const t = useTranslations('survey.SurveyResultsInfoAccordion');
 	//
-	// B. Render Components
+	// B. Render components
 	return (
 		<Accordion className={styles.accordionAboutResults}>
 			<Accordion.Item value="InfoResults">

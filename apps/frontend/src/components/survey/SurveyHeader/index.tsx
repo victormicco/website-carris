@@ -28,7 +28,7 @@ export function SurveyHeader() {
 	];
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	const renderAnchorButtons = () => (
 		<GridNav className={styles.gridNav} items={anchorButtons} />

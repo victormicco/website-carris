@@ -34,7 +34,7 @@ export function NewsDetailContent({ content }: { content: string }) {
 	});
 
 	//
-	// B. Render Components
+	// B. Render components
 
 	return (
 		<div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} id="news-content-wrapper" />
