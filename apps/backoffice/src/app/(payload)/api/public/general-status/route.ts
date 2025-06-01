@@ -22,12 +22,16 @@ export const GET = async () => {
 	const foundGeneralStatusMessages = await payload.findGlobal({ slug: 'general-status' });
 	const allGeneralStatusMessages = foundGeneralStatusMessages?.messages.length ? foundGeneralStatusMessages.messages : null;
 
+	if (!allGeneralStatusMessages) return Response.json([], {
+		headers: { 'Access-Control-Allow-Origin': '*' },
+	});
+
 	//
 	// Filter messages that are not intended to be public,
 	// and format the remaining messages to be returned in the response.
 
 	const publicMessages: GeneralStatusMessage[] = allGeneralStatusMessages
-		.filter((item) => {
+		?.filter((item) => {
 			// The message should be enabled
 			if (!item.is_enabled) return false;
 			// If the message has a start date, it should be after the current date
