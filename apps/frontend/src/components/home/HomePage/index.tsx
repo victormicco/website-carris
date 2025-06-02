@@ -2,7 +2,7 @@
 
 /* * */
 
-// import { balloons } from '@/components/festive/Balloons/balloons';
+import { balloons } from '@/components/festive/Balloons/balloons';
 import { AlertsSection } from '@/components/home/AlertsSection';
 import { FeaturedSection } from '@/components/home/FeaturedSection';
 import { MainCarousel } from '@/components/home/MainCarousel';
@@ -21,7 +21,7 @@ import styles from './styles.module.css';
 /* * */
 
 export function HomePage() {
-	// balloons();
+	balloons();
 	return (
 		<>
 			<Grid columns="ab" withGap>
