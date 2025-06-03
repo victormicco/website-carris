@@ -13,7 +13,7 @@ interface NewsData {
 export async function GET() {
 	//
 
-	const allNewsData = await fetch('https://backoffice.carrismetropolitana.pt/wp-json/wp/v2/noticia?per_page=500').then(res => res.json());
+	const allNewsData = await fetch('https://backoffice.carrismetropolitana.pt/wp-json/wp/v2/noticia?per_page=100').then(res => res.json());
 
 	if (!allNewsData) return Response.json([], { status: 500, statusText: 'Unable to fetch news data' });
 
