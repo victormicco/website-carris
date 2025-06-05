@@ -17,11 +17,23 @@ export default async function Sitemap() {
 	//
 	// B. Fetch data
 
-	const allStopsResponse = await fetch(`${apiUrl}/stops`);
-	const allStopsData = await allStopsResponse.json();
+	let allStopsData: Stop[] | undefined;
+	try {
+		const allStopsResponse = await fetch(`${apiUrl}/stops`);
+		allStopsData = await allStopsResponse.json();
+	}
+	catch (error) {
+		console.error('Error fetching stops:', error);
+	}
 
-	const allLinesResponse = await fetch(`${apiUrl}/lines`);
-	const allLinesData = await allLinesResponse.json();
+	let allLinesData: Line[] | undefined;
+	try {
+		const allLinesResponse = await fetch(`${apiUrl}/lines`);
+		allLinesData = await allLinesResponse.json();
+	}
+	catch (error) {
+		console.error('Error fetching lines:', error);
+	}
 
 	//
 	// C. Transform data
