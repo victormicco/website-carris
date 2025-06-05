@@ -43,6 +43,8 @@ export const LocaleContextProvider = ({ children }) => {
 
 	const [currentLocaleQueryParam, setCurrentLocaleQueryParam] = useQueryState(LOCALE_STORAGE_KEY);
 
+	const currentTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 	//
 	// B. Transform data
 
@@ -99,6 +101,7 @@ export const LocaleContextProvider = ({ children }) => {
 				formats={availableFormats}
 				locale={currentLocale}
 				messages={currentLocaleMessages}
+				timeZone={currentTimeZone ?? 'Europe/Lisbon'}
 			>
 				{children}
 			</NextIntlClientProvider>
