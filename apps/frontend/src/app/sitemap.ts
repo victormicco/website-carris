@@ -1,6 +1,6 @@
 /* * */
 
-import { Line, Stop } from '@carrismetropolitana/api-types/network';
+import { type Line, type Stop } from '@carrismetropolitana/api-types/network';
 import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 
 /* * */
@@ -17,23 +17,11 @@ export default async function Sitemap() {
 	//
 	// B. Fetch data
 
-	let allStopsData: Stop[] | undefined;
-	try {
-		const allStopsResponse = await fetch(`${apiUrl}/stops`);
-		allStopsData = await allStopsResponse.json();
-	}
-	catch (error) {
-		console.error('Error fetching stops:', error);
-	}
+	const allStopsResponse = await fetch(`${apiUrl}/stops`);
+	const allStopsData = await allStopsResponse.json();
 
-	let allLinesData: Line[] | undefined;
-	try {
-		const allLinesResponse = await fetch(`${apiUrl}/lines`);
-		allLinesData = await allLinesResponse.json();
-	}
-	catch (error) {
-		console.error('Error fetching lines:', error);
-	}
+	const allLinesResponse = await fetch(`${apiUrl}/lines`);
+	const allLinesData = await allLinesResponse.json();
 
 	//
 	// C. Transform data
