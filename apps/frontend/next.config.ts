@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
 		return [
 			{
 				headers: [{ key: 'Cache-Control', value: 's-maxage=30' }],
-				source: '/',
+				source: '*',
 			},
 		];
 	},
