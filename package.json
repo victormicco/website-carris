@@ -6,13 +6,13 @@
 		"build:backoffice": "turbo build --filter=@carrismetropolitana/website-backoffice",
 		"build:frontend": "turbo build --filter=@carrismetropolitana/website-frontend",
 		"build:shared": "turbo build --filter=./shared/*",
-		"clean": "sh cleanup.sh",
 		"dev": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev",
 		"dev:backoffice": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-backoffice",
 		"dev:frontend": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-frontend",
 		"lint": "turbo lint --filter=@carrismetropolitana/website-backoffice",
 		"lint:backoffice": "turbo lint --filter=@carrismetropolitana/website-backoffice",
 		"lint:frontend": "turbo lint --filter=@carrismetropolitana/website-frontend",
+		"purge": "sh purge.sh",
 		"start": "turbo start"
 	},
 	"devDependencies": {
