@@ -89,15 +89,11 @@ export const IconsMap = Object.freeze({
 });
 
 export const IconsCommon = Object.freeze({
-	AML_MAP: '/icons/common/aml-map.svg',
 	AML_MAP_OPERATORS: '/icons/common/aml-map-with-operators.svg',
-	AML_MAP_SINGLE: '/icons/common/aml-map-single.svg',
 	LINE_BADGE_BASE: '/icons/common/line-badge-base.svg',
 	LIVRO_RECLAMACOES: '/icons/common/livro-de-reclamacoes.svg',
 	MULTIBANCO_DARK: '/icons/common/multibanco-dark.svg',
 	MULTIBANCO_LIGHT: '/icons/common/multibanco-light.svg',
-	NAVEGANTE_APP: '/icons/common/app-navegante.svg',
-	NAVEGANTE_POINT: '/icons/common/espaco-navegante.svg',
 	PAYSHOP: '/icons/common/payshop.png',
 	QUESTION: '/icons/common/question.svg',
 	RECEIPT: '/icons/common/receipt.svg',
