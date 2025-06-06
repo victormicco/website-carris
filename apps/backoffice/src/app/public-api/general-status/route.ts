@@ -24,7 +24,7 @@ export const GET = async () => {
 	const allGeneralStatusMessages = foundGeneralStatusMessages?.messages.length ? foundGeneralStatusMessages.messages : null;
 
 	if (!allGeneralStatusMessages) return Response.json([], {
-		headers: getPublicHeaders(60)
+		headers: getPublicHeaders(60),
 	});
 
 	//
@@ -62,7 +62,7 @@ export const GET = async () => {
 	// Return the filtered and formatted messages as a JSON response.
 
 	return Response.json(publicMessages, {
-		headers: getPublicHeaders(30)
+		headers: getPublicHeaders(30),
 	});
 
 	//

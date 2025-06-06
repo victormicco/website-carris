@@ -60,7 +60,7 @@ export const GET = async () => {
 	// Return the filtered and formatted slides as a JSON response.
 
 	return Response.json(publicSlides, {
-		headers: getPublicHeaders(60)
+		headers: getPublicHeaders(60),
 	});
 
 	//
