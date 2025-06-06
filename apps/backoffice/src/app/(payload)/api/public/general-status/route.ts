@@ -62,7 +62,7 @@ export const GET = async () => {
 	// Return the filtered and formatted messages as a JSON response.
 
 	return Response.json(publicMessages, {
-		headers: getPublicHeaders(60)
+		headers: getPublicHeaders(30)
 	});
 
 	//
