@@ -26,7 +26,7 @@ interface LostAndFoundOperatorSectionProps {
 
 /* * */
 
-export default function Component({ actions, description, title }: LostAndFoundOperatorSectionProps) {
+export function OperatorSection({ actions, description, title }: LostAndFoundOperatorSectionProps) {
 	//
 
 	//

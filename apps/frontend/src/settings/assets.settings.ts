@@ -66,22 +66,3 @@ export const IconsConnections = Object.freeze({
 	subway: '/icons/connections/subway.svg',
 	train: '/icons/connections/train.svg',
 });
-
-/* * */
-
-export const IconsMap = Object.freeze({
-	bus_delay: '/icons/map/bus_delay.png',
-	bus_error: '/icons/map/bus_error.png',
-	bus_regular: '/icons/map/bus_regular.png',
-	pin: '/icons/map/pin.png',
-	shape_direction: '/icons/map/shape_direction.png',
-	stop_selected: '/icons/map/stop_selected.png',
-	store_busy: '/icons/map/store_busy.png',
-	store_closed: '/icons/map/store_closed.png',
-	store_open: '/icons/map/store_open.png',
-});
-
-export const IconsCommon = Object.freeze({
-	AML_MAP_OPERATORS: '/icons/common/aml-map-with-operators.svg',
-	LIVRO_RECLAMACOES: '/icons/common/livro-de-reclamacoes.svg',
-});

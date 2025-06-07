@@ -4,7 +4,6 @@
 
 import { MapViewToolbar } from '@/components/map/MapViewToolbar';
 import { useMapOptionsContext } from '@/contexts/MapOptions.context';
-import { IconsMap } from '@/settings/assets.settings';
 import { mapDefaultConfig } from '@/settings/map.settings';
 import Map, { FullscreenControl, GeolocateControl, MapRef, NavigationControl, ScaleControl, useMap } from '@vis.gl/react-maplibre';
 import { useCallback, useEffect, useState } from 'react';
@@ -14,15 +13,15 @@ import styles from './styles.module.css';
 /* * */
 
 const MAP_LOAD_ASSETS = [
-	{ name: 'cmet-bus-delay', sdf: false, url: IconsMap.bus_delay },
-	{ name: 'cmet-bus-regular', sdf: false, url: IconsMap.bus_regular },
-	{ name: 'cmet-bus-error', sdf: false, url: IconsMap.bus_error },
-	{ name: 'cmet-pin', sdf: false, url: IconsMap.pin },
-	{ name: 'cmet-shape-direction', sdf: true, url: IconsMap.shape_direction },
-	{ name: 'cmet-stop-selected', sdf: false, url: IconsMap.stop_selected },
-	{ name: 'cmet-store-busy', sdf: false, url: IconsMap.store_busy },
-	{ name: 'cmet-store-closed', sdf: false, url: IconsMap.store_closed },
-	{ name: 'cmet-store-open', sdf: false, url: IconsMap.store_open },
+	{ name: 'cmet-bus-delay', sdf: false, url: '/assets/map/bus-delay.png' },
+	{ name: 'cmet-bus-regular', sdf: false, url: '/assets/map/bus-regular.png' },
+	{ name: 'cmet-bus-error', sdf: false, url: '/assets/map/bus-error.png' },
+	{ name: 'cmet-needle-pin', sdf: false, url: '/assets/map/needle-pin.png' },
+	{ name: 'cmet-shape-direction', sdf: true, url: '/assets/map/shape-direction.png' },
+	{ name: 'cmet-stop-selected', sdf: false, url: '/assets/map/stop-selected.png' },
+	{ name: 'cmet-store-busy', sdf: false, url: '/assets/map/store-busy.png' },
+	{ name: 'cmet-store-closed', sdf: false, url: '/assets/map/store-closed.png' },
+	{ name: 'cmet-store-open', sdf: false, url: '/assets/map/store-open.png' },
 ];
 
 /* * */
