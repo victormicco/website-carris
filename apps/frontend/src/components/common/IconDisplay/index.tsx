@@ -1,6 +1,6 @@
 /* * */
 
-import { BrandsOperators, IconsConnections, IconsFacilities } from '@/settings/assets.settings';
+import { IconsConnections, IconsFacilities } from '@/settings/assets.settings';
 import { Image, Tooltip } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
@@ -34,9 +34,6 @@ export function IconDisplay({ category, name }: Props) {
 			break;
 		case 'facilities':
 			iconSrc = IconsFacilities[name as keyof typeof IconsFacilities];
-			break;
-		case 'operators':
-			iconSrc = BrandsOperators[name as keyof typeof BrandsOperators];
 			break;
 	}
 

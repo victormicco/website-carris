@@ -1,46 +1,5 @@
 /* * */
 
-export const BrandsMunicipalities = Object.freeze({
-	alcochete: '/brands/municipalities/alcochete.jpg',
-	alenquer: '/brands/municipalities/alenquer.jpg',
-	almada: '/brands/municipalities/almada.jpg',
-	amadora: '/brands/municipalities/amadora.jpg',
-	arruda_vinhos: '/brands/municipalities/arruda_vinhos.jpg',
-	barreiro: '/brands/municipalities/barreiro.jpg',
-	cascais: '/brands/municipalities/cascais.jpg',
-	lisboa: '/brands/municipalities/lisboa.jpg',
-	loures: '/brands/municipalities/loures.jpg',
-	mafra: '/brands/municipalities/mafra.jpg',
-	moita: '/brands/municipalities/moita.jpg',
-	montijo: '/brands/municipalities/montijo.jpg',
-	odivelas: '/brands/municipalities/odivelas.jpg',
-	oeiras: '/brands/municipalities/oeiras.jpg',
-	palmela: '/brands/municipalities/palmela.jpg',
-	seixal: '/brands/municipalities/seixal.jpg',
-	sesimbra: '/brands/municipalities/sesimbra.jpg',
-	setubal: '/brands/municipalities/setubal.jpg',
-	sintra: '/brands/municipalities/sintra.jpg',
-	sobral_monte_agraco: '/brands/municipalities/sobral_monte_agraco.jpg',
-	torres_vedras: '/brands/municipalities/torres_vedras.jpg',
-	vendas_novas: '/brands/municipalities/vendas_novas.jpg',
-	vila_franca_xira: '/brands/municipalities/vila_franca_xira.jpg',
-});
-
-export const BrandsOperators = Object.freeze({
-	atlantic_ferries: '/icons/operators/atlantic_ferries.svg',
-	ccfl: '/icons/operators/ccfl.svg',
-	cmet: '/icons/operators/cmet.svg',
-	cp: '/icons/operators/cp.svg',
-	fertagus: '/icons/operators/fertagus.svg',
-	metro: '/icons/operators/metro.svg',
-	mobi_cascais: '/icons/operators/mobi_cascais.svg',
-	mts: '/icons/operators/mts.svg',
-	tcb: '/icons/operators/tcb.svg',
-	ttsl: '/icons/operators/ttsl.svg',
-});
-
-/* * */
-
 /**
  * Icons used by alerts
  */
