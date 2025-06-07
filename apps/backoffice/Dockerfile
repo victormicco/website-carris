@@ -70,7 +70,7 @@ RUN npm ci
 
 # Bump the version of the project to the current date
 
-RUN npx @helperkits/bumper bump
+# RUN npx @helperkits/bumper bump
 
 # Copy the pruned project files to the out directory and
 # actually build the project using the turbo monorepo tool.
