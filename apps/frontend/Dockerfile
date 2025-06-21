@@ -68,6 +68,19 @@ COPY --from=pruner /app/out/package-lock.json ./package-lock.json
 
 RUN npm ci
 
+# Bump the version of the project
+# to the current date.
+
+RUN ls -la /
+
+RUN ls -la /app
+
+RUN ls -la /app/apps
+
+RUN ls -la /app/apps/${PROJECT}
+
+RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
+
 # Copy the pruned project files to the out directory and
 # actually build the project using the turbo monorepo tool.
 
@@ -100,11 +113,6 @@ USER nextjs
 COPY --from=builder --chown=nextjs:nodejs /app/apps/${PROJECT}/public ./apps/${PROJECT}/public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/${PROJECT}/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/${PROJECT}/.next/static ./apps/${PROJECT}/.next/static
-
-# Bump the version of the project
-# to the current date.
-
-RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
 
 ENV NODE_ENV=production
 
