@@ -68,15 +68,13 @@ COPY --from=pruner /app/out/package-lock.json ./package-lock.json
 
 RUN npm ci
 
-# Bump the version of the project to the current date
-
-RUN npx @helperkits/bumper /app/package.json
-RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
-
-# Copy the pruned project files to the out directory and
+# Copy the pruned project files to the out directory,
+# bump the package version to the current date and
 # actually build the project using the turbo monorepo tool.
 
 COPY --from=pruner /app/out/full/ .
+
+RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
 
 RUN turbo run build --filter=@carrismetropolitana/website-${PROJECT}
 

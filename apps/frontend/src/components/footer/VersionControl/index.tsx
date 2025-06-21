@@ -9,6 +9,7 @@ import pjson from 'package.json';
 /* * */
 
 export function VersionControl({ className }) {
+	console.log('version', pjson);
 	return (
 		<Link className={className} href={URLS.repos.website} target="_blank">
 			{pjson.version}
