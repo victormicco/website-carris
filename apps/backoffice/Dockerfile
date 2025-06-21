@@ -70,6 +70,7 @@ RUN npm ci
 
 # Bump the version of the project to the current date
 
+RUN npx @helperkits/bumper /app/package.json
 RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
 
 # Copy the pruned project files to the out directory and
