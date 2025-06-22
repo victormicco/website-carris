@@ -75,11 +75,11 @@ export default buildConfig({
 				requestHandler: {
 					connectionTimeout: 5_000,
 					httpAgent: {
-						keepAlive: true,
+						keepAlive: false,
 						maxSockets: 300,
 					},
 					httpsAgent: {
-						keepAlive: true,
+						keepAlive: false,
 						maxSockets: 300,
 					},
 					requestTimeout: 30_000,
