@@ -9,14 +9,15 @@
 		"dev": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev",
 		"dev:backoffice": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-backoffice",
 		"dev:frontend": "dotenv-run -f ./environments/development/secrets/.env -- turbo dev --filter=@carrismetropolitana/website-frontend",
-		"lint": "turbo lint --filter=@carrismetropolitana/website-backoffice",
+		"lint": "turbo lint",
+		"lint-fix": "turbo lint-fix",
 		"lint:backoffice": "turbo lint --filter=@carrismetropolitana/website-backoffice",
 		"lint:frontend": "turbo lint --filter=@carrismetropolitana/website-frontend",
 		"purge": "sh purge.sh",
 		"start": "turbo start"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@carrismetropolitana/eslint": "20250622.1204.50",
 		"@dotenv-run/cli": "1.3.6",
 		"turbo": "2.5.4",
 		"typescript": "5.8.3"

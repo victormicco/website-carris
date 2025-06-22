@@ -32,10 +32,10 @@
 		"build": "rimraf ./dist && tsc && resolve-tspaths",
 		"clean": "sh cleanup.sh",
 		"lint": "eslint && tsc --noEmit",
-		"lint:fix": "eslint --fix"
+		"lint-fix": "eslint --fix"
 	},
 	"devDependencies": {
-		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@carrismetropolitana/eslint": "20250622.1204.50",
 		"@tmlmobilidade/tsconfig": "20250619.107.10",
 		"@types/node": "24.0.3",
 		"resolve-tspaths": "0.8.23",

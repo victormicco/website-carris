@@ -13,9 +13,10 @@ import { Accordion, AccordionControl } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
+import styles from './styles.module.css';
+
 import { SurveyResultsInfoAccordion } from '../SurveyResultsInfoAccordion';
 import { SurveyResultsToolbar } from '../SurveyResultsToolbar';
-import styles from './styles.module.css';
 
 /* * */
 

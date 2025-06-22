@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+/* * */
 
 import { getImageBase64 } from '@/utils/get-image-base64';
 

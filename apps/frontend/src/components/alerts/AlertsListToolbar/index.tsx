@@ -17,9 +17,10 @@ import { IconSearch } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { ChangeEvent, useState } from 'react';
 
+import styles from './styles.module.css';
+
 import SelectCause from '../SelectCause';
 import SelectEffect from '../SelectEffect';
-import styles from './styles.module.css';
 
 /* * */
 

@@ -7,8 +7,9 @@ import type { NewsData } from '@/types/news.types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import useHook, { TocTreeItem } from './hook';
 import styles from './styles.module.css';
+
+import useHook, { TocTreeItem } from './hook';
 
 /* * */
 

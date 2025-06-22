@@ -6,8 +6,9 @@ import { LottiePlayer } from '@/components/common/LottiePlayer';
 import { Button } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
-import { allQuizData } from '../_data/quiz';
 import styles from './styles.module.css';
+
+import { allQuizData } from '../_data/quiz';
 
 /* * */
 

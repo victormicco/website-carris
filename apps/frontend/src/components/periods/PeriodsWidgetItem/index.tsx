@@ -5,8 +5,9 @@
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
-import { PeriodIcon } from '../PeriodIcon';
 import styles from './styles.module.css';
+
+import { PeriodIcon } from '../PeriodIcon';
 
 /* * */
 

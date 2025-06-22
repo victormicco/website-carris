@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+/* * */
 
 interface Props {
 	coverImageSrc: string

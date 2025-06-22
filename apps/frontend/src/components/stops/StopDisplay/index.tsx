@@ -4,9 +4,10 @@ import type { Stop } from '@carrismetropolitana/api-types/network';
 
 import { Skeleton } from '@mantine/core';
 
+import styles from './styles.module.css';
+
 import { StopDisplayLocation } from '../StopDisplayLocation';
 import { StopDisplayName } from '../StopDisplayName';
-import styles from './styles.module.css';
 
 /* * */
 

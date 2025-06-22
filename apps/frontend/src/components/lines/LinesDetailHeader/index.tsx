@@ -17,8 +17,9 @@ import { useProfileContext } from '@/contexts/Profile.context';
 import toast from '@/utils/toast';
 import { useTranslations } from 'next-intl';
 
-import { LineDisplayTts } from '../LineDisplayTts';
 import styles from './styles.module.css';
+
+import { LineDisplayTts } from '../LineDisplayTts';
 
 /* * */
 

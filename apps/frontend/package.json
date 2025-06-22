@@ -6,7 +6,7 @@
 		"build": "next build",
 		"dev": "next dev -p 49002",
 		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"lint-fix": "eslint . --fix",
 		"start": "next start"
 	},
 	"dependencies": {
@@ -48,7 +48,7 @@
 	},
 	"devDependencies": {
 		"@carrismetropolitana/api-types": "20250603.1732.43",
-		"@carrismetropolitana/eslint": "20250418.42.41",
+		"@carrismetropolitana/eslint": "20250622.1204.50",
 		"@carrismetropolitana/website-shared-types": "*",
 		"@tmlmobilidade/tsconfig": "20250619.107.10",
 		"@types/geojson": "7946.0.16",
