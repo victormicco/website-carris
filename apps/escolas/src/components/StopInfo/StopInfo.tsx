@@ -32,18 +32,15 @@ export default function StopInfo({ index, stop_id }) {
 								#
 								{stopData.id}
 							</Link>
-							{index
-							  && (
-							  	<Link className={styles.openInWebsite} href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target="_blank">
-								Ver no Tempo Real
-							  	</Link>
-							  )}
+							{index && (
+								<Link className={styles.openInWebsite} href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target="_blank">Ver no Tempo Real</Link>
+							)}
 						</div>
 					</div>
 				</div>
 
 				<div className={styles.linesList}>
-					{stopData.routes?.map(routeId => <LineDisplay k={routeId} key={routeId} route_id={routeId} />)}
+					{stopData.routes?.map(routeId => <LineDisplay key={routeId} route_id={routeId} />)}
 				</div>
 			</div>
 		)

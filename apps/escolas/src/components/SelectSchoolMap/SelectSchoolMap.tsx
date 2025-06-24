@@ -4,7 +4,6 @@ import OSMMap from '@/components/OSMMap/OSMMap';
 import generateUUID from '@/services/generateUUID';
 import { SegmentedControl } from '@mantine/core';
 import * as turf from '@turf/turf';
-import { features } from 'process';
 import { useEffect, useMemo, useState } from 'react';
 import { Layer, Source, useMap } from 'react-map-gl/maplibre';
 import useSWR from 'swr';
