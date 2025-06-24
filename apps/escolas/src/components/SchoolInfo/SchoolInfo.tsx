@@ -27,8 +27,14 @@ export default function SchoolInfo({ school_id }) {
 
 	const { schoolInfoMap } = useMap();
 	const [mapStyle, setMapStyle] = useState('map');
-	const [schoolStopsAsGeojson, setSchoolStopsAsGeojson] = useState();
+	const [schoolStopsAsGeojson, setSchoolStopsAsGeojson] = useState(null);
 
+	const boundingBox = turf.bbox(schoolStopsAsGeojson);
+	// turf.bbox returns [minX, minY, maxX, maxY] => [north, south, east, west]
+	const bounds: [[number, number], [number, number]] = [
+		[boundingBox[0], boundingBox[1]],
+		[boundingBox[2], boundingBox[3]],
+	];
 	//
 	// B. Fetch data
 
@@ -40,19 +46,19 @@ export default function SchoolInfo({ school_id }) {
 
 	useEffect(() => {
 		if (!schoolInfoMap || !schoolStopsAsGeojson?.features?.length) return;
-		const boundingBox = turf.bbox(schoolStopsAsGeojson);
-		schoolInfoMap.fitBounds(boundingBox, { duration: 2000, padding: 150 });
+		schoolInfoMap.fitBounds(bounds, { duration: 2000, padding: 150 });
 	}, [schoolInfoMap, schoolStopsAsGeojson]);
 
 	useEffect(() => {
 		(async () => {
-			const geoJSON = {
+			const geoJSON: GeoJSON.FeatureCollection = {
 				features: [],
 				type: 'FeatureCollection',
 			};
 			if (schoolData) {
 				geoJSON.features.push({
 					geometry: { coordinates: [parseFloat(schoolData.lon), parseFloat(schoolData.lat)], type: 'Point' },
+					properties: {},
 					type: 'Feature',
 				});
 			}
@@ -73,7 +79,7 @@ export default function SchoolInfo({ school_id }) {
 	}, [schoolData]);
 
 	const allStopsDataAsGeojson = useMemo(() => {
-		const geoJSON = {
+		const geoJSON: GeoJSON.FeatureCollection = {
 			features: [],
 			type: 'FeatureCollection',
 		};
@@ -81,6 +87,7 @@ export default function SchoolInfo({ school_id }) {
 			for (const stop of allStopsData) {
 				geoJSON.features.push({
 					geometry: { coordinates: [stop.lon, stop.lat], type: 'Point' },
+					properties: {},
 					type: 'Feature',
 				});
 			}
@@ -92,45 +99,46 @@ export default function SchoolInfo({ school_id }) {
 	// D. Render components
 
 	return (
-		schoolData
-		&& (
+		schoolData && (
 			<div className={styles.container}>
 				<div className={styles.titles}>
 					<Titles goHome={true} municipality_name={schoolData.municipality_name} school_name={schoolData.name} />
 				</div>
 
-				<OSMMap
-					id="schoolInfoMap"
-					height={400}
-					scrollZoom={false}
-					navigation={true}
-					fullscreen={true}
-					mapStyle={mapStyle}
-					toolbar={(
-						<>
-							<SegmentedControl
-  value={mapStyle}
-  onChange={setMapStyle}
-  size="xs"
-  data={[
-									{ label: 'Map', value: 'map' },
-									{ label: 'Satellite', value: 'satellite' },
-								]}
-							/>
-						</>
-					)}
-				>
-					<Source data={allStopsDataAsGeojson} id="allStops" type="geojson">
-						<Layer id="allStops" paint={{ 'circle-color': '#ffdd01', 'circle-radius': 4, 'circle-stroke-color': '#000000', 'circle-stroke-width': 1 }} source="allStops" type="circle" />
-					</Source>
-					<Source data={schoolStopsAsGeojson} id="schoolStops" type="geojson">
-						<Layer id="schoolStops" paint={{ 'circle-color': '#235fe1', 'circle-radius': 10, 'circle-stroke-color': '#000000', 'circle-stroke-width': 2 }} source="schoolStops" type="circle" />
-						<Layer id="school-stops-labels" layout={{ 'text-anchor': 'center', 'text-field': ['get', 'index'], 'text-offset': [0, 0], 'text-size': 12 }} paint={{ 'text-color': '#ffffff' }} source="schoolStops" type="symbol" />
-					</Source>
-					<Marker latitude={schoolData.lat} longitude={schoolData.lon}>
-						<Image alt={schoolData.name} height={50} priority src="/images/escola.png" width={50} />
-					</Marker>
-				</OSMMap>
+				<div style={{ height: 400 }}>
+					<OSMMap
+
+						fullscreen={true}
+						id="schoolInfoMap"
+						mapStyle={mapStyle}
+						navigation={true}
+						scrollZoom={false}
+						toolbar={(
+							<>
+								<SegmentedControl
+									onChange={setMapStyle}
+									size="xs"
+									value={mapStyle}
+									data={[
+										{ label: 'Map', value: 'map' },
+										{ label: 'Satellite', value: 'satellite' },
+									]}
+								/>
+							</>
+						)}
+					>
+						<Source data={allStopsDataAsGeojson} id="allStops" type="geojson">
+							<Layer id="allStops" paint={{ 'circle-color': '#ffdd01', 'circle-radius': 4, 'circle-stroke-color': '#000000', 'circle-stroke-width': 1 }} source="allStops" type="circle" />
+						</Source>
+						<Source data={schoolStopsAsGeojson} id="schoolStops" type="geojson">
+							<Layer id="schoolStops" paint={{ 'circle-color': '#235fe1', 'circle-radius': 10, 'circle-stroke-color': '#000000', 'circle-stroke-width': 2 }} source="schoolStops" type="circle" />
+							<Layer id="school-stops-labels" layout={{ 'text-anchor': 'center', 'text-field': ['get', 'index'], 'text-offset': [0, 0], 'text-size': 12 }} paint={{ 'text-color': '#ffffff' }} source="schoolStops" type="symbol" />
+						</Source>
+						<Marker latitude={schoolData.lat} longitude={schoolData.lon}>
+							<Image alt={schoolData.name} height={50} src="/images/escola.png" width={50} priority />
+						</Marker>
+					</OSMMap>
+				</div>
 
 				<div className={styles.gridWrapper}>
 					<div className={styles.stopsWrapper}>
@@ -138,7 +146,7 @@ export default function SchoolInfo({ school_id }) {
 						{schoolData && schoolData.stops.length > 0
 							? (
 								<div className={styles.stopsList}>
-									{schoolData.stops.map((stopCode, stopIndex) => <StopInfo index={stopIndex + 1} k={stopCode} key={stopCode} stop_id={stopCode} />)}
+									{schoolData.stops.map((stopCode, stopIndex) => <StopInfo key={stopCode} index={stopIndex + 1} k={stopCode} stop_id={stopCode} />)}
 								</div>
 							)
 							: (
