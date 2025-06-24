@@ -1,11 +1,12 @@
-import { IconClockPlay } from '@tabler/icons-react';
-import styles from './CustomTimeInput.module.css';
 import { TextInput } from '@mantine/core';
 import { GetInputPropsReturnType } from '@mantine/form/lib/types';
-import { ChangeEventHandler } from 'react';
+import { IconClockPlay } from '@tabler/icons-react';
 import { format } from 'path';
+import { ChangeEventHandler } from 'react';
 
-export default function CustomTimeInput({ inputProps }:{inputProps:GetInputPropsReturnType}) {
+import styles from './CustomTimeInput.module.css';
+
+export default function CustomTimeInput({ inputProps }: { inputProps: GetInputPropsReturnType }) {
 	//
 
 	//
@@ -14,11 +15,11 @@ export default function CustomTimeInput({ inputProps }:{inputProps:GetInputProps
 	//
 	// B. Handle actions
 
-	const handleUpdateStartTime:ChangeEventHandler<HTMLInputElement> = event => {
+	const handleUpdateStartTime: ChangeEventHandler<HTMLInputElement> = (event) => {
 		// Setup the raw value
 		const target = event.target;
 		let formattedValue = target.value;
-		let endsWithColon = formattedValue.endsWith(':');
+		const endsWithColon = formattedValue.endsWith(':');
 		// Add leading 0 if the person writes a single number then :
 		if (formattedValue.length <= 2 && formattedValue.endsWith(':')) formattedValue = formattedValue.padStart(3, '0');
 		// Remove any non-digit characters from the value
@@ -31,7 +32,7 @@ export default function CustomTimeInput({ inputProps }:{inputProps:GetInputProps
 		// Parse the hours
 		if (hoursString && hoursString.length == 2) {
 			// Format the hours
-			let hoursInt = parseInt(hoursString);
+			const hoursInt = parseInt(hoursString);
 			// If the hours are bigger than 27, clamp to 27
 			if (hoursInt > 25) hoursString = '24';
 			// If the hours are smaller than 4, clamp to 4
@@ -42,7 +43,7 @@ export default function CustomTimeInput({ inputProps }:{inputProps:GetInputProps
 		// Parse the minutes
 		if (minutesString && minutesString.length == 2) {
 			// Format the minutes
-			let minutesInt = parseInt(minutesString);
+			const minutesInt = parseInt(minutesString);
 			// If the minutes are bigger than 59, clamp to 59
 			if (minutesInt > 59) minutesString = '59';
 			// If the minutes are smaller than 0, clamp to 0
@@ -66,7 +67,7 @@ export default function CustomTimeInput({ inputProps }:{inputProps:GetInputProps
 
 	return (
 		<div className={styles.column}>
-			<TextInput leftSection={<IconClockPlay size={18} />} placeholder={'12:00'} {...inputProps} onChange={handleUpdateStartTime} w='120' />
+			<TextInput leftSection={<IconClockPlay size={18} />} placeholder="12:00" {...inputProps} onChange={handleUpdateStartTime} w="120" />
 		</div>
 	);
 

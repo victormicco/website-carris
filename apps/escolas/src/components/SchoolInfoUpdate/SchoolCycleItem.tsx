@@ -1,11 +1,11 @@
 'use client';
 import { Checkbox, Collapse, Paper, Stack, Text } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
+
 import CustomTimeInput from '../CustomTimeInput/CustomTimeInput';
 import { FormType, SchoolCicle } from './types';
 
-// eslint-disable-next-line no-unused-vars
-export default function SchoolCycleItem({ form, label, k }:{form:UseFormReturnType<FormType, (_: FormType) => FormType>, label:string, k:SchoolCicle}) {
+export default function SchoolCycleItem({ form, k, label }: { form: UseFormReturnType<FormType, (_: FormType) => FormType>, k: SchoolCicle, label: string }) {
 	// k stands for key, which cannot be used as it is a reserved react prop
 	// console.log(form.values[k])
 	// console.log(form.getInputProps(k, { type: 'checkbox' }))
@@ -20,44 +20,47 @@ export default function SchoolCycleItem({ form, label, k }:{form:UseFormReturnTy
 	const checked = form.values[k].hasCicle;
 
 	// B. Render
-	return <Paper bg={checked ? 'var(--mantine-color-blue-light)' : ''} shadow='none' >
-		<Stack p={8}>
-			<Checkbox
-				c={checked ? 'blue' : ''}
-				fw={700}
-				label={label}
-				{...form.getInputProps(k + '.hasCicle', { type: 'checkbox' })} />
+	return (
+		<Paper bg={checked ? 'var(--mantine-color-blue-light)' : ''} shadow="none">
+			<Stack p={8}>
+				<Checkbox
+  c={checked ? 'blue' : ''}
+  fw={700}
+  label={label}
+  {...form.getInputProps(k + '.hasCicle', { type: 'checkbox' })}
+				/>
 
-			<Collapse
-				in={checked}
-			>
-				<Stack gap={10}>
-					<div>
-						<Text size='sm'>Principal hora de entrada de manhã</Text>
-						<CustomTimeInput
-							inputProps={ morningEntryProps }
-						/>
-					</div>
-					<div>
-						<Text size='sm'>Principal hora de saída de manhã</Text>
-						<CustomTimeInput
-							inputProps={ morningExitProps }
-						/>
-					</div>
-					<div>
-						<Text size='sm'>Principal hora de entrada de tarde</Text>
-						<CustomTimeInput
-							inputProps={ afternoonEntryProps }
-						/>
-					</div>
-					<div>
-						<Text size='sm'>Principal hora de saída de tarde</Text>
-						<CustomTimeInput
-							inputProps={ afternoonExitProps }
-						/>
-					</div>
-				</Stack>
-			</Collapse>
-		</Stack>
-	</Paper>;
+				<Collapse
+  in={checked}
+				>
+					<Stack gap={10}>
+						<div>
+							<Text size="sm">Principal hora de entrada de manhã</Text>
+							<CustomTimeInput
+  inputProps={morningEntryProps}
+							/>
+						</div>
+						<div>
+							<Text size="sm">Principal hora de saída de manhã</Text>
+							<CustomTimeInput
+  inputProps={morningExitProps}
+							/>
+						</div>
+						<div>
+							<Text size="sm">Principal hora de entrada de tarde</Text>
+							<CustomTimeInput
+  inputProps={afternoonEntryProps}
+							/>
+						</div>
+						<div>
+							<Text size="sm">Principal hora de saída de tarde</Text>
+							<CustomTimeInput
+  inputProps={afternoonExitProps}
+							/>
+						</div>
+					</Stack>
+				</Collapse>
+			</Stack>
+		</Paper>
+	);
 }

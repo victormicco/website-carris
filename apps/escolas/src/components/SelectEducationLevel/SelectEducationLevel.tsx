@@ -38,11 +38,11 @@ export default function SelectEducationLevel({ onSelectEducationLevel, selectedE
 		<div className={styles.container}>
 			<Select
 				aria-label="Filtrar por nível de escolaridade"
+				data={allEducationLevels}
+				onChange={onSelectEducationLevel}
 				placeholder="Escolha um nível de educação"
 				rightSection={selectedEducationLevel ? <CloseButton onClick={handleClearselectedEducationLevel} /> : <IconChevronDown size={18} />}
-				data={allEducationLevels}
 				value={selectedEducationLevel}
-				onChange={onSelectEducationLevel}
 				searchable
 			/>
 		</div>

@@ -1,9 +1,10 @@
 'use server';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
-import { FormType, schoolCicles } from './types';
 import { env } from 'process';
+
 import { body } from './template';
+import { FormType, schoolCicles } from './types';
 
 const client = new google.auth.JWT(
 	env.GOOGLE_SERVICE_EMAIL,
@@ -11,35 +12,35 @@ const client = new google.auth.JWT(
 	env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
 	['https://www.googleapis.com/auth/spreadsheets'],
 );
-const sheets = google.sheets({ version: 'v4', auth: client });
+const sheets = google.sheets({ auth: client, version: 'v4' });
 
 const port = parseInt(env.EMAIL_SERVER_PORT);
 const transporter = nodemailer.createTransport({
+	auth: {
+		pass: env.EMAIL_SERVER_PASSWORD,
+		user: env.EMAIL_SERVER_USER,
+	},
 	host: env.EMAIL_SERVER_HOST,
 	port: port,
 	secure: port === 465,
-	auth: {
-		user: env.EMAIL_SERVER_USER,
-		pass: env.EMAIL_SERVER_PASSWORD,
-	},
 });
 
-export async function submit(data:FormType):Promise<{success:boolean, message:string}> {
+export async function submit(data: FormType): Promise<{ message: string, success: boolean }> {
 	'use server';
 
 	if (data.password !== env.FORM_PASSWORD) {
-		return { success: false, message: 'Codigo de acesso inválido' };
+		return { message: 'Codigo de acesso inválido', success: false };
 	}
-	data.submissionDate = (new Date).toISOString();
+	data.submissionDate = (new Date()).toISOString();
 
 	const emails = data.email.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@;,| \t\r\n]+/);
 	if (emails === null || emails.length === 0) {
-		return { success: false, message: 'Email inválido' };
+		return { message: 'Email inválido', success: false };
 	}
 
-	const fmtDate = (d:Date) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+	const fmtDate = (d: Date) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 	const extractedCycles = schoolCicles.map(cicle => [cicle, data[cicle].hasCicle ? JSON.stringify({ ...data[cicle], hasCicle: undefined }) : false]);
-	const newCalendar = { ...data.calendar, vacations: data.calendar.vacations.filter((d:any) => d !== null && d[0] != null && d[1] != null) };
+	const newCalendar = { ...data.calendar, vacations: data.calendar.vacations.filter((d: any) => d !== null && d[0] != null && d[1] != null) };
 	// make sure we don't pass null items, if some smartypants makes requests manually
 	try {
 		const toSubmit = [data.id,
@@ -64,16 +65,17 @@ export async function submit(data:FormType):Promise<{success:boolean, message:st
 			.map(v => v == null ? '' : v);
 
 		await sheets.spreadsheets.values.append({
-			spreadsheetId: process.env.GOOGLE_SHEET_ID,
 			range: `Submissions`,
-			valueInputOption: 'RAW',
 			requestBody: {
 				values: [toSubmit],
 			},
+			spreadsheetId: process.env.GOOGLE_SHEET_ID,
+			valueInputOption: 'RAW',
 		});
-	} catch (e) {
+	}
+	catch (e) {
 		console.error(e);
-		return { success: false, message: e.toString() };
+		return { message: e.toString(), success: false };
 	}
 
 	const schoolCyclesHeader = ['Pré-escolar', '1º Ciclo', '2º Ciclo', '3º Ciclo', 'Secundário', 'Ensino Profissional', 'Ensino Especial', 'Ensino Artístico', 'Ensino Superior', 'Outro'];
@@ -81,8 +83,6 @@ export async function submit(data:FormType):Promise<{success:boolean, message:st
 	try {
 		const mail = await transporter.sendMail({
 			from: env.EMAIL_FROM,
-			to: to,
-			subject: 'Confirmação de submissão de calendário escolar',
 			html: body({
 				body: `
 			<p>Agradecemos a sua colaboração!</p>
@@ -119,26 +119,29 @@ export async function submit(data:FormType):Promise<{success:boolean, message:st
 			</div>
 		`,
 			}),
+			subject: 'Confirmação de submissão de calendário escolar',
+			to: to,
 		});
-	} catch (e:unknown) {
+	}
+	catch (e: unknown) {
 		if (typeof e == 'object') {
 			if ('rejectedErrors' in e && Array.isArray(e.rejectedErrors)) {
 				const fiveohone = e.rejectedErrors.find(e => typeof e == 'object' && e.responseCode == 501);
 				if (fiveohone) {
-					return { success: false, message: `O endereço ${fiveohone.recipient} é inválido, por favor verifique se o email está correto.` };
+					return { message: `O endereço ${fiveohone.recipient} é inválido, por favor verifique se o email está correto.`, success: false };
 				}
 				if ('code' in e && e.code === 'EENVELOPE' && 'command' in e && e.command == 'API') {
-					return { success: false, message: 'O email inserido é inválido, por favor verifique se o email está correto.' };
+					return { message: 'O email inserido é inválido, por favor verifique se o email está correto.', success: false };
 				}
 			}
 		}
 
-		return { success: false, message: e.toString() };
+		return { message: e.toString(), success: false };
 	}
 	console.log('Sent confirmation email to', to);
-	return { success: true, message: `E-mail de confirmação enviado para ${to}` };
+	return { message: `E-mail de confirmação enviado para ${to}`, success: true };
 }
 
-export async function isPasswordCorrect(password:string):Promise<boolean> {
+export async function isPasswordCorrect(password: string): Promise<boolean> {
 	return password === env.FORM_PASSWORD;
 }

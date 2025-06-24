@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import * as turf from '@turf/turf';
 import OSMMap from '@/components/OSMMap/OSMMap';
-import { useMap, Marker } from 'react-map-gl/maplibre';
 import { SegmentedControl } from '@mantine/core';
+import * as turf from '@turf/turf';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { Marker, useMap } from 'react-map-gl/maplibre';
+
 import { SchoolData } from '../SchoolInfoUpdate/types';
 
-export default function SchoolInfoUpdateMap({ schoolData }:{schoolData:SchoolData}) {
+export default function SchoolInfoUpdateMap({ schoolData }: { schoolData: SchoolData }) {
 	//
 
 	//
@@ -27,8 +28,8 @@ export default function SchoolInfoUpdateMap({ schoolData }:{schoolData:SchoolDat
 		if (!schoolInfoMap || !schoolData) return;
 		schoolInfoMap.flyTo({
 			center: [parseFloat(schoolData.lon), parseFloat(schoolData.lat)],
-			zoom: 15,
 			speed: 0.5,
+			zoom: 15,
 		});
 	}, [schoolData, schoolInfoMap]);
 
@@ -36,31 +37,33 @@ export default function SchoolInfoUpdateMap({ schoolData }:{schoolData:SchoolDat
 	// D. Render components
 
 	return (
-		schoolData &&
-				<OSMMap
-					id='schoolInfoMap'
-					scrollZoom={false}
-					navigation={true}
-					fullscreen={true}
-					mapStyle={mapStyle}
-					toolbar={
-						<>
-							<SegmentedControl
-								value={mapStyle}
-								onChange={setMapStyle}
-								size='xs'
-								data={[
-									{ label: 'Map', value: 'map' },
-									{ label: 'Satellite', value: 'satellite' },
-								]}
-							/>
-						</>
-					}
-				>
-					<Marker latitude={parseFloat(schoolData.lat)} longitude={parseFloat(schoolData.lon)}>
-						<Image priority src='/images/escola.png' height={50} width={50} alt={schoolData.name} />
-					</Marker>
-				</OSMMap>
+		schoolData
+		&& (
+			<OSMMap
+  id="schoolInfoMap"
+  scrollZoom={false}
+  navigation={true}
+  fullscreen={true}
+  mapStyle={mapStyle}
+  toolbar={(
+					<>
+						<SegmentedControl
+  value={mapStyle}
+  onChange={setMapStyle}
+  size="xs"
+  data={[
+								{ label: 'Map', value: 'map' },
+								{ label: 'Satellite', value: 'satellite' },
+							]}
+						/>
+					</>
+				)}
+			>
+				<Marker latitude={parseFloat(schoolData.lat)} longitude={parseFloat(schoolData.lon)}>
+					<Image alt={schoolData.name} height={50} priority src="/images/escola.png" width={50} />
+				</Marker>
+			</OSMMap>
+		)
 
 	);
 

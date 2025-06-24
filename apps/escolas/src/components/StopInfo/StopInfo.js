@@ -1,11 +1,12 @@
 'use client';
 
-import useSWR from 'swr';
-import styles from './StopInfo.module.css';
 import LineDisplay from '@/components/LineDisplay/LineDisplay';
 import Link from 'next/link';
+import useSWR from 'swr';
 
-export default function StopInfo({ stop_id, index }) {
+import styles from './StopInfo.module.css';
+
+export default function StopInfo({ index, stop_id }) {
 	//
 
 	//
@@ -17,8 +18,9 @@ export default function StopInfo({ stop_id, index }) {
 	// B. Render components
 
 	return (
-		stopData &&
-		stopData.routes?.length > 0 &&
+		stopData
+		&& stopData.routes?.length > 0
+		&& (
 			<div className={styles.container}>
 				<div className={styles.headerWrapper}>
 					{index && <div className={styles.stopIndex}>{index}</div>}
@@ -26,22 +28,25 @@ export default function StopInfo({ stop_id, index }) {
 						<div className={styles.stopName}>{stopData.name}</div>
 						<div className={styles.stopDetails}>
 							<div className={styles.stopLocation}>{stopData.locality}</div>
-							<Link href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target='_blank' className={styles.stopId}>
-								#{stopData.id}
+							<Link className={styles.stopId} href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target="_blank">
+								#
+								{stopData.id}
 							</Link>
-							{index &&
-								<Link href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target='_blank' className={styles.openInWebsite}>
-									Ver no Tempo Real
-								</Link>
-							}
+							{index
+							  && (
+							  	<Link className={styles.openInWebsite} href={`https://beta.carrismetropolitana.pt/stops/${stopData.id}`} target="_blank">
+								Ver no Tempo Real
+							  	</Link>
+							  )}
 						</div>
 					</div>
 				</div>
 
 				<div className={styles.linesList}>
-					{stopData.routes?.map(routeId => <LineDisplay key={routeId} k={routeId} route_id={routeId} />)}
+					{stopData.routes?.map(routeId => <LineDisplay k={routeId} key={routeId} route_id={routeId} />)}
 				</div>
 			</div>
+		)
 
 	);
 }

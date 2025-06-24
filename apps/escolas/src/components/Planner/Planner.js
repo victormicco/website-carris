@@ -1,13 +1,15 @@
 import Image from 'next/image';
-import BlackHeader from '../BlackHeader/BlackHeader';
+
 import styles from './Planner.module.css';
+
+import BlackHeader from '../BlackHeader/BlackHeader';
 
 const Planner = () => {
 	return (
 		<div className={styles.container}>
-			<BlackHeader text='Planeador de Viagem' />
-			<a href='https://www.carrismetropolitana.pt/planeador/' target='_blank' rel='noopener noreferrer'>
-				<Image priority src='/images/planner.png' height={900} width={670} style={{ width: '100%', height: '100%' }} alt='Logotipo Carris Metropolitana próxima das escolas' />
+			<BlackHeader text="Planeador de Viagem" />
+			<a href="https://www.carrismetropolitana.pt/planeador/" rel="noopener noreferrer" target="_blank">
+				<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={900} priority src="/images/planner.png" style={{ height: '100%', width: '100%' }} width={670} />
 			</a>
 		</div>
 	);

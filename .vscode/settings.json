@@ -7,6 +7,9 @@
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
 	},
 
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
 	// Disable the default CSS formatter, use stylelint instead
 	"css.validate": false,
 
@@ -15,7 +18,7 @@
 		"source.fixAll.eslint": "explicit"
 	},
 	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
-	"editor.formatOnSave": false,
+	"editor.formatOnSave": true,
 	"editor.tabSize": 4,
 
 	"eslint.format.enable": true,

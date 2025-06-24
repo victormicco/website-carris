@@ -1,12 +1,12 @@
 'use client';
 
-import useSWR from 'swr';
-import { useEffect, useMemo, useState } from 'react';
-import generateUUID from '@/services/generateUUID';
-import * as turf from '@turf/turf';
 import OSMMap from '@/components/OSMMap/OSMMap';
-import { useMap, Source, Layer } from 'react-map-gl/maplibre';
+import generateUUID from '@/services/generateUUID';
 import { SegmentedControl } from '@mantine/core';
+import * as turf from '@turf/turf';
+import { useEffect, useMemo, useState } from 'react';
+import { Layer, Source, useMap } from 'react-map-gl/maplibre';
+import useSWR from 'swr';
 
 export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 	//
@@ -39,21 +39,21 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 	useEffect(() => {
 		(async () => {
 			const geoJSON = {
-				type: 'FeatureCollection',
 				features: [],
+				type: 'FeatureCollection',
 			};
 			if (allSchoolsData && allSchoolsData.length) {
 				for (const school of allSchoolsData) {
 					geoJSON.features.push({
-						type: 'Feature',
 						geometry: {
-							type: 'Point',
 							coordinates: [school.lon, school.lat],
+							type: 'Point',
 						},
 						properties: {
-							mapid: `${stop.id}${generateUUID()}`,
 							id: school.id,
+							mapid: `${stop.id}${generateUUID()}`,
 						},
+						type: 'Feature',
 					});
 				}
 			}
@@ -63,14 +63,14 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 
 	const allStopsDataAsGeojson = useMemo(() => {
 		const geoJSON = {
-			type: 'FeatureCollection',
 			features: [],
+			type: 'FeatureCollection',
 		};
 		if (allStopsData) {
 			for (const stop of allStopsData) {
 				geoJSON.features.push({
+					geometry: { coordinates: [stop.lon, stop.lat], type: 'Point' },
 					type: 'Feature',
-					geometry: { type: 'Point', coordinates: [stop.lon, stop.lat] },
 				});
 			}
 		}
@@ -80,19 +80,19 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 	//
 	// D. Handle actions
 
-	const handleMapClick = event => {
+	const handleMapClick = (event) => {
 		if (event?.features[0]) {
 			onSelectSchool(event.features[0].properties.id);
 		}
 	};
 
-	const handleMapMouseEnter = event => {
+	const handleMapMouseEnter = (event) => {
 		if (event?.features[0]?.properties?.id) {
 			selectSchoolMap.getCanvas().style.cursor = 'pointer';
 		}
 	};
 
-	const handleMapMouseLeave = event => {
+	const handleMapMouseLeave = (event) => {
 		if (event?.features[0]?.properties?.id) {
 			selectSchoolMap.getCanvas().style.cursor = 'default';
 		}
@@ -102,10 +102,11 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 	// D. Render components
 
 	return (
-		allSchoolsData &&
-		allStopsData &&
+		allSchoolsData
+		&& allStopsData
+		&& (
 			<OSMMap
-				id='selectSchoolMap'
+				id="selectSchoolMap"
 				height={400}
 				scrollZoom={true}
 				navigation={true}
@@ -115,37 +116,38 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 				onClick={handleMapClick}
 				onMouseEnter={handleMapMouseEnter}
 				onMouseLeave={handleMapMouseLeave}
-				toolbar={
+				toolbar={(
 					<>
 						<SegmentedControl
-							value={mapStyle}
-							onChange={setMapStyle}
-							size='xs'
-							data={[
+  value={mapStyle}
+  onChange={setMapStyle}
+  size="xs"
+  data={[
 								{ label: 'Map', value: 'map' },
 								{ label: 'Satellite', value: 'satellite' },
 							]}
 						/>
 					</>
-				}
+				)}
 			>
-				<Source id='allStops' type='geojson' data={allStopsDataAsGeojson}>
+				<Source data={allStopsDataAsGeojson} id="allStops" type="geojson">
 					<Layer
-						id='allStops'
-						source='allStops'
-						type='circle'
+						id="allStops"
+						source="allStops"
+						type="circle"
 						paint={{
 							'circle-color': ['case', ['boolean', ['feature-state', 'selected'], false], '#EE4B2B', '#ffdd01'],
 							'circle-radius': ['interpolate', ['linear', 0.5], ['zoom'], 9, ['case', ['boolean', ['feature-state', 'selected'], false], 5, 1], 26, ['case', ['boolean', ['feature-state', 'selected'], false], 20, 10]],
-							'circle-stroke-width': ['interpolate', ['linear', 0.5], ['zoom'], 9, 0.35, 26, 5],
 							'circle-stroke-color': '#000000',
+							'circle-stroke-width': ['interpolate', ['linear', 0.5], ['zoom'], 9, 0.35, 26, 5],
 						}}
 					/>
 				</Source>
-				<Source id='allSchools' type='geojson' data={allSchoolsAsGeojson}>
-					<Layer id='allSchools' source='allSchools' type={'symbol'} layout={{ 'icon-image': 'store-icon', 'icon-size': ['interpolate', ['linear', 0.5], ['zoom'], 9, 0.1, 26, 0.75] }} />
+				<Source data={allSchoolsAsGeojson} id="allSchools" type="geojson">
+					<Layer id="allSchools" layout={{ 'icon-image': 'store-icon', 'icon-size': ['interpolate', ['linear', 0.5], ['zoom'], 9, 0.1, 26, 0.75] }} source="allSchools" type="symbol" />
 				</Source>
 			</OSMMap>
+		)
 
 	);
 

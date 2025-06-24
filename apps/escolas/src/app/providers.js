@@ -1,15 +1,14 @@
 'use client';
 
-import { SWRConfig } from 'swr';
 import { MantineProvider } from '@mantine/core';
 import { MapProvider } from 'react-map-gl/maplibre';
+import { SWRConfig } from 'swr';
 
 export default function Providers({ children }) {
 	//
 
 	// Use SWR
 	const swrOptions = {
-		refreshInterval: 30000,
 		fetcher: async (...args) => {
 			const res = await fetch(...args);
 			if (!res.ok) {
@@ -21,6 +20,7 @@ export default function Providers({ children }) {
 			}
 			return res.json();
 		},
+		refreshInterval: 30000,
 	};
 
 	return (

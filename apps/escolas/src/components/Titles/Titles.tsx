@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+
 import styles from './Titles.module.css';
 
-export default function Titles({ municipality_name, school_name, goHome }: { municipality_name: string, school_name: string, goHome?: boolean }) {
+export default function Titles({ goHome, municipality_name, school_name }: { goHome?: boolean, municipality_name: string, school_name: string }) {
 	//
 
 	//
@@ -22,7 +23,7 @@ export default function Titles({ municipality_name, school_name, goHome }: { mun
 	// C. Render components
 
 	return (
-		<div className={styles.container} onClick={handleClick} data-clickable={!!goHome}>
+		<div className={styles.container} data-clickable={!!goHome} onClick={handleClick}>
 			<div className={styles.schoolName}>{school_name}</div>
 			<div className={styles.municipalityName}>{municipality_name}</div>
 		</div>

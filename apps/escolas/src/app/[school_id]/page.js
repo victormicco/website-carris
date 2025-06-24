@@ -1,8 +1,8 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import Layout from '@/components/Layout/Layout';
 import SchoolInfo from '@/components/SchoolInfo/SchoolInfo';
+import { useParams } from 'next/navigation';
 
 export default function Page() {
 	//

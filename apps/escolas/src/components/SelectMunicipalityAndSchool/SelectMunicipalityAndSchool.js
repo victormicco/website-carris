@@ -1,14 +1,16 @@
 'use client';
 
-import useSWR from 'swr';
-import { useMemo } from 'react';
-import styles from './SelectMunicipalityAndSchool.module.css';
 import SelectMunicipality from '@/components/SelectMunicipality/SelectMunicipality';
 import SelectSchool from '@/components/SelectSchool/SelectSchool';
+import { useMemo } from 'react';
+import useSWR from 'swr';
+
+import styles from './SelectMunicipalityAndSchool.module.css';
+
 import SelectEducationLevel from '../SelectEducationLevel/SelectEducationLevel';
 import SelectSchoolMap from '../SelectSchoolMap/SelectSchoolMap';
 
-export default function SelectMunicipalityAndSchool({ selectedMunicipalityId, onSelectMunicipalityId, selectedEducationLevel, onSelectEducationLevel, onSelectSchool, title }) {
+export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, onSelectMunicipalityId, onSelectSchool, selectedEducationLevel, selectedMunicipalityId, title }) {
 	//
 
 	//
@@ -23,7 +25,7 @@ export default function SelectMunicipalityAndSchool({ selectedMunicipalityId, on
 		// Return empty array if data is not available
 		if (!allSchoolsData) return [];
 		// Filter out schools without stops on our municipalities
-		const filteredOutSchools = allSchoolsData.filter(item => {
+		const filteredOutSchools = allSchoolsData.filter((item) => {
 			// Include the school if it is from Barreiro, Cascais or Lisbon
 			// even if it does not have associated stops.
 			const isFromBarreiro = item.municipality_id === '1504';
@@ -39,14 +41,14 @@ export default function SelectMunicipalityAndSchool({ selectedMunicipalityId, on
 		const sortedSchools = filteredOutSchools.sort((a, b) => collator.compare(a.name, b.name));
 		// Keep only the required values
 		return sortedSchools.map(item => ({
-			id: item.id,
-			name: item.name,
-			lat: item.lat,
-			lon: item.lon,
 			cicles: item.cicles,
+			id: item.id,
+			lat: item.lat,
 			locality: item.locality,
+			lon: item.lon,
 			municipality_id: item.municipality_id,
 			municipality_name: item.municipality_name,
+			name: item.name,
 		}));
 		//
 	}, [allSchoolsData]);
@@ -81,8 +83,8 @@ export default function SelectMunicipalityAndSchool({ selectedMunicipalityId, on
 		<div className={styles.container}>
 			<p className={styles.title}>{title}</p>
 			<div className={styles.filters}>
-				<SelectMunicipality selectedMunicipalityId={selectedMunicipalityId} onSelectMunicipalityId={onSelectMunicipalityId} />
-				<SelectEducationLevel selectedEducationLevel={selectedEducationLevel} onSelectEducationLevel={onSelectEducationLevel} />
+				<SelectMunicipality onSelectMunicipalityId={onSelectMunicipalityId} selectedMunicipalityId={selectedMunicipalityId} />
+				<SelectEducationLevel onSelectEducationLevel={onSelectEducationLevel} selectedEducationLevel={selectedEducationLevel} />
 			</div>
 			<SelectSchool allSchoolsData={allSchoolsFiltered} onSelectSchool={onSelectSchool} />
 			<SelectSchoolMap allSchoolsData={allSchoolsFiltered} onSelectSchool={onSelectSchool} />

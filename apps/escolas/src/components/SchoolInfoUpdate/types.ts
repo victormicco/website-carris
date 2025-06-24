@@ -1,58 +1,55 @@
-export type SchoolData = {
-  id: string;
-  name: string;
-  lat: string;
-  lon: string;
-  nature: string;
-  grouping: string;
-  cicles: string[];
-  address: string;
-  postal_code: string;
-  locality: string;
-  parish_id: string;
-  parish_name: string;
-  municipality_id: string;
-  municipality_name: string;
-  district_id: string;
-  district_name: string;
-  region_id: string;
-  region_name: string;
-  url: string;
-  email: string;
-  phone: string;
-  stops: string[];
+export interface SchoolData {
+	address: string
+	cicles: string[]
+	district_id: string
+	district_name: string
+	email: string
+	grouping: string
+	id: string
+	lat: string
+	locality: string
+	lon: string
+	municipality_id: string
+	municipality_name: string
+	name: string
+	nature: string
+	parish_id: string
+	parish_name: string
+	phone: string
+	postal_code: string
+	region_id: string
+	region_name: string
+	stops: string[]
+	url: string
 }
 
 export const schoolCicles = ['pre_school', 'basic_1', 'basic_2', 'basic_3', 'high_school', 'professional', 'special', 'artistic', 'university', 'other'] as const;
-export type SchoolCicle = typeof schoolCicles[number]
-export type SchoolCicleObjects = {
-  // eslint-disable-next-line no-unused-vars
-  [_key in SchoolCicle]: {
-    hasCicle:boolean,
-    morningEntry:string,
-    morningExit:string,
-    afternoonEntry:string,
-    afternoonExit:string
-  }
-}
+export type SchoolCicle = typeof schoolCicles[number];
+export type SchoolCicleObjects = Record<SchoolCicle, {
+	afternoonEntry: string
+	afternoonExit: string
+	hasCicle: boolean
+	morningEntry: string
+	morningExit: string
+}>;
 
-type DatePair = [ Date|null, Date|null ]
+type DatePair = [ Date | null, Date | null ];
 
-export type FormType = {
-  password:string;
-  id: string;
-  fillerIdentifier: string;
-  fillerIdentifierPosition: string;
-  correctLocation: 'sim' | 'quase' | 'nao' | '';
-  submissionDate: string;
-  postal_code: string;
-  email: string;
-  phone: string;
-  url: string;
-  calendar: {
-    cycleFrequency: ''|'semester'|'trimester',
-    dates: DatePair[]
-    vacations: DatePair[]
-  },
-  comment:string
-} & SchoolCicleObjects
+export type FormType = SchoolCicleObjects & {
+	calendar: {
+		cycleFrequency: '' | 'semester' | 'trimester'
+		dates: DatePair[]
+		vacations: DatePair[]
+	}
+	comment: string
+	correctLocation: '' | 'nao' | 'quase' | 'sim'
+	email: string
+	fillerIdentifier: string
+	fillerIdentifierPosition: string
+	id: string
+	password: string
+	phone: string
+	postal_code: string
+	submissionDate: string
+	url: string
+};
