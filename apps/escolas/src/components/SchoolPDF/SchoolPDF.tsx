@@ -82,7 +82,7 @@ export default function SchoolPDF({ school_id }) {
 		&& (
 			<div className={styles.container}>
 				<div className={styles.header}>
-					<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={100} priority src="/images/CM-Escolas.svg" width={100} />
+					<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={100} src="/images/CM-Escolas.svg" width={100} priority />
 					<div className={styles.headerWrapper}>
 						<div className={styles.title}>Carris Metropolitana mais próxima das escolas</div>
 						<div className={styles.subtitle}>O teu regresso às aulas vai correr sobre rodas!</div>
