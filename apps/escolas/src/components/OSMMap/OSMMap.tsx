@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import maplibregl from 'maplibre-gl';
 import Map, { FullscreenControl, NavigationControl, ScaleControl } from 'react-map-gl/maplibre';
 
@@ -23,25 +24,30 @@ export default function OSMMap({
 	scrollZoom = true,
 	toolbar,
 }) {
+	//
+
+	//
+	// A. Render Componente
 	return (
+
 		<div className={styles.container}>
 			<Map
 				id={id}
-				mapLib={maplibregl}
 				initialViewState={osmMapDefaults.initialViewState}
-				minZoom={osmMapDefaults.minZoom}
-				maxZoom={osmMapDefaults.maxZoom}
-				scrollZoom={scrollZoom}
+				interactive={interactiveLayerIds ? true : false}
+				interactiveLayerIds={interactiveLayerIds}
+				mapLib={maplibregl}
 				mapStyle={osmMapDefaults.styles[mapStyle] || osmMapDefaults.styles.default}
-				style={{ height: '400px', width: '100%' }}
+				maxZoom={osmMapDefaults.maxZoom}
+				minZoom={osmMapDefaults.minZoom}
 				onClick={onClick}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 				onMove={onMove}
-				onMoveStart={onMoveStart}
 				onMoveEnd={onMoveEnd}
-				interactive={interactiveLayerIds ? true : false}
-				interactiveLayerIds={interactiveLayerIds}
+				onMoveStart={onMoveStart}
+				scrollZoom={scrollZoom}
+				style={{ height: '400px', width: '100%' }}
 			>
 				{navigation && <NavigationControl />}
 				{fullscreen && <FullscreenControl />}

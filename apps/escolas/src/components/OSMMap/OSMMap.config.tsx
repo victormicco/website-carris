@@ -1,3 +1,8 @@
+//
+
+//
+// A. setup variables
+
 // DEFAULTS FOR OSM MAP
 
 // Locations
@@ -41,6 +46,11 @@ const styleSatellite = {
 //
 // EXPORT SINGLE OBJECT
 
+//
+
+//
+// Create the configuration object for the OSM Map
+
 const config = {
 	center: [defaultLon, defaultLat],
 	initialViewState: { bearing: defaultBearing, latitude: defaultLat, longitude: defaultLon, pitch: defaultPicth, zoom: defaultZoom },
@@ -50,4 +60,8 @@ const config = {
 	viewport: { bearing: defaultBearing, center: [defaultLon, defaultLat], pitch: defaultPicth, zoom: defaultZoom },
 };
 
+//
+
+//
+// B. Render componente
 export default config;
