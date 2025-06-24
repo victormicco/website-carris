@@ -5,8 +5,9 @@ import useSWR from 'swr';
 // import { useMap, Source, Layer, Marker } from 'react-map-gl/maplibre';
 import Image from 'next/image';
 // import * as turf from '@turf/turf';
-import styles from './SchoolPDF.module.css';
 import StopInfo from '@/components/StopInfo/StopInfo';
+
+import styles from './SchoolPDF.module.css';
 // import OSMMap from '@/components/OSMMap/OSMMap';
 
 export default function SchoolPDF({ school_id }) {
@@ -77,10 +78,11 @@ export default function SchoolPDF({ school_id }) {
 	// D. Render components
 
 	return (
-		schoolData &&
+		schoolData
+		&& (
 			<div className={styles.container}>
 				<div className={styles.header}>
-					<Image priority src='/images/CM-Escolas.svg' height={100} width={100} alt='Logotipo Carris Metropolitana próxima das escolas' />
+					<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={100} priority src="/images/CM-Escolas.svg" width={100} />
 					<div className={styles.headerWrapper}>
 						<div className={styles.title}>Carris Metropolitana mais próxima das escolas</div>
 						<div className={styles.subtitle}>O teu regresso às aulas vai correr sobre rodas!</div>
@@ -105,11 +107,14 @@ export default function SchoolPDF({ school_id }) {
 				</OSMMap> */}
 
 				<div className={styles.stopsWrapper}>
-					{schoolData.stops.map(stopId => <div key={stopId}>
-						<StopInfo stop_id={stopId} />
-					</div>)}
+					{schoolData.stops.map(stopId => (
+						<div key={stopId}>
+							<StopInfo stop_id={stopId} />
+						</div>
+					))}
 				</div>
 			</div>
+		)
 
 	);
 }
