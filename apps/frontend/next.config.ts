@@ -24,6 +24,16 @@ const nextConfig: NextConfig = {
 			},
 		];
 	},
+	
+	images: {
+		remotePatterns: [
+			{
+				hostname: '*.oraclecloud.com',
+				port: '',
+				protocol: 'https',
+			},
+		],
+	},
 
 	output: 'standalone',
 

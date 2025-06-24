@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
 	basePath: '/admin',
 	output: 'standalone',
 	reactStrictMode: true,
+
+	images: {
+		remotePatterns: [
+			{
+				hostname: '*.oraclecloud.com',
+				port: '',
+				protocol: 'https',
+			},
+		],
+	}
 };
 
 /* * */
