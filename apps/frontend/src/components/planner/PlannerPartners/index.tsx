@@ -107,7 +107,7 @@ export function PlannerPartners() {
 				/>
 				<Link
 					className={styles.disclaimer}
-					href="https://github.com/carrismetropolitana/website/blob/production/frontend/components/planner/PlannerPartners/index.tsx"
+					href="https://github.com/carrismetropolitana/website/blob/production/apps/frontend/src/components/planner/PlannerPartners/index.tsx"
 					onClick={handleGithubRedirect}
 					target="_blank"
 				>
