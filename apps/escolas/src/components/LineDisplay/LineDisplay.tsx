@@ -1,9 +1,10 @@
 'use client';
 
 import useSWR from 'swr';
+
 import styles from './LineDisplay.module.css';
 
-export function LineBadge({ short_name, color, text_color }) {
+export function LineBadge({ color, short_name, text_color }) {
 	return (
 		<div className={styles.badge} style={{ backgroundColor: color, color: text_color }}>
 			{short_name || '• • •'}
@@ -35,11 +36,13 @@ export default function LineDisplay({ route_id }) {
 	// C. Render components
 
 	return (
-		routeData &&
+		routeData
+		&& (
 			<div className={styles.container} onClick={handleClick}>
-				<LineBadge short_name={routeData.short_name} color={routeData.color} text_color={routeData.text_color} />
+				<LineBadge color={routeData.color} short_name={routeData.short_name} text_color={routeData.text_color} />
 				<LineName name={routeData.long_name} />
 			</div>
+		)
 
 	);
 
