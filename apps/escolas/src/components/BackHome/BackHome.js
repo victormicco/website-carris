@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+
 import styles from './BackHome.module.css';
 
 export default function BackHome() {
@@ -23,7 +24,7 @@ export default function BackHome() {
 
 	return (
 		<div className={styles.backHome} onClick={handleClick}>
-      ← Voltar ao início
+			← Voltar ao início
 		</div>
 	);
 
