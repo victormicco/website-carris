@@ -15,5 +15,6 @@ export default function AppTopBar() {
 			<AppTopBarLink href="//www.carrismetropolitana.pt/" label="Carris Metropolitana" active />
 			<AppTopBarLink href="//www.navegante.pt/" label="navegante®" />
 		</div>
+
 	);
 }
