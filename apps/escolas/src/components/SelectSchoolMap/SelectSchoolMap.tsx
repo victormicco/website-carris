@@ -17,11 +17,6 @@ export default function SelectSchoolMap() {
 	const { selectSchoolMap } = useMap();
 	const [mapStyle, setMapStyle] = useState('map');
 	const [allSchoolsAsGeojson, setAllSchoolsAsGeojson] = useState(undefined);
-	const boundingBox = turf.bbox(allSchoolsAsGeojson);
-	const bounds: [[number, number], [number, number]] = [
-		[boundingBox[0], boundingBox[1]], // southwest corner
-		[boundingBox[2], boundingBox[3]], // northeast corner
-	];
 
 	//
 	// B. Fetch data
@@ -37,8 +32,14 @@ export default function SelectSchoolMap() {
 			if (!selectSchoolMap || !allSchoolsAsGeojson?.features?.length) return;
 			const image = await selectSchoolMap.loadImage('/images/escola.png');
 			selectSchoolMap.addImage('store-icon', image.data, { sdf: false });
+
+			const boundingBox = turf.bbox(allSchoolsAsGeojson);
+			const bounds: [[number, number], [number, number]] = [
+				[boundingBox[0], boundingBox[1]], // southwest corner
+				[boundingBox[2], boundingBox[3]], // northeast corner
+			];
+			selectSchoolMap.fitBounds(bounds, { duration: 2000, padding: 5 });
 		})();
-		selectSchoolMap.fitBounds(bounds, { duration: 2000, padding: 5 });
 	}, [selectSchoolMap, allSchoolsAsGeojson]);
 
 	useEffect(() => {
