@@ -58,7 +58,7 @@ export default function SelectSchoolMap() {
 							},
 							properties: {
 								id: school.id,
-								mapid: `${stop.id}${generateUUID()}`,
+								mapid: `${stop.id}${generateUUID(new Date())}`,
 							},
 							type: 'Feature',
 						});
