@@ -68,7 +68,7 @@ export default function HomeUpdate() {
 						selectedEducationLevel={selectedEducationLevel}
 						selectedMunicipalityId={selectedMunicipalityId}
 						title="Selecione a escola ou universidade que representa."
-					/>
+					/> <br />
 					<Button onClick={() => setActivePage('intro')}>Voltar</Button>
 				</div>
 			)}

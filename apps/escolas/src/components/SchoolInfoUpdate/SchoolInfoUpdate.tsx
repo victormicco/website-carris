@@ -208,11 +208,11 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						</Paper>
 
 						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Localização</Title>
-							<Text c="dimmed" size="xs">A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text>
-							{form.getInputProps('correctLocation').error && <Text c="red" size="xs">{form.getInputProps('correctLocation').error}</Text>}
+							<Title fw={700} order={3}>Localização</Title> <br />
+							<Text c="dimmed" size="s">A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text> <br />
+							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
 							<SegmentedControl
-								size="xs"
+								size="md"
 								style={{ flexShrink: 0 }}
 								data={[
 									{ label: 'Sim', value: 'sim' },
@@ -221,40 +221,46 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 								]}
 
 								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/>
+							/> <br />
 							<TextInput
 								label="Código Postal"
 								placeholder="1234-567"
+								size="md"
 								{...form.getInputProps('postal_code')}
 							/>
 						</Paper>
 						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Dados de contacto</Title>
-							<Stack gap={6}>
+							<Title fw={700} order={3}>Dados de contacto</Title><br />
+							<Stack gap={10}>
 								<TextInput
 									description="Email(s) separados por vírgulas"
 									label="Email"
 									placeholder="email@exemplo.pt"
+									size="md"
 									{...form.getInputProps('email')}
 								/>
 								<TextInput
 									label="Website"
 									placeholder="www.escola.pt"
+									size="md"
 									{...form.getInputProps('url')}
 								/>
 								<TextInput
 									label="Telefone"
 									placeholder="910001337"
+									size="md"
 									{...form.getInputProps('phone')}
 								/>
 								<TextInput
 									label="Nome do responsável pela submissão do formulário"
 									placeholder="João Silva"
+									size="md"
 									{...form.getInputProps('fillerIdentifier')}
 								/>
 								<TextInput
 									label="Cargo do responsável pela submissão do formulário"
 									placeholder="Diretor da Escola"
+									size="md"
 									{...form.getInputProps('fillerIdentifierPosition')}
 								/>
 							</Stack>
@@ -263,8 +269,8 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						<Paper p={16} radius="md" shadow="sm">
 							<Stack gap={6}>
 								<Title fw={700} order={3}>Modalidades de ensino</Title>
-								<Text c="dimmed" size="xs">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
-								<Stack gap="xs">
+								<Text c="dimmed" size="md">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
+								<Stack gap="s">
 									<SchoolCycleItem form={form} k="pre_school" label="Pré-escolar" />
 									<SchoolCycleItem form={form} k="basic_1" label="1º Ciclo" />
 									<SchoolCycleItem form={form} k="basic_2" label="2º Ciclo" />
