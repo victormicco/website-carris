@@ -139,7 +139,7 @@ export default function SchoolInfo({ school_id }) {
 							<Image alt={schoolData.name} height={50} src="/images/escola.png" width={50} priority />
 						</Marker>
 					</OSMMap>
-				</div>
+				</div> <br />
 
 				<div className={styles.gridWrapper}>
 					<div className={styles.stopsWrapper}>
