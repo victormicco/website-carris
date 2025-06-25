@@ -13,4 +13,4 @@ O que mudar no formulário:
 ------------------------------------------------//----------//------------------------------------------------------------------------------
 
 Ficheiros com erros:
-	- 
+	- SelectSchoolMap -- descobrir onde vai ser usada a variavel "onSelectSchool"
