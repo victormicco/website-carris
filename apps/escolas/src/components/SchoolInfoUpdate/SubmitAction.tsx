@@ -143,5 +143,5 @@ export async function submit(data: FormType): Promise<{ message: string, success
 }
 
 export async function isPasswordCorrect(password: string): Promise<boolean> {
-	return password === env.FORM_PASSWORD;
+	return password === process.env.FORM_PASSWORD;
 }
