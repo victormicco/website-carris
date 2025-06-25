@@ -29,12 +29,6 @@ export default function SchoolInfo({ school_id }) {
 	const [mapStyle, setMapStyle] = useState('map');
 	const [schoolStopsAsGeojson, setSchoolStopsAsGeojson] = useState(null);
 
-	const boundingBox = turf.bbox(schoolStopsAsGeojson);
-	// turf.bbox returns [minX, minY, maxX, maxY] => [north, south, east, west]
-	const bounds: [[number, number], [number, number]] = [
-		[boundingBox[0], boundingBox[1]],
-		[boundingBox[2], boundingBox[3]],
-	];
 	//
 	// B. Fetch data
 
@@ -46,6 +40,13 @@ export default function SchoolInfo({ school_id }) {
 
 	useEffect(() => {
 		if (!schoolInfoMap || !schoolStopsAsGeojson?.features?.length) return;
+		const boundingBox = turf.bbox(schoolStopsAsGeojson);
+		// turf.bbox returns [minX, minY, maxX, maxY] => [north, south, east, west]
+		const bounds: [[number, number], [number, number]] = [
+			[boundingBox[0], boundingBox[1]],
+			[boundingBox[2], boundingBox[3]],
+		];
+
 		schoolInfoMap.fitBounds(bounds, { duration: 2000, padding: 150 });
 	}, [schoolInfoMap, schoolStopsAsGeojson]);
 
