@@ -1,6 +1,7 @@
 'use client';
+
+import SchoolPDF from '@/components/SchoolPDF/SchoolPDF';
 import { useParams } from 'next/navigation';
-import SchoolPDF from 'src/app/SchoolPDF/SchoolPDF';
 
 export default function Page() {
 	//
