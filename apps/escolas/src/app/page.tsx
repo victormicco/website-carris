@@ -19,8 +19,8 @@ export default function Page() {
 	//
 	// B. Handle actions
 
-	const handleSelectSchool = (schooldId) => {
-		if (schooldId) router.push(`/${schooldId}`);
+	const handleSelectSchool = (schoolId) => {
+		if (schoolId) router.push(`/${schoolId}`);
 	};
 
 	//
@@ -29,13 +29,13 @@ export default function Page() {
 	return (
 		<Layout>
 			<SelectMunicipalityAndSchool
-  title="Pesquise as linhas que servem a sua escola ou universidade."
-  selectedMunicipalityId={selectedMunicipalityId}
-  onSelectMunicipalityId={setSelectedMunicipalityId}
-  selectedEducationLevel={selectedEducationLevel}
-  onSelectEducationLevel={setSelectedEducationLevel}
-  selectedSchool={selectedSchool}
-  onSelectSchool={handleSelectSchool}
+				onSelectEducationLevel={setSelectedEducationLevel}
+				onSelectMunicipalityId={setSelectedMunicipalityId}
+				onSelectSchool={handleSelectSchool}
+				selectedEducationLevel={selectedEducationLevel}
+				selectedMunicipalityId={selectedMunicipalityId}
+				selectedSchool={selectedSchool}
+				title="Pesquise as linhas que servem a sua escola ou universidade."
 			/>
 		</Layout>
 	);
