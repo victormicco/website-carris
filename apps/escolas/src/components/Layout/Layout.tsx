@@ -10,7 +10,7 @@ export default function Layout({ children }) {
 		<div className={styles.layout}>
 			<Head>
 				<title>Escolas • Carris Metropolitana</title>
-				<link href="/images/cm.png" rel="icon" />
+				<link href="/public/images/cm.png" rel="icon" />
 				<meta content="Saiba as linhas que existem perto duma escola" name="description" />
 				<meta content="Escolas" name="og:title" />
 			</Head>
@@ -19,8 +19,8 @@ export default function Layout({ children }) {
 
 			<div className={styles.container}>
 				<header className={styles.header}>
-					<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={100}src="/images/CM-Escolas.svg" width={100} priority />
-					<Image alt="Logotipo Carris Metropolitana" height={58} src="/images/carris-metropolitana.svg" width={180} priority />
+					<Image alt="Logotipo Carris Metropolitana próxima das escolas" height={100} src="@/public/images/CM-Escolas.svg" width={100} priority />
+					<Image alt="Logotipo Carris Metropolitana" height={58} src="@/public/images/carris-metropolitana.svg" width={180} priority />
 				</header>
 
 				<main className={styles.main}>{children}</main>
