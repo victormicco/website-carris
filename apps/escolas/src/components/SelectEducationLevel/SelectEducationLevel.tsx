@@ -28,7 +28,7 @@ export default function SelectEducationLevel({ onSelectEducationLevel, selectedE
 	// C. Handle actions
 
 	const handleClearselectedEducationLevel = () => {
-		onSelectEducationLevel(null);
+		onSelectEducationLevel();
 	};
 
 	//

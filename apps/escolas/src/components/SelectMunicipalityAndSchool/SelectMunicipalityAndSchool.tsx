@@ -14,6 +14,12 @@ export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, on
 	//
 
 	//
+	// A. Setup variables
+	// No variables to setup in this component, but we could add some if needed
+
+	//
+
+	//
 	// B. Fetch data
 
 	const { data: allSchoolsData } = useSWR('https://api.carrismetropolitana.pt/datasets/facilities/schools');
@@ -66,9 +72,7 @@ export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, on
 		if (selectedEducationLevel) {
 			filterResult = filterResult.filter(item => item.cicles?.includes(selectedEducationLevel));
 			filterResult = filterResult.filter((school) => {
-				return selectedEducationLevel.find((level) => {
-					return school.cicles?.includes(level);
-				});
+				return school.cicles?.includes(selectedEducationLevel);
 			});
 		}
 		// Set filter results
