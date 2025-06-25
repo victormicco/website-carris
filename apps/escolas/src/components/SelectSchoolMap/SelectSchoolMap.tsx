@@ -52,7 +52,7 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }: sele
 				features: [],
 				type: 'FeatureCollection',
 			};
-			if (allSchoolsData.length && allStopsData?.length) {
+			if (allSchoolsData.length && allSchoolsData?.length) {
 				for (const school of allSchoolsData) {
 					for (const stop of allStopsData) {
 						geoJSON.features.push({
