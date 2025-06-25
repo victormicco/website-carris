@@ -1,12 +1,10 @@
 import { TextInput } from '@mantine/core';
-import { GetInputPropsReturnType } from '@mantine/form/lib/types';
 import { IconClockPlay } from '@tabler/icons-react';
-import { format } from 'path';
 import { ChangeEventHandler } from 'react';
 
 import styles from './CustomTimeInput.module.css';
 
-export default function CustomTimeInput({ inputProps }: { inputProps: GetInputPropsReturnType }) {
+export default function CustomTimeInput({ inputProps }) {
 	//
 
 	//

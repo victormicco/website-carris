@@ -19,6 +19,4 @@ export default function DownloadPDF({ school_id }) {
 			</div>
 		</div>
 	);
-
-	//
 }
