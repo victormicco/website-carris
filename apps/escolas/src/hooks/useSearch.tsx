@@ -13,7 +13,7 @@ export default function useSearch(query, data, options) {
 	if (options && options.keys) {
 		return data.filter((item) => {
 			let hasMatch = false;
-			for (let key of options.keys) {
+			for (const key of options.keys) {
 				if (item.hasOwnProperty(key)) {
 					const value = item[key];
 					const stringifiedValue = value ? String(value).toLowerCase() : '';
