@@ -4,7 +4,7 @@ import Titles from '@/components/Titles/Titles';
 
 import SchoolInfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
 // import { submit } from './SubmitAction';
-import { Button, Loader, Modal, Paper, SegmentedControl, Stack, Text, Textarea, TextInput, Title } from '@mantine/core';
+import { Button, Loader, Modal, Paper, Stack, Text, Textarea, TextInput, Title } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
@@ -13,7 +13,8 @@ import { useState } from 'react';
 
 import styles from './SchoolInfoUpdate.module.css';
 
-import { SchoolInfoUpdateCalendar } from '../update-form/SchoolInfoUpdateCalendar/SchoolInfoUpdateCalendar';
+import { SchoolInfoUpdateCalendar } from '../update-form/SchoolInfoUpdateCalendar';
+import { SchoolLocation } from '../update-form/SchoolLocation';
 import { SubmitCodeSection } from '../update-form/SubmitCodeSection';
 import SchoolCycleItem from './SchoolCycleItem';
 import { submit } from './SubmitAction';
@@ -25,7 +26,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 	//
 	// A. Setup variables
 	const [submitState, setSubmitState] = useState<'done' | 'error' | 'no' | 'processing'>('no');
-	const [formOpen, setFormOpen] = useState(false); // Don't forget to turn this to false so the submit code work properly
+	const [formOpen, setFormOpen] = useState(true); // Don't forget to turn this to false so the submit code work properly
 	const [successMessage, setSuccessMessage] = useState<null | string>(null);
 	const router = useRouter();
 
@@ -176,30 +177,10 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 							<SchoolInfoUpdateMap schoolData={schoolData} />
 						</Paper>
 
-						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3} style={{ marginLeft: '4px' }}>Localização</Title>
-							<Text c="dimmed" size="sm" style={{ marginBottom: '10px', marginLeft: '4px' }}>A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text>
-							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
-							<SegmentedControl
-								size="sm"
-								style={{ flexShrink: 0, marginBottom: '38px' }}
-								data={[
-									{ label: 'Sim', value: 'sim' },
-									{ label: 'Quase', value: 'quase' },
-									{ label: 'Não', value: 'nao' },
-								]}
+						<SchoolLocation form={form} />
 
-								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/>
-							<TextInput
-								label="Código Postal"
-								placeholder="1234-567"
-								size="md"
-								{...form.getInputProps('postal_code')}
-							/>
-						</Paper>
 						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Dados de contacto</Title><br />
+							<Title fw={700} order={3} style={{ marginBottom: '30px' }}>Dados de contacto</Title>
 							<Stack gap={15}>
 								<TextInput
 									description="Email(s) separados por vírgulas"
