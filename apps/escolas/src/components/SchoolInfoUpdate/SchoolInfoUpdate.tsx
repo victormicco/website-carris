@@ -13,10 +13,10 @@ import { useState } from 'react';
 
 import styles from './SchoolInfoUpdate.module.css';
 
-import { SchoolContactData } from '../update-form/SchoolContactData';
-import { SchoolInfoUpdateCalendar } from '../update-form/SchoolInfoUpdateCalendar';
-import { SchoolLocation } from '../update-form/SchoolLocation';
-import { SchoolModalities } from '../update-form/SchoolModalities';
+import { SchoolContactData } from '../update-form/ContactData';
+import { SchoolInfoUpdateCalendar } from '../update-form/InfoUpdateCalendar';
+import { SchoolLocation } from '../update-form/Location';
+import { SchoolModalities } from '../update-form/Modalities';
 import { SubmitCodeSection } from '../update-form/SubmitCodeSection';
 import { submit } from './SubmitAction';
 import { FormType, SchoolCicle, SchoolCicleObjects, schoolCicles, SchoolData } from './types';

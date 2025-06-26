@@ -2,7 +2,7 @@
 
 import { Paper, Stack, Text, Title } from '@mantine/core';
 
-import SchoolCycleItem from '../SchoolCycleItem';
+import SchoolCycleItem from '../CycleItem';
 
 export function SchoolModalities({ form }) {
 	return (
