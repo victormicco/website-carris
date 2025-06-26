@@ -4,7 +4,7 @@ import Titles from '@/components/Titles/Titles';
 
 import SchoolInfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
 // import { submit } from './SubmitAction';
-import { Button, Loader, Modal, Paper, Stack, Text, Textarea, TextInput, Title } from '@mantine/core';
+import { Button, Loader, Modal, Paper, Stack, Text, Textarea, Title } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 import styles from './SchoolInfoUpdate.module.css';
 
+import { SchoolContactData } from '../update-form/SchoolContactData';
 import { SchoolInfoUpdateCalendar } from '../update-form/SchoolInfoUpdateCalendar';
 import { SchoolLocation } from '../update-form/SchoolLocation';
 import { SubmitCodeSection } from '../update-form/SubmitCodeSection';
@@ -178,44 +179,8 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						</Paper>
 
 						<SchoolLocation form={form} />
+						<SchoolContactData form={form} />
 
-						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3} style={{ marginBottom: '30px' }}>Dados de contacto</Title>
-							<Stack gap={15}>
-								<TextInput
-									description="Email(s) separados por vírgulas"
-									label="Email"
-									placeholder="email@exemplo.pt"
-									size="md"
-									{...form.getInputProps('email')}
-								/>
-								<TextInput
-									label="Website"
-									placeholder="www.escola.pt"
-									size="md"
-									{...form.getInputProps('url')}
-								/>
-								<TextInput
-									label="Telefone"
-									placeholder="910001337"
-									size="md"
-
-									{...form.getInputProps('phone')}
-								/>
-								<TextInput
-									label="Nome do responsável pela submissão do formulário"
-									placeholder="João Silva"
-									size="md"
-									{...form.getInputProps('fillerIdentifier')}
-								/>
-								<TextInput
-									label="Cargo do responsável pela submissão do formulário"
-									placeholder="Diretor da Escola"
-									size="md"
-									{...form.getInputProps('fillerIdentifierPosition')}
-								/>
-							</Stack>
-						</Paper>
 						{SchoolInfoUpdateCalendar({ form })}
 						<Paper p={16} radius="md" shadow="sm">
 							<Stack gap={10}>
