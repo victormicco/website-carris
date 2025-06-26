@@ -24,7 +24,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 	//
 	// A. Setup variables
 	const [submitState, setSubmitState] = useState<'done' | 'error' | 'no' | 'processing'>('no');
-	const [formOpen, setFormOpen] = useState(true);
+	const [formOpen, setFormOpen] = useState(true); // Don't forget to turn this to false so the submit code work properly
 	const [successMessage, setSuccessMessage] = useState<null | string>(null);
 	const router = useRouter();
 
@@ -214,7 +214,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
 							<SegmentedControl
 								size="sm"
-								style={{ flexShrink: 0 }}
+								style={{ flexShrink: 0, marginBottom: '38px' }}
 								data={[
 									{ label: 'Sim', value: 'sim' },
 									{ label: 'Quase', value: 'quase' },
@@ -222,7 +222,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 								]}
 
 								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/> <br /><br />
+							/>
 							<TextInput
 								label="Código Postal"
 								placeholder="1234-567"
@@ -232,7 +232,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						</Paper>
 						<Paper p={16} radius="md" shadow="sm">
 							<Title fw={700} order={3}>Dados de contacto</Title><br />
-							<Stack gap={10}>
+							<Stack gap={15}>
 								<TextInput
 									description="Email(s) separados por vírgulas"
 									label="Email"

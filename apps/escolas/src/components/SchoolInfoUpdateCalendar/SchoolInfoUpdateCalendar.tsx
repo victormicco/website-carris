@@ -99,8 +99,8 @@ export function SchoolInfoUpdateCalendar({ form }: { form: UseFormReturnType<For
 								{...form.getInputProps(`calendar.vacations.${index}`)}
 							/>
 
-							<ActionIcon color="red" onClick={() => form.removeListItem('calendar.vacations', index)} size="lg">
-								<IconTrash size="1rem" />
+							<ActionIcon color="red" onClick={() => form.removeListItem('calendar.vacations', index)} size="lg" style={{ marginLeft: '-10px' }}>
+								<IconTrash size="1.3rem" />
 							</ActionIcon>
 						</Group>
 					))}
