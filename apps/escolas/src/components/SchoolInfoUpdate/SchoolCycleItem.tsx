@@ -40,25 +40,25 @@ export default function SchoolCycleItem({ form, k, label }: { form: UseFormRetur
 				>
 					<Stack gap={10}>
 						<div>
-							<Text size="sm">Principal hora de entrada de manhã</Text>
+							<Text size="s">Principal hora de entrada de manhã</Text>
 							<CustomTimeInput
 								inputProps={morningEntryProps}
 							/>
 						</div>
 						<div>
-							<Text size="sm">Principal hora de saída de manhã</Text>
+							<Text size="s">Principal hora de saída de manhã</Text>
 							<CustomTimeInput
 								inputProps={morningExitProps}
 							/>
 						</div>
 						<div>
-							<Text size="sm">Principal hora de entrada de tarde</Text>
+							<Text size="s">Principal hora de entrada de tarde</Text>
 							<CustomTimeInput
 								inputProps={afternoonEntryProps}
 							/>
 						</div>
 						<div>
-							<Text size="sm">Principal hora de saída de tarde</Text>
+							<Text size="s">Principal hora de saída de tarde</Text>
 							<CustomTimeInput
 								inputProps={afternoonExitProps}
 							/>
