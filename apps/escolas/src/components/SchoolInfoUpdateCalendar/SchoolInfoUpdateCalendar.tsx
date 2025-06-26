@@ -21,29 +21,29 @@ export function SchoolInfoUpdateCalendar({ form }: { form: UseFormReturnType<For
 	return (
 		<Paper p={16} radius="md" shadow="sm">
 			<Title fw={700} order={3}>Calendário Escolar</Title>
-			<Stack gap={6}>
-				<Text size="xs">Modo de funcionamento</Text>
+			<Stack gap={10}>
+				<Text size="s">Modo de funcionamento</Text>
 				<SegmentedControl
 					color="blue"
-					size="xs"
-					w={200}
+					size="md"
+					w={300}
 					data={[
 						{ label: 'Semestral', value: 'semester' },
 						{ label: 'Trimestral', value: 'trimester' },
 					]}
 					{...cycleFrequencyProps}
 				/>
-				{cycleFrequencyProps.error && <Text c="red" size="xs">{cycleFrequencyProps.error}</Text>}
-				{datesProps.error && <Text c="red" size="xs">{datesProps.error}</Text>}
+				{cycleFrequencyProps.error && <Text c="red" size="md">{cycleFrequencyProps.error}</Text>}
+				{datesProps.error && <Text c="red" size="md">{datesProps.error}</Text>}
 				{cycleFrequency === 'semester' && (
-					<Stack gap={6}>
-						<Text size="xs">Periodo letivo do Primeiro Semestre</Text>
+					<Stack gap={10}>
+						<Text size="md">Periodo letivo do Primeiro Semestre</Text>
 						<DatePickerInput
 							maw={300}
 							type="range"
 							{...form.getInputProps('calendar.dates.0')}
 						/>
-						<Text size="xs">Periodo letivo do Segundo Semestre</Text>
+						<Text size="md">Periodo letivo do Segundo Semestre</Text>
 						<DatePickerInput
 							maw={300}
 							type="range"
@@ -52,20 +52,20 @@ export function SchoolInfoUpdateCalendar({ form }: { form: UseFormReturnType<For
 					</Stack>
 				)}
 				{cycleFrequency === 'trimester' && (
-					<Stack gap={6}>
-						<Text size="xs">Periodo letivo do Primeiro Período</Text>
+					<Stack gap={10}>
+						<Text size="md">Periodo letivo do Primeiro Período</Text>
 						<DatePickerInput
 							maw={300}
 							type="range"
 							{...form.getInputProps('calendar.dates.0')}
 						/>
-						<Text size="xs">Periodo letivo do Segundo Período</Text>
+						<Text size="md">Periodo letivo do Segundo Período</Text>
 						<DatePickerInput
 							maw={300}
 							type="range"
 							{...form.getInputProps('calendar.dates.1')}
 						/>
-						<Text size="xs">Periodo letivo do Terceiro Período</Text>
+						<Text size="md">Periodo letivo do Terceiro Período</Text>
 						<DatePickerInput
 							maw={300}
 							type="range"
@@ -73,9 +73,9 @@ export function SchoolInfoUpdateCalendar({ form }: { form: UseFormReturnType<For
 						/>
 					</Stack>
 				)}
-				<Stack gap={4}>
+				<Stack gap={8}>
 					<Text fw={500} size="md">Lista de Interrupções dentro do período escolar</Text>
-					<Text c="dimmed" fw={400} size="xs">Não indique férias entre semestres/trimestres, apenas interrupções dentro desses períodos.</Text>
+					<Text c="dimmed" fw={400} size="s">Não indique férias entre semestres/trimestres, apenas interrupções dentro desses períodos.</Text>
 					{vacationsProps.error && <Text c="red" size="xs">{vacationsProps.error}</Text>}
 					{form.getValues().calendar.vacations.map((item, index) => (
 						<Group key={index}>

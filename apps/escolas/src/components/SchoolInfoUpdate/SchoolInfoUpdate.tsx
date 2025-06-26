@@ -174,7 +174,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 
 			<Paper p={16} radius="md" shadow="sm">
 				<Title fw={700} order={3}>Código de acesso</Title>
-				{form.getInputProps('password').error && <Text c="red" size="xs">{form.getInputProps('password').error}</Text>}
+				{form.getInputProps('password').error && <Text c="red" size="md">{form.getInputProps('password').error}</Text>}
 				<PasswordInput
 					placeholder="********"
 					{...form.getInputProps('password')}
@@ -208,7 +208,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						</Paper>
 
 						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Localização</Title> <br />
+							<Title fw={700} order={3}>Localização</Title>
 							<Text c="dimmed" size="s">A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text> <br />
 							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
 							<SegmentedControl
@@ -221,7 +221,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 								]}
 
 								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/> <br />
+							/>
 							<TextInput
 								label="Código Postal"
 								placeholder="1234-567"
@@ -267,7 +267,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						</Paper>
 						{SchoolInfoUpdateCalendar({ form })}
 						<Paper p={16} radius="md" shadow="sm">
-							<Stack gap={6}>
+							<Stack gap={10}>
 								<Title fw={700} order={3}>Modalidades de ensino</Title>
 								<Text c="dimmed" size="md">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
 								<Stack gap="s">
@@ -290,6 +290,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 								description="Informação extra que queira transmitir sobre a escola"
 								label="Comentário"
 								placeholder="A Escola tem horário noturno desde as 18:35 até às 22:40/Há muitos estudantes que vêm de sitio X/Não há aulas sextas-feiras/etc"
+								size="md"
 								{...form.getInputProps('comment')}
 							/>
 						</Paper>
