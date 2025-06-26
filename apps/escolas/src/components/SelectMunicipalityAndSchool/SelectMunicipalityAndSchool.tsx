@@ -1,5 +1,6 @@
 'use client';
 
+import MapViewSchools from '@/components/map/MapViewSchools';
 import SelectMunicipality from '@/components/SelectMunicipality/SelectMunicipality';
 import SelectSchool from '@/components/SelectSchool/SelectSchool';
 import { useMemo } from 'react';
@@ -8,7 +9,6 @@ import useSWR from 'swr';
 import styles from './SelectMunicipalityAndSchool.module.css';
 
 import SelectEducationLevel from '../SelectEducationLevel/SelectEducationLevel';
-import SelectSchoolMap from '../SelectSchoolMap/SelectSchoolMap';
 
 export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, onSelectMunicipalityId, onSelectSchool, selectedEducationLevel, selectedMunicipalityId, title }) {
 	//
@@ -92,7 +92,7 @@ export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, on
 				<SelectEducationLevel onSelectEducationLevel={onSelectEducationLevel} selectedEducationLevel={selectedEducationLevel} />
 			</div>
 			<SelectSchool allSchoolsData={allSchoolsFiltered} onSelectSchool={onSelectSchool} />
-			{ allSchoolsSimplified && <SelectSchoolMap allSchoolsData={allSchoolsFiltered.length === 0 ? allSchoolsFiltered : allSchoolsSimplified} onSelectSchool={onSelectSchool} />}
+			{ allSchoolsSimplified && <MapViewSchools allSchoolsData={allSchoolsFiltered.length === 0 ? allSchoolsFiltered : allSchoolsSimplified} onSelectSchool={onSelectSchool} />}
 		</div>
 	);
 }

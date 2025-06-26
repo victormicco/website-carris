@@ -1,5 +1,6 @@
 'use client';
 
+import { MapOptionsContextProvider } from '@/contexts/MapOptions.context';
 import { MantineProvider } from '@mantine/core';
 import { MapProvider } from 'react-map-gl/maplibre';
 import { SWRConfig } from 'swr';
@@ -26,7 +27,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<SWRConfig value={swrOptions}>
 			<MantineProvider>
-				<MapProvider>{children}</MapProvider>
+				<MapOptionsContextProvider>
+					<MapProvider>{children}</MapProvider>
+				</MapOptionsContextProvider>
 			</MantineProvider>
 		</SWRConfig>
 	);

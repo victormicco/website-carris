@@ -4,6 +4,7 @@
 import '@/styles/reset.css';
 import '@/styles/defaults.css';
 import '@/styles/colors.css';
+import '@/styles/variables.css';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import { ColorSchemeScript } from '@mantine/core';
