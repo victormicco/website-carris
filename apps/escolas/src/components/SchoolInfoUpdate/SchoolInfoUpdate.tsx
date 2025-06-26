@@ -210,7 +210,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 
 						<Paper p={16} radius="md" shadow="sm">
 							<Title fw={700} order={3}>Localização</Title>
-							<Text c="dimmed" size="s">A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text> <br />
+							<Text c="dimmed" size="s">A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text><br />
 							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
 							<SegmentedControl
 								size="md"
@@ -222,7 +222,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 								]}
 
 								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/>
+							/> <br /><br />
 							<TextInput
 								label="Código Postal"
 								placeholder="1234-567"
