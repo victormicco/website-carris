@@ -16,7 +16,7 @@ export default function BackHome2() {
 	// B. Handle actions
 
 	const handleClick = () => {
-		router.push('/49003');
+		router.push('/');
 	};
 
 	//
