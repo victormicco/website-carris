@@ -26,7 +26,7 @@ export default function SelectMunicipality({ onSelectMunicipalityId, selectedMun
 		const allMunicipalitiesSorted = allMunicipalitiesData.sort((a, b) => collator.compare(a.name, b.name));
 		return allMunicipalitiesSorted.map(item => ({ label: item.name, value: item.id }));
 		//
-	}, [allMunicipalitiesData]);
+	}, [allMunicipalitiesData, selectedMunicipalityId]);
 
 	//
 	// C. Handle actions
@@ -45,7 +45,7 @@ export default function SelectMunicipality({ onSelectMunicipalityId, selectedMun
 				data={allMunicipalitiesDataAsSelectOptions}
 				nothingFoundMessage="Município inexistente"
 				onChange={onSelectMunicipalityId}
-				placeholder="Escolha ou digite um Município"
+				placeholder="Escolha ou digite um Municípios"
 				rightSection={selectedMunicipalityId ? <CloseButton onClick={handleClearSelectedMunicipalityId} /> : <IconChevronDown size={18} />}
 				value={selectedMunicipalityId}
 				searchable

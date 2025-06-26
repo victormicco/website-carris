@@ -4,7 +4,7 @@ import Titles from '@/components/Titles/Titles';
 
 import SchoolInfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
 // import { submit } from './SubmitAction';
-import { Button, Loader, Modal, Paper, PasswordInput, SegmentedControl, Stack, Text, Textarea, TextInput, Title } from '@mantine/core';
+import { Button, Loader, Modal, Paper } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
@@ -13,9 +13,13 @@ import { useState } from 'react';
 
 import styles from './SchoolInfoUpdate.module.css';
 
-import { SchoolInfoUpdateCalendar } from '../SchoolInfoUpdateCalendar/SchoolInfoUpdateCalendar';
-import SchoolCycleItem from './SchoolCycleItem';
-import { isPasswordCorrect, submit } from './SubmitAction';
+import { SchoolAdditionalInformation } from '../update-form/AdditionalInformation';
+import { SchoolContactData } from '../update-form/ContactData';
+import { SchoolInfoUpdateCalendar } from '../update-form/InfoUpdateCalendar';
+import { SchoolLocation } from '../update-form/Location';
+import { SchoolModalities } from '../update-form/Modalities';
+import { SubmitCodeSection } from '../update-form/SubmitCodeSection';
+import { submit } from './SubmitAction';
 import { FormType, SchoolCicle, SchoolCicleObjects, schoolCicles, SchoolData } from './types';
 
 export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id: string, schoolData: SchoolData }) {
@@ -151,19 +155,6 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 		}
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const checkPassword = async (password: string) => {
-		const isCorrect = await isPasswordCorrect(form.getValues().password);
-		if (!isCorrect) {
-			notifications.show({ color: 'red', message: '', title: 'Código de acesso inválido' });
-		}
-		else {
-			document.getElementById('submitCodeBox').style.display = 'none';
-			notifications.show({ color: 'blue', message: '', title: 'Código de acesso aceite' });
-		}
-		setFormOpen(isCorrect);
-	};
-
 	//
 	// D. Render components
 
@@ -173,28 +164,8 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 				<Titles municipality_name={schoolData.municipality_name} school_name={schoolData.name} />
 			</div>
 
-			<Paper id="submitCodeBox" p={16} radius="md" shadow="sm">
-				<Title fw={700} order={3}>Código de acesso</Title>
-				{form.getInputProps('password').error && <Text c="red" size="md">{form.getInputProps('password').error}</Text>}
-				<PasswordInput
-					placeholder="********"
-					{...form.getInputProps('password')}
-					onKeyDown={(e) => {
-						if (e.key === 'Enter') {
-							checkPassword(form.getValues().password);
-						}
-					}}
-				/>
-				<Button
-					mt={20}
-					size="md"
-					onClick={async () => {
-						checkPassword(form.getValues().password);
-					}}
-				>
-					Verificar
-				</Button>
-			</Paper>
+			{!formOpen && <SubmitCodeSection form={form} setFormOpen={setFormOpen} />}
+
 			{formOpen && (
 				<>
 					<form
@@ -207,95 +178,11 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						<Paper radius="md" shadow="sm">
 							<SchoolInfoUpdateMap schoolData={schoolData} />
 						</Paper>
-
-						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3} style={{ marginLeft: '4px' }}>Localização</Title>
-							<Text c="dimmed" size="sm" style={{ marginBottom: '10px', marginLeft: '4px' }}>A posição da escola no mapa corresponde com a posição da porta príncipal de entrada da escola?</Text>
-							{form.getInputProps('correctLocation').error && <Text c="red" size="md">{form.getInputProps('correctLocation').error}</Text>}
-							<SegmentedControl
-								size="sm"
-								style={{ flexShrink: 0, marginBottom: '38px' }}
-								data={[
-									{ label: 'Sim', value: 'sim' },
-									{ label: 'Quase', value: 'quase' },
-									{ label: 'Não', value: 'nao' },
-								]}
-
-								{...form.getInputProps('correctLocation', { type: 'input' })}
-							/>
-							<TextInput
-								label="Código Postal"
-								placeholder="1234-567"
-								size="md"
-								{...form.getInputProps('postal_code')}
-							/>
-						</Paper>
-						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Dados de contacto</Title><br />
-							<Stack gap={15}>
-								<TextInput
-									description="Email(s) separados por vírgulas"
-									label="Email"
-									placeholder="email@exemplo.pt"
-									size="md"
-									{...form.getInputProps('email')}
-								/>
-								<TextInput
-									label="Website"
-									placeholder="www.escola.pt"
-									size="md"
-									{...form.getInputProps('url')}
-								/>
-								<TextInput
-									label="Telefone"
-									placeholder="910001337"
-									size="md"
-
-									{...form.getInputProps('phone')}
-								/>
-								<TextInput
-									label="Nome do responsável pela submissão do formulário"
-									placeholder="João Silva"
-									size="md"
-									{...form.getInputProps('fillerIdentifier')}
-								/>
-								<TextInput
-									label="Cargo do responsável pela submissão do formulário"
-									placeholder="Diretor da Escola"
-									size="md"
-									{...form.getInputProps('fillerIdentifierPosition')}
-								/>
-							</Stack>
-						</Paper>
-						{SchoolInfoUpdateCalendar({ form })}
-						<Paper p={16} radius="md" shadow="sm">
-							<Stack gap={10}>
-								<Title fw={700} order={3}>Modalidades de ensino</Title>
-								<Text c="dimmed" size="md">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
-								<Stack gap="sm">
-									<SchoolCycleItem form={form} k="pre_school" label="Pré-escolar" />
-									<SchoolCycleItem form={form} k="basic_1" label="1º Ciclo" />
-									<SchoolCycleItem form={form} k="basic_2" label="2º Ciclo" />
-									<SchoolCycleItem form={form} k="basic_3" label="3º Ciclo" />
-									<SchoolCycleItem form={form} k="high_school" label="Secundário" />
-									<SchoolCycleItem form={form} k="professional" label="Profissional" />
-									<SchoolCycleItem form={form} k="special" label="Especial" />
-									<SchoolCycleItem form={form} k="artistic" label="Artístico" />
-									<SchoolCycleItem form={form} k="university" label="Universitário" />
-									<SchoolCycleItem form={form} k="other" label="Outro" />
-								</Stack>
-							</Stack>
-						</Paper>
-						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Informação adicional</Title>
-							<Textarea
-								description="Informação extra que queira transmitir sobre a escola"
-								label="Comentário"
-								placeholder="A Escola tem horário noturno desde as 18:35 até às 22:40/Há muitos estudantes que vêm de sitio X/Não há aulas sextas-feiras/etc"
-								size="lg"
-								{...form.getInputProps('comment')}
-							/>
-						</Paper>
+						<SchoolLocation form={form} />
+						<SchoolContactData form={form} />
+						<SchoolInfoUpdateCalendar form={form} />
+						<SchoolModalities form={form} />
+						<SchoolAdditionalInformation form={form} />
 						<Button
 							size="md"
 							type="submit"

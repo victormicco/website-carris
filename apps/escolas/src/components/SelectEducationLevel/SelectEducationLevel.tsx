@@ -7,8 +7,6 @@ import styles from './SelectEducationLevel.module.css';
 
 export default function SelectEducationLevel({ onSelectEducationLevel, selectedEducationLevel }) {
 	//
-
-	//
 	// A. Setup variables
 
 	const allEducationLevels = [

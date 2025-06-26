@@ -2,15 +2,15 @@
 
 O que mudar no formulário:
 
-	- Adicionar uma caixa Dados do Responsável de comunicação -> Prioridade
+	- Adicionar uma caixa Dados do Responsável de Comunicação (Nome, Email, Telefone) -> Prioridade
 
 	- Tirar a caixa "Código de acesso",  ---> DONE
-	- Adicionar espaçamento dos campos (margin),
-	- Alinhar as labels mais para a direita,
-	- Alinhar os botões do Calendário Escolar,
-	- Mudar o campo Lista de Interrupções dentro do período escolar, do Calendário Escolar
+	- Adicionar espaçamento dos campos (margin),  ---> DONE
+	- Alinhar as labels mais para a direita,  ---> DONE
+	- Alinhar os botões do Calendário Escolar,  ---> DONE
+	- Mudar o campo Lista de Interrupções dentro do período escolar, do Calendário Escolar  ---> DONE
 	- Preencher os campos, da caixa Modalidades de ensino, com os valores da API
-	- Mudar o caminho do botão 'Voltar ao início' no portal-escolas
+	- Mudar o caminho do botão 'Voltar ao início' no portal-escolas  ---> DONE
 
 
 ------------------------------------------------//----------//------------------------------------------------------------------------------

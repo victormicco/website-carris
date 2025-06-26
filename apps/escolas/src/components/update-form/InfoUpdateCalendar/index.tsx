@@ -6,7 +6,7 @@ import { UseFormReturnType } from '@mantine/form';
 import '@mantine/dates/styles.css';
 import { IconTrash } from '@tabler/icons-react';
 
-import { FormType } from '../SchoolInfoUpdate/types';
+import { FormType } from '../../SchoolInfoUpdate/types';
 
 export function SchoolInfoUpdateCalendar({ form }: { form: UseFormReturnType<FormType, (_: FormType) => FormType> }) {
 	// A. Setup Variables
