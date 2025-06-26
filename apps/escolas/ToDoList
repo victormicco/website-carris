@@ -1,0 +1,18 @@
+            DO NOT DELETE THIS FILE!!!!
+
+O que mudar no formulário:
+
+	- Adicionar uma caixa Dados do Responsável de comunicação -> Prioridade
+
+	- Tirar a caixa "Código de acesso",
+	- Adicionar espaçamento dos campos (margin),
+	- Alinhar as labels mais para a direita,
+	- Alinhar os botões do Calendário Escolar,
+	- Mudar o campo Lista de Interrupções dentro do período escolar, do Calendário Escolar
+	- Preencher os campos, da caixa Modalidades de ensino, com os valores da API 
+
+
+------------------------------------------------//----------//------------------------------------------------------------------------------
+
+Ficheiros com erros:
+	- SelectMunicipalityAndSchool
