@@ -4,7 +4,7 @@ import Titles from '@/components/Titles/Titles';
 
 import SchoolInfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
 // import { submit } from './SubmitAction';
-import { Button, Loader, Modal, Paper, Stack, Text, Textarea, Title } from '@mantine/core';
+import { Button, Loader, Modal, Paper, Textarea, Title } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
@@ -14,9 +14,9 @@ import { useState } from 'react';
 import styles from './SchoolInfoUpdate.module.css';
 
 import { SchoolContactData } from '../update-form/SchoolContactData';
-import SchoolCycleItem from '../update-form/SchoolCycleItem';
 import { SchoolInfoUpdateCalendar } from '../update-form/SchoolInfoUpdateCalendar';
 import { SchoolLocation } from '../update-form/SchoolLocation';
+import { SchoolModalities } from '../update-form/SchoolModalities';
 import { SubmitCodeSection } from '../update-form/SubmitCodeSection';
 import { submit } from './SubmitAction';
 import { FormType, SchoolCicle, SchoolCicleObjects, schoolCicles, SchoolData } from './types';
@@ -180,27 +180,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						<SchoolLocation form={form} />
 						<SchoolContactData form={form} />
 						<SchoolInfoUpdateCalendar form={form} />
-
-						<Paper p={16} radius="md" shadow="sm">
-							<Stack gap={10}>
-								<div style={{ marginBottom: '10px', marginLeft: '4px' }}>
-									<Title fw={700} order={3}>Modalidades de ensino</Title>
-									<Text c="dimmed" size="sm">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
-								</div>
-								<Stack gap="sm">
-									<SchoolCycleItem form={form} k="pre_school" label="Pré-escolar" />
-									<SchoolCycleItem form={form} k="basic_1" label="1º Ciclo" />
-									<SchoolCycleItem form={form} k="basic_2" label="2º Ciclo" />
-									<SchoolCycleItem form={form} k="basic_3" label="3º Ciclo" />
-									<SchoolCycleItem form={form} k="high_school" label="Secundário" />
-									<SchoolCycleItem form={form} k="professional" label="Profissional" />
-									<SchoolCycleItem form={form} k="special" label="Especial" />
-									<SchoolCycleItem form={form} k="artistic" label="Artístico" />
-									<SchoolCycleItem form={form} k="university" label="Universitário" />
-									<SchoolCycleItem form={form} k="other" label="Outro" />
-								</Stack>
-							</Stack>
-						</Paper>
+						<SchoolModalities form={form} />
 						<Paper p={16} radius="md" shadow="sm">
 							<Title fw={700} order={3}>Informação adicional</Title>
 							<Textarea
