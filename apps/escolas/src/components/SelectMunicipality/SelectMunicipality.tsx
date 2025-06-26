@@ -26,7 +26,7 @@ export default function SelectMunicipality({ onSelectMunicipalityId, selectedMun
 		const allMunicipalitiesSorted = allMunicipalitiesData.sort((a, b) => collator.compare(a.name, b.name));
 		return allMunicipalitiesSorted.map(item => ({ label: item.name, value: item.id }));
 		//
-	}, [allMunicipalitiesData]);
+	}, [allMunicipalitiesData, selectedMunicipalityId]);
 
 	//
 	// C. Handle actions
