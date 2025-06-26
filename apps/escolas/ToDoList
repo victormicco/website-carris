@@ -9,7 +9,8 @@ O que mudar no formulário:
 	- Alinhar as labels mais para a direita,
 	- Alinhar os botões do Calendário Escolar,
 	- Mudar o campo Lista de Interrupções dentro do período escolar, do Calendário Escolar
-	- Preencher os campos, da caixa Modalidades de ensino, com os valores da API 
+	- Preencher os campos, da caixa Modalidades de ensino, com os valores da API
+	- Mudar o caminho do botão 'Voltar ao início' no portal-escolas
 
 
 ------------------------------------------------//----------//------------------------------------------------------------------------------
