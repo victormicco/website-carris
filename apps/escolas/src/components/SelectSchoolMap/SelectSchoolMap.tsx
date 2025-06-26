@@ -13,10 +13,8 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 
 	//
 	// A. Setup variables
-
 	const { selectSchoolMap } = useMap();
 	const [mapStyle, setMapStyle] = useState('map');
-	const [allSchoolsAsGeojson, setAllSchoolsAsGeojson] = useState(undefined);
 	//
 
 	//
@@ -30,18 +28,18 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 
 	useEffect(() => {
 		(async () => {
-			if (!selectSchoolMap || !allSchoolsAsGeojson?.features?.length) return null;
+			if (!selectSchoolMap || !allSchoolsData?.features?.length) return null;
 			const image = await selectSchoolMap.loadImage('/images/escola.png');
 			selectSchoolMap.addImage('store-icon', image.data, { sdf: false });
 
-			const boundingBox = turf.bbox(allSchoolsAsGeojson);
+			const boundingBox = turf.bbox(allSchoolsData);
 			const bounds: [[number, number], [number, number]] = [
-				[boundingBox[0], boundingBox[1]], // southwest corner
-				[boundingBox[2], boundingBox[3]], // northeast corner
+				[boundingBox[0], boundingBox[1]], // Southwest corner [lon, lat]
+				[boundingBox[2], boundingBox[3]], // Northeast corner [lon, lat]
 			];
 			selectSchoolMap.fitBounds(bounds, { duration: 2000, padding: 50 });
 		})();
-	}, [selectSchoolMap, allSchoolsAsGeojson]);
+	}, [selectSchoolMap, allSchoolsData]);
 
 	useEffect(() => {
 		(async () => {
@@ -65,7 +63,6 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 						});
 					}
 				}
-				setAllSchoolsAsGeojson(geoJSON);
 			}
 		})();
 	}, [allSchoolsData, allStopsData]);
@@ -131,8 +128,6 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 	//
 	// E. Render components
 
-	console.log('allSchoolsData', allSchoolsData);
-
 	return (
 		allSchoolsData && allStopsData && (
 			<div style={{ height: 400 }}>
@@ -175,16 +170,18 @@ export default function SelectSchoolMap({ allSchoolsData, onSelectSchool }) {
 						/>
 					</Source>
 					{ allSchoolsData ? (
+
 						// Render all schools as points on the map
 						<Source data={allSchoolsDataAsGeojson} id="allSchools" type="geojson">
 							<Layer
 								id="allSchools"
-								layout={{ 'icon-image': 'store-icon', 'icon-size': ['interpolate', ['linear'], ['zoom'], 9, 0.1, 26, 0.75] }}
 								source="allSchools"
-								type="symbol"
+								type="circle"
 								paint={{
-									'icon-color': ['case', ['boolean', ['feature-state', 'selected'], false], '#EE4B2B', '#ffdd01'],
-									'icon-opacity': ['case', ['boolean', ['feature-state', 'selected'], false], 1, 0.8],
+									'circle-color': ['case', ['boolean', ['feature-state', 'selected'], false], '#343434', '#22a2a2'],
+									'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, ['case', ['boolean', ['feature-state', 'selected'], false], 5, 1], 26, ['case', ['boolean', ['feature-state', 'selected'], false], 20, 10]],
+									'circle-stroke-color': '#000000',
+									'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 9, 0.35, 26, 5],
 								}}
 							/>
 						</Source>
