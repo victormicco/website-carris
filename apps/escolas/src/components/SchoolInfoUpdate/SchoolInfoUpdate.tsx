@@ -29,7 +29,7 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 	//
 	// A. Setup variables
 	const [submitState, setSubmitState] = useState<'done' | 'error' | 'no' | 'processing'>('no');
-	const [formOpen, setFormOpen] = useState(true); // Don't forget to turn this to false so the submit code work properly
+	const [formOpen, setFormOpen] = useState(false); // Don't forget to turn this to false so the submit code work properly
 	const [successMessage, setSuccessMessage] = useState<null | string>(null);
 	const router = useRouter();
 
