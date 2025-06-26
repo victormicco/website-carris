@@ -270,8 +270,10 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 						{SchoolInfoUpdateCalendar({ form })}
 						<Paper p={16} radius="md" shadow="sm">
 							<Stack gap={10}>
-								<Title fw={700} order={3}>Modalidades de ensino</Title>
-								<Text c="dimmed" size="md">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
+								<div style={{ marginBottom: '10px', marginLeft: '4px' }}>
+									<Title fw={700} order={3}>Modalidades de ensino</Title>
+									<Text c="dimmed" size="sm">Indique os ciclos e outros tipos de ensino presentes na escola</Text>
+								</div>
 								<Stack gap="sm">
 									<SchoolCycleItem form={form} k="pre_school" label="Pré-escolar" />
 									<SchoolCycleItem form={form} k="basic_1" label="1º Ciclo" />
@@ -287,14 +289,18 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 							</Stack>
 						</Paper>
 						<Paper p={16} radius="md" shadow="sm">
-							<Title fw={700} order={3}>Informação adicional</Title>
-							<Textarea
-								description="Informação extra que queira transmitir sobre a escola"
-								label="Comentário"
-								placeholder="A Escola tem horário noturno desde as 18:35 até às 22:40/Há muitos estudantes que vêm de sitio X/Não há aulas sextas-feiras/etc"
-								size="lg"
-								{...form.getInputProps('comment')}
-							/>
+							<Title fw={700} order={3} style={{ marginLeft: '4px' }}>Informação adicional</Title>
+							<Stack>
+								<div style={{ marginLeft: '4px', marginTop: '10px' }}>
+									<Text fw={500} size="lg">Comentário</Text>
+									<Text c="dimmed" fw={400} size="sm">Informação extra que queira transmitir sobre a escola</Text>
+								</div>
+								<Textarea
+									placeholder="A Escola tem horário noturno desde as 18:35 até às 22:40/Há muitos estudantes que vêm de sitio X/Não há aulas sextas-feiras/etc"
+									size="sm"
+									{...form.getInputProps('comment')}
+								/>
+							</Stack>
 						</Paper>
 						<Button
 							size="md"
