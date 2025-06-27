@@ -1,6 +1,5 @@
 'use client';
 
-import generateUUID from '@/services/generateUUID';
 import * as turf from '@turf/turf';
 import { useEffect, useMemo } from 'react';
 import { Layer, Source, useMap } from 'react-map-gl/maplibre';
@@ -25,30 +24,6 @@ export default function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 
 	//
 	// C. Transform data
-
-	/* useEffect(() => {
-		const geoJSON: GeoJSON.FeatureCollection = {
-			features: [],
-			type: 'FeatureCollection',
-		};
-		if (!allSchoolsData.length && allSchoolsData.length) {
-			for (const school of allSchoolsData) {
-				for (const stop of allStopsData) {
-					geoJSON.features.push({
-						geometry: {
-							coordinates: [school.lon, school.lat],
-							type: 'Point',
-						},
-						properties: {
-							id: school.id,
-							mapid: `${stop.id}${generateUUID(new Date())}`,
-						},
-						type: 'Feature',
-					});
-				}
-			}
-		}
-	}, [allSchoolsData, allStopsData]); */
 
 	const allStopsDataAsGeojson = useMemo(() => {
 		console.log('allStopsDataAsGeojson');
