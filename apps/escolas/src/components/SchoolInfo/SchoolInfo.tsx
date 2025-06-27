@@ -120,7 +120,7 @@ export default function SchoolInfo({ school_id }) {
 							<Layer id="school-stops-labels" layout={{ 'text-anchor': 'center', 'text-field': ['get', 'index'], 'text-offset': [0, 0], 'text-size': 12 }} paint={{ 'text-color': '#ffffff' }} source="schoolStops" type="symbol" />
 						</Source>
 						<Marker latitude={schoolData.lat} longitude={schoolData.lon}>
-							<Image alt={schoolData.name} src="/images/escola.png" width={50} priority />
+							<Image alt={schoolData.name} height={50} src="/images/escola.png" width={50} priority />
 						</Marker>
 					</MapView>
 				</div> <br />
