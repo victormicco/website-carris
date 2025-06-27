@@ -8,6 +8,7 @@ import { Button, Loader, Paper } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
+import { error } from 'node:console';
 import { useState } from 'react';
 
 import { AdditionalInformation } from '../update-form/AdditionalInformationSection';
@@ -130,24 +131,20 @@ export default function SchoolInfoUpdate({ school_id, schoolData }: { school_id:
 
 	//
 	// C. Handle Actions
-	const onSubmit = async () => {
+	const onSubmit = async (values: FormType) => {
 		if (submitState === 'processing') {
 			return;
 		}
 		setSubmitState('processing');
-		const res = await submit(form.getValues());
+		const res = await submit(values);
 		const title = res.success ? 'Submissão efetuada' : 'Erro';
 		const body = res.message;
 		if (res.success) {
 			setSuccessMessage(body);
-		}
-		else {
-			notifications.show({ color: 'red', message: body, title: title });
-		}
-		if (res.success) {
 			setSubmitState('done');
 		}
 		else {
+			notifications.show({ color: 'red', message: body, title: title });
 			setSubmitState('error');
 		}
 	};

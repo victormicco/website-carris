@@ -3,13 +3,14 @@
 /* * */
 
 import { Button, Modal } from '@mantine/core';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import styles from './styles.module.css';
 
 /* * */
 
 export function ModalSection({ setSuccessMessage, successMessage }) {
+	const router = useRouter();
 	return (
 		<Modal
 			opened={successMessage != null}

@@ -1,4 +1,5 @@
 'use server';
+import { count } from 'console';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import { env } from 'process';
@@ -30,6 +31,7 @@ export async function submit(data: FormType): Promise<{ message: string, success
 	if (data.password !== env.FORM_PASSWORD) {
 		return { message: 'Codigo de acesso inválido', success: false };
 	}
+
 	data.submissionDate = (new Date()).toISOString();
 
 	const emails = data.email.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@;,| \t\r\n]+/);
@@ -37,12 +39,13 @@ export async function submit(data: FormType): Promise<{ message: string, success
 		return { message: 'Email inválido', success: false };
 	}
 
-	const fmtDate = (d: Date) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+	const fmtDate = (d: Date) => `${d.getDate}/${(d.getMonth), +1}/${d.getFullYear}`;
 	const extractedCycles = schoolCicles.map(cicle => [cicle, data[cicle].hasCicle ? JSON.stringify({ ...data[cicle], hasCicle: undefined }) : false]);
 	const newCalendar = { ...data.calendar, vacations: data.calendar.vacations.filter((d: unknown) => d !== null && d[0] != null && d[1] != null) };
 	// make sure we don't pass null items, if some smartypants makes requests manually
 	try {
-		const toSubmit = [data.id,
+		const toSubmit = [
+			data.id,
 			data.correctLocation,
 			data.submissionDate,
 			data.postal_code,
@@ -60,15 +63,22 @@ export async function submit(data: FormType): Promise<{ message: string, success
 			data.calendar.dates[2] ? fmtDate(data.calendar.dates[2][0]) : '',
 			data.calendar.dates[2] ? fmtDate(data.calendar.dates[2][1]) : '',
 			JSON.stringify(newCalendar.vacations),
-			...extractedCycles.map(c => c[1])]
-			.map(v => v == null ? '' : v);
+			...extractedCycles.map(c => c[1]),
+		].map(v => v == null ? '' : v);
 
+		const response = await sheets.spreadsheets.values.get({
+			range: 'Sheet1!A1:AB',
+			spreadsheetId: env.GOOGLE_SHEET_ID,
+		});
+		const get_Values = response.data.values;
+		const row = (get_Values?.length ?? 0) + 1;
+		const range = `Sheet1!A${row}:Z${row}`;
 		await sheets.spreadsheets.values.append({
-			range: `Submissions`,
+			range: range,
 			requestBody: {
 				values: [toSubmit],
 			},
-			spreadsheetId: process.env.GOOGLE_SHEET_ID,
+			spreadsheetId: env.GOOGLE_SHEET_ID,
 			valueInputOption: 'RAW',
 		});
 	}
