@@ -44,7 +44,6 @@ export default function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 	}, [allStopsData]);
 
 	const allSchoolsDataAsGeojson = useMemo(() => {
-		console.log('allSchoolsDataAsGeojson');
 		const geoJSON: GeoJSON.FeatureCollection = {
 			features: [],
 			type: 'FeatureCollection',
@@ -53,7 +52,7 @@ export default function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 			for (const school of allSchoolsData) {
 				geoJSON.features.push({
 					geometry: { coordinates: [school.lon, school.lat], type: 'Point' },
-					properties: {},
+					properties: { id: school.id },
 					type: 'Feature',
 				});
 			}
@@ -77,23 +76,15 @@ export default function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 	//
 	// D. Handle actions
 
-	const handleMapClick = (event) => {
-		if (event?.features[0]) {
-			onSelectSchool(event.features[0].properties.id);
+	function handleMapClick(event: { features?: { properties?: { id?: number } }[] }) {
+		const feature = event.features && event.features[0];
+		if (!feature || !feature.properties || feature.properties.id === null || feature.properties.id === undefined) {
+			return;
 		}
-	};
-
-	const handleMapMouseEnter = (event) => {
-		if (event?.features[0].properties?.id) {
-			selectSchoolMap.getCanvas().style.cursor = 'pointer';
-		}
-	};
-
-	const handleMapMouseLeave = (event) => {
-		if (event?.features[0].properties?.id) {
-			selectSchoolMap.getCanvas().style.cursor = 'default';
-		}
-	};
+		const id = feature.properties.id;
+		onSelectSchool(id);
+		console.log('finally work');
+	}
 
 	//
 
@@ -108,9 +99,8 @@ export default function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 		<div style={{ height: 400, width: '100%' }}>
 			<MapView
 				id="selectSchoolMap"
+				interactiveLayerIds={['allSchools']}
 				onClick={handleMapClick}
-				onMouseEnter={handleMapMouseEnter}
-				onMouseLeave={handleMapMouseLeave}
 				scale
 				scrollZoom
 				toolbar
