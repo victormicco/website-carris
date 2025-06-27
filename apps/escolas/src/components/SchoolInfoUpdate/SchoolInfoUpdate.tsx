@@ -8,7 +8,6 @@ import { Button, Loader, Paper } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
-import { error } from 'node:console';
 import { useState } from 'react';
 
 import { AdditionalInformation } from '../update-form/AdditionalInformationSection';

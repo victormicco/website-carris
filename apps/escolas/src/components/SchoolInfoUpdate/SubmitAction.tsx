@@ -1,5 +1,4 @@
 'use server';
-import { count } from 'console';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import { env } from 'process';
