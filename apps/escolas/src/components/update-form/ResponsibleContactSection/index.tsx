@@ -11,7 +11,7 @@ export function ResponsibleContact({ form }) {
 
 				<TextInput
 					label="Nome do responsável pela submissão do formulário"
-					placeholder="Ana silva"
+					placeholder="Ana Silva"
 					size="md"
 					{...form.getInputProps('fillerIdentifier')}
 				/>
