@@ -67,6 +67,7 @@ export async function submit(data: FormType): Promise<{ message: string, success
 			...parsedEducationCycles,
 		].map(v => v == null ? '' : v);
 
+		// make sure to insert the data correctly (next row, start at the A column) in the google sheets
 		const response = await sheets.spreadsheets.values.get({
 			range: 'Sheet1!A1:AB',
 			spreadsheetId: env.GOOGLE_SHEET_ID,
@@ -74,6 +75,7 @@ export async function submit(data: FormType): Promise<{ message: string, success
 		const get_Values = response.data.values;
 		const row = (get_Values?.length ?? 0) + 1;
 		const range = `Sheet1!A${row}:Z${row}`;
+
 		await sheets.spreadsheets.values.append({
 			range: range,
 			requestBody: {

@@ -1,15 +1,13 @@
 'use client';
 import BackHome from '@/components/BackHome/BackHome';
 import Titles from '@/components/Titles/Titles';
-
-import InfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
-// import { submit } from './SubmitAction';
 import { Button, Loader, Paper } from '@mantine/core';
 import { FormValidateInput, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { IconX } from '@tabler/icons-react';
 import { useState } from 'react';
 
+import InfoUpdateMap from '../SchoolInfoUpdateMap/SchoolInfoUpdateMap';
 import { AdditionalInformation } from '../update-form/AdditionalInformationSection';
 import { ContactData } from '../update-form/ContactDataSection';
 import { Location } from '../update-form/LocationSection';
