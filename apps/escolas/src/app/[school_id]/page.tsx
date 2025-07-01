@@ -1,25 +1,21 @@
-'use client';
+/* * */
 
-import Layout from '@/components/Layout/Layout';
 import SchoolInfo from '@/components/SchoolInfo/SchoolInfo';
-import { useParams } from 'next/navigation';
 
-export default function Page() {
+/* * */
+
+export default async function Page({ params }) {
 	//
 
 	//
 	// A. Setup variables
 
-	const { school_id } = useParams();
+	const { school_id } = await params;
 
 	//
 	// B. Render components
 
-	return (
-		<Layout>
-			<SchoolInfo school_id={school_id} />
-		</Layout>
-	);
+	return <SchoolInfo school_id={school_id} />;
 
 	//
 }

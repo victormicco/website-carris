@@ -1,0 +1,26 @@
+/* * */
+/* CONTAINER */
+
+.container {
+	max-width: 800px;
+	padding: 20px;
+	margin: auto;
+}
+
+@media (width <= 800px) {
+	.container {
+		padding: 20px;
+	}
+}
+
+/* * */
+/* HEADER */
+
+.header {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}

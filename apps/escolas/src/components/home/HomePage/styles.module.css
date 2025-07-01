@@ -1,0 +1,41 @@
+/* * */
+/* CONTAINER */
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+/* * */
+/* TITLE */
+
+.title {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* * */
+/* FILTERS */
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .filters {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+}

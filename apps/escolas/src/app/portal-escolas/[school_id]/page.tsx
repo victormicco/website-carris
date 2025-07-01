@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/common/WebsiteWrapper';
 import SchoolInfoUpdate from '@/components/SchoolInfoUpdate/SchoolInfoUpdate';
 
 export default async function Page({ params }) {

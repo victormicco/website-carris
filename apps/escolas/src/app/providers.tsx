@@ -1,14 +1,18 @@
 'use client';
 
+/* * */
+
 import { MapOptionsContextProvider } from '@/contexts/MapOptions.context';
 import { MantineProvider } from '@mantine/core';
+import { type PropsWithChildren } from 'react';
 import { MapProvider } from 'react-map-gl/maplibre';
 import { SWRConfig } from 'swr';
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+/* * */
+
+export function Providers({ children }: PropsWithChildren) {
 	//
 
-	// Use SWR
 	const swrOptions = {
 		fetcher: async (...args: [RequestInfo, RequestInit?]) => {
 			const res = await fetch(...args);
@@ -28,7 +32,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 		<SWRConfig value={swrOptions}>
 			<MantineProvider>
 				<MapOptionsContextProvider>
-					<MapProvider>{children}</MapProvider>
+					<MapProvider>
+						{children}
+					</MapProvider>
 				</MapOptionsContextProvider>
 			</MantineProvider>
 		</SWRConfig>

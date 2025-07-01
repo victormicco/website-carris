@@ -1,18 +1,24 @@
-//
-// ROOT LAYOUT
+/* * */
 
-import '@/styles/reset.css';
-import '@/styles/defaults.css';
-import '@/styles/colors.css';
+import { WebsiteWrapper } from '@/components/common/WebsiteWrapper';
+import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
+import { Notifications } from '@mantine/notifications';
+import { type Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { type PropsWithChildren } from 'react';
+
+import { Providers } from './providers';
+
+/* * */
+
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { ColorSchemeScript } from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
-import { Inter } from 'next/font/google';
-import React from 'react';
+import '@/styles/reset.css';
+import '@/styles/defaults.css';
+import '@/styles/colors.css';
 
-import Providers from './providers';
+/* * */
 
 const inter = Inter({
 	display: 'swap',
@@ -21,26 +27,28 @@ const inter = Inter({
 	weight: ['400', '500', '600', '700', '800'],
 });
 
-export const metadata = {
-	description: 'Escolas servidas pela Carris Metropolitana',
-	title: 'Carris Metropolitana',
+/* * */
+
+export const metadata: Metadata = {
+	description: 'Escolas servidas pela CMetropolitana',
+	metadataBase: new URL(getPublicVariable('server_url_schools')),
+	title: 'CMetropolitana',
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode
-}) {
+/* * */
+
+export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
-		<html className={inter.variable} data-mantine-color-scheme="light" lang="pt">
+		<html className={inter.variable}>
 			<head>
-				<ColorSchemeScript />
-				<link href="/favicon.svg" rel="shortcut icon" />
+				<meta content="transparent" name="theme-color" />
 			</head>
 			<body>
 				<Providers>
 					<Notifications />
-					{children}
+					<WebsiteWrapper>
+						{children}
+					</WebsiteWrapper>
 				</Providers>
 			</body>
 		</html>

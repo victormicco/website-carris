@@ -3,6 +3,7 @@
 import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { type PropsWithChildren } from 'react';
 
 /* * */
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 
 /* * */
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html className={inter.variable}>
 			<head>

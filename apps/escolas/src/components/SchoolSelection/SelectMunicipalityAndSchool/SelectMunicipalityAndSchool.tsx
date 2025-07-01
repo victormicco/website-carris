@@ -10,7 +10,7 @@ import styles from './SelectMunicipalityAndSchool.module.css';
 
 import SelectEducationLevel from '../SelectEducationLevel/SelectEducationLevel';
 
-export default function SelectMunicipalityAndSchool({ onSelectEducationLevel, onSelectMunicipalityId, onSelectSchool, selectedEducationLevel, selectedMunicipalityId, title }) {
+export function SelectMunicipalityAndSchool({ onSelectEducationLevel, onSelectMunicipalityId, onSelectSchool, selectedEducationLevel, selectedMunicipalityId, title }) {
 	//
 
 	//

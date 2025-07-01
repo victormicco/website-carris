@@ -10,6 +10,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@carrismetropolitana/website-shared-settings": "*",
 		"@mantine/core": "8.1.2",
 		"@mantine/dates": "8.1.2",
 		"@mantine/form": "8.1.2",
