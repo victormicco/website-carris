@@ -13,9 +13,14 @@ import styles from './styles.module.css';
 
 /* * */
 
+import NeedlePinImage from '@/images/needle-pin.png';
+import SchoolMarkerImage from '@/images/school-marker.png';
+
+/* * */
+
 const MAP_LOAD_ASSETS = [
-	{ name: 'school-icon', sdf: false, url: '/images/escola.png' },
-	{ name: 'needle-pin', sdf: false, url: '/images/needle-pin.png' },
+	{ name: 'school-marker', sdf: false, url: SchoolMarkerImage.src },
+	{ name: 'needle-pin', sdf: false, url: NeedlePinImage.src },
 ];
 
 /* * */

@@ -124,7 +124,7 @@ export function MapViewSchools({ allSchoolsData, onSelectSchool }) {
 							layout={{
 								'icon-allow-overlap': true,
 								'icon-ignore-placement': true,
-								'icon-image': 'school-icon',
+								'icon-image': 'school-marker',
 								'icon-size': ['interpolate', ['linear'], ['zoom'], 9, 0.05, 100, 3],
 							}}
 							paint={{

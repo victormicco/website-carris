@@ -145,7 +145,7 @@ export function UpdatePortalSetLocationMap({ schoolId }: Props) {
 						'icon-allow-overlap': true,
 						'icon-anchor': 'bottom',
 						'icon-ignore-placement': true,
-						'icon-image': 'school-icon',
+						'icon-image': 'school-marker',
 						'icon-offset': [0, 5],
 						'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.25, 20, 0.35],
 						'symbol-placement': 'point',
