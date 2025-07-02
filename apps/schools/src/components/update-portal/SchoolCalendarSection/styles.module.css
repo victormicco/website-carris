@@ -1,0 +1,30 @@
+/* * */
+/* CALENDAR DATES */
+
+.calendarDatesWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.calendarDateRow {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	background-color: var(--mantine-color-blue-light);
+}
+
+/* * */
+/* INTERRUPTIONS */
+
+.interruptionRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr auto;
+	gap: 20px;
+	align-items: flex-end;
+	padding: 10px;
+	background-color: var(--mantine-color-blue-light);
+}
