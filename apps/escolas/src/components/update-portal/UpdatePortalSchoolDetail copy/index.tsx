@@ -4,11 +4,11 @@
 
 import BackHome from '@/components/BackHome/BackHome';
 import Titles from '@/components/Titles/Titles';
-import { AdditionalInformationSection } from '@/components/update-portal/AdditionalInformationSection';
-import { CommsResponsibleContactSection } from '@/components/update-portal/CommsResponsibleContactSection';
-import { ContactDataSection } from '@/components/update-portal/ContactDataSection';
+import { AdditionalInformationSection } from '@/components/update-portal/CommentsFormSection';
+import { CommsResponsibleContactSection } from '@/components/update-portal/CommsResponsibleContactFormSection';
+import { ContactDataSection } from '@/components/update-portal/ContactsFormSection';
 import { LocationSection } from '@/components/update-portal/LocationSection';
-import { ModalitiesSection } from '@/components/update-portal/ModalitiesSection';
+import { ModalitiesSection } from '@/components/update-portal/CyclesFormSection';
 import { SchoolCalendarSection } from '@/components/update-portal/SchoolCalendarSection';
 import { UpdatePortalSetLocationMap } from '@/components/update-portal/UpdatePortalSetLocationMap';
 import { Button, Loader, Paper } from '@mantine/core';
@@ -19,7 +19,7 @@ import { useMemo, useState } from 'react';
 import useSWR from 'swr';
 
 import { ModalSection } from '../ModalSection';
-import { SubmitCodeSection } from '../SubmitCodeSection';
+import { SubmitCodeSection } from '../ValidateCodeSection';
 import { submit } from './SubmitAction';
 import { FormType, SchoolCicle, SchoolCicleObjects } from './types';
 

@@ -1,5 +1,5 @@
 import { MantineSize, Popover, PopoverProps, Text } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useState } from 'react';
 
 import styles from './styles.module.css';
 
@@ -18,13 +18,13 @@ export default function Component({
 	withArrow = true,
 	...props
 }: ComponentProps) {
-	const [opened, { close, open }] = useDisclosure(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<div className={styles.popover}>
-			<Popover opened={opened} position={position} shadow={shadow} withArrow={withArrow} {...props}>
+			<Popover opened={isOpen} position={position} shadow={shadow} withArrow={withArrow} {...props}>
 				<Popover.Target>
-					<div onMouseEnter={open} onMouseLeave={close}>
+					<div onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
 						{children}
 					</div>
 				</Popover.Target>

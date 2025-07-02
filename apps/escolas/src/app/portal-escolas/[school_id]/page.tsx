@@ -1,6 +1,6 @@
 /* * */
 
-import { UpdatePortalSchoolDetail } from '@/components/update-portal/UpdatePortalSchoolDetail';
+import { PortalSchoolDetail } from '@/components/update-portal/PortalSchoolDetail';
 
 /* * */
 
@@ -15,7 +15,7 @@ export default async function Page({ params }) {
 	//
 	// B. Render components
 
-	return <UpdatePortalSchoolDetail schoolId={school_id} />;
+	return <PortalSchoolDetail schoolId={school_id} />;
 
 	//
 }

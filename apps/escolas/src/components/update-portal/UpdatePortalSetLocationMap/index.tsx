@@ -3,7 +3,7 @@
 /* * */
 
 import { MapView } from '@/components/map/MapView';
-import { SchoolData } from '@/components/update-portal/UpdatePortalSchoolDetail/types';
+import { SchoolData } from '@/components/update-portal/PortalSchoolDetail/types';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { Marker, useMap } from 'react-map-gl/maplibre';

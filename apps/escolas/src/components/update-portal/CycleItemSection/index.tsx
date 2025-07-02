@@ -2,23 +2,28 @@
 
 /* * */
 
-import CustomTimeInput from '@/components/CustomTimeInput/CustomTimeInput';
-import { Checkbox, Collapse, Paper, Stack, Text } from '@mantine/core';
+import { useUpdateSchoolFormContext } from '@/form/form';
+import { Checkbox, Collapse, Flex, Paper, Stack } from '@mantine/core';
+import { TimePicker } from '@mantine/dates';
 
 /* * */
 
-export function CycleItemSection({ form, itemKey, label }) {
+interface Props {
+	fieldKey: string
+	label: string
+}
+
+/* * */
+
+export function CycleItemSection({ fieldKey, label }: Props) {
 	//
 
 	//
 	// A. Setup Variables
 
-	const morningEntryProps = form.getInputProps(itemKey + '.morningEntry', { type: 'input' });
-	const morningExitProps = form.getInputProps(itemKey + '.morningExit', { type: 'input' });
-	const afternoonEntryProps = form.getInputProps(itemKey + '.afternoonEntry', { type: 'input' });
-	const afternoonExitProps = form.getInputProps(itemKey + '.afternoonExit', { type: 'input' });
+	const form = useUpdateSchoolFormContext();
 
-	const checked = form.values[itemKey].hasCicle;
+	const checked = form.getValues().school_cycles?.[fieldKey]?._is_enabled;
 
 	//
 	// B. Render Component
@@ -31,33 +36,31 @@ export function CycleItemSection({ form, itemKey, label }) {
 					c={checked ? 'blue' : ''}
 					fw={700}
 					label={label}
-					{...form.getInputProps(itemKey + '.hasCicle', { type: 'checkbox' })}
+					{...form.getInputProps(`school_cycles.${fieldKey}._is_enabled`, { type: 'checkbox' })}
 				/>
 
 				<Collapse in={checked}>
 					<Stack gap={10}>
+						<Flex gap={10} w="100%">
+							<TimePicker
+								label="Principal Hora de entrada de manhã"
+								{...form.getInputProps(`school_cycles.${fieldKey}.morning_entry`)}
+							/>
+							<TimePicker
+								label="Principal Hora de saída da manhã"
+								{...form.getInputProps(`school_cycles.${fieldKey}.morning_exit`)}
+							/>
+						</Flex>
 						<div>
-							<Text size="s">Principal hora de entrada de manhã</Text>
-							<CustomTimeInput
-								inputProps={morningEntryProps}
+							<TimePicker
+								label="Principal Hora de entrada da tarde"
+								{...form.getInputProps(`school_cycles.${fieldKey}.afternoon_entry`)}
 							/>
 						</div>
 						<div>
-							<Text size="s">Principal hora de saída de manhã</Text>
-							<CustomTimeInput
-								inputProps={morningExitProps}
-							/>
-						</div>
-						<div>
-							<Text size="s">Principal hora de entrada de tarde</Text>
-							<CustomTimeInput
-								inputProps={afternoonEntryProps}
-							/>
-						</div>
-						<div>
-							<Text size="s">Principal hora de saída de tarde</Text>
-							<CustomTimeInput
-								inputProps={afternoonExitProps}
+							<TimePicker
+								label="Principal Hora de saída da tarde"
+								{...form.getInputProps(`school_cycles.${fieldKey}.afternoon_exit`)}
 							/>
 						</div>
 					</Stack>

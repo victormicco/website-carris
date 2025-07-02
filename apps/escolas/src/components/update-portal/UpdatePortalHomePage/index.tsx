@@ -12,7 +12,13 @@ import styles from './styles.module.css';
 /* * */
 
 export function UpdatePortalHomePage() {
+	//
+
+	//
+	// A. Setup variables
+
 	const router = useRouter();
+
 	const [selectedMunicipalityId, setSelectedMunicipalityId] = useState(null);
 	const [selectedEducationLevel, setSelectedEducationLevel] = useState(null);
 
@@ -24,6 +30,9 @@ export function UpdatePortalHomePage() {
 	const handleSelectSchool = (schooldId: string) => {
 		if (schooldId) router.push(`/portal-escolas/${schooldId}`);
 	};
+
+	//
+	// C. Render components
 
 	return (
 		<div>
@@ -79,6 +88,7 @@ export function UpdatePortalHomePage() {
 				</div>
 			)}
 		</div>
-
 	);
+
+	//
 }

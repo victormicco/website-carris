@@ -2,11 +2,22 @@
 
 /* * */
 
+import { useUpdateSchoolFormContext } from '@/form/form';
 import { Paper, Stack, Text, TextInput, Title } from '@mantine/core';
 
 /* * */
 
-export function CommsResponsibleContactSection({ form }) {
+export function CommsResponsibleContactFormSection() {
+	//
+
+	//
+	// A. Setup variables
+
+	const form = useUpdateSchoolFormContext();
+
+	//
+	// B. Render components
+
 	return (
 		<Paper p={16} radius="md" shadow="sm">
 			<Title fw={700} order={3} style={{ marginLeft: '4px' }}>Dados de contacto do responsável </Title>
@@ -14,29 +25,30 @@ export function CommsResponsibleContactSection({ form }) {
 			<Stack gap={15}>
 
 				<TextInput
-					label="Nome do responsável pela submissão do formulário"
+					{...form.getInputProps('comms_contact.name')}
+					label="Nome do responsável de comunicação"
 					placeholder="Ana Silva"
 					size="md"
-					{...form.getInputProps('fillerIdentifier')}
 				/>
 
 				<TextInput
+					{...form.getInputProps('comms_contact.email')}
 					description="Email(s) separados por vírgulas"
 					label="Email"
 					placeholder="email@exemplo.pt"
 					size="md"
-					{...form.getInputProps('email')}
 				/>
 
 				<TextInput
+					{...form.getInputProps('comms_contact.phone')}
 					label="Telefone"
 					placeholder="910001337"
 					size="md"
-
-					{...form.getInputProps('phone')}
 				/>
 
 			</Stack>
 		</Paper>
 	);
+
+	//
 }
