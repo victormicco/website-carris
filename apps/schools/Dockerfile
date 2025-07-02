@@ -9,7 +9,7 @@ FROM node:lts-alpine AS base
 # Set the project slug to be used
 # as the directory source for the build files.
 
-ENV PROJECT=frontend
+ENV PROJECT=schools
 
 ARG ENVIRONMENT
 
@@ -41,7 +41,7 @@ COPY package.json ./
 
 COPY . .
 
-RUN turbo prune --scope=@carrismetropolitana/escolas-${PROJECT} --docker
+RUN turbo prune --scope=@carrismetropolitana/website-${PROJECT} --docker
 
 
 
@@ -76,7 +76,7 @@ COPY --from=pruner /app/out/full/ .
 
 RUN npx @helperkits/bumper /app/apps/${PROJECT}/package.json
 
-RUN turbo run build --filter=@carrismetropolitana/escolas-${PROJECT}
+RUN turbo run build --filter=@carrismetropolitana/website-${PROJECT}
 
 
 

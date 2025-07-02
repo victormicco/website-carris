@@ -2,8 +2,8 @@
 
 /* * */
 
-import BackHome2 from '@/components/BackHome/BackHome2';
 import BlackHeader from '@/components/BlackHeader/BlackHeader';
+import { GoBackButton } from '@/components/common/GoBackButton';
 import DownloadPDF from '@/components/DownloadPDF/DownloadPDF';
 import { MapView } from '@/components/map/MapView';
 import NaveganteCard from '@/components/NaveganteCard/NaveganteCard';
@@ -158,7 +158,7 @@ export function SchoolDetail({ schoolId }: Props) {
 					</div>
 				</div>
 
-				<BackHome2 />
+				<GoBackButton to="/" />
 
 				<SourceDisclaimer />
 			</div>

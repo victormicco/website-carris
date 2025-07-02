@@ -2,7 +2,7 @@
 
 /* * */
 
-import BackHome from '@/components/BackHome/BackHome';
+import { GoBackButton } from '@/components/common/GoBackButton';
 import Titles from '@/components/Titles/Titles';
 import { PortalSchoolDetailForm } from '@/components/update-portal/PortalSchoolDetailForm';
 import { ValidateCodeSection } from '@/components/update-portal/ValidateCodeSection';
@@ -100,7 +100,7 @@ export function PortalSchoolDetail({ schoolId }: Props) {
 
 			{/* <ModalSection setSuccessMessage={setSuccessMessage} successMessage={successMessage} /> */}
 
-			<BackHome />
+			<GoBackButton to="/portal-escolas" />
 
 		</div>
 	);
