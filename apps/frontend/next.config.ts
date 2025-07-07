@@ -127,7 +127,7 @@ const nextConfig: NextConfig = {
 
 			{ destination: 'https://open.spotify.com/user/31zy3uavd2sad4ozlwoze2usqmku', permanent: false, source: '/spotify' },
 
-			{ destination: 'https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=oWkNgw7RyEuHQh9We70hJgzQsUt3yhFEnruMozED1dFUMDhGVkhERVZCRjZZUTVOUzFONkVTMU43Si4u&analysis=false', permanent: false, source: '/volley' },
+			{ destination: 'https://forms.office.com/e/f6bs15vZYD', permanent: false, source: '/volley' },
 
 			/* * */
 			/* LEGACY */
