@@ -20,7 +20,7 @@
 		"@payloadcms/richtext-lexical": "3.47.0",
 		"@payloadcms/storage-s3": "3.47.0",
 		"@payloadcms/ui": "3.47.0",
-		"@tmlmobilidade/utils": "20250715.148.37",
+		"@tmlmobilidade/utils": "20250717.1130.16",
 		"graphql": "16.11.0",
 		"next": "15.4.1",
 		"nodemailer": "7.0.5",
@@ -32,8 +32,8 @@
 	"devDependencies": {
 		"@carrismetropolitana/eslint": "20250622.1204.50",
 		"@carrismetropolitana/website-shared-types": "*",
-		"@tmlmobilidade/tsconfig": "20250715.148.37",
-		"@types/node": "24.0.13",
+		"@tmlmobilidade/tsconfig": "20250717.1407.13",
+		"@types/node": "24.0.14",
 		"@types/react": "19.1.8",
 		"@types/react-dom": "19.1.6",
 		"typescript": "5.8.3"
