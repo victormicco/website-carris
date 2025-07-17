@@ -50,7 +50,7 @@ export function MapViewStyleMupiStops({ presentBeforeId, stopsData = baseGeoJson
 							9,
 							['case', ['boolean', ['feature-state', 'active'], false], 5, 2],
 							26,
-							['case', ['boolean', ['feature-state', 'active'], false], 25, 40],
+							['case', ['boolean', ['feature-state', 'active'], false], 25, 50],
 						],
 						'circle-stroke-color': [
 							'match',
@@ -66,9 +66,9 @@ export function MapViewStyleMupiStops({ presentBeforeId, stopsData = baseGeoJson
 							['linear'],
 							['zoom'],
 							9,
-							0.01,
+							0.1,
 							26,
-							['case', ['boolean', ['feature-state', 'active'], false], 8, 8],
+							['case', ['boolean', ['feature-state', 'active'], false], 8, 10],
 						],
 					}}
 				/>
