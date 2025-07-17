@@ -2,7 +2,7 @@
 
 import { Surface } from '@/components/layout/Surface';
 import { MapView } from '@/components/map/MapView';
-import { MapViewStyleStops, MapViewStyleStopsInteractiveLayerId } from '@/components/map/MapViewStyleStops';
+import { MapViewStyleMupiStops, MapViewStyleMupiStopsInteractiveLayerId } from '@/components/map/MapViewStyleMupiStops';
 import { useStopsListContext } from '@/contexts/StopsList.context';
 import { centerMap } from '@/utils/map.utils';
 import * as turf from '@turf/turf';
@@ -53,7 +53,7 @@ export function MupiStopsListViewMap() {
 		const features = stopsListMap.queryRenderedFeatures(event.point);
 		if (!features.length) return;
 		for (const feature of features) {
-			if (feature.layer.id === MapViewStyleStopsInteractiveLayerId) {
+			if (feature.layer.id === MapViewStyleMupiStopsInteractiveLayerId) {
 				router.push(`/mupi/stops/${feature.properties.id}`);
 				return;
 			}
@@ -68,10 +68,10 @@ export function MupiStopsListViewMap() {
 			<div style={{ height: 600 }}>
 				<MapView
 					id="stopsListMap"
-					interactiveLayerIds={[MapViewStyleStopsInteractiveLayerId]}
+					interactiveLayerIds={[MapViewStyleMupiStopsInteractiveLayerId]}
 					onClick={handleLayerClick}
 				>
-					<MapViewStyleStops stopsData={stopsListContext.data.filtered_fc} />
+					<MapViewStyleMupiStops stopsData={stopsListContext.data.filtered_fc} />
 				</MapView>
 			</div>
 		</Surface>
