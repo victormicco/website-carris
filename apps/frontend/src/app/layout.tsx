@@ -31,7 +31,12 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html className={inter.variable}>
-			{children}
+			<head>
+				<meta content="transparent" name="theme-color" />
+			</head>
+			<body>
+				{children}
+			</body>
 		</html>
 	);
 }

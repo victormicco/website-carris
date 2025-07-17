@@ -60,7 +60,7 @@ export function AlertsDetail({ alertId }: Props) {
 
 			<Surface>
 				<Section withBottomDivider withPadding>
-					<BackButton href="/alerts" />
+					<BackButton />
 				</Section>
 				<Section heading={simplifiedAlertData?.title} withBottomDivider withPadding>
 					<div className={styles.infoBar}>

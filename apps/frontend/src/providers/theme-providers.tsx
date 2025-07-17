@@ -41,6 +41,7 @@ export function ThemeProviders({ children, themeData, themeId }: Props) {
 			const themeColor = getCssVariableValue('--color-system-background-100');
 			const metaTag = document.querySelector('meta[name="theme-color"]');
 			if (metaTag && themeColor) metaTag.setAttribute('content', themeColor);
+			document.documentElement.setAttribute('data-theme', themeId);
 		}, 100);
 		return () => clearInterval(interval);
 	}, []);

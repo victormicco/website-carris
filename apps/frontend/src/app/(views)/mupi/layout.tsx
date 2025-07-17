@@ -13,26 +13,19 @@ import { Notifications } from '@mantine/notifications';
 
 export default function Layout({ children }) {
 	return (
-		<>
-			<head>
-				<meta content="transparent" name="theme-color" />
-			</head>
-			<body data-theme="mupi">
-				<ConfigProviders>
-					<ThemeProviders themeData={mupiTheme} themeId="mupi">
-						<DataProviders>
-							<ProfileProviders>
-								<MapProviders>
-									<Notifications styles={{ root: { marginTop: '60px' } }} />
-									<MupiViewport>
-										{children}
-									</MupiViewport>
-								</MapProviders>
-							</ProfileProviders>
-						</DataProviders>
-					</ThemeProviders>
-				</ConfigProviders>
-			</body>
-		</>
+		<ConfigProviders>
+			<ThemeProviders themeData={mupiTheme} themeId="mupi">
+				<DataProviders>
+					<ProfileProviders>
+						<MapProviders>
+							<Notifications styles={{ root: { marginTop: '60px' } }} />
+							<MupiViewport>
+								{children}
+							</MupiViewport>
+						</MapProviders>
+					</ProfileProviders>
+				</DataProviders>
+			</ThemeProviders>
+		</ConfigProviders>
 	);
 }

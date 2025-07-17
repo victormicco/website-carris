@@ -22,7 +22,7 @@ interface Props {
 
 /* * */
 
-export default function Component({ alertId }: Props) {
+export function AlertListItem({ alertId }: Props) {
 	//
 
 	//

@@ -13,26 +13,19 @@ import { Notifications } from '@mantine/notifications';
 
 export default function Layout({ children }) {
 	return (
-		<>
-			<head>
-				<meta content="transparent" name="theme-color" />
-			</head>
-			<body>
-				<ConfigProviders>
-					<ProfileProviders>
-						<ThemeProviders themeData={websiteTheme} themeId="website">
-							<DataProviders>
-								<MapProviders>
-									<Notifications styles={{ root: { marginTop: '60px' } }} />
-									<WebsiteViewport>
-										{children}
-									</WebsiteViewport>
-								</MapProviders>
-							</DataProviders>
-						</ThemeProviders>
-					</ProfileProviders>
-				</ConfigProviders>
-			</body>
-		</>
+		<ConfigProviders>
+			<ProfileProviders>
+				<ThemeProviders themeData={websiteTheme} themeId="website">
+					<DataProviders>
+						<MapProviders>
+							<Notifications styles={{ root: { marginTop: '60px' } }} />
+							<WebsiteViewport>
+								{children}
+							</WebsiteViewport>
+						</MapProviders>
+					</DataProviders>
+				</ThemeProviders>
+			</ProfileProviders>
+		</ConfigProviders>
 	);
 }
