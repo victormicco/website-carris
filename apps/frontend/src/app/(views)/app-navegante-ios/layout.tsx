@@ -9,12 +9,19 @@ import { appNaveganteTheme } from '@/themes/app-navegante/app-navegante.theme';
 
 export default function Layout({ children }) {
 	return (
-		<ConfigProviders>
-			<ThemeProviders themeData={appNaveganteTheme} themeId="app-navegante-ios">
-				<AppViewport>
-					{children}
-				</AppViewport>
-			</ThemeProviders>
-		</ConfigProviders>
+		<>
+			<head>
+				<meta content="transparent" name="theme-color" />
+			</head>
+			<body>
+				<ConfigProviders>
+					<ThemeProviders themeData={appNaveganteTheme} themeId="app-navegante-ios">
+						<AppViewport>
+							{children}
+						</AppViewport>
+					</ThemeProviders>
+				</ConfigProviders>
+			</body>
+		</>
 	);
 }
