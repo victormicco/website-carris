@@ -3,8 +3,8 @@
 /* * */
 
 import { MupiStopsDetailAlerts } from '@/components/stops/MupiStopsDetailAlerts';
+import { MupiStopsDetailContent } from '@/components/stops/MupiStopsDetailContent';
 import { MupiStopsDetailHeader } from '@/components/stops/MupiStopsDetailHeader';
-import { StopsDetailContent } from '@/components/stops/StopsDetailContent';
 
 /* * */
 
@@ -13,7 +13,7 @@ export function MupiStopsDetail() {
 		<>
 			<MupiStopsDetailHeader />
 			<MupiStopsDetailAlerts />
-			<StopsDetailContent />
+			<MupiStopsDetailContent />
 			{/* TODO */}
 			{/* <StopDetailMetrics /> */}
 		</>
