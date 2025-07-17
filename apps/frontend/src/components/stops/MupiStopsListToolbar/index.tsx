@@ -25,8 +25,8 @@ export function MupiStopsListToolbar() {
 	// B. Transform data
 
 	const currentViewOptions = [
-		{ label: t('filters.by_current_view.map'), value: 'map' },
 		{ label: t('filters.by_current_view.list'), value: 'list' },
+		{ label: t('filters.by_current_view.map'), value: 'map' },
 	];
 
 	//

@@ -10,9 +10,7 @@ import { Surface } from '@/components/layout/Surface';
 import { LineBadge } from '@/components/lines/LineBadge';
 import { StopDisplayLocation } from '@/components/stops/StopDisplayLocation';
 import { StopDisplayName } from '@/components/stops/StopDisplayName';
-import { useProfileContext } from '@/contexts/Profile.context';
 import { useStopsDetailContext } from '@/contexts/StopsDetail.context';
-import toast from '@/utils/toast';
 
 import styles from './styles.module.css';
 
@@ -24,21 +22,7 @@ export function MupiStopsDetailHeader() {
 	//
 	// A. Setup variables
 
-	const profileContext = useProfileContext();
 	const stopsDetailContext = useStopsDetailContext();
-
-	//
-	// B. Handle actions
-
-	const handleToggleFavorite = () => {
-		if (!stopsDetailContext.data.stop) return;
-		try {
-			profileContext.actions.toggleFavoriteStop(stopsDetailContext.data.stop.id);
-		}
-		catch (error) {
-			toast.error({ message: 'Error: ' + error.message });
-		}
-	};
 
 	//
 	// C. Render components

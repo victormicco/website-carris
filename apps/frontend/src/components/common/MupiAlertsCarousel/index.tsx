@@ -1,7 +1,7 @@
 /* * */
 
-import { AlertsCarouselSlide } from '@/components/common/AlertsCarouselSlide';
 import Carousel from '@/components/common/Carousel';
+import { MupiAlertsCarouselSlide } from '@/components/common/MupiAlertsCarouselSlide';
 import { type SimplifiedAlert } from '@/types/alerts.types';
 
 /* * */
@@ -13,13 +13,13 @@ interface Props {
 
 /* * */
 
-export function AlertsCarousel({ alerts, target = '_blank' }: Props) {
+export function MupiAlertsCarousel({ alerts, target = '_blank' }: Props) {
 	//
 
 	const carouselSlides = alerts?.map(slideItem => ({
 		_id: slideItem.alert_id + slideItem.description,
 		component: (
-			<AlertsCarouselSlide alert={slideItem} target={target} />
+			<MupiAlertsCarouselSlide alert={slideItem} target={target} />
 		),
 	}));
 

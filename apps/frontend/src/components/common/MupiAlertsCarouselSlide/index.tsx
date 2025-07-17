@@ -17,7 +17,7 @@ interface Props {
 
 /* * */
 
-export function AlertsCarouselSlide({ alert, target = '_blank' }: Props) {
+export function MupiAlertsCarouselSlide({ alert, target = '_blank' }: Props) {
 	//
 
 	//
@@ -36,7 +36,7 @@ export function AlertsCarouselSlide({ alert, target = '_blank' }: Props) {
 	// C. Render components
 
 	return (
-		<Link className={styles.container} href={`/alerts/${alert.alert_id}`} onClick={handleAlertClick} target={target}>
+		<Link className={styles.container} href={`/mupi/alerts/${alert.alert_id}`} onClick={handleAlertClick} target={target}>
 			<AlertActivePeriodStart date={alert.start_date} size="sm" />
 			<p className={styles.title}>
 				{alert.title}
