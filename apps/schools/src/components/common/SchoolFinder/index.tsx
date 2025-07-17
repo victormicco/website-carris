@@ -46,8 +46,9 @@ export function SchoolFinder({ onSelectEducationLevel, onSelectMunicipalityId, o
 			const isFromCascais = item.municipality_id === '1105';
 			const isFromLisbon = item.municipality_id === '1106';
 			if (isFromBarreiro || isFromCascais || isFromLisbon) return true;
-			// If it is from other municipalities, include the school only if it has associated stops
-			return item.stops?.length > 0;
+			// If it is from other municipalities,
+			// include the school only if it has associated stops
+			// return item.stops?.length > 0;
 			//
 		});
 		// Sort schools by name
