@@ -48,7 +48,7 @@ export function PeriodsWidget() {
 			// Setup the operational date time variable
 			const operationalDate = getOperationalDate();
 			// For each period, check if it contains the date for today
-			const result = periodsData.map((period) => {
+			const filteredPeriods = periodsData.map((period) => {
 				// Filter valid pairs with 'until' dates before the current date
 				const validPairsFiltered = period.valid.filter((validPair) => {
 					return Number(validPair.until) >= Number(operationalDate);
@@ -66,6 +66,11 @@ export function PeriodsWidget() {
 					name: period.name,
 					validPairs: validPairsFormatted,
 				};
+			});
+			// Sort the periods by the first valid pair's 'from' date
+			const result = filteredPeriods.sort((a, b) => {
+				if (a.validPairs.length === 0 || b.validPairs.length === 0) return 0;
+				return a.validPairs[0].from.getTime() - b.validPairs[0].from.getTime();
 			});
 			// Set the formatted data
 			setPeriodsDataFormatted(result);
