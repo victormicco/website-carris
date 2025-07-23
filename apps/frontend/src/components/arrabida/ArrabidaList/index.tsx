@@ -64,65 +64,78 @@ export function ArrabidaList() {
 	}
 
 	return (
-		<Surface variant="persistent" forceOverflow>
-			<Section>
-				<ViewportList itemMargin={0} items={linesListContext.data.filtered.slice(0, 7)}>
-					{(item) => {
-						const isFavorite = profileContext.data.favorite_lines?.includes(item.id) || false;
-						const alerts = alertsContext.actions.getSimplifiedAlertsByLineId(item.id);
-						const hasAlert = alerts.length > 0;
+		<div id="lines">
+			<Surface variant="persistent" forceOverflow>
+				<Section>
+					<ViewportList itemMargin={0} items={linesListContext.data.filtered.slice(0, 7)}>
+						{(item) => {
+							const isFavorite = profileContext.data.favorite_lines?.includes(item.id) || false;
+							const alerts = alertsContext.actions.getSimplifiedAlertsByLineId(item.id);
+							const hasAlert = alerts.length > 0;
 
-						return (
-							<div key={item.id} className={styles.listItemWrapper}>
-								<RegularListItem href={`/lines/${item.id}`}>
-									<div className={styles.itemContainer}>
-										<div className={styles.lineInfo}>
-											<LineBadge
-												lineData={item}
-												size="md"
-											/>
-											<LineName lineData={item} />
-										</div>
-										<div className={styles.actions}>
-											{hasAlert && (
+							return (
+								<div key={item.id} className={styles.listItemWrapper}>
+									<RegularListItem href={`/lines/${item.id}`}>
+										<div className={styles.itemContainer}>
+											<div className={styles.lineInfo}>
+												<LineBadge
+													lineData={item}
+													size="md"
+												/>
+												<LineName lineData={item} />
+											</div>
+											<div className={styles.actions}>
+												{hasAlert && (
+													<Tooltip
+														label={t('has_alerts')}
+														position="top"
+														withArrow
+													>
+														<div className={styles.alertIcon}>
+															<IconInfoTriangle size={20} />
+														</div>
+													</Tooltip>
+												)}
 												<Tooltip
-													label={t('has_alerts')}
+													label={t('toggle_favorite')}
 													position="top"
 													withArrow
 												>
-													<div className={styles.alertIcon}>
-														<IconInfoTriangle size={20} />
+													<div 
+														onMouseDown={(event) => {
+															event.preventDefault();
+															event.stopPropagation();
+														}}
+														onClick={(event) => {
+															event.preventDefault();
+															event.stopPropagation();
+														}}
+													>
+														<FavoriteToggle
+															color={item.color}
+															isActive={isFavorite}
+															onToggle={() => {
+																handleToggleFavorite(item.id, item.long_name);
+															}}
+														/>
 													</div>
 												</Tooltip>
-											)}
-											<Tooltip
-												label={t('toggle_favorite')}
-												position="top"
-												withArrow
-											>
-												<div>
-													<FavoriteToggle
-														color={item.color}
-														isActive={isFavorite}
-														onToggle={() => handleToggleFavorite(item.id, item.long_name)}
-													/>
-												</div>
-											</Tooltip>
+											</div>
 										</div>
-									</div>
-								</RegularListItem>
+									</RegularListItem>
 
-								{hasAlert && (
-									<div className={styles.alertsContainer}>
-										<AlertsCarousel alerts={alerts} />
-									</div>
-								)}
-							</div>
-						);
-					}}
-				</ViewportList>
-			</Section>
-		</Surface>
+									{hasAlert && (
+										<div className={styles.alertsContainer}>
+											<AlertsCarousel alerts={alerts} />
+										</div>
+									)}
+								</div>
+							);
+						}}
+					</ViewportList>
+				</Section>
+			</Surface>
+		</div>
 	);
 }
 

@@ -107,12 +107,25 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 20px;
-    background-color: transparent;
-    color: var(--color-system-text-400);
-    border: 1px solid var(--color-system-text-200);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #2c2c2c;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 999px;
     font-size: 12px;
-    padding: 5px 10px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttonSeeMore:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media (width <= 650px) {

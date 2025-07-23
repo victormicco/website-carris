@@ -23,8 +23,8 @@ export function WebsiteViewport({ children }) {
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
 
-	// Check if we're on the arrabida page
-	const isArrabidaPage = pathname === '/arrabida';
+	// Check if we're on the arrabida365 page
+	const isArrabidaPage = pathname === '/arrabida365';
 
 	//
 	// B. Render components

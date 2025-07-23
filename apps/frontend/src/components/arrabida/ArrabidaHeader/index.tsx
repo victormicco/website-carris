@@ -52,13 +52,16 @@ export function ArrabidaHeader() {
 				<div className={styles.contentWrapper}>
 					<ul className={styles.navList}>
 						<li>
-							<a href="/">{t('navigation.how_to_get')}</a>
+							<a href="#arrabida365">{t('navigation.arrabida365')}</a>
 						</li>
 						<li>
-							<a href="/">{t('navigation.lines')}</a>
+							<a href="#how-to-get">{t('navigation.how_to_get')}</a>
 						</li>
 						<li>
-							<a href="/">{t('navigation.about')}</a>
+							<a href="#lines">{t('navigation.lines')}</a>
+						</li>
+						<li>
+							<a href="#about">{t('navigation.about')}</a>
 						</li>
 					</ul>
                     <HeaderNavigationDrawer />

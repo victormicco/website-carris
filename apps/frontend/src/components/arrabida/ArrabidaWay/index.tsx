@@ -117,56 +117,58 @@ export function ArrabidaWay() {
 	// C. Render components
 
 	return (
-		<Surface>
-			<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
-				<div className={styles.container}>
-					{/* Map Section */}
-					<div className={styles.mapContainer}>
-						<Image 
-							src="/assets/arrabidas/arrabida_map.png" 
-							alt="Arrabida Way Map" 
-							width={400}
-							height={600}
-							className={styles.mapImage}
-						/>
-					</div>
+		<div id="how-to-get">
+			<Surface>
+				<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
+					<div className={styles.container}>
+						{/* Map Section */}
+						<div className={styles.mapContainer}>
+							<Image 
+								src="/assets/arrabidas/arrabida_map.png" 
+								alt="Arrabida Way Map" 
+								width={400}
+								height={600}
+								className={styles.mapImage}
+							/>
+						</div>
 
-					{/* Journey Steps Section */}
-					<div className={styles.journeyContainer}>
-						<Accordion 
-							defaultValue="praia-albarquel"
-							value={openSections} 
-							onChange={handleAccordionChange}
-							className={styles.accordion}
-						>
-							{destinationsData.map((destination) => (
-								<Accordion.Item key={destination.id} value={destination.id} className={styles.accordionItem}>
-									<Accordion.Control className={styles.accordionControl}>
-										<Text className={styles.stepTitle}>{destination.title}</Text>
-									</Accordion.Control>
-									<Accordion.Panel className={styles.accordionPanel}>
-										{destination.stops.map((stop, stopIndex) => (
-											<div key={stopIndex} className={styles.linesWrapper}>
-												<span>{stop.name}</span>
-												{stop.lineIds.map((lineId, lineIndex) => {
-													const lineData = linesContext.actions.getLineDataById(lineId);
-													
-													return (
-														<RegularListItem key={lineIndex} href={`/lines/${lineId}`}>
-															<LineDisplay lineData={lineData} />
-														</RegularListItem>
-													);
-												})}
-											</div>
-										))}
-									</Accordion.Panel>
-								</Accordion.Item>
-							))}
-						</Accordion>
+						{/* Journey Steps Section */}
+						<div className={styles.journeyContainer}>
+							<Accordion 
+								defaultValue="praia-albarquel"
+								value={openSections} 
+								onChange={handleAccordionChange}
+								className={styles.accordion}
+							>
+								{destinationsData.map((destination) => (
+									<Accordion.Item key={destination.id} value={destination.id} className={styles.accordionItem}>
+										<Accordion.Control className={styles.accordionControl}>
+											<Text className={styles.stepTitle}>{destination.title}</Text>
+										</Accordion.Control>
+										<Accordion.Panel className={styles.accordionPanel}>
+											{destination.stops.map((stop, stopIndex) => (
+												<div key={stopIndex} className={styles.linesWrapper}>
+													<span>{stop.name}</span>
+													{stop.lineIds.map((lineId, lineIndex) => {
+														const lineData = linesContext.actions.getLineDataById(lineId);
+														
+														return (
+															<RegularListItem key={lineIndex} href={`/lines/${lineId}`}>
+																<LineDisplay lineData={lineData} />
+															</RegularListItem>
+														);
+													})}
+												</div>
+											))}
+										</Accordion.Panel>
+									</Accordion.Item>
+								))}
+							</Accordion>
+						</div>
 					</div>
-				</div>
-			</Section>
-		</Surface>
+				</Section>
+			</Surface>
+		</div>
 	);
 
 	//
