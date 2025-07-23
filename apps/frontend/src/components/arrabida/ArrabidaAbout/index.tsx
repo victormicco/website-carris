@@ -8,7 +8,10 @@ import { Text } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { SetubalLogo } from './SetubalLogo';
 import { CarrisLogo } from './CarrisLogo';
-import { ArrabidaLogo } from './ArrabidaLogo';
+
+import { ArrabidaIcon } from '../ArrabidaHeader/ArrabidaIcon';
+import { ArrabidaLogo } from '../ArrabidaHeader/ArrabidaLogo';
+
 
 /* * */
 
@@ -37,12 +40,15 @@ export function ArrabidaAbout() {
                                 <span className={styles.textBold}>{t('text-1')}</span>{' '}
                                 {t('text-2')}{' '}
                                 <span className={styles.textBold}>{t('text-3')}</span>
-                            </Text>
+                            </Text>{' '}
                             <Text className={styles.text}>{t('text-4')}</Text>
                         </div>
 
                         <div className={styles.logos}>
-                            <ArrabidaLogo />
+                            <div className={styles.logoWrapper}>
+                                <ArrabidaIcon />
+                                <ArrabidaLogo />
+                            </div>
                             <CarrisLogo />
                             <SetubalLogo />
                         </div>
