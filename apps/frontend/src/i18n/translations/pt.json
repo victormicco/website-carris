@@ -177,6 +177,8 @@
 			"subtitle": "Todos os passes da Arrábida servidos pela Carris Metropolitana"
 		},
 		"ArrabidaList": {
+			"title": "Linhas",
+			"subtitle": "Aqui pode encontrar informações resumidas das linhas da Carris Metropolitana que servem as diferentes praias da Arrábida.",
 			"favorite_added": "Linha adicionada aos favoritos",
 			"favorite_removed": "Linha removida dos favoritos",
 			"has_alerts": "Esta linha possui alertas ativos",

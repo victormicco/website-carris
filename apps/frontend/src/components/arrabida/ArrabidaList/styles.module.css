@@ -1,10 +1,30 @@
 /* * */
+/* CONTAINER WITH DESCRIPTION WIDTH FIX */
+
+.arrabidaListContainer [class*="headingWrapper"] [class*="subheading"] {
+	max-width: none;
+	white-space: nowrap;
+}
+
+@media (width <= 900px) {
+	.arrabidaListContainer [class*="headingWrapper"] [class*="subheading"] {
+		white-space: normal;
+	}
+}
+
+/* * */
 /* LIST ITEM WRAPPER */
 
 .listItemWrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	border-bottom: 1px solid var(--color-system-border-100);
+}
+
+.listItemWrapper:last-child,
+.listItemWrapper.lastItem {
+	border-bottom: none;
 }
 
 /* * */

@@ -14,6 +14,7 @@ import { Tooltip } from '@mantine/core';
 import { IconInfoTriangle } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { ViewportList } from 'react-viewport-list';
+import { useMemo } from 'react';
 
 import styles from './styles.module.css';
 
@@ -28,6 +29,11 @@ export function ArrabidaList() {
 	const alertsContext = useAlertsContext();
 	const t = useTranslations('arrabida.ArrabidaList');
 
+	// Memoize items to prevent ViewportList DOM issues
+	const stableItems = useMemo(() => {
+		return linesListContext.data.filtered.slice(0, 7);
+	}, [linesListContext.data.filtered]);
+
 	//
 	// B. Handle actions
 
@@ -36,7 +42,7 @@ export function ArrabidaList() {
 			const wasFavorite = profileContext.data.favorite_lines?.includes(lineId) || false;
 			await profileContext.actions.toggleFavoriteLine(lineId);
 
-			// Mostrar notificação de feedback
+			// Show feedback notification
 			if (wasFavorite) {
 				toast.success({ message: t('favorite_removed') + `: ${lineName}` });
 			}
@@ -53,28 +59,35 @@ export function ArrabidaList() {
 	//
 	// C. Render components
 
-	if (![{ id: '1' }, { id: '2' }].length) {
+	if (!linesListContext.data.filtered.length) {
 		return (
-			<Surface variant="persistent" forceOverflow>
-				<Section>
-					<NoDataLabel text={t('no_data', { defaultValue: 'Sem dados disponíveis' })} withMinHeight />
-				</Section>
-			</Surface>
+			<div id="lines">
+				<Surface variant="persistent" forceOverflow>
+					<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
+						<NoDataLabel text={t('no_data', { defaultValue: 'Sem dados disponíveis' })} withMinHeight />
+					</Section>
+				</Surface>
+			</div>
 		);
 	}
 
 	return (
-		<div id="lines">
+		<div id="lines" className={styles.arrabidaListContainer}>
 			<Surface variant="persistent" forceOverflow>
-				<Section>
-					<ViewportList itemMargin={0} items={linesListContext.data.filtered.slice(0, 7)}>
-						{(item) => {
+				<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
+					<ViewportList 
+						key={`viewport-${stableItems.length}`}
+						itemMargin={0} 
+						items={stableItems}
+					>
+						{(item, index, array) => {
 							const isFavorite = profileContext.data.favorite_lines?.includes(item.id) || false;
 							const alerts = alertsContext.actions.getSimplifiedAlertsByLineId(item.id);
 							const hasAlert = alerts.length > 0;
+							const isLastItem = index === array.length - 1;
 
 							return (
-								<div key={item.id} className={styles.listItemWrapper}>
+								<div key={item.id} className={`${styles.listItemWrapper} ${isLastItem ? styles.lastItem : ''}`}>
 									<RegularListItem href={`/lines/${item.id}`}>
 										<div className={styles.itemContainer}>
 											<div className={styles.lineInfo}>

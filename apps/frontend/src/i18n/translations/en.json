@@ -177,6 +177,8 @@
 			"subtitle": "All Arrábida passes served by Carris Metropolitana"
 		},
 		"ArrabidaList": {
+			"title": "Lines",
+			"subtitle": "Here you can find summarized information about Carris Metropolitana lines that serve the different beaches of Arrábida.",
 			"favorite_added": "Line added to favorites",
 			"favorite_removed": "Line removed from favorites",
 			"has_alerts": "This line has active alerts",
