@@ -8,8 +8,10 @@ import { Accordion, Image, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.css';
+
 import { Arrabida365 } from '../Arrabida365';
 import { ArrabidaAbout } from '../ArrabidaAbout';
+import { ArrabidaList } from '../ArrabidaList';
 
 /* * */
 
@@ -27,6 +29,9 @@ export function ArrabidaPage() {
 	return (
 		<>
 			<Arrabida365 />
+
+			<ArrabidaList />
+
 			<ArrabidaAbout />
 
 			<Surface forceOverflow>
@@ -58,4 +63,4 @@ export function ArrabidaPage() {
 			</Surface>
 		</>
 	);
-} 
+}

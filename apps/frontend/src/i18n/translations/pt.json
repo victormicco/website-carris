@@ -161,41 +161,6 @@
 			}
 		}
 	},
-	"arrabida": {
-		"ArrabidaHeader": {
-			"title": "Descubra a Arrábida",
-			"subtitle": "Uma experiência única de natureza e sustentabilidade",
-			"navigation": {
-				"how_to_get": "Como chegar?",
-				"lines": "Linhas",
-				"about": "Sobre"
-			}
-		},
-		"ArrabidaPage": {
-			"title": "Arrábida 1",
-			"subtitle": "Descubra a Arrábida com a Carris Metropolitana",
-			"sections": {
-				"Arrabida365": {
-					"title": "Arrábida 365",
-					"subtitle": "Este projeto tem como objetivo promover a mobilidade sustentável na Serra da Arrábida, incentivando o uso do transporte público para chegar às praias, eventos e locais de interesse da região. Aqui poderá acompanhar as últimas novidades na rede da Carris Metropolitana, campanhas em curso, eventos locais e parcerias especiais.",
-					"button": "Expandir",
-					"buttonSeeMore": "Saber Mais"
-				},
-				"ArrabidaAbout": {
-					"title": "Sobre",
-					"text-1": "Arrábida 365",
-					"text-2": "é uma iniciativa da Carris Metropolitana em colaboração com o município de Setubal, que visa",
-					"text-3": "promover o transporte publico como meio privilegiado de acesso à Serra da Arrábida, durante todo o ano.",
-					"text-4": "Este projeto aposta na mobilidade sustentável como forma de preservar o património natural da serra, ao mesmo tempo que facilita o acesso a praias, eventos e locaisemblemáticos, com reforço de serviço e informação dedicada."
-				},
-				"section-3": {
-					"title": "O que Visitar",
-					"text-1": "A região da Arrábida oferece inúmeras atrações, desde as famosas praias de Portinho da Arrábida e Figueirinha até ao Convento da Arrábida.",
-					"text-2": "Não perca também a oportunidade de visitar as caves de vinho moscatel de Setúbal e provar os sabores únicos desta região."
-				}
-			}
-		}
-	},
 	"alerts": {
 		"AlertActivePeriod": {
 			"end": "Fim: <parsedDate>{end, date, dayShort} {end, date, monthLong} {end, date, yearLong}</parsedDate>",
@@ -351,6 +316,48 @@
 				"close": "Fechar",
 				"learn_more": "Saber mais"
 			}
+		}
+	},
+	"arrabida": {
+		"ArrabidaHeader": {
+			"navigation": {
+				"about": "Sobre",
+				"how_to_get": "Como chegar?",
+				"lines": "Linhas"
+			},
+			"subtitle": "Uma experiência única de natureza e sustentabilidade",
+			"title": "Descubra a Arrábida"
+		},
+		"ArrabidaList": {
+			"favorite_added": "Linha adicionada aos favoritos",
+			"favorite_removed": "Linha removida dos favoritos",
+			"has_alerts": "Esta linha possui alertas ativos",
+			"no_data": "Sem dados disponíveis",
+			"toggle_favorite": "Adicionar/remover dos favoritos"
+		},
+		"ArrabidaPage": {
+			"sections": {
+				"Arrabida365": {
+					"button": "Expandir",
+					"buttonSeeMore": "Saber Mais",
+					"subtitle": "Este projeto tem como objetivo promover a mobilidade sustentável na Serra da Arrábida, incentivando o uso do transporte público para chegar às praias, eventos e locais de interesse da região. Aqui poderá acompanhar as últimas novidades na rede da Carris Metropolitana, campanhas em curso, eventos locais e parcerias especiais.",
+					"title": "Arrábida 365"
+				},
+				"ArrabidaAbout": {
+					"text-1": "Arrábida 365",
+					"text-2": "é uma iniciativa da Carris Metropolitana em colaboração com o município de Setubal, que visa",
+					"text-3": "promover o transporte publico como meio privilegiado de acesso à Serra da Arrábida, durante todo o ano.",
+					"text-4": "Este projeto aposta na mobilidade sustentável como forma de preservar o património natural da serra, ao mesmo tempo que facilita o acesso a praias, eventos e locaisemblemáticos, com reforço de serviço e informação dedicada.",
+					"title": "Sobre"
+				},
+				"section-3": {
+					"text-1": "A região da Arrábida oferece inúmeras atrações, desde as famosas praias de Portinho da Arrábida e Figueirinha até ao Convento da Arrábida.",
+					"text-2": "Não perca também a oportunidade de visitar as caves de vinho moscatel de Setúbal e provar os sabores únicos desta região.",
+					"title": "O que Visitar"
+				}
+			},
+			"subtitle": "Descubra a Arrábida com a Carris Metropolitana",
+			"title": "Arrábida 1"
 		}
 	},
 	"cards": {
