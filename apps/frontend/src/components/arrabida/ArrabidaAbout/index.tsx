@@ -49,10 +49,10 @@ export function ArrabidaAbout() {
 									<ArrabidaIcon />
 									<ArrabidaLogo />
 								</div>
-								<a href="/" target="_blank" rel="noopener noreferrer" style={{ cursor: 'pointer' }}>
+								<a href="/" rel="noopener noreferrer" style={{ cursor: 'pointer' }} target="_blank">
 									<CarrisLogo />
 								</a>
-								<a href="https://www.mun-setubal.pt/" target="_blank" rel="noopener noreferrer" style={{ cursor: 'pointer' }}>
+								<a href="https://www.mun-setubal.pt/" rel="noopener noreferrer" style={{ cursor: 'pointer' }} target="_blank">
 									<SetubalLogo />
 								</a>
 							</div>
