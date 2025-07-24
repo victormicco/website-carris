@@ -7,11 +7,11 @@ import { useStickyObserver } from '@/hooks/useStickyObserver';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
+import styles from './styles.module.css';
+
+import { HeaderNavigationDrawer } from '../../header/NavigationDrawer';
 import { ArrabidaIcon } from './ArrabidaIcon';
 import { ArrabidaLogo } from './ArrabidaLogo';
-
-import styles from './styles.module.css';
-import { HeaderNavigationDrawer } from '../../header/NavigationDrawer';
 
 /* * */
 
@@ -64,7 +64,7 @@ export function ArrabidaHeader() {
 							<a href="#about">{t('navigation.about')}</a>
 						</li>
 					</ul>
-                    <HeaderNavigationDrawer />
+					<HeaderNavigationDrawer />
 				</div>
 			</div>
 		</header>

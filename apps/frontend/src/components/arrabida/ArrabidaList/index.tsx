@@ -13,8 +13,8 @@ import toast from '@/utils/toast';
 import { Tooltip } from '@mantine/core';
 import { IconInfoTriangle } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { ViewportList } from 'react-viewport-list';
 import { useMemo } from 'react';
+import { ViewportList } from 'react-viewport-list';
 
 import styles from './styles.module.css';
 
@@ -63,7 +63,7 @@ export function ArrabidaList() {
 		return (
 			<div id="lines">
 				<Surface variant="persistent" forceOverflow>
-					<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
+					<Section heading={t('title')} subheading={t('subtitle')} withGap withPadding>
 						<NoDataLabel text={t('no_data', { defaultValue: 'Sem dados disponíveis' })} withMinHeight />
 					</Section>
 				</Surface>
@@ -72,12 +72,12 @@ export function ArrabidaList() {
 	}
 
 	return (
-		<div id="lines" className={styles.arrabidaListContainer}>
+		<div className={styles.arrabidaListContainer} id="lines">
 			<Surface variant="persistent" forceOverflow>
-				<Section heading={t('title')} subheading={t('subtitle')} withPadding withGap>
-					<ViewportList 
+				<Section heading={t('title')} subheading={t('subtitle')} withGap withPadding>
+					<ViewportList
 						key={`viewport-${stableItems.length}`}
-						itemMargin={0} 
+						itemMargin={0}
 						items={stableItems}
 					>
 						{(item, index, array) => {
@@ -114,12 +114,12 @@ export function ArrabidaList() {
 													position="top"
 													withArrow
 												>
-													<div 
-														onMouseDown={(event) => {
+													<div
+														onClick={(event) => {
 															event.preventDefault();
 															event.stopPropagation();
 														}}
-														onClick={(event) => {
+														onMouseDown={(event) => {
 															event.preventDefault();
 															event.stopPropagation();
 														}}

@@ -3,9 +3,9 @@
 /* * */
 
 import { Arrabida365 } from '../Arrabida365';
-import { ArrabidaWay } from '../ArrabidaWay';
 import { ArrabidaAbout } from '../ArrabidaAbout';
 import { ArrabidaList } from '../ArrabidaList';
+import { ArrabidaWay } from '../ArrabidaWay';
 
 /* * */
 
@@ -21,7 +21,7 @@ export function ArrabidaPage() {
 	return (
 		<>
 			<Arrabida365 />
-      		<ArrabidaWay />
+			<ArrabidaWay />
 			<ArrabidaList />
 			<ArrabidaAbout />
 		</>

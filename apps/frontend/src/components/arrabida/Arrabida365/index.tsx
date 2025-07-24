@@ -2,13 +2,13 @@
 
 import { Section } from '@/components/layout/Section';
 import { Surface } from '@/components/layout/Surface';
-
-import styles from './styles.module.css';
+import { Button } from '@mantine/core';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
-import { Button } from '@mantine/core';
-import { useTranslations } from 'next-intl';
+
+import styles from './styles.module.css';
 
 /* * */
 
@@ -18,7 +18,7 @@ export function Arrabida365() {
 	//
 	// A. Setup variables
 
-    const t = useTranslations('arrabida.ArrabidaPage.sections.Arrabida365');
+	const t = useTranslations('arrabida.ArrabidaPage.sections.Arrabida365');
 
 	//
 	// B. Transform data
@@ -31,22 +31,22 @@ export function Arrabida365() {
 			<Surface forceOverflow>
 				<div className={styles.backButton}>
 					<Link className={styles.container} href="/">
-					<IconArrowLeft size={14} />
-					<span className={styles.label}>Carris Metropolitana</span>
-				</Link>
+						<IconArrowLeft size={14} />
+						<span className={styles.label}>Carris Metropolitana</span>
+					</Link>
 				</div>
-				<Section heading={t('title')} withPadding withGap>
-                	<h6 className={styles.subheading}>{t('subtitle')}</h6>
-				<div className={styles.imagesWrapper}>
-                    <Image className={styles.imageMap} src='/assets/arrabidas/arrabida_365_map.png' alt="Arrabida 365" width={1920} height={1080} />
-                    <div className={styles.imageBeeWrapper}>
-						<Image className={styles.imageBee} src='/assets/arrabidas/arrabida_365.png' alt="Arrabida 365" width={1920} height={1080} />
-						<Button className={styles.buttonSeeMore} rightSection={<IconArrowRight size={18} />}>{t('buttonSeeMore')}</Button>
-                    </div>
-                </div>
-                
-			</Section>
-		</Surface>
+				<Section heading={t('title')} withGap withPadding>
+					<h6 className={styles.subheading}>{t('subtitle')}</h6>
+					<div className={styles.imagesWrapper}>
+						<Image alt="Arrabida 365" className={styles.imageMap} height={1080} src="/assets/arrabidas/arrabida_365_map.png" width={1920} />
+						<div className={styles.imageBeeWrapper}>
+							<Image alt="Arrabida 365" className={styles.imageBee} height={1080} src="/assets/arrabidas/arrabida_365.png" width={1920} />
+							<Button className={styles.buttonSeeMore} rightSection={<IconArrowRight size={18} />}>{t('buttonSeeMore')}</Button>
+						</div>
+					</div>
+
+				</Section>
+			</Surface>
 		</div>
 	);
 

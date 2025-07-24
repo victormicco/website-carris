@@ -2,13 +2,13 @@
 
 /* * */
 
+import { ArrabidaHeader } from '@/components/arrabida/ArrabidaHeader';
 import { ConsentPopup } from '@/components/common/ConsentPopup';
 import { ScrollToTopButton } from '@/components/common/ScrollToTopButton';
 import { Footer } from '@/components/footer/Footer';
 import { GeneralStatus } from '@/components/header/GeneralStatus';
 import { Header } from '@/components/header/Header';
-import { ArrabidaHeader } from '@/components/arrabida/ArrabidaHeader';
-import { useSearchParams, usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 import styles from './styles.module.css';
 
