@@ -9,7 +9,7 @@ import { MetricsPageComplaintsGlobalCard } from '@/components/metrics/MetricsPag
 import { MetricsPageComplaintsToolbar } from '@/components/metrics/MetricsPageComplaintsToolbar';
 import { useLinesContext } from '@/contexts/Lines.context';
 import { useLocationsContext } from '@/contexts/Locations.context';
-import { type ComplaintMetrics, type DemandMetricsByAgency, type DemandMetricsByAgencyMonth, type DemandMetricsByAgencyYear, type DemandMetricsByLine } from '@carrismetropolitana/api-types/metrics';
+import { type ComplaintMetrics, type DemandMetricsByAgency, type DemandMetricsByAgencyMonth, type DemandMetricsByLine } from '@carrismetropolitana/api-types/metrics';
 import { getPublicVariable } from '@carrismetropolitana/website-shared-settings';
 import { DateTime } from 'luxon';
 import { useTranslations } from 'next-intl';
@@ -41,7 +41,6 @@ export function MetricsPageComplaints() {
 
 	const todayStr = DateTime.local().toISODate();
 	const sevenDaysAgoStr = DateTime.local().minus({ days: 7 }).toISODate();
-	const lastYearStr = DateTime.local().minus({ years: 1 }).toISODate();
 
 	const t = useTranslations('metrics.MetricsPageComplaints');
 
