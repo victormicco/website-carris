@@ -40,7 +40,7 @@ export function SchoolDetail({ schoolId }: Props) {
 	//
 	// B. Fetch data
 
-	const { data: schoolData } = useSWR(`https://api.carrismetropolitana.pt/datasets/facilities/schools/${schoolId}`);
+	const { data: schoolData } = useSWR(`https://api.carrismetropolitana.pt/v2/facilities/schools/${schoolId}`);
 	const { data: allStopsData } = useSWR('https://api.carrismetropolitana.pt/stops');
 
 	//

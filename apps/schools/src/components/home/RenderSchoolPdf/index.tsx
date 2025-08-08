@@ -22,7 +22,7 @@ export function RenderSchoolPdf({ schoolId }: Props) {
 	//
 	// A. Fetch data
 
-	const { data: schoolData } = useSWR(`https://api.carrismetropolitana.pt/datasets/facilities/schools/${schoolId}`);
+	const { data: schoolData } = useSWR(`https://api.carrismetropolitana.pt/v2/facilities/schools/${schoolId}`);
 
 	//
 	// B. Render components
