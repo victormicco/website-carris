@@ -17,14 +17,14 @@ export const BEACH_PINS: BeachPin[] = [
 	},
 	{
 		accordionId: 'praia-galapos-galapinhos',
-		coordinates: [-8.9630, 38.4840],
+		coordinates: [-8.963937155027402, 38.48453365691419],
 		id: 'galapos',
 		lineIds: ['4477'],
 		name: 'Praia dos Galápos',
 	},
 	{
 		accordionId: 'praia-creiro',
-		coordinates: [-8.9770, 38.4800],
+		coordinates: [-8.97758598072809, 38.48050625031089],
 		id: 'creiro',
 		lineIds: ['4470', '4477'],
 		name: 'Praia do Creiro',

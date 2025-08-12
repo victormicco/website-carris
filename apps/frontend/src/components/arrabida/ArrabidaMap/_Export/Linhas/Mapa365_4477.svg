@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_4477" data-name="4477" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1797.1 1311.55">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke: #1a161a;
+        stroke-dasharray: 3;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        stroke: #3d84c0;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="_4477-2" data-name="4477">
+    <polyline class="cls-3" points="830.13 865.47 782.95 861.5 701.35 863.48 619.74 885.81 544.81 923.36"/>
+    <line class="cls-3" x1="544.81" y1="923.36" x2="539.95" y2="948.27"/>
+    <polyline class="cls-2" points="547.07 925.8 548.77 927.5 544.81 947.45 545.37 950.27"/>
+    <path class="cls-2" d="M770.97,866.34l-6.16,3.98c-3.34,2.16-4.21,6.67-1.91,9.92h0"/>
+    <circle class="cls-1" cx="830.13" cy="865.26" r="2"/>
+    <circle class="cls-1" cx="771.53" cy="861.5" r="2"/>
+    <circle class="cls-1" cx="544.81" cy="923.36" r="2"/>
+    <circle class="cls-1" cx="539.95" cy="948.27" r="2"/>
+    <circle class="cls-1" cx="679.03" cy="869.52" r="2"/>
+  </g>
+</svg>

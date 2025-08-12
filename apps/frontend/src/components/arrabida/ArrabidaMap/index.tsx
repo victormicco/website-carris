@@ -2,113 +2,97 @@
 
 /* * */
 
-import { MapView } from '@/components/map/MapView';
-import { MapViewStylePathInteractiveLayerId } from '@/components/map/MapViewStylePath';
-import { useMap } from '@vis.gl/react-maplibre';
-import { useCallback, useEffect } from 'react';
+import Image from 'next/image';
+import { useMemo } from 'react';
 
 import styles from './styles.module.css';
 
-import { ArrabidaBeachPins } from './components/ArrabidaBeachPins';
-import { ArrabidaLineDisplay } from './components/ArrabidaLineDisplay';
-import { BEACH_PINS } from './constants';
-import { useArrabidaLineData } from './hooks/useArrabidaLineData';
-import { useArrabidaMapInteractions } from './hooks/useArrabidaMapInteractions';
-import { useMapZoom } from './hooks/useMapZoom';
+import { AlbarquelPin, CreiroPin, FigueirinhaPin, GalaposPin } from './components/BeachPins';
 import { type ArrabidaMapProps } from './types';
+
+// Base and overlays
+import BaseMap from './_Export/Mapa365_Base.svg';
+import LinhasOff from './_Export/Mapa365_LinhasOff.svg';
+
+// Line-specific overlays
+import Line4414 from './_Export/Linhas/Mapa365_4414.svg';
+import Line4415 from './_Export/Linhas/Mapa365_4415.svg';
+import Line4470 from './_Export/Linhas/Mapa365_4470.svg';
+import Line4471 from './_Export/Linhas/Mapa365_4471.svg';
+import Line4474 from './_Export/Linhas/Mapa365_4474.svg';
+import Line4477 from './_Export/Linhas/Mapa365_4477.svg';
+
+// Legend overlays
+import Legend from './_Export/Legenda/Mapa365_Legenda.svg';
 
 /* * */
 
 export function ArrabidaMap({ onPinClick, selectedAccordionId, selectedLineId }: ArrabidaMapProps = {}) {
 	//
 
-	//
-	// A. Setup variables
-
-	const { arrabidaMap } = useMap();
-	const currentZoom = useMapZoom();
-
-	//
-	// B. Setup hooks
-
-	const lineData = useArrabidaLineData();
-	const mapInteractions = useArrabidaMapInteractions(onPinClick);
-
-	//
-	// C. Handle actions
-
-	useEffect(() => {
-		if (selectedLineId) {
-			lineData.actions.selectLine(selectedLineId);
-		}
-		else {
-			lineData.actions.clearSelection();
-			mapInteractions.actions.setActiveWaypoint(null);
-		}
-	}, [selectedLineId, lineData.actions, mapInteractions.actions]);
-
-	useEffect(() => {
-		if (!arrabidaMap) return;
-		arrabidaMap.flyTo({
-			center: [-8.9, 38.48],
-			duration: 1000,
-			zoom: 12,
-		});
-	}, [arrabidaMap]);
-
-	// Center map on selected accordion pin
-	useEffect(() => {
-		if (!arrabidaMap || !selectedAccordionId) return;
-
-		const selectedBeach = BEACH_PINS.find(beach => beach.accordionId === selectedAccordionId);
-
-		if (selectedBeach) {
-			arrabidaMap.flyTo({
-				center: selectedBeach.coordinates,
-				duration: 1000,
-				zoom: 14, // Zoom in a bit more to focus on the pin
-			});
-		}
-	}, [arrabidaMap, selectedAccordionId]);
-
-	const handleCenterMap = useCallback(() => {
-		if (!arrabidaMap) return;
-		arrabidaMap.flyTo({
-			center: [-8.9, 38.48],
-			duration: 1000,
-			zoom: 12,
-		});
-	}, [arrabidaMap]);
-
-	//
-	// D. Render components
+	const lineOverlay = useMemo(() => {
+		const mapping: Record<string, any> = {
+			'4414': Line4414,
+			'4415': Line4415,
+			'4470': Line4470,
+			'4471': Line4471,
+			'4474': Line4474,
+			'4477': Line4477,
+		};
+		return selectedLineId ? mapping[selectedLineId] ?? LinhasOff : LinhasOff;
+	}, [selectedLineId]);
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.mapContainer}>
-				<MapView
-					id="arrabidaMap"
-					interactiveLayerIds={[MapViewStylePathInteractiveLayerId]}
-					onCenterMap={handleCenterMap}
-					onClick={mapInteractions.actions.handleLayerClick}
+				{/* Base map */}
+				<Image alt="Mapa Arrábida 365 - Base" className={styles.baseImage} fill priority src={BaseMap} />
+
+				{/* Lines overlay (off or selected line) */}
+				<Image alt="Linhas" className={styles.overlayImage} fill src={lineOverlay} />
+
+				{/* Pin overlays - each covers the full map area */}
+				<button
+					aria-label="Praia de Albarquel"
+					className={styles.pinOverlay}
+					onClick={() => onPinClick?.('praia-albarquel')}
+					type="button"
 				>
+					<AlbarquelPin isActive={selectedAccordionId === 'praia-albarquel'} zoom={12} />
+				</button>
 
-					<ArrabidaBeachPins
-						currentZoom={currentZoom}
-						onPinClick={mapInteractions.actions.handlePinClick}
-						selectedAccordionId={selectedAccordionId}
-					/>
+				<button
+					aria-label="Praia do Creiro"
+					className={styles.pinOverlay}
+					onClick={() => onPinClick?.('praia-creiro')}
+					type="button"
+				>
+					<CreiroPin isActive={selectedAccordionId === 'praia-creiro'} zoom={12} />
+				</button>
 
-					<ArrabidaLineDisplay
-						activeWaypoint={mapInteractions.data.activeWaypoint}
-						coloredShapeData={lineData.data.coloredShapeData}
-						selectedLinePattern={lineData.data.selectedLinePattern}
-					/>
+				<button
+					aria-label="Praia da Figueirinha"
+					className={styles.pinOverlay}
+					onClick={() => onPinClick?.('praia-figueirinha')}
+					type="button"
+				>
+					<FigueirinhaPin isActive={selectedAccordionId === 'praia-figueirinha'} zoom={12} />
+				</button>
 
-				</MapView>
+				<button
+					aria-label="Praia dos Galápos e Galapinhos"
+					className={styles.pinOverlay}
+					onClick={() => onPinClick?.('praia-galapos-galapinhos')}
+					type="button"
+				>
+					<GalaposPin isActive={selectedAccordionId === 'praia-galapos-galapinhos'} zoom={12} />
+				</button>
+
+				{/* Legend (reference points) */}
+				<div className={styles.legendOverlay}>
+					<Image alt="Legenda" fill src={Legend} />
+				</div>
 			</div>
 		</div>
 	);
-
-	//
 }

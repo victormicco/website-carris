@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_4471" data-name="4471" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1797.1 1311.55">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 2.83 2.83;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #1a161a;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        stroke: #c61d23;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="_4471-2" data-name="4471">
+    <polyline class="cls-4" points="1479.2 382.32 1477.69 388.46 1422.2 382.82 1378.41 387.81 1325.47 423.76"/>
+    <polyline class="cls-4" points="1197.92 541.06 1214.32 518.87 1218.61 515.12"/>
+    <polyline class="cls-4" points="1220.18 513.77 1233.94 501.75 1240.15 496.48 1283.91 458.01 1325.47 423.76 1321.65 417.27 1375.52 380.46 1417.11 375.62 1417.67 356.51 1406.97 356.5 1406.97 346.91 1424.19 346.91 1423.74 376.34 1484.64 382.95 1494.2 384 1493.15 391.82 1484.83 390.77 1485.63 383.06"/>
+    <g>
+      <line class="cls-3" x1="1202.5" y1="544.95" x2="1203.33" y2="543.69"/>
+      <path class="cls-2" d="M1204.88,541.32l8.65-13.2c2.46-3.75,5.54-7.06,9.11-9.77.78-.59.85-1.73.16-2.42l-.42-.42"/>
+      <line class="cls-3" x1="1221.38" y1="514.51" x2="1220.32" y2="513.45"/>
+    </g>
+    <circle class="cls-1" cx="1220.18" cy="513.77" r="2"/>
+    <circle class="cls-1" cx="1233.94" cy="501.75" r="2"/>
+    <circle class="cls-1" cx="1240.15" cy="496.48" r="2"/>
+    <circle class="cls-1" cx="1283.91" cy="458.01" r="2"/>
+    <polyline class="cls-4" points="1325.47 423.76 1321.65 417.27 1375.52 380.46 1417.11 375.62 1417.67 356.51 1406.97 356.5 1406.97 346.91 1424.19 346.91 1423.74 376.34 1484.64 382.95 1494.2 384 1493.15 391.82 1484.83 390.77 1485.63 383.06"/>
+    <polyline class="cls-4" points="1220.18 513.77 1233.94 501.75 1240.15 496.48 1283.91 458.01 1325.47 423.76"/>
+    <circle class="cls-1" cx="1220.18" cy="513.77" r="2"/>
+    <circle class="cls-1" cx="1233.94" cy="501.75" r="2"/>
+    <circle class="cls-1" cx="1240.15" cy="496.48" r="2"/>
+    <circle class="cls-1" cx="1283.91" cy="458.01" r="2"/>
+    <circle class="cls-1" cx="1414.3" cy="383.81" r="2"/>
+    <circle class="cls-1" cx="1424.08" cy="353.69" r="2"/>
+    <circle class="cls-1" cx="1437.53" cy="384.45" r="2"/>
+    <circle class="cls-1" cx="1462.13" cy="386.98" r="2"/>
+    <circle class="cls-1" cx="1412.3" cy="346.91" r="2"/>
+    <circle class="cls-1" cx="1433.53" cy="377.49" r="2"/>
+    <circle class="cls-1" cx="1405.42" cy="377.09" r="2"/>
+    <circle class="cls-1" cx="1382.83" cy="379.5" r="2"/>
+    <circle class="cls-1" cx="1366.51" cy="386.46" r="2"/>
+    <circle class="cls-1" cx="1348.26" cy="398.87" r="2"/>
+    <circle class="cls-1" cx="1328.52" cy="412.53" r="2"/>
+    <circle class="cls-1" cx="1342.11" cy="412.53" r="2"/>
+    <circle class="cls-1" cx="1381.68" cy="387.44" r="2"/>
+    <circle class="cls-1" cx="1197.92" cy="541.06" r="2"/>
+  </g>
+</svg>

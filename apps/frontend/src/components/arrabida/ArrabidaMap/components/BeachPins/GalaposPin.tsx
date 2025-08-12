@@ -23,7 +23,7 @@ export function GalaposPin({ isActive, zoom = 12 }: BeachPinProps) {
 		<svg
 			fill="none"
 			height="auto"
-			viewBox="0 0 374 339"
+			viewBox="0 0 1797.1 1311.55"
 			width={size}
 			xmlns="http://www.w3.org/2000/svg"
 			style={{

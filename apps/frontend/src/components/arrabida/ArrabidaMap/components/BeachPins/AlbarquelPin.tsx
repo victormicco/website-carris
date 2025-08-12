@@ -23,7 +23,7 @@ export function AlbarquelPin({ isActive, zoom = 12 }: BeachPinProps) {
 		<svg
 			fill="none"
 			height={size}
-			viewBox="0 0 338 226"
+			viewBox="0 0 1797.1 1311.55"
 			width="auto"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{
