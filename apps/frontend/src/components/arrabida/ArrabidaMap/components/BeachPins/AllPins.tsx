@@ -1,16 +1,15 @@
-export interface AllPinsProps extends React.ComponentProps<'svg'> {}
+export type AllPinsProps = React.ComponentProps<'svg'>;
 
 export function AllPins(props: AllPinsProps) {
 	return (
 		<svg
 			fill="none"
-			preserveAspectRatio="xMidYMid slice"
+			preserveAspectRatio="xMidYMid meet"
 			viewBox="0 0 1798 1312"
 			xmlns="http://www.w3.org/2000/svg"
 			{...props}
 		>
 			<g clipPath="url(#clip0_2080_1033)">
-				<path d="M1831.36 114.68H0v1196.87h1831.36V114.68z" fill="#A6D4FF" />
 				<g
 					opacity={0.2}
 					stroke="#fff"

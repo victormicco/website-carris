@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 /* * */
 
-import type { BeachPinProps } from "../../types";
+import type { BeachPinProps } from '../../types';
 
 /* * */
 
@@ -27,12 +27,11 @@ export function AlbarquelPin({ isActive, zoom = 12 }: BeachPinProps) {
 			width="auto"
 			xmlns="http://www.w3.org/2000/svg"
 			style={{
-				cursor: "pointer",
+				cursor: 'pointer',
 				filter: isActive
-					? "drop-shadow(0 0 8px rgba(25, 118, 210, 0.8))"
-					: "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))",
-				// transform: isActive ? 'scale(1.2)' : 'scale(1)',
-				transition: "all 0.3s ease",
+					? 'drop-shadow(0 0 8px rgba(25, 118, 210, 0.8))'
+					: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
+				transition: 'all 0.3s ease',
 			}}
 		>
 			<path

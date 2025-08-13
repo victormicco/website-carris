@@ -2,16 +2,7 @@
 
 /* * */
 
-import { useMemo } from 'react';
-
-import Line4414 from './_Export/Linhas/Mapa365_4414.svg';
-import Line4415 from './_Export/Linhas/Mapa365_4415.svg';
-import Line4470 from './_Export/Linhas/Mapa365_4470.svg';
-import Line4471 from './_Export/Linhas/Mapa365_4471.svg';
-import Line4474 from './_Export/Linhas/Mapa365_4474.svg';
-import Line4477 from './_Export/Linhas/Mapa365_4477.svg';
-import LinhasOff from './_Export/Mapa365_LinhasOff.svg';
-import { AllPins } from './components/BeachPins/AllPins';
+import { DraggableAllPins } from './components/BeachPins/DraggableAllPins';
 // Line-specific overlays
 import styles from './styles.module.css';
 // Base and overlays
@@ -24,20 +15,6 @@ export function ArrabidaMap({
 	selectedAccordionId,
 	selectedLineId,
 }: ArrabidaMapProps = {}) {
-	//
-
-	const _lineOverlay = useMemo(() => {
-		const mapping: Record<string, any> = {
-			4414: Line4414,
-			4415: Line4415,
-			4470: Line4470,
-			4471: Line4471,
-			4474: Line4474,
-			4477: Line4477,
-		};
-		return selectedLineId ? (mapping[selectedLineId] ?? LinhasOff) : LinhasOff;
-	}, [selectedLineId]);
-
 	return (
 		<div className={styles.container}>
 			<div className={styles.mapContainer}>
@@ -59,7 +36,10 @@ export function ArrabidaMap({
 				/> */}
 
 				{/* Pin overlays - each covers the full map area */}
-				<AllPins style={{ display: 'block', height: '100%', objectFit: 'cover', width: '100%' }} />
+				<DraggableAllPins
+					enableDoubleClickReset={true}
+					style={{ display: 'block', height: '100%', width: '100%' }}
+				/>
 				{/* <button
 					aria-label="Praia de Albarquel"
 					className={styles.pinOverlay}
