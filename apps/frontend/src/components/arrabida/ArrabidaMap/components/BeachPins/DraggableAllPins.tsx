@@ -5,6 +5,8 @@ import type { AllPinsProps } from './AllPins';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { AllPins } from './AllPins';
+import { LineOverlay } from '../LineOverlay';
+import { IconHome, IconMinus, IconPlus } from '@tabler/icons-react';
 
 export interface DraggableAllPinsProps extends AllPinsProps {
 	bounds?: {
@@ -15,19 +17,47 @@ export interface DraggableAllPinsProps extends AllPinsProps {
 	}
 	enableDoubleClickReset?: boolean
 	onDragMove?: (offset: { x: number, y: number }) => void
+	onPinClick?: (beachId: string) => void
+	selectedLineId?: string | null
+	selectedAccordionId?: string
 }
 
-export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDragMove, style, ...props }: DraggableAllPinsProps) {
+export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDragMove, onPinClick, selectedLineId, selectedAccordionId, style, ...props }: DraggableAllPinsProps) {
 	const [isDragging, setIsDragging] = useState(false);
 	const [offset, setOffset] = useState({ x: 0, y: 0 });
 	const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 	const [zoom, setZoom] = useState(1);
 	const [zoomStart, setZoomStart] = useState(1);
 	const [isMouseInside, setIsMouseInside] = useState(false);
+	const [hasManuallyInteracted, setHasManuallyInteracted] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const MIN_ZOOM = 1;
 	const MAX_ZOOM = 3;
+
+	const getOptimalViewForAccordion = useCallback((accordionId: string) => {
+		const viewConfigs = {
+			'praia-albarquel': { x: -80, y: 20, zoom: 1.3 },
+			'praia-figueirinha': { x: -20, y: -50, zoom: 1.3 },
+			'praia-galapos-galapinhos': { x: 80, y: -120, zoom: 1.5 },
+			'praia-creiro': { x: 120, y: -100, zoom: 1.5 },
+		};
+		
+		return viewConfigs[accordionId as keyof typeof viewConfigs] || { x: 0, y: 0, zoom: 1.2 };
+	}, []);
+
+	const getOptimalViewForLine = useCallback((lineId: string) => {
+		const viewConfigs = {
+			'4414': { x: -60, y: 10, zoom: 1.2 }, 
+			'4415': { x: -60, y: 10, zoom: 1.2 }, 
+			'4470': { x: 20, y: -30, zoom: 1.1 }, 
+			'4471': { x: -40, y: 0, zoom: 1.3 }, 
+			'4474': { x: -70, y: 20, zoom: 1.2 }, 
+			'4477': { x: 30, y: -60, zoom: 1.4 }, 
+		};
+		
+		return viewConfigs[lineId as keyof typeof viewConfigs] || { x: 0, y: 0, zoom: 1.2 };
+	}, []);
 
 	const calculateZoomBounds = useCallback(() => {
 		if (!containerRef.current) return { minX: -100, maxX: 100, minY: -100, maxY: 100 };
@@ -36,40 +66,29 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 		const containerWidth = container.clientWidth;
 		const containerHeight = container.clientHeight;
 		
-		// SVG viewBox dimensions
 		const svgViewBoxWidth = 1798;
 		const svgViewBoxHeight = 1312;
 		const svgAspectRatio = svgViewBoxWidth / svgViewBoxHeight;
 		const containerAspectRatio = containerWidth / containerHeight;
 		
-		// Calculate rendered dimensions with preserveAspectRatio="xMidYMid slice"
-		// This mode scales to fill the container completely, cropping if necessary
 		let renderedWidth, renderedHeight;
 		let croppedWidth = 0, croppedHeight = 0;
 		
 		if (containerAspectRatio > svgAspectRatio) {
-			// Container is wider than SVG - SVG width fills container, height extends beyond
 			renderedWidth = containerWidth;
 			renderedHeight = renderedWidth / svgAspectRatio;
-			// Height is cropped (extends beyond container)
 			croppedHeight = renderedHeight - containerHeight;
 		} else {
-			// Container is taller than SVG - SVG height fills container, width extends beyond
 			renderedHeight = containerHeight;
 			renderedWidth = renderedHeight * svgAspectRatio;
-			// Width is cropped (extends beyond container)
 			croppedWidth = renderedWidth - containerWidth;
 		}
 		
-		// Apply zoom to rendered dimensions
 		const zoomedWidth = renderedWidth * zoom;
 		const zoomedHeight = renderedHeight * zoom;
 		const zoomedCroppedWidth = croppedWidth * zoom;
 		const zoomedCroppedHeight = croppedHeight * zoom;
 		
-		// Calculate movement bounds
-		// At zoom = 1, we need to access the cropped areas
-		// At higher zooms, we need additional movement for the scaled content
 		const extraWidth = Math.max(0, zoomedWidth - containerWidth);
 		const extraHeight = Math.max(0, zoomedHeight - containerHeight);
 		
@@ -108,6 +127,7 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 	const handleMouseMove = useCallback((e: React.MouseEvent) => {
 		if (!isDragging) return;
 
+		setHasManuallyInteracted(true);
 		const newOffset = constrainOffset({
 			x: e.clientX - dragStart.x,
 			y: e.clientY - dragStart.y,
@@ -134,13 +154,13 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 		e.preventDefault();
 		e.stopPropagation();
 		
+		setHasManuallyInteracted(true);
 		const delta = e.deltaY > 0 ? 0.9 : 1.1;
 		const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom * delta));
 		
 		if (newZoom !== zoom) {
 			setZoom(newZoom);
 			
-			// Adjust offset to keep the point under cursor in the same position
 			const rect = containerRef.current?.getBoundingClientRect();
 			if (rect) {
 				const mouseX = e.clientX - rect.left;
@@ -159,7 +179,6 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 		}
 	}, [zoom, offset, onDragMove, constrainOffset]);
 
-	// Touch events for mobile support
 	const handleTouchStart = useCallback((e: React.TouchEvent) => {
 		if (e.touches.length === 1) {
 			const touch = e.touches[0];
@@ -169,7 +188,6 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 				y: touch.clientY - offset.y,
 			});
 		} else if (e.touches.length === 2) {
-			// Start pinch-to-zoom
 			const touch1 = e.touches[0];
 			const touch2 = e.touches[1];
 			const distance = Math.sqrt(
@@ -192,7 +210,6 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 			setOffset(newOffset);
 			onDragMove?.(newOffset);
 		} else if (e.touches.length === 2) {
-			// Handle pinch-to-zoom
 			const touch1 = e.touches[0];
 			const touch2 = e.touches[1];
 			const distance = Math.sqrt(
@@ -200,7 +217,6 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 				Math.pow(touch2.clientY - touch1.clientY, 2)
 			);
 			
-			// Calculate zoom based on distance change
 			const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomStart * (distance / 100)));
 			setZoom(newZoom);
 		}
@@ -215,11 +231,11 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 		if (enableDoubleClickReset) {
 			setOffset({ x: 0, y: 0 });
 			setZoom(1);
+			setHasManuallyInteracted(false);
 			onDragMove?.({ x: 0, y: 0 });
 		}
 	}, [enableDoubleClickReset, onDragMove]);
 
-	// Global wheel event listener to prevent page scrolling when mouse is over the map
 	useEffect(() => {
 		const handleGlobalWheel = (e: WheelEvent) => {
 			if (isMouseInside) {
@@ -228,13 +244,53 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 			}
 		};
 
-		// Add passive: false to ensure preventDefault works
 		document.addEventListener('wheel', handleGlobalWheel, { passive: false });
 		
 		return () => {
 			document.removeEventListener('wheel', handleGlobalWheel);
 		};
 	}, [isMouseInside]);
+
+	useEffect(() => {
+		if ((selectedAccordionId || selectedLineId) && !hasManuallyInteracted) {
+			const targetView = selectedLineId 
+				? getOptimalViewForLine(selectedLineId)
+				: selectedAccordionId 
+					? getOptimalViewForAccordion(selectedAccordionId)
+					: null;
+
+			if (targetView) {
+				const constrainedOffset = constrainOffset({ x: targetView.x, y: targetView.y });
+				const constrainedZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, targetView.zoom));
+				
+				setOffset(constrainedOffset);
+				setZoom(constrainedZoom);
+				onDragMove?.(constrainedOffset);
+			}
+		}
+	}, [selectedAccordionId, selectedLineId, hasManuallyInteracted, getOptimalViewForAccordion, getOptimalViewForLine, constrainOffset, onDragMove]);
+
+	useEffect(() => {
+		setHasManuallyInteracted(false);
+	}, [selectedAccordionId]);
+
+	useEffect(() => {
+		const handleResize = () => {
+			if (containerRef.current) {
+				const constrainedOffset = constrainOffset(offset);
+				setOffset(constrainedOffset);
+				onDragMove?.(constrainedOffset);
+			}
+		};
+
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('orientationchange', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('orientationchange', handleResize);
+		};
+	}, [offset, constrainOffset, onDragMove]);
 
 	const wrapperStyle: React.CSSProperties = {
 		cursor: isDragging ? 'grabbing' : 'grab',
@@ -249,17 +305,68 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 		...style,
 	};
 
-	const imageStyle: React.CSSProperties = {
-		position: 'absolute',
-		width: '170%',
-		height: '170%',
-		left: '-35%',
-		top: '-40%',
-		transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
-		transformOrigin: 'center center',
-		transition: isDragging ? 'none' : 'transform 0.2s ease-out',
-		display: 'block',
-	};
+	const calculateImageStyle = useCallback((): React.CSSProperties => {
+		if (!containerRef.current) {
+			return {
+				position: 'absolute',
+				width: 'calc(100% + 500px)',
+				height: 'calc(100% + 500px)',
+				//should be the same as the minPadding
+				left: '-20px',
+				top: '-20px',
+				transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+				transformOrigin: 'center center',
+				transition: isDragging ? 'none' : 'transform 0.8s ease-out',
+				display: 'block',
+			};
+		}
+
+		const container = containerRef.current;
+		const containerWidth = container.clientWidth;
+		const containerHeight = container.clientHeight;
+		
+		const svgViewBoxWidth = 1798;
+		const svgViewBoxHeight = 1312;
+		const svgAspectRatio = svgViewBoxWidth / svgViewBoxHeight;
+		const containerAspectRatio = containerWidth / containerHeight;
+		
+		let imageWidth, imageHeight, leftOffset, topOffset;
+		
+		//This basically defines the FOV of the map "camera"
+		const minPadding = 20;
+		
+		if (containerAspectRatio > svgAspectRatio) {
+			imageWidth = containerWidth + (minPadding * 2);
+			imageHeight = imageWidth / svgAspectRatio;
+			const minHeightPadding = Math.max(minPadding, (imageHeight - containerHeight) / 2);
+			imageHeight = containerHeight + (minHeightPadding * 2);
+			imageWidth = imageHeight * svgAspectRatio;
+			leftOffset = -(imageWidth - containerWidth) / 2;
+			topOffset = -(imageHeight - containerHeight) / 2;
+		} else {
+			imageHeight = containerHeight + (minPadding * 2);
+			imageWidth = imageHeight * svgAspectRatio;
+			const minWidthPadding = Math.max(minPadding, (imageWidth - containerWidth) / 2);
+			imageWidth = containerWidth + (minWidthPadding * 2);
+			imageHeight = imageWidth / svgAspectRatio;
+			leftOffset = -(imageWidth - containerWidth) / 2;
+			topOffset = -(imageHeight - containerHeight) / 2;
+		}
+		
+		return {
+			position: 'absolute',
+			width: `${imageWidth}px`,
+			height: `${imageHeight}px`,
+			left: `${leftOffset}px`,
+			top: `${topOffset}px`,
+			transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+			transformOrigin: 'center center',
+			transition: isDragging ? 'none' : 'transform 0.8s ease-out',
+			display: 'block',
+		};
+	}, [offset.x, offset.y, zoom, isDragging]);
+
+	const imageStyle = calculateImageStyle();
 
 	return (
 		<div
@@ -276,9 +383,18 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 			onTouchStart={handleTouchStart}
 			style={wrapperStyle}
 		>
-			<AllPins {...props} style={imageStyle} />
+			<AllPins {...props} style={imageStyle} onPinClick={onPinClick} />
 			
-			{/* Zoom Controls */}
+			
+			<LineOverlay 
+				selectedLineId={selectedLineId} 
+				style={{
+					...imageStyle,
+					zIndex: 10,
+				}} 
+			/>
+			
+
 			<div style={{
 				position: 'absolute',
 				top: '10px',
@@ -308,7 +424,7 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 					}}
 					title="Zoom In"
 				>
-					+
+					<IconPlus />
 				</button>
 				<button
 					onClick={() => {
@@ -330,7 +446,7 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 					}}
 					title="Zoom Out"
 				>
-					−
+					<IconMinus />
 				</button>
 				<button
 					onClick={handleDoubleClick}
@@ -349,11 +465,10 @@ export function DraggableAllPins({ bounds, enableDoubleClickReset = true, onDrag
 					}}
 					title="Reset View"
 				>
-					⌂
+					<IconHome />
 				</button>
 			</div>
 			
-			{/* Zoom Level Indicator */}
 			<div style={{
 				position: 'absolute',
 				bottom: '10px',
