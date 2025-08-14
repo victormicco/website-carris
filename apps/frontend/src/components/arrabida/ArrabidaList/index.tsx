@@ -147,8 +147,12 @@ export function ArrabidaList() {
 									</RegularListItem>
 
 									{hasAlert && (
-										<div className={styles.alertsContainer}>
-											<AlertsCarousel alerts={alerts} />
+										<div className={styles.alertsSurfaceOverride}>
+											<Surface variant="alerts">
+												<Section withGap>
+													<AlertsCarousel alerts={alerts} />
+												</Section>
+											</Surface>
 										</div>
 									)}
 								</li>
