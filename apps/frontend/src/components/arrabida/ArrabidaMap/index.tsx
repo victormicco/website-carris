@@ -7,6 +7,7 @@ import { DraggableAllPins } from './components/BeachPins/DraggableAllPins';
 import styles from './styles.module.css';
 // Base and overlays
 import type { ArrabidaMapProps } from './types';
+
 import { BEACH_PINS } from './constants';
 
 /* * */
@@ -18,12 +19,12 @@ export function ArrabidaMap({
 }: ArrabidaMapProps = {}) {
 	const getLineToShow = () => {
 		if (selectedLineId) return selectedLineId;
-		
+
 		if (selectedAccordionId) {
 			const selectedBeach = BEACH_PINS.find(beach => beach.accordionId === selectedAccordionId);
 			return selectedBeach?.lineIds?.[0] || null;
 		}
-		
+
 		return null;
 	};
 
@@ -34,10 +35,10 @@ export function ArrabidaMap({
 			<div className={styles.mapContainer}>
 				<DraggableAllPins
 					enableDoubleClickReset={true}
-					style={{ display: 'block', height: '100%', width: '100%' }}
 					onPinClick={onPinClick}
 					selectedAccordionId={selectedAccordionId}
 					selectedLineId={displayLineId}
+					style={{ display: 'block', height: '100%', width: '100%' }}
 				/>
 			</div>
 		</div>

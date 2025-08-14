@@ -1,8 +1,7 @@
 /* * */
 
-export { AlbarquelPin } from './AlbarquelPin';
 export { AllPins } from './AllPins';
-export { CreiroPin } from './CreiroPin';
 export { DraggableAllPins } from './DraggableAllPins';
-export { FigueirinhaPin } from './FigueirinhaPin';
-export { GalaposPin } from './GalaposPin';
+
+// Note: Individual pin components (AlbarquelPin, CreiroPin, FigueirinhaPin, GalaposPin)
+// were removed as they were unused. All pins are now handled by the AllPins component.
